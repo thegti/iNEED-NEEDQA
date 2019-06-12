@@ -1,0 +1,123 @@
+
+
+ <div class="page-layout simple fullwidth" fxLayout="column"> <!-- fusePerfectScrollbar -->
+    <div class="content-main padg-top-lft40 mb-24" fxLayout="column" fxLayoutAlign="center center" 
+    fxLayout.gt-md="row" fxLayout.gt-sm="row" fxLayout.gt-xs="row">
+    <h1>Supplier Registration</h1>
+    <div class="content-lft">
+            <mat-horizontal-stepper >
+                    <mat-step [stepControl]="firstFormGroup">
+                      <form [formGroup]="firstFormGroup" class="padg-lft0">
+            
+            <div fxLayout="row" fxLayoutAlign="flex-end" fxFlex="1 0 auto" class="h45" tab-index=-1>
+                     
+                    <mat-form-field appearance="outline" fxFlex="50">
+                     
+                    <input matInput type="text" placeholder="Name or Company*" name="search" formControlName="txtCompany" autocomplete="off" required >
+                    <mat-error > Enter Name or Company </mat-error>
+                   
+                    </mat-form-field>
+               
+            </div>  
+
+            
+            <div fxLayout="row" fxLayoutAlign="flex-end" fxFlex="1 0 auto" tab-index=-2 class="h95">   
+                   
+                    <mat-form-field appearance="appearance" >
+                     <!-- <mat-label></mat-label> -->
+                     <textarea matInput  type="text" class="md-textarea" rows="3"  placeholder="Address" 
+                     name="address" class="desc-textarea" formControlName="txtAddress"   
+                     ></textarea>
+                     <!-- <mat-error>Enter Address</mat-error> -->
+                 </mat-form-field>
+                 
+             </div>
+             
+
+             <div fxLayout="row" fxLayoutAlign="flex-end" fxFlex="1 0 auto" tab-index=-3>   
+                   
+                    <mat-form-field appearance="outline" fxFlex="50">
+                     <!-- <mat-label></mat-label> -->
+                     <input matInput type="text" placeholder="Pincode" name="pincode" formControlName="txtPincode" >
+                    <mat-error>Enter Pincode</mat-error>
+                 </mat-form-field>
+             </div> 
+
+             <div fxLayout="row" fxLayoutAlign="flex-end" fxFlex="1 0 auto" tab-index=-4>   
+                   
+                    <mat-form-field appearance="outline" fxFlex="50">
+                     <!-- <mat-label></mat-label> -->
+                     <input matInput type="text" placeholder="City" name="city" formControlName="txtCity" >
+                     <mat-error>Enter City</mat-error>
+                 </mat-form-field>
+             </div> 
+
+            </form>
+            </mat-step>
+            </mat-horizontal-stepper>
+            
+        </div>
+
+<div class="content-rgt">
+        <mat-horizontal-stepper >
+                <mat-step [stepControl]="secondFormGroup">
+                  <form [formGroup]="secondFormGroup" class="padg-lft0">
+       
+                  <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="h45" tab-index=-5>
+                        <mat-form-field appearance="outline">
+                  <mat-select formControlName="ddlCountry"  #singleSelect placeholder="Country*" required >
+                    <ngx-mat-select-search [formControl]="countryFilterCtrl" [placeholderLabel]="'Search Country...'"  [noEntriesFoundLabel]="'No matching Country found'" ></ngx-mat-select-search>
+                    <mat-option *ngFor="let country of filteredCountry | async" [value]="country['CNT_PK']"  >
+                          {{country['CNT_NAME']  }}
+                        </mat-option>
+                    
+            </mat-select>
+            <mat-error>Select Country Name</mat-error>
+              </mat-form-field>  
+          </div>
+
+                       <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" tab-index=-6> 
+                            <mat-form-field appearance="outline" fxFlex="50">
+                                <input matInput  type="text" placeholder="Mobile*" name="mobnumber"  formControlName="txtMobile" autocomplete="off" required>
+                                <mat-error>Enter Mobile No.</mat-error>
+                            </mat-form-field>
+            
+            
+                            </div>
+
+                            <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" tab-index=-7> 
+                                    <mat-form-field appearance="outline" fxFlex="50">
+                                            <input matInput  type="text" placeholder="CR No or QID(Qatar)" name="QID" formControlName="txtQIDText"  >
+                                    </mat-form-field>                 
+                    
+                                    </div>
+
+                                    <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" tab-index=-8>   
+                   
+                                            <mat-form-field appearance="outline" fxFlex="50">
+                                             <input matInput type="text" placeholder="Email ID*" name="email" formControlName="txtEmail" autocomplete="off" required>
+                                             <mat-error>Enter Valid Email ID</mat-error>
+                                         </mat-form-field>
+                                     </div> 
+                                     <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" tab-index=-9> 
+                                            <mat-form-field appearance="outline" fxFlex="50">
+                                                   <input matInput type="password" formControlName="password" placeholder="Create Password*" autocomplete="off" required> 
+                   <mat-error>
+                           <span *ngIf="secondFormGroup.value.password==''" > Password is required!</span>
+                           <span *ngIf="secondFormGroup.value.password!='' && secondFormGroup.controls.password['status']=='INVALID'" >Invalid Password(minimum length is 6)</span>
+            
+                      </mat-error>
+                                            </mat-form-field>
+                                            </div>
+            
+
+        </form>
+        </mat-step>
+        </mat-horizontal-stepper>
+</div>
+<div class="btn-container-center">
+        <button *ngIf="!enableClose" mat-raised-button [disabled]="firstFormGroup.invalid ||secondFormGroup.invalid "   (click)="vendorSubmitbutton()"  >Activate Account</button>
+       
+    </div>
+     </div>   
+</div>

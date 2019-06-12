@@ -1,0 +1,13 @@
+<h1 matDialogTitle><img src="assets/logos/iNeed-logo.png" width="80px" height="35px">
+    <img src="assets/home/tick.png" width="80px" height="35px">
+    <button (click)="dialogRef.close(false)" class="popup-close">X</button>
+   
+</h1>
+<div mat-dialog-content>
+    <img src="assets/home/tick.png"><br>
+    <span>{{confirmMessage}}</span>
+</div>
+<!--<div mat-dialog-actions class="pt-24">
+    <button mat-raised-button class="mat-accent mr-16" (click)="dialogRef.close(true)">Confirm</button>
+     <button mat-button (click)="dialogRef.close(false)">Cancel</button> 
+</div>-->

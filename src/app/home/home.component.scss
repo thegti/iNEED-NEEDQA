@@ -1,0 +1,35 @@
+
+:host {
+
+    .content {
+
+        /*form {
+            width: 100%;
+            max-width: 625px !important;
+        }*/
+        
+       /* .div-rgt {
+            width: 100%;
+            max-width: 625px !important;
+        }*/
+
+        .form-errors-model {
+            flex: 1;
+
+            code {
+                background: none !important;
+            }
+        }
+
+        .horizontal-stepper-wrapper,
+        .vertical-stepper-wrapper {
+            max-width: 800px;
+        }
+    }
+}
+
+[hidden]
+{
+    display: none !important;
+}
+
