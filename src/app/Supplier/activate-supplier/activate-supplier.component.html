@@ -1,0 +1,23 @@
+
+ <div class="page-layout simple fullwidth bgstring" fxLayout="column"> <!-- fusePerfectScrollbar -->
+    
+  <div class="banner-content" fxLayout="column" fxLayoutAlign="center center" 
+  fxLayout.gt-md="row" fxLayout.gt-sm="row" fxLayout.gt-xs="row">
+
+<div class="activateaccount">
+    <mat-horizontal-stepper >
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup" >
+<h1>need</h1>
+
+<p class="home-link"><a [routerLink]="['/home']">Home</a></p>
+<h3>Your account is now active !</h3>
+<p>Your account is now activated. Please <a [routerLink]="['/login']">Login</a>  or go back to <a [routerLink]="['/home']">homepage</a>.</p>
+</form>
+</mat-step>
+</mat-horizontal-stepper>
+</div>
+  </div>
+  </div>
+  
+  

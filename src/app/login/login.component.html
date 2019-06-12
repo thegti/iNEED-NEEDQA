@@ -1,0 +1,41 @@
+
+<div class="login-main wow fadeIn" data-wow-delay="2.5s">
+        <h1>i have</h1>        
+        <form fxLayout="column" fxLayoutAlign="start"  name="form"  class="padg-lft0"
+        [formGroup]="loginform"> 
+
+        <div fxLayout="row" fxLayoutAlign="start" class="margn-btm0" >
+                <span class="user-btn txt-center">supplier login</span>
+                <a routerLink="/supplier" class="new-btn txt-center" >new user</a>
+          </div>
+
+              <div fxLayout="row" fxLayoutAlign="start" class="margn-btm0" >
+                    <mat-form-field appearance="outline" fxFlex="100" style="width:300px!important;">
+                         <input type="text" placeholder="username" name="Username" class="w100per" required>
+                         
+                     </mat-form-field>
+              </div>
+
+              <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
+              <mat-form-field appearance="outline" fxFlex="100" class="w100per">
+                    <input type="password" placeholder="password" name="Password" class="w100per" required>
+                <mat-error>
+                      <span *ngIf="loginform.value.password==''" > password is required!</span>
+                      <span *ngIf="loginform.value.password!='' && loginform.controls.password['status']=='INVALID'" >invalid password(minimum length is 6)</span>
+       
+                 </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="btn-container-submit">
+                <button type="button" (click)="button()" class="signin-btn" >sign in</button>
+            </div>
+
+      <div class="btn txt-center" fxLayoutAlign="center">
+            forgot password? <mat-label><a href="#" class="login-link">click here</a></mat-label>
+      </div>
+
+      <div class="txt-center">contact email :<a href="mailto:support@need.qa" class="login-link" target="_blank">support@need.qa</a> </div>
+
+    </form>
+    </div>

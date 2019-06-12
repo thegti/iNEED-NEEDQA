@@ -1,0 +1,241 @@
+
+ <div class="page-layout simple fullwidth bgstring" fxLayout="column"> <!-- fusePerfectScrollbar -->
+    
+    <div class="banner-content" fxLayout="column" fxLayoutAlign="center center" 
+    fxLayout.gt-md="row" fxLayout.gt-sm="row" fxLayout.gt-xs="row">
+
+     <div [hidden]="!next"  class="banner-lft">
+         <h1>i need</h1>
+ <mat-horizontal-stepper >
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+            <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="h29" tab-index=1>
+                    <mat-label> </mat-label>
+                    <mat-radio-group>
+                        <mat-radio-button  value="1" formControlName="rdbProduct" checked (change)="selectSearch($event)"> product</mat-radio-button>
+                        <mat-radio-button  value="2" formControlName="rdbService" (change)="selectSearch($event)">service</mat-radio-button>
+                    </mat-radio-group>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="h43" tab-index=2>
+                <mat-label>search</mat-label>
+              <mat-form-field appearance="outline">
+                       <mat-select formControlName="ddlsearch"    #singleSelect placeholder="search"   (selectionChange)="onKeyWordSelect()"  >
+                          <ngx-mat-select-search [formControl]="searchFilterCtrl" [placeholderLabel]="'search keyword...'"  [noEntriesFoundLabel]="'no matching member found'"></ngx-mat-select-search>
+                          <mat-option *ngFor="let member of filteredSearch | async" [value]="member['VKW_PK']">
+                                {{member['VKW_KWORD']  }}
+                              </mat-option>
+                          
+                  </mat-select>
+                  <mat-error>Select Keyword</mat-error>
+              </mat-form-field>        
+          </div>
+
+            <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="h32" tab-index=3>
+                    <mat-label>from</mat-label>
+                    <mat-radio-group>
+                    <mat-radio-button value="1"  formControlName="rdbQatar" checked (change)="selectLocation($event)" >qatar</mat-radio-button>
+                    <mat-radio-button value="2" formControlName="rdbOutsideQatar" (change)="selectLocation($event)" >outside qatar</mat-radio-button>
+                </mat-radio-group>
+                   
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto " class="h45 "  tab-index=4>   
+            <mat-label >name</mat-label> 
+           <mat-form-field appearance="outline" fxFlex="50" >
+              
+            <input matInput type="text" formControlName="txtName" placeholder="name" autocomplete="off" >
+            <mat-error>enter name</mat-error>
+        </mat-form-field>
+    </div> 
+       
+        <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="h45" tab-index=5>   
+                 <mat-label >email</mat-label>  
+                <mat-form-field appearance="outline" fxFlex="50" >
+                 <input matInput type="text" formControlName="txtEmail" name="email" placeholder="email" autocomplete="off"  >
+                 <!-- <mat-error >
+                  Email is a required feild
+                </mat-error> -->
+                  <mat-error *ngIf="firstFormGroup.controls.txtEmail.errors?.required &&
+                  firstFormGroup.controls.txtEmail.touched" >
+                  enter valid email id
+                </mat-error>
+             </mat-form-field>
+         </div> 
+         <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="h45" tab-index=6> 
+                <mat-label>phone</mat-label>
+                    <mat-form-field appearance="outline" fxFlex="50" class="phon-input"> 
+                        <div class="static-lbl">
+                            <mat-label>+974</mat-label>
+                         </div>              
+                        <input matInput  type="text"  formControlName="txtMobile" name="txtMobile" placeholder="number" autocomplete="off"  required >
+                        <mat-error *ngIf="firstFormGroup.controls.txtMobile.errors?.required &&
+                        firstFormGroup.controls.txtMobile.touched" >
+                        enter mobile no.
+                      </mat-error>
+                       </mat-form-field>
+                 
+             </div> 
+            
+        <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="h45" tab-index=7>
+            <mat-label>your location</mat-label>
+          <mat-form-field appearance="outline">
+                   <!-- <mat-label>Member</mat-label> -->
+                   <mat-select formControlName="ddllocation"  #singleSelect placeholder="location" >
+                      <ngx-mat-select-search [formControl]="locationFilterCtrl" [placeholderLabel]="'search location...'"  [noEntriesFoundLabel]="'no matching member found'"></ngx-mat-select-search>
+                      <mat-option *ngFor="let member of filteredLocation | async" [value]="member['CON_PK']">
+                            {{member['CON_NAME']  }}
+                          </mat-option>
+              </mat-select>
+              <mat-error>select location</mat-error>
+          </mat-form-field>        
+      </div>
+
+      <!-- <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto"  tab-index=-7 class="h70" >
+            <mat-label></mat-label>
+            <re-captcha (resolved)="resolved($event)" siteKey="6Lfm16UUAAAAAP1SRnvF-dCzN-E6QrGmtwpw48lX" formControlName="captcha" 
+               style="transform:scale(1, 0.8);-webkit-transform:scale(1, 0.8);transform-origin:0 0;-webkit-transform-origin:0 0;">
+            </re-captcha>
+            
+</div> -->
+
+<div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="h45" tab-index=8> 
+        <mat-label>otp</mat-label>
+     <mat-form-field appearance="outline" fxFlex="50" class="min-max20">
+         <input matInput  type="text"  formControlName="txtOTP" placeholder="otp" >
+     </mat-form-field> 
+     <mat-label formControlName="lblOTPError" class="otp-err"></mat-label>
+      <div class="btn-container txt-h" style="width:0%; margin-top:7px;">
+     <button mat-raised-button  [disabled]="firstFormGroup.invalid" (click)="EnableNextButton()"  [ngClass]="{
+        'prev': isFirst,
+        'next': !isFirst
+      }"   color="accent">
+        next
+      </button>
+      </div>
+    </div> 
+
+
+      <!-- <div class="btn-container txt-h" style="width:0%; margin-top:7px;">
+      <button [disabled]="firstFormGroup.invalid" class="approv-btn"  [ngClass]="{
+        'next': isFirst,
+        'prev': !isFirst
+      }" (click)="buttonPrevious()"  >Next</button>
+    </div> -->
+ 
+
+    <!-- <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" >  -->
+             <!-- <mat-label></mat-label>
+             <div class="btn-container txt-h" style="width:0%; margin-top:7px;">
+                <button matStepperNext type="button" [ngClass]="{
+                    'prev': isFirst,
+                    'next': !isFirst
+                  }" 
+                  (click)="EnableNextButton()" [disabled]="firstFormGroup.invalid" class="approv-btn" >Next  </button>
+            </div> -->
+            <!--<input type="text" name="otp" class="w15per" >  -->
+            <!-- <div fxLayout="row" fxLayoutAlign="center center">
+                <button mat-raised-button matStepperNext type="button" [disabled]="firstFormGroup.invalid" color="accent" (click)="test()">
+                    Next
+                </button>
+                <button mat-raised-button  (click)="goBack()" class="forCancel"  color="accent">
+                 Cancel
+               </button>
+                </div> -->
+            
+           <!-- *ngIf="!enableclose"  [disabled]="form.invalid" class="approv-btn"  color="accent" >Next -->
+<!-- </div> -->
+      
+      </form>
+    </mat-step>
+  </mat-horizontal-stepper>
+    </div>
+
+<!------- Submit Section ------->
+    <div [hidden]="next" class="banner-lft" >
+            <h1>i need</h1>
+            <mat-horizontal-stepper >
+                    <mat-step [stepControl]="secondFormGroup">
+                      <form [formGroup]="secondFormGroup">
+                         
+                            <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" tab-index=9>
+                                    <mat-label> </mat-label>
+                                    <mat-radio-group>  
+                                        <mat-radio-button  value="1"  checked (change)="selectUseType($event)">personal use</mat-radio-button>
+                                        <mat-radio-button  value="2"  (change)="selectUseType($event)">business use</mat-radio-button>
+                                    </mat-radio-group>
+                            </div>
+
+        <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" tab-index=10> 
+                <mat-label>search</mat-label>
+            <mat-form-field appearance="outline" fxFlex="50">
+                <input matInput  type="text"  formControlName="txtSearch" placeholder="keyword"  [value]= this.selectedText readonly>
+            </mat-form-field>
+            </div> 
+    <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" tab-index=11> 
+            <mat-label>qty.</mat-label>
+        <mat-form-field appearance="outline" fxFlex="50" class="min-max28-5">
+            <input matInput  type="number" min="0" formControlName="txtQuantity" placeholder="qty" class="quantitynumber"  >
+             <mat-error>enter quantity</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" fxFlex="50" class="min-max28-5" tab-index=12>
+    
+                <mat-select  formControlName="ddlUnit" placeholder="unit" >
+                    <mat-option *ngFor="let type of unitOfMeasure"  [value]="type['UOM_PK']">
+                        {{type['UOM_NAME']  }}
+                  </mat-option> 
+                </mat-select> 
+                <mat-error>select uom</mat-error>
+              </mat-form-field>
+        </div> 
+
+                   <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" tab-index=13> 
+                        <mat-label>approximate value</mat-label>
+                    <mat-form-field appearance="outline" fxFlex="50">
+                        <input matInput  type="number" min="0" formControlName="txtApproximate" class="quantitynumber"  placeholder="approximate value"  >
+                    </mat-form-field>
+                    </div> 
+
+          
+                   <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" tab-index=-14 class="h95">  
+                        <mat-label>description</mat-label> 
+                        <mat-form-field  class="enquiry-textarea" appearance="outline" fxFlex="50"  >
+                         <textarea matInput  type="text"  formControlName="txtdDescription"
+                         placeholder="brief description" name="desc" class="desc-textarea" ></textarea>
+                        </mat-form-field>
+                 </div>
+
+                 <div fxLayout="row"  fxFlex="1 0 auto" class="formakingdynamic">   
+                               <mat-label>attachments, if any<br><span class="attach-lbl">(max. file size 1mb)</span></mat-label>
+                               <input type="file" #profilepic  formControlName="photo" (change)="onSelectionchange($event)" (change)="detectFiles($event)" style="display:none">
+                               <button type="button"  class="browse-btn" (click)="profilepic.click()"> browse</button>
+                               <div class="brows-lbl" [hidden]="!filenames"> {{ fileName }} </div>                              
+                              
+                    </div>  
+
+                    <div class="w85per txt-rgt">
+                            <button *ngIf="!enableClose" mat-raised-button  [disabled]="firstFormGroup.invalid || secondFormGroup.invalid" (click)="enquirySubmit()" class="activate-btn" >submit</button>
+                       </div>
+                       </form>
+                       </mat-step>
+                       </mat-horizontal-stepper>
+                    </div>  
+                       <div class="form-errors-ymodel mr-24 mb-24 banner-rgt" fxLayout="column" 
+                       fxLayoutAlign="center center" fxFlex="0.5 0 auto" >
+                           <img src="assets/home/time-quality.png">
+               </div>
+               
+            </div>  
+                <div class="toggle-btn "> 
+                  <button [ngClass]="{ 'prev': isFirst,'next': !isFirst  }"  (click)="buttonNext()" ></button>
+          
+          <!-- <button [disabled]="form.invalid"  -->
+                       <button [disabled]="firstFormGroup.invalid"  [ngClass]="{ 'next': isFirst,'prev': !isFirst}" (click)="buttonPrevious()"  ></button>
+                      </div> 
+                  </div>
+
+
+
+                         
+   
+             

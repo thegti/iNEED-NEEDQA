@@ -1,0 +1,81 @@
+@import "src/@fuse/scss/fuse";
+
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+fuse-theme-options {
+    display: flex;
+    overflow: hidden;
+
+    .theme-options-panel {
+        display: flex;
+        flex-direction: column;
+        flex: 1 0 auto;
+        padding:24px;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        font-family: 'coheadlinew08-lightregular', sans-serif;
+
+        .header {
+            display: flex;
+            flex: 0 1 auto;
+            margin-bottom:2px;
+            align-items: center;
+            justify-content: space-between; width:50%;
+
+            .title {
+                font-size: 20px;
+                font-weight: 600;
+                padding-left: 4px;
+                font-family: 'coheadlinew08-lightregular', sans-serif;
+                font-weight:300; color:#0074bc;
+            }
+        }
+
+        form {
+            display: flex!important;
+            flex: 1 1 auto;
+            flex-direction: column;
+            width: 90%!important;
+            padding: 0px!important;
+            color: #404040;
+
+            .group {
+                display: flex;
+                flex: 1 0 auto;
+                flex-direction: column;
+                position: relative;
+                border-radius: 2px;
+                padding:8px;
+                margin: 10px 7px 15px 7px; font-size:13px; font-weight:bold;
+
+                h2 {
+                    position: absolute;
+                    top: -11px;
+                    left:-10px;
+                    margin: 0;
+                    padding: 0 6px;
+                    font-size: 12px;
+                    font-weight: bold;
+                }
+
+                h3 {
+                    font-size: 14px;
+                    font-weight: 600;
+                    margin: 24px 0 16px 0;
+                    padding: 0;
+
+                    &:first-of-type {
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
+    }
+}

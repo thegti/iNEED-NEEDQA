@@ -1,0 +1,84 @@
+
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h3>Angular 6 Reactive Form Validation</h3>
+                <mat-horizontal-stepper >
+                    <mat-step [stepControl]="registerForm">
+                <form [formGroup]="registerForm" >
+                
+                    <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto " class="h45 "  tab-index=4 style="background: red">  
+                        <mat-label >Email</mat-label> 
+                        <!-- <mat-form-field appearance="outline" fxFlex="50" >
+                        <input matInput type="text" formControlName="txtEmail"  class="form-control" autocomplete="off" [ngClass]="{ 'is-invalid': f.txtEmail.touched && f.txtEmail.errors }" >
+                     <mat-error *ngIf=" f.txtEmail.errors && f.txtEmail.touched" class="invalid-feedback">
+                      <mat-error *ngIf="f.txtEmail.errors.required">Email is required</mat-error>
+                     <mat-error *ngIf="f.txtEmail.errors.email&& f.txtEmail.errors"  >Email must be a valid email address</mat-error>
+                    </mat-error>
+                       
+                        </mat-form-field> -->
+                        <mat-form-field>
+                            <input type="email" matInput placeholder="Your email"  name="email" email required formControlName="txtMobile">
+                            <mat-error *ngIf="f.txtMobile.hasError('required')">Field must not be empty.</mat-error>
+                            <mat-error *ngIf="!f.txtMobile.hasError('required')">E-Mail is invalid.</mat-error>
+                          </mat-form-field>
+                    </div>
+
+                    <!-- <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="h45" tab-index=6 style="background: red"> 
+                        <mat-label>phone</mat-label>
+                            <mat-form-field appearance="outline" fxFlex="50" class="phon-input"> 
+                                <div class="static-lbl">
+                                    <label>+974</label>
+                                 </div>              
+                                <input matInput  type="text"  formControlName="txtMobile" placeholder="number" autocomplete="off" required  >
+                            <mat-error *ngIf="txtMobile.errors">
+                               
+                                <mat-error *ngIf="txtMobile.errors.pattern">Mobile number not valid.
+                                  </mat-error>
+                            </mat-error>
+                               </mat-form-field>
+                         
+                     </div>  -->
+                     <!-- <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="h45" tab-index=6 style="background: red"> 
+                        <mat-label>password</mat-label>
+                        <mat-form-field appearance="outline" fxFlex="50" class="phon-input"> 
+                     <input matInput  type="password"  formControlName="password" placeholder="number" autocomplete="off" required  >
+                 
+                  
+                     
+    <mat-error *ngIf="password.errors && (password.dirty || password.touched)">
+  <mat-error *ngIf="password.errors.required">Password is required</mat-error>
+  <mat-error *ngIf="password.errors.minlength">Password must be 8 characters long, we need another {{password.errors.minlength.requiredLength - password.errors.minlength.actualLength}} characters </mat-error>
+</mat-error>
+                      </mat-form-field>
+                     </div>	 -->
+                   
+
+                  
+                   
+                </form>
+                </mat-step>
+                </mat-horizontal-stepper>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <!-- <section class="signup-form">
+    <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <mat-form-field>
+        <input type="email" matInput placeholder="Your email" ngModel name="email" email required #emailInput="ngModel">
+        <mat-error *ngIf="emailInput.hasError('required')">Field must not be empty.</mat-error>
+        <mat-error *ngIf="!emailInput.hasError('required')">E-Mail is invalid.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field hintLabel="Should be at least 6 characters long.">
+        <input type="password" matInput placeholder="Your password" ngModel name="password" required minlength="6" #pwInput="ngModel">
+        <mat-hint align="end">{{ pwInput.value?.length }} / 6</mat-hint>
+        <mat-error>Has to be at least 6 characters long.</mat-error>
+      </mat-form-field>
+     
+    
+    </form>
+  </section> -->

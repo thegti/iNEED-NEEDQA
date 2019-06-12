@@ -1,0 +1,41 @@
+<div class="theme-options-panel" fusePerfectScrollbar>
+
+    <div class="header">
+
+        <span class="title">how it works</span>
+
+        <button mat-icon-button class="close-button" (click)="toggleSidebarOpen('themeOptionsPanel')">
+            <mat-icon>close</mat-icon>
+        </button>
+
+    </div>
+
+    <form [formGroup]="form">
+
+        <!-- CUSTOM STEPS -->
+        <div class="group w50per disp-inlne-blk">
+            <h2>step 1</h2>
+            <!-- <mat-slide-toggle class="mb-12" formControlName="customScrollbars">
+                Enable custom scrollbars
+            </mat-slide-toggle> -->
+            select auto populated key word & enter the requirements.
+        </div>
+
+        <div class="group w50per disp-inlne-blk">
+            <h2>step 2</h2>
+            <span class="needqa">need.qa</span> will share it with the registered vendors to give you the quotation.
+        </div>
+
+        <div class="group w50per disp-inlne-blk">
+            <h2>step 3</h2>
+            you will be getting responses within 3 working days.
+        </div>
+
+        <div class="group w50per disp-inlne-blk">
+            <h2>step 4</h2>
+            you may evaluate the responses & close the deal.
+        </div>
+
+    </form>
+
+</div>
