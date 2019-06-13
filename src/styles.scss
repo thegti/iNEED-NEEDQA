@@ -210,6 +210,9 @@ mat-icon        {   font-size:19px; color:#717171;}
     font-size:14px!important; margin-top:-5px;}
 
 .toggle-btn     {   width: 43%;   text-align: right;
+    @include media-breakpoint ('xs')    {
+        width:70%;
+    }
     mat-icon    {   color:#fff; font-size:15px; cursor: pointer;}
     img         {   width:16px; height:16px; cursor: pointer;}
     button      {   cursor: pointer;}
