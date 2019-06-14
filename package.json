@@ -44,6 +44,7 @@
     "@types/prismjs": "1.9.0",
     "angular-calendar": "0.26.3",
     "angular-in-memory-web-api": "0.6.1",
+    "angular-material-expansion-panel": "0.7.2",
     "bootstrap": "4.3.1",
     "chart.js": "2.7.3",
     "classlist.js": "1.1.20150312",

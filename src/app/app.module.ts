@@ -34,11 +34,12 @@ import { EnquiryComponent } from './enquiry/enquiry.component';
 import { TestComponent } from './test/test.component';
 import {ActivateSupplierComponent} from './Supplier/activate-supplier/activate-supplier.component';
 import {VendorprofileComponent} from './vendorprofile/vendorprofile.component';
-
+import {NextdialogComponent} from './nextdialog/nextdialog.component';
 
 // R and D works
 import {SearchautoComponent} from './RandD/searchauto/searchauto.component';
 import {ValidatorsComponent} from './RandD/validators/validators.component'
+import { EventEmitterService } from './event-emitter.service';
 
 @NgModule({
     declarations: [
@@ -58,6 +59,7 @@ import {ValidatorsComponent} from './RandD/validators/validators.component'
         TestComponent,
         ActivateSupplierComponent,
         VendorprofileComponent,
+        NextdialogComponent,
 
         //R and D works
 
@@ -67,6 +69,7 @@ import {ValidatorsComponent} from './RandD/validators/validators.component'
     ],
     entryComponents: [
         DialogComponent,
+        NextdialogComponent,
         
       ],
     imports     : [
@@ -91,7 +94,7 @@ import {ValidatorsComponent} from './RandD/validators/validators.component'
         AppMaterialModule,
         AppRoutingModule
     ],
-    providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+    providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, EventEmitterService],
     bootstrap   : [
         AppComponent
     ],

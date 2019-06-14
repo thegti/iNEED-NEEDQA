@@ -19,6 +19,7 @@ import {DialogComponent} from '../dialog/dialog.component';
 import {ConstGroup} from '../utility/LocationConstants';
 import {SerachGroup} from '../utility/SearchConstants';
 import {SavaEnquiryModel} from '../business-object/EnquiryObject';
+import {NextdialogComponent} from '../nextdialog/nextdialog.component';
 
 
 @Component({
@@ -50,6 +51,9 @@ export class EnquiryComponent implements OnInit,OnDestroy {
     // confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;
     confirmDialogRef: MatDialogRef<DialogComponent>;
     DialogRef: MatDialogRef<DialogComponent>;
+
+    confirmNextDialogRef: MatDialogRef<NextdialogComponent>;
+    NextDialogRef: MatDialogRef<NextdialogComponent>;
     url = '../../assets/loginasset/images/display-img.jpg';
     moddate: any;
     currentMem:any;
@@ -90,6 +94,7 @@ export class EnquiryComponent implements OnInit,OnDestroy {
 
     constructor(private apiService: ApiService,private enquiryService: EnquiryService,private authService: AuthService,public _matDialog: MatDialog,  private _formBuilder: FormBuilder,private act_route: ActivatedRoute,private router: Router) { }
     ngOnInit(): void{
+
         
      this.ResetFormControls(true);  
                
@@ -114,6 +119,7 @@ export class EnquiryComponent implements OnInit,OnDestroy {
         this.filenames=true;   
 
     }
+    
     ResetFormControls(IsNew:boolean)
     {
         this.firstFormGroup = this._formBuilder.group({
@@ -148,6 +154,10 @@ export class EnquiryComponent implements OnInit,OnDestroy {
         this.selectedKeyword=1;
         this.selectedUseType=1;
       
+    }
+    public VerifyOTP()
+    {
+        alert("Success");
     }
     selectLocation(e){
         this.selectedLocation=e.value;
@@ -453,4 +463,33 @@ get txtMobile() {
     let result = patt.test(event.key);
     return result;
 } 
+
+EnabletestButton()
+{
+    
+    // if () {
+    this.confirmNextDialogRef = this._matDialog.open(NextdialogComponent, {
+        disableClose: true
+    });
+
+    this.confirmNextDialogRef.componentInstance.Message = 'enter otp.';
+ 
+    
+    this.confirmNextDialogRef.afterClosed().subscribe(result => {
+        if ( result )
+        {
+            
+        }
+        this.confirmNextDialogRef = null;
+    });
+// });
+
+// else {
+//     this.confirmDialogRef = this._matDialog.open(NextdialogComponent, {
+//         disableClose: true
+//     });
+ }
+ 
+ 
+
 }

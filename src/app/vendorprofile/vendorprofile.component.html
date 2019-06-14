@@ -39,177 +39,331 @@
   </div> -->
   <div class="page-layout carded left-sidebar inner-scroll">
 
-      <!-- TOP BACKGROUND -->
-      <div class="top-bg accent"></div>
-      <!-- / TOP BACKGROUND -->
+        <!-- TOP BACKGROUND -->
+        <div class="top-bg accent"></div>
+        <!-- / TOP BACKGROUND -->
+    
+        <!-- SIDEBAR -->
+        <fuse-sidebar class="sidebar" name="carded-left-sidebar-2" position="left" lockedOpen="gt-md">
+    
+            <!-- SIDEBAR HEADER -->
+            <!-- <div class="header p-24 accent">
+                <h2 class="m-0">Sidebar header</h2>
+            </div> -->
+            <!-- / SIDEBAR HEADER -->
+    
+            <!-- SIDEBAR CONTENT -->
+            <div class="content p-24" fusePerfectScrollbar>
+                <div class="demo-sidebar">
+                    <mat-list>
+                        <!-- <h3 matSubheader >vendor profile</h3> -->
+                
+                        <mat-list-item>
+                            <span (click)="sidebarMenu('item1')">vendor profile</span>
+                        </mat-list-item>
+                <br>
+                        <mat-divider></mat-divider>
+                
+                        <mat-list-item>
+                            <span (click)="sidebarMenu('item2')">account status</span>
+                        </mat-list-item>
+                        <br>
+                        <mat-divider></mat-divider>
+                
+                        <mat-list-item>
+                            <span (click)="sidebarMenu('item3')" >load keywords</span>
+                        </mat-list-item>
+                        <br>
+                        <mat-divider></mat-divider>
+                
+                        <mat-list-item>
+                            <span (click)="sidebarMenu('item4')">sales lead setup</span>
+                        </mat-list-item>
+                        <br>
+                        <mat-divider></mat-divider>
+                
+                        <mat-list-item>
+                            <span (click)="sidebarMenu('item5')">reports</span>
+                        </mat-list-item>
+                
+                        <mat-divider></mat-divider>
+                
+                       
+                    </mat-list>
+                </div>
+                
+                
+            </div>
+            <!-- / SIDEBAR CONTENT -->
+    
+        </fuse-sidebar>
+        <!-- / SIDEBAR -->
+    
+        <!-- CENTER -->
+        <div class="center">
+    
+            <!-- CONTENT HEADER -->
+            <!-- <div class="header accent p-24">
+                <h2 class="m-0">Left sidebar with inner scroll</h2>
+            </div> -->
+            <!-- / CONTENT HEADER -->
+    
+            <!-- CONTENT CARD -->
+            <div class="content-card">
+    
+                <!-- CONTENT TOOLBAR -->
+                <div class="toolbar px-24 py-8">
+    
+                    <button mat-icon-button class="sidebar-toggle" fxHide.gt-md
+                            (click)="toggleSidebar('carded-left-sidebar-2')">
+                        <mat-icon>menu</mat-icon>
+                    </button>
+    
+                
+    
+                </div>
+                <!-- / CONTENT TOOLBAR -->
+    
+                <!-- CONTENT -->
+                <div class="content p-24" fusePerfectScrollbar>
+                        <mat-horizontal-stepper >
+                                <mat-step [stepControl]="firstFormGroup">
+                                  <form [formGroup]="firstFormGroup" (ngSubmit)="enquirySubmit()">
+                    <div class="demo-content line-height-1.75" [hidden]="selectedItem != 'item1'" >
+                      <div>
+                          <mat-label>vendor registration id :</mat-label>
+                          4455 </div>
+                          <div>
+                          <mat-label>registered name :</mat-label>
+                          media1 advertising</div>
+                          <div>
+                              <mat-label>address :</mat-label>
+                             </div>
+                             <div>
+                              <mat-label>po box :</mat-label>
+                             </div>
+                             <div>
+                              <mat-label>city :</mat-label>
+                             </div>
+                             <div>
+                              <mat-label>country :</mat-label>
+                             </div>
+                             <div>
+                              <mat-label>mob :</mat-label>
+                             </div>
+                             <div>
+                              <mat-label>crn no / qid :</mat-label>
+                             </div>
+                             <div>
+                              <mat-label>registered email id :</mat-label>
+                             </div>
+                     
+                    </div>
   
-      <!-- SIDEBAR -->
-      <fuse-sidebar class="sidebar" name="carded-left-sidebar-2" position="left" lockedOpen="gt-md">
+                    <div class="demo-content line-height-1.75" [hidden]="selectedItem != 'item2'">
   
-          <!-- SIDEBAR HEADER -->
-          <div class="header p-24 accent">
-              <h2 class="m-0">Sidebar header</h2>
-          </div>
-          <!-- / SIDEBAR HEADER -->
-  
-          <!-- SIDEBAR CONTENT -->
-          <div class="content p-24" fusePerfectScrollbar>
-              <div class="demo-sidebar">
-                  <mat-list>
-                      <h3 matSubheader>Sidebar Demo</h3>
-              
-                      <mat-list-item>
-                          <span>Sidebar Item 1</span>
-                      </mat-list-item>
-              
-                      <mat-divider></mat-divider>
-              
-                      <mat-list-item>
-                          <span>Sidebar Item 2</span>
-                      </mat-list-item>
-              
-                      <mat-divider></mat-divider>
-              
-                      <mat-list-item>
-                          <span>Sidebar Item 3</span>
-                      </mat-list-item>
-              
-                      <mat-divider></mat-divider>
-              
-                      <mat-list-item>
-                          <span>Sidebar Item 4</span>
-                      </mat-list-item>
-              
-                      <mat-divider></mat-divider>
-              
-                      <mat-list-item>
-                          <span>Sidebar Item 5</span>
-                      </mat-list-item>
-              
-                      <mat-divider></mat-divider>
-              
-                      <mat-list-item>
-                          <span>Sidebar Item 6</span>
-                      </mat-list-item>
-              
-                      <mat-divider></mat-divider>
-              
-                      <mat-list-item>
-                          <span>Sidebar Item 7</span>
-                      </mat-list-item>
-              
-                      <mat-divider></mat-divider>
-              
-                      <mat-list-item>
-                          <span>Sidebar Item 8</span>
-                      </mat-list-item>
-              
-                      <mat-divider></mat-divider>
-              
-                      <mat-list-item>
-                          <span>Sidebar Item 9</span>
-                      </mat-list-item>
-              
-                      <mat-divider></mat-divider>
-              
-                      <mat-list-item>
-                          <span>Sidebar Item 10</span>
-                      </mat-list-item>
-              
-                      <mat-divider></mat-divider>
-              
-                      <mat-list-item>
-                          <span>Sidebar Item 11</span>
-                      </mat-list-item>
-              
-                      <mat-divider></mat-divider>
-              
-                      <mat-list-item>
-                          <span>Sidebar Item 12</span>
-                      </mat-list-item>
-              
-                      <mat-divider></mat-divider>
-              
-                      <mat-list-item>
-                          <span>Sidebar Item 13</span>
-                      </mat-list-item>
-              
-                      <mat-divider></mat-divider>
-              
-                      <mat-list-item>
-                          <span>Sidebar Item 14</span>
-                      </mat-list-item>
-              
-                      <mat-divider></mat-divider>
-              
-                      <mat-list-item>
-                          <span>Sidebar Item 15</span>
-                      </mat-list-item>
-              
-                      <mat-divider></mat-divider>
-              
-                      <mat-list-item>
-                          <span>Sidebar Item 16</span>
-                      </mat-list-item>
-              
-                  </mat-list>
-              </div>
-              
-              
-          </div>
-          <!-- / SIDEBAR CONTENT -->
-  
-      </fuse-sidebar>
-      <!-- / SIDEBAR -->
-  
-      <!-- CENTER -->
-      <div class="center">
-  
-          <!-- CONTENT HEADER -->
-          <div class="header accent p-24">
-              <h2 class="m-0">Left sidebar with inner scroll</h2>
-          </div>
-          <!-- / CONTENT HEADER -->
-  
-          <!-- CONTENT CARD -->
-          <div class="content-card">
-  
-              <!-- CONTENT TOOLBAR -->
-              <div class="toolbar px-24 py-8">
-  
-                  <button mat-icon-button class="sidebar-toggle" fxHide.gt-md
-                          (click)="toggleSidebar('carded-left-sidebar-2')">
-                      <mat-icon>menu</mat-icon>
-                  </button>
-  
-                  <span>Content toolbar</span>
-  
-              </div>
-              <!-- / CONTENT TOOLBAR -->
-  
-              <!-- CONTENT -->
-              <div class="content p-24" fusePerfectScrollbar>
-                  <div class="demo-content line-height-1.75" >
-
-                      <h1 class="m-0">Early Sunrise in Winter</h1>
-                      <h4 class="mt-0 secondary-text">Demo Content</h4>
-                  
-                      <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tortor nibh, convallis sed purus nec,
-                          auctor venenatis nisl. Suspendisse potenti. Nullam sagittis nulla in diam finibus, sed pharetra velit
-                          vestibulum. Suspendisse euismod in urna eu posuere.
-                      </p>
+                      <div>
+                          <mat-label>status :</mat-label>
+                          active </div>
+                          <div>
+                              <mat-label>account expiry :</mat-label>
+                              31-03-2020 </div>
                   
                    
                   </div>
-              </div>
-              <!-- / CONTENT -->
+
+                  <div class="demo-content line-height-1.75" [hidden]="selectedItem != 'item3'">
+                        <mat-tab-group>
+                                <mat-tab label="english"> 
+                                    <div [hidden]="!uploadkeyword">
+                                        <div>
+                                                <button type="button"  (click)="UploadKeywordButton()"  >
+                                                   upload csv
+                                                 </button>
+                                                 </div>
+                                                
+
+                                                 <div  >
+                                                        <button mat-raised-button   (click)="addKeywordButton()"   >
+                                                           add new keyword
+                                                         </button>
+                                                         </div>
+                                                         <div  >
+                                                                <button type="button"  (click)="addKeywordEditButton()"   >
+                                                                   edit
+                                                                 </button>
+                                                                 </div>
+                                                         <br>
+                                                         <input type="checkbox">digital service<br>
+                                                         <input type="checkbox">media production<br>
+                                                         <input type="checkbox">event management<br>
+                                                         <input type="checkbox">pricing<br>
+                                                        </div>
+                                                        <div [hidden]="uploadkeyword" >
+                                                            <h2>keywords csv upload</h2>
+                                                            <div>
+                                                            <button mat-raised-button   (click)="downloadCsvButton()"   >
+                                                                    download sample csv
+                                                                  </button>
+                                                                </div>
+                                                               <br>
+                                                                  <p>please download the format before uploading your file and make sure that your csv file should match with that format</p>
+                                                               
+                                                                  <div >   
+                                                                       
+                                                                        <input type="file" #profilepic  formControlName="photo" (change)="onSelectionchange($event)" (change)="detectFiles($event)" style="display:none">
+                                                                        <button type="button"  class="browse-btn" (click)="profilepic.click()"> choose file</button>
+                                                                        <div class="brows-lbl" [hidden]="!filenames"> {{ fileName }} </div>                              
+                                                                       
+                                                             </div>  
+                                                             <div>
+                                                                    <button mat-raised-button   (click)="uploadCsvButton()"   >
+                                                                            upload
+                                                                          </button>
+                                                                        </div>
+                                                                </div>
+                                                       
+                                                        
+                                                         <!-- <mat-accordion>
+                                                                <mat-expansion-panel>
+                                                                  <mat-expansion-panel-header>
+                                                                    <mat-panel-title>
+                                                                      Personal data
+                                                                    </mat-panel-title>
+                                                                    <mat-panel-description>
+                                                                      Type your name and age
+                                                                    </mat-panel-description>
+                                                                  </mat-expansion-panel-header>
+                                                              
+                                                                  <mat-form-field>
+                                                                    <input matInput placeholder="First name">
+                                                                  </mat-form-field>
+                                                              
+                                                                  <mat-form-field>
+                                                                    <input matInput placeholder="Age">
+                                                                  </mat-form-field>
+                                                                </mat-expansion-panel>
+                                                                <mat-expansion-panel (opened)="panelOpenState = true"
+                                                                                     (closed)="panelOpenState = false">
+                                                                  <mat-expansion-panel-header>
+                                                                    <mat-panel-title>
+                                                                      Self aware panel
+                                                                    </mat-panel-title>
+                                                                    <mat-panel-description>
+                                                                      Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                                                                    </mat-panel-description>
+                                                                  </mat-expansion-panel-header>
+                                                                  <p>I'm visible because I am open</p>
+                                                                </mat-expansion-panel>
+                                                              </mat-accordion> -->
+                                                              
+
+
+                                                 
+                                </mat-tab>
+                               
+                                <mat-tab label="arabic"> arabic </mat-tab>
+                                
+                              </mat-tab-group>
+                             
+                  </div>
+
+
+
+                  <div class="demo-content line-height-1.75" [hidden]="selectedItem != 'item4'">
+
+                        <div >   
+                                <mat-label >email to which sales to be shared</mat-label> 
+                                <input type="text" formControlName="txtEmail"  autocomplete="off" >
+                        </div> 
+                        <div >   
+                                <mat-label >mobile number to which sales to be shared</mat-label> 
+                                 
+                                <input type="text" formControlName="txtMobile" placeholder="mobile number" autocomplete="off" >
+                        </div> 
+                        
+                        <div >   
+                                <mat-label >whatsapp number to which sales to be shared</mat-label> 
+                                 
+                                <input type="text" formControlName="txtMobile" placeholder="mobile number" autocomplete="off" >
+                        </div>  
+                        <div >   
+                                <mat-label >i want leads for </mat-label> 
+                               
+                                        <mat-radio-group>  
+                                                <mat-radio-button  value="1"  checked (change)="selectUseTypes($event)">personal use</mat-radio-button>
+                                                <mat-radio-button  value="2"  (change)="selectUseTypes($event)">business use</mat-radio-button>
+                                                <mat-radio-button  value="3"  (change)="selectUseTypes($event)">both</mat-radio-button>
+                                            </mat-radio-group>
+                                 
+                              
+                        </div>  
+             
+                        <div >   
+                                <mat-label >i want leads for </mat-label> 
+                               
+                                <mat-radio-group>
+                                        <mat-radio-button  value="1"  checked (change)="selectSearch($event)"> product</mat-radio-button>
+                                        <mat-radio-button  value="2"  (change)="selectSearch($event)">service</mat-radio-button>
+                                        <mat-radio-button  value="3"  (change)="selectSearch($event)">both</mat-radio-button>
+                                    </mat-radio-group>
+                                 
+                              
+                        </div>  
+                        <div >   
+                                <mat-label >i want leads with </mat-label> 
+                               
+                                <mat-radio-group>
+                                        <mat-radio-button  value="1"  checked (change)="selectSearch($event)"> any value</mat-radio-button>
+                                        <mat-radio-button  value="2"  (change)="selectSearch($event)">more than 3000 only</mat-radio-button>
+                                        <input type="text"  placeholder="value" autocomplete="off" >
+                                    </mat-radio-group>
+                                 
+                              
+                        </div> 
+
+                        <div class="btn-container txt-h" >
+                                <button mat-raised-button   (click)="saveButton()" >
+                                   save
+                                 </button>
+                                 <button mat-raised-button    (click)="cancelButton()" >
+                                        cancel
+                                      </button>
+                                 </div>
+
+                    </div>
+
+
+                    <div class="demo-content line-height-1.75" [hidden]="selectedItem != 'item5'">
+                            <div >   
+                                    <mat-label >sales leads generated</mat-label> 
+                                     
+                                    <mat-form-field>
+                                            
+                                            <select matNativeControl required>
+                                              <option value="volvo">Volvo</option>
+                                              <option value="saab">Saab</option>
+                                              <option value="mercedes">Mercedes</option>
+                                              <option value="audi">Audi</option>
+                                            </select>
+                                          </mat-form-field>
+                                          <button type="button"    (click)="generateButton()" >
+                                                generate
+                                              </button>
+                            </div>  
+                    </div>
   
-          </div>
-          <!-- / CONTENT CARD -->
-  
-      </div>
-      <!-- / CENTER -->
-  
-  </div>
-  
+  </form>
+  </mat-step>
+  </mat-horizontal-stepper>
+                </div>
+                <!-- / CONTENT -->
+    
+            </div>
+            <!-- / CONTENT CARD -->
+    
+        </div>
+        <!-- / CENTER -->
+    
+    </div>
+    

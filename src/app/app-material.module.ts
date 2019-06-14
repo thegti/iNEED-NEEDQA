@@ -18,6 +18,8 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MatDividerModule, MatListModule } from '@angular/material';
+import {MatExpansionModule} from '@angular/material';
+
 
 //Rand D works
 
@@ -44,7 +46,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
         MatDialogModule,
         MatTabsModule,
         MatDividerModule,
-        MatListModule
+        MatListModule,
+        MatExpansionModule
     ],
     exports: [
         MatMomentDateModule,
@@ -63,7 +66,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
          NgxMatSelectSearchModule,
         MatGridListModule,
         MatDialogModule,
-        MatRadioModule
+        MatRadioModule,
+        MatExpansionModule
     ]
   })
   export class AppMaterialModule {}
