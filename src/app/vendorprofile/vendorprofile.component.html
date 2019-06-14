@@ -40,53 +40,52 @@
   <div class="page-layout carded left-sidebar inner-scroll">
 
         <!-- TOP BACKGROUND -->
-        <div class="top-bg accent"></div>
+        <!-- <div class="top-bg accent"></div> -->
         <!-- / TOP BACKGROUND -->
     
         <!-- SIDEBAR -->
-        <fuse-sidebar class="sidebar" name="carded-left-sidebar-2" position="left" lockedOpen="gt-md">
+        <fuse-sidebar class="sidebar min-max25" name="carded-left-sidebar-2" position="left" lockedOpen="gt-md">
     
             <!-- SIDEBAR HEADER -->
-            <!-- <div class="header p-24 accent">
+             <!-- <div class="header p-24 accent">
                 <h2 class="m-0">Sidebar header</h2>
             </div> -->
             <!-- / SIDEBAR HEADER -->
     
             <!-- SIDEBAR CONTENT -->
-            <div class="content p-24" fusePerfectScrollbar>
+            <div class="content leftsidebar" fusePerfectScrollbar>
                 <div class="demo-sidebar">
-                    <mat-list>
+                    <mat-list class="mat-list mat-list-base">
                         <!-- <h3 matSubheader >vendor profile</h3> -->
                 
-                        <mat-list-item>
-                            <span (click)="sidebarMenu('item1')">vendor profile</span>
+                        <mat-list-item class="mat-list-item">
+                            <span (click)="sidebarMenu('item1')" class="mat-list-item-content active">vendor profile</span>
                         </mat-list-item>
-                <br>
-                        <mat-divider></mat-divider>
+                        <mat-divider class="mat-divider mat-divider-horizontal"></mat-divider>
                 
-                        <mat-list-item>
-                            <span (click)="sidebarMenu('item2')">account status</span>
+                        <mat-list-item class="mat-list-item">
+                            <span (click)="sidebarMenu('item2')" class="mat-list-item-content">account status</span>
                         </mat-list-item>
-                        <br>
-                        <mat-divider></mat-divider>
+                        
+                        <mat-divider class="mat-divider mat-divider-horizontal"></mat-divider>
                 
-                        <mat-list-item>
-                            <span (click)="sidebarMenu('item3')" >load keywords</span>
+                        <mat-list-item class="mat-list-item">
+                            <span (click)="sidebarMenu('item3')" class="mat-list-item-content">load keywords</span>
                         </mat-list-item>
-                        <br>
-                        <mat-divider></mat-divider>
+                        
+                        <mat-divider class="mat-divider mat-divider-horizontal"></mat-divider>
                 
-                        <mat-list-item>
-                            <span (click)="sidebarMenu('item4')">sales lead setup</span>
+                        <mat-list-item class="mat-list-item">
+                            <span (click)="sidebarMenu('item4')" class="mat-list-item-content">sales lead setup</span>
                         </mat-list-item>
-                        <br>
-                        <mat-divider></mat-divider>
+                        
+                        <mat-divider class="mat-divider mat-divider-horizontal"></mat-divider>
                 
-                        <mat-list-item>
-                            <span (click)="sidebarMenu('item5')">reports</span>
+                        <mat-list-item class="mat-list-item">
+                            <span (click)="sidebarMenu('item5')" class="mat-list-item-content">reports</span>
                         </mat-list-item>
                 
-                        <mat-divider></mat-divider>
+                        
                 
                        
                     </mat-list>
@@ -100,7 +99,7 @@
         <!-- / SIDEBAR -->
     
         <!-- CENTER -->
-        <div class="center">
+        <div class="center" fxLayout="row">
     
             <!-- CONTENT HEADER -->
             <!-- <div class="header accent p-24">
@@ -109,10 +108,10 @@
             <!-- / CONTENT HEADER -->
     
             <!-- CONTENT CARD -->
-            <div class="content-card">
+            <!-- <div class="content-card"> -->
     
                 <!-- CONTENT TOOLBAR -->
-                <div class="toolbar px-24 py-8">
+                <div class="toolbar">
     
                     <button mat-icon-button class="sidebar-toggle" fxHide.gt-md
                             (click)="toggleSidebar('carded-left-sidebar-2')">
@@ -125,53 +124,81 @@
                 <!-- / CONTENT TOOLBAR -->
     
                 <!-- CONTENT -->
-                <div class="content p-24" fusePerfectScrollbar>
-                        <mat-horizontal-stepper >
+                <div class="vendor-cont-outer">
+                        <mat-horizontal-stepper class="vendor-content"  fusePerfectScrollbar>
                                 <mat-step [stepControl]="firstFormGroup">
                                   <form [formGroup]="firstFormGroup" (ngSubmit)="enquirySubmit()">
-                    <div class="demo-content line-height-1.75" [hidden]="selectedItem != 'item1'" >
+<!------ ITEM 1 --------->                                    
+                    <div class="demo-content" [hidden]="selectedItem != 'item1'" >
                       <div>
-                          <mat-label>vendor registration id :</mat-label>
-                          4455 </div>
+                          <mat-label class="lft-lbl">vendor registration id</mat-label> 
+                          <span class="mid-lbl">:</span>
+                          <mat-label class="rgt-lbl">4455</mat-label> 
+                        </div>
                           <div>
-                          <mat-label>registered name :</mat-label>
-                          media1 advertising</div>
+                          <mat-label class="lft-lbl">registered name</mat-label>
+                          <span class="mid-lbl">:</span>
+                          <mat-label class="rgt-lbl">media1 advertising</mat-label>
+                        </div>
                           <div>
-                              <mat-label>address :</mat-label>
+                              <mat-label class="lft-lbl">address</mat-label> 
+                              <span class="mid-lbl">:</span>
+                              <mat-label class="rgt-lbl">sample address</mat-label>
+                              
                              </div>
                              <div>
-                              <mat-label>po box :</mat-label>
+                                <mat-label class="lft-lbl">po box</mat-label> 
+                                <span class="mid-lbl">:</span>
+                                <mat-label class="rgt-lbl">4455</mat-label>
+                              
                              </div>
                              <div>
-                              <mat-label>city :</mat-label>
+                                <mat-label class="lft-lbl">city</mat-label> 
+                                <span class="mid-lbl">:</span>
+                                <mat-label class="rgt-lbl">sample</mat-label>
                              </div>
                              <div>
-                              <mat-label>country :</mat-label>
+                                <mat-label class="lft-lbl">country</mat-label> 
+                                <span class="mid-lbl">:</span>
+                                <mat-label class="rgt-lbl">qatar</mat-label>
                              </div>
                              <div>
-                              <mat-label>mob :</mat-label>
+                                <mat-label class="lft-lbl">mob</mat-label> 
+                                <span class="mid-lbl">:</span>
+                                <mat-label class="rgt-lbl">1234567890</mat-label>
                              </div>
                              <div>
-                              <mat-label>crn no / qid :</mat-label>
+                                <mat-label class="lft-lbl">crn no / qid</mat-label> 
+                                <span class="mid-lbl">:</span>
+                                <mat-label class="rgt-lbl">4455</mat-label>
+                              
                              </div>
                              <div>
-                              <mat-label>registered email id :</mat-label>
+                                <mat-label class="lft-lbl">registered email id</mat-label> 
+                                <span class="mid-lbl"> :</span>
+                                <mat-label class="rgt-lbl">sample@g.com</mat-label>
                              </div>
                      
                     </div>
-  
+  <!------ ITEM 2 --------->
                     <div class="demo-content line-height-1.75" [hidden]="selectedItem != 'item2'">
   
                       <div>
-                          <mat-label>status :</mat-label>
-                          active </div>
+                          <mat-label class="lft-lbl">status</mat-label> 
+                          <span class="mid-lbl"> :</span>
+                          <mat-label class="rgt-lbl">active</mat-label>
+                          
+                           </div>
                           <div>
-                              <mat-label>account expiry :</mat-label>
-                              31-03-2020 </div>
+                              <mat-label class="lft-lbl">account expiry</mat-label> 
+                              <span class="mid-lbl"> :</span>
+                              <mat-label class="rgt-lbl">31-03-2020</mat-label>
+                              
+                               </div>
                   
                    
                   </div>
-
+<!------ ITEM 3 --------->
                   <div class="demo-content line-height-1.75" [hidden]="selectedItem != 'item3'">
                         <mat-tab-group>
                                 <mat-tab label="english"> 
@@ -269,7 +296,7 @@
                   </div>
 
 
-
+<!------ ITEM 4 --------->
                   <div class="demo-content line-height-1.75" [hidden]="selectedItem != 'item4'">
 
                         <div >   
@@ -333,7 +360,7 @@
 
                     </div>
 
-
+<!------ ITEM 5 --------->
                     <div class="demo-content line-height-1.75" [hidden]="selectedItem != 'item5'">
                             <div >   
                                     <mat-label >sales leads generated</mat-label> 
@@ -359,7 +386,7 @@
                 </div>
                 <!-- / CONTENT -->
     
-            </div>
+            <!-- </div> -->
             <!-- / CONTENT CARD -->
     
         </div>
