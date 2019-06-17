@@ -113,7 +113,7 @@
                 <!-- CONTENT TOOLBAR -->
                 <div class="toolbar">
     
-                    <button mat-icon-button class="sidebar-toggle" fxHide.gt-md
+                    <button mat-icon-button class="sidebar-toggle" fxHide.gt-md fxShow.gt-sm
                             (click)="toggleSidebar('carded-left-sidebar-2')">
                         <mat-icon>menu</mat-icon>
                     </button>
@@ -181,7 +181,7 @@
                      
                     </div>
   <!------ ITEM 2 --------->
-                    <div class="demo-content line-height-1.75" [hidden]="selectedItem != 'item2'">
+                    <div class="demo-content" [hidden]="selectedItem != 'item2'">
   
                       <div>
                           <mat-label class="lft-lbl">status</mat-label> 
@@ -199,7 +199,7 @@
                    
                   </div>
 <!------ ITEM 3 --------->
-                  <div class="demo-content line-height-1.75" [hidden]="selectedItem != 'item3'">
+                  <div class="demo-content" [hidden]="selectedItem != 'item3'" fusePerfectScrollbar>
                         <mat-tab-group>
                                 <mat-tab label="english"> 
                                     <div [hidden]="!uploadkeyword">
@@ -210,21 +210,53 @@
                                                  </div>
                                                 
 
-                                                 <div  >
+                                                 <div class="add-new-btn">
                                                         <button mat-raised-button   (click)="addKeywordButton()"   >
                                                            add new keyword
                                                          </button>
+                                                  
                                                          </div>
-                                                         <div  >
-                                                                <button type="button"  (click)="addKeywordEditButton()"   >
-                                                                   edit
-                                                                 </button>
-                                                                 </div>
-                                                         <br>
-                                                         <input type="checkbox">digital service<br>
-                                                         <input type="checkbox">media production<br>
-                                                         <input type="checkbox">event management<br>
-                                                         <input type="checkbox">pricing<br>
+                                                         
+                                                         <div class="keyword-list">
+                                                          <ul class="keyword-ul">
+                                                            <li>
+                                                              <mat-checkbox></mat-checkbox>
+                                                              <mat-label>digital service</mat-label> 
+                                                              <div class="edit-div">
+                                                              <button mat-raised-button type="button" matTooltip="edit" (click)="addKeywordEditButton()" class="edit-icn"  >                                                                
+                                                               </button>
+                                                               </div>
+                                                              </li>
+
+                                                              <li>
+                                                                  <mat-checkbox></mat-checkbox>
+                                                                  <mat-label>media production</mat-label> 
+                                                                  <div class="edit-div">
+                                                                  <button mat-raised-button type="button" matTooltip="edit" (click)="addKeywordEditButton()" class="edit-icn"  >                                                                
+                                                                   </button>
+                                                                   </div>
+                                                                  </li>
+
+                                                                  <li>
+                                                                      <mat-checkbox></mat-checkbox>
+                                                                      <mat-label>event managament</mat-label> 
+                                                                      <div class="edit-div">
+                                                                      <button mat-raised-button type="button" matTooltip="edit" (click)="addKeywordEditButton()" class="edit-icn"  >                                                                
+                                                                       </button>
+                                                                       </div>
+                                                                      </li>
+
+                                                                      <li>
+                                                                          <mat-checkbox></mat-checkbox>
+                                                                          <mat-label>pricing</mat-label> 
+                                                                          <div class="edit-div">
+                                                                          <button mat-raised-button type="button" matTooltip="edit" (click)="addKeywordEditButton()" class="edit-icn"  >                                                                
+                                                                           </button>
+                                                                           </div>
+                                                                          </li>
+
+                                                          </ul>
+                                                         </div>       
                                                         </div>
                                                         <div [hidden]="uploadkeyword" >
                                                             <h2>keywords csv upload</h2>
@@ -297,7 +329,7 @@
 
 
 <!------ ITEM 4 --------->
-                  <div class="demo-content line-height-1.75" [hidden]="selectedItem != 'item4'">
+                  <div class="demo-content" [hidden]="selectedItem != 'item4'">
 
                         <div >   
                                 <mat-label >email to which sales to be shared</mat-label> 
@@ -361,7 +393,7 @@
                     </div>
 
 <!------ ITEM 5 --------->
-                    <div class="demo-content line-height-1.75" [hidden]="selectedItem != 'item5'">
+                    <div class="demo-content" [hidden]="selectedItem != 'item5'">
                             <div >   
                                     <mat-label >sales leads generated</mat-label> 
                                      
