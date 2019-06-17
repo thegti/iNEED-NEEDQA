@@ -543,7 +543,7 @@ background-repeat: no-repeat;}
                             border-radius:3px; -webkit-border-radius:3px;
                        }
                        .mat-tab-label-active  {   
-                        background:#000;
+                        background:#000; border:1px solid #000;
                         
 
                         .mat-tab-label-content  {
@@ -560,6 +560,7 @@ background-repeat: no-repeat;}
                         li { 
                             mat-checkbox   {
                                 label   {  min-width: 3%; max-width: 3%;}
+                                .mat-checkbox-frame {   border-color:#0074bc;}
                             }
                         }
                         
@@ -577,7 +578,15 @@ background-repeat: no-repeat;}
                                     border-radius:3px!important; -webkit-border-radius:3px!important;
                         span    {   position: relative;  top: -3px;}
                     }
-                }                
+                }
+/*--------- Upload CSV -----*/
+                .upload         {   display: flex; align-items: center; justify-content: flex-start;
+                                    margin:2% 0px 0px 0px;
+                    button      {   font-family: 'coheadlinew01-regularregular'!important; font-weight:bold;
+                                    font-size:16px; background:none!important;  color:#0074bc!important;
+                                    box-shadow:none!important; -webkit-box-shadow:none!important;
+                                    border:1px solid #ccc; border-radius:3px; -webkit-border-radius:3px; }
+                }                                
             }
         } 
     }

@@ -203,15 +203,16 @@
                         <mat-tab-group>
                                 <mat-tab label="english"> 
                                     <div [hidden]="!uploadkeyword">
-                                        <div>
-                                                <button type="button"  (click)="UploadKeywordButton()"  >
+                                     
+                                        <div class="upload">
+                                                <button mat-raised-button type="button"  (click)="UploadKeywordButton()">
                                                    upload csv
                                                  </button>
                                                  </div>
                                                 
 
                                                  <div class="add-new-btn">
-                                                        <button mat-raised-button   (click)="addKeywordButton()"   >
+                                                        <button mat-raised-button   (click)="addKeywordButton()">
                                                            add new keyword
                                                          </button>
                                                   
