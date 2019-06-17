@@ -99,24 +99,24 @@ export const navigation: FuseNavigation[] = [
         url      : 'contact',
       
     },
-    // {
-    //     id       : 'ihave',
-    //     title    : 'i have',
-    //     translate: '',
-    //     type     : 'item',
-    //     icon     : '',
-    //     url      : 'ihave',
-      
-    // },
     {
-        id       : 'vendorprofile',
-        title    : 'vendor profile',
+        id       : 'ihave',
+        title    : 'i have',
         translate: '',
         type     : 'item',
         icon     : '',
-        url      : 'vendorprofile',
+        url      : 'ihave',
       
     },
+    // {
+    //     id       : 'vendorprofile',
+    //     title    : 'vendor profile',
+    //     translate: '',
+    //     type     : 'item',
+    //     icon     : '',
+    //     url      : 'vendorprofile',
+      
+    // },
     // {
     //     id       : 'test',
     //     title    : 'test',

@@ -10,31 +10,46 @@
           </div>
 
               <div fxLayout="row" fxLayoutAlign="start" class="margn-btm0" >
-                    <mat-form-field appearance="outline" fxFlex="100" style="width:300px!important;">
-                         <input type="text" placeholder="username" name="Username" class="w100per" required>
-                         
+                    <mat-form-field appearance="outline" fxFlex="50" style="width:300px!important;">
+                        <input matInput type="text" tabindex="1" formControlName="txtUsername"  class="form-control" placeholder="username" [value]= this.email maxlength="50" autocomplete="off" [ngClass]="{ 'is-invalid': validation.txtUsername.touched && validation.txtUsername.errors }" >
+
+                        <!-- <mat-error *ngIf="validation.txtMobile.hasError('required')">Field must not be empty.</mat-error>
+                        <mat-error *ngIf="!validation.txtMobile.hasError('required')">E-Mail is invalid.</mat-error> -->
+       
+                        <mat-error *ngIf="validation.txtUsername.errors && validation.txtUsername.touched" class="invalid-feedback">
+                         <mat-error *ngIf="validation.txtUsername.errors.required">email is required</mat-error>
+                        <mat-error *ngIf="validation.txtUsername.errors.email&& validation.txtUsername.errors"  >enter valid email address</mat-error> 
+                        </mat-error> 
+                        <!-- <input matInput type="text" tabindex="1" placeholder="username" formControlName="txtUsername" [attr.readonly]="true" class="w100per emailclass" [value]= this.email > -->
                      </mat-form-field>
               </div>
 
               <div fxLayout="row" fxLayoutAlign="start center" fxFlex="1 0 auto">
-              <mat-form-field appearance="outline" fxFlex="100" class="w100per">
-                    <input type="password" placeholder="password" name="Password" class="w100per" required>
+              <mat-form-field appearance="outline" fxFlex="50" class="w100per">
+                    <!-- <input matInput type="password" tabindex="2" placeholder="password" formControlName="txtPassword" class="w100per emailclass" autocomplete="off" required>
                 <mat-error>
                       <span *ngIf="loginform.value.password==''" > password is required!</span>
                       <span *ngIf="loginform.value.password!='' && loginform.controls.password['status']=='INVALID'" >invalid password(minimum length is 6)</span>
        
-                 </mat-error>
+                 </mat-error> -->
+                 <input matInput type="password" tabindex="2" formControlName="txtPassword" placeholder="create password*" autocomplete="off" maxlength="20"  required> 
+                 <mat-error>
+                 <span *ngIf="loginform.value.txtPassword==''" > password is required!</span>
+                <span *ngIf="loginform.value.txtPassword!='' && loginform.controls.txtPassword['status']=='INVALID'" >invalid password(minimum length is 6)</span>
+              </mat-error>
             </mat-form-field>
         </div>
 
         <div class="btn-container-submit">
-                <button type="button" (click)="button()" class="signin-btn" >sign in</button>
+                <button mat-raised-button [disabled]="loginform.invalid" (click)="button()" tabindex="3" class="signin-btn" >sign in</button>
             </div>
 
-      <div class="btn txt-center" fxLayoutAlign="center">
+      <!-- <div class="btn txt-center" fxLayoutAlign="center">
             forgot password? <mat-label><a href="#" class="login-link">click here</a></mat-label>
+      </div> -->
+      <div class="btn txt-center" class="password-forget" fxLayoutAlign="center">
+            <mat-label > forgot password? <a href="#" class="login-link">click here</a></mat-label>
       </div>
-
       <div class="txt-center">contact email :<a href="mailto:support@need.qa" class="login-link" target="_blank">support@need.qa</a> </div>
 
     </form>

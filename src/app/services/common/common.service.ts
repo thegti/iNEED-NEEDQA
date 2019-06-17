@@ -36,6 +36,10 @@ export class ApiService {
      CountryFilterGetAuto(req): any {
         return this.httpClient.post<CountryModel>(`${this.baseUrl}api/Common/Country`, req, this.header);
      }  
+
+     SelectCountry(req): any {
+      return this.httpClient.post<CountryModel>(`${this.baseUrl}api/Common/SelectCountry`, req, this.header);
+   }  
    
   
 }

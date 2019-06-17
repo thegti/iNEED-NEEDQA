@@ -18,6 +18,7 @@ import {DialogComponent} from '../dialog/dialog.component';
 import {ConstGroup} from '../utility/LocationConstants';
 import {SerachGroup} from '../utility/SearchConstants';
 import {SavaVendorModel} from '../business-object/VendorObject';
+import { environment } from 'environments/environment';
 
 
 @Component({
@@ -28,6 +29,7 @@ import {SavaVendorModel} from '../business-object/VendorObject';
 export class SupplierRegistrationComponent implements OnInit,OnDestroy {
     enableClose: Boolean = false;
     public CountryCode: string;
+    public EmailBind: string;
     public DefaultCountry: Number;
     firstFormGroup:FormGroup;
     secondFormGroup: FormGroup;
@@ -42,6 +44,10 @@ export class SupplierRegistrationComponent implements OnInit,OnDestroy {
     mobnumPattern = "^((\\+91-?)|0)?[0-9]{10}$"; 
     countries: Array<Object> = [{
         'CNT_NAME': 'Search',
+        'CNT_PK':0
+    }];
+    selectcountries: Array<Object> = [{
+        
         'CNT_PK':0
     }];
     keywordDataNull = {
@@ -62,8 +68,8 @@ export class SupplierRegistrationComponent implements OnInit,OnDestroy {
           ddlCountry: ['', Validators.required],
           txtMobile: ['', [Validators.pattern(this.mobnumPattern),Validators.minLength(10),Validators.maxLength(12)]],
         //   txtMobile: ['',Validators.required,[Validators.pattern('^(?=.*[0-9])[- +()0-9]+$'),Validators.minLength(10),Validators.maxLength(12)]],
-          txtEmail: ['', Validators.email],
-          txtPassword: ['',Validators.minLength(6)],
+          txtEmail: ['', [Validators.email,Validators.maxLength(50)]],
+          txtPassword: ['',[Validators.minLength(6),Validators.maxLength(20)]],
             txtQIDText: ['']
             });
             
@@ -72,6 +78,13 @@ export class SupplierRegistrationComponent implements OnInit,OnDestroy {
         this.filterSerach();
     });
      this.getCountry();
+    //  this.act_route.params.subscribe(params => {
+    //  if (data['Data'] > 0) {
+    //  {
+    //     this.EmailBind = data["Data"][0].VND_EMAIL;    
+    
+    //  }
+    //  })
   }
   button()
   {}
@@ -109,15 +122,14 @@ export class SupplierRegistrationComponent implements OnInit,OnDestroy {
         this.countries = data['Data'];
         this.countries.splice(0,0,this.keywordDataNull);
         this.filteredCountry.next(this.countries);
-        
-        this.secondFormGroup.controls.ddlCountry.setValue("5,5");
+        this.secondFormGroup.controls.ddlCountry.setValue(environment.DefaultCountry);
      
      });
   }
   ConfigSettings()
   {
-    this.CountryCode="+974";
-    this.DefaultCountry=5;
+    this.CountryCode=environment.DefaultCountryCode;
+    this.DefaultCountry=environment.DefaultCountry;
     //this.secondFormGroup.controls.ddlCountry.setValue(5);
     
     // const reqbody = {
@@ -134,7 +146,7 @@ export class SupplierRegistrationComponent implements OnInit,OnDestroy {
 
   vendorSubmitbutton(): void {
     var selectedCntVal=this.secondFormGroup.value.ddlCountry;
-    var selectedCntArray=selectedCntVal.split(',');
+    // var selectedCntArray=selectedCntVal.split(',');
     this.moddate =  new Date().toISOString();
     console.log("Test");
     console.log(this.secondFormGroup.value.ddlCountry);
@@ -145,7 +157,7 @@ export class SupplierRegistrationComponent implements OnInit,OnDestroy {
         'VND_PIN': this.firstFormGroup.value.txtPincode,
         'VND_TIN': this.secondFormGroup.value.txtQIDText,
         'VND_CITY': this.firstFormGroup.value.txtCity,
-        'VND_COUNTRY': selectedCntArray[0], // this.secondFormGroup.value.ddlCountry
+        'VND_COUNTRY':  this.secondFormGroup.value.ddlCountry, // selectedCntArray[0], 
         'VND_MOBILE': this.secondFormGroup.value.txtMobile,
         'VND_EMAIL': this.secondFormGroup.value.txtEmail,
         'VUT_PASSWORD':this.secondFormGroup.value.txtPassword,
@@ -179,13 +191,15 @@ export class SupplierRegistrationComponent implements OnInit,OnDestroy {
         //    this.confirmDialogRef.componentInstance.isError=false;
           
           this.confirmDialogRef.componentInstance.Message = msg;
+     
           this.confirmDialogRef.afterClosed().subscribe(result => {
             if ( result )
             {
-               
+              
             }
             this.confirmDialogRef = null;
             this.ReSetForm();
+            this.router.navigate(['/login']);
         });
         }else {
             this.confirmDialogRef = this._matDialog.open(DialogComponent, {
@@ -249,9 +263,15 @@ ngOnDestroy(): void
     onCountrySelect()
     {
         var selected=this.secondFormGroup.value.ddlCountry;
-        var selectedArray=selected.split(',');
+        // var selectedArray=selected.split(',');
        // this.secondFormGroup.value.lblPhcode=selectedArray[1];
-        this.CountryCode=selectedArray[1];
+        
+        const reqbody = {
+            'CNT_PK':selected 
+         };
+         this.apiService.SelectCountry(reqbody).subscribe((data: Array<object>) => {
+            this.CountryCode = data["Data"][0].CNT_PHONE_CODE; 
+         });
 
     }
     get f() { return this.secondFormGroup.controls; }

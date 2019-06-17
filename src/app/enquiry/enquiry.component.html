@@ -9,8 +9,8 @@
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup" (ngSubmit)="enquirySubmit()">
 
-<!-- 
-          <div >
+
+          <!-- <div >
               <button type="button"  (click)="EnabletestButton()" >
                  test
                </button>
@@ -61,9 +61,9 @@
                 <mat-error *ngIf="txtName.errors.required">
                    enter name 
                 </mat-error>
-                <mat-error *ngIf="txtName.errors.minLength">
+                <!-- <mat-error *ngIf="txtName.errors.minLength">
                   enter valid name 
-                </mat-error>
+                </mat-error> -->
               </mat-error>
         </mat-form-field>
     </div> 
@@ -71,14 +71,14 @@
         <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="h45" tab-index=5>   
                  <mat-label >email</mat-label>  
                  <mat-form-field appearance="outline" fxFlex="50" >
-                 <input matInput type="text" formControlName="txtEmail"  class="form-control" placeholder="email" autocomplete="off" [ngClass]="{ 'is-invalid': validation.txtEmail.touched && validation.txtEmail.errors }" >
+                 <input matInput type="text" formControlName="txtEmail"  class="form-control" placeholder="email" maxlength="50" autocomplete="off" [ngClass]="{ 'is-invalid': validation.txtEmail.touched && validation.txtEmail.errors }" >
 
                  <!-- <mat-error *ngIf="validation.txtMobile.hasError('required')">Field must not be empty.</mat-error>
                  <mat-error *ngIf="!validation.txtMobile.hasError('required')">E-Mail is invalid.</mat-error> -->
 
                  <mat-error *ngIf="validation.txtEmail.errors && validation.txtEmail.touched" class="invalid-feedback">
                   <mat-error *ngIf="validation.txtEmail.errors.required">email is required</mat-error>
-                 <mat-error *ngIf="validation.txtEmail.errors.email&& validation.txtEmail.errors"  >enter valid email address</mat-error> -->
+                 <mat-error *ngIf="validation.txtEmail.errors.email&& validation.txtEmail.errors"  >enter valid email address</mat-error> 
                  </mat-error> 
                    
                     </mat-form-field>
@@ -107,7 +107,7 @@
                         <div class="static-lbl">
                             <label>+974</label>
                          </div>              
-                        <input matInput  type="text"  formControlName="txtMobile" placeholder="number" autocomplete="off" (keypress)="numericOnly($event)"  >
+                        <input matInput  type="text"  formControlName="txtMobile" placeholder="number" autocomplete="off" (keypress)="numericOnly($event)" maxlength="10"  >
                         <mat-error *ngIf="txtMobile.errors " [ngClass] = "'error'">
                             <mat-error *ngIf="txtMobile.errors.required">
                                enter mobile number 

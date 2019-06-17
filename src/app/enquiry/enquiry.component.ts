@@ -118,6 +118,10 @@ export class EnquiryComponent implements OnInit,OnDestroy {
         this.GetUom();
         this.filenames=true;   
 
+        // Object.keys(this._formBuilder.controls).forEach(field => {
+        //     const control = this.firstFormGroup.get(field);
+        //     control.markAsTouched({ onlySelf: true });
+        //     });
     }
     
     ResetFormControls(IsNew:boolean)
@@ -126,8 +130,8 @@ export class EnquiryComponent implements OnInit,OnDestroy {
             // captcha: ['', Validators.required],
             ddlsearch: ['', Validators.required],
             ddllocation: ['', Validators.required],
-            txtName:['', [Validators.required,Validators.minLength(3)]],
-            txtEmail: ['',[Validators.required, Validators.email] ],
+            txtName:['', Validators.required],
+            txtEmail: ['',[Validators.required, Validators.email,Validators.maxLength(50)] ],
             txtMobile: ['', [Validators.required,Validators.pattern(this.mobnumPattern),Validators.minLength(10),Validators.maxLength(12)]],
             txtOTP:['', Validators.required]
             });
@@ -467,27 +471,18 @@ get txtMobile() {
 EnabletestButton()
 {
     
-    // if () {
-    this.confirmNextDialogRef = this._matDialog.open(NextdialogComponent, {
-        disableClose: true
-    });
+    // const dialogRef  = this._matDialog.open(NextdialogComponent);
+    // const sub = dialogRef .componentInstance.onAdd.subscribe((data) => {
+    //   alert(data);
+    // });
+    // dialogRef .afterClosed().subscribe(result => {
+    //     console.log(result);
+    //     if (result === 'submit') {
+    //       }
+    // //   sub.unsubscribe();
+    // });
+    this.router.navigate(['/ActivateSupplier/tTtaiW84fv3SfxQjnkg9TQ==' ]);
 
-    this.confirmNextDialogRef.componentInstance.Message = 'enter otp.';
- 
-    
-    this.confirmNextDialogRef.afterClosed().subscribe(result => {
-        if ( result )
-        {
-            
-        }
-        this.confirmNextDialogRef = null;
-    });
-// });
-
-// else {
-//     this.confirmDialogRef = this._matDialog.open(NextdialogComponent, {
-//         disableClose: true
-//     });
  }
  
  

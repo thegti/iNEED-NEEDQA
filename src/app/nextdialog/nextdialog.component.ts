@@ -1,4 +1,4 @@
-import { Component, OnInit ,Input} from '@angular/core';
+import { Component, OnInit ,Input,EventEmitter} from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 
 
@@ -11,19 +11,23 @@ export class NextdialogComponent implements OnInit {
  
   public Message: string;
   public isError: Boolean = false;
-
+  onAdd = new EventEmitter();
   constructor(
-      public NextDialogRef: MatDialogRef<NextdialogComponent>
-  )
-  {
-  }
+      public NextDialogRef: MatDialogRef<NextdialogComponent>  )  {}
+
+
+  
   verifyOtp()
   {
-   
+    
   }
-  
-
+ 
 ngOnInit() {
+}
+onButtonClicked()
+{
+  // this.onAdd.emit('test');
+  this.NextDialogRef.close('submit');
 }
 
 }
