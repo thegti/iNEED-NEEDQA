@@ -199,11 +199,11 @@
                    
                   </div>
 <!------ ITEM 3 --------->
-                  <div class="demo-content" [hidden]="selectedItem != 'item3'" fusePerfectScrollbar>
+                  <div class="demo-content" [hidden]="selectedItem != 'item3'">
                         <mat-tab-group>
                                 <mat-tab label="english"> 
                                     <div [hidden]="!uploadkeyword">
-                                     
+                                     <div style="display:flex; margin-bottom:1%;">
                                         <div class="upload">
                                                 <button mat-raised-button type="button"  (click)="UploadKeywordButton()">
                                                    upload csv
@@ -217,7 +217,7 @@
                                                          </button>
                                                   
                                                          </div>
-                                                         
+                                        </div>                 
                                                          <div class="keyword-list">
                                                           <ul class="keyword-ul">
                                                             <li>
@@ -259,12 +259,12 @@
                                                           </ul>
                                                          </div>       
                                                         </div>
-                                                        <div [hidden]="uploadkeyword" >
+                                                        <div [hidden]="uploadkeyword" class="keyword-csv" >
                                                             <h2>keywords csv upload</h2>
                                                             <div>
                                                             <button mat-raised-button   (click)="downloadCsvButton()"   >
                                                                     download sample csv
-                                                                  </button>
+                                                            </button>
                                                                 </div>
                                                                <br>
                                                                   <p>please download the format before uploading your file and make sure that your csv file should match with that format</p>
