@@ -135,7 +135,7 @@ export class EnquiryComponent implements OnInit,OnDestroy {
             // captcha: ['', Validators.required],
             ddlsearch: ['', Validators.required],
             ddllocation: ['', Validators.required],
-            txtName:['', Validators.required],
+            txtName:['',[Validators.required,Validators.minLength(3)]],
             txtEmail: ['',[Validators.required, Validators.email,Validators.maxLength(50)] ],
             txtMobile: ['', [Validators.required,Validators.pattern(this.mobnumPattern),Validators.minLength(10),Validators.maxLength(12)]],
             // txtOTP:['', Validators.required]

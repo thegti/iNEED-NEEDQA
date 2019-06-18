@@ -686,5 +686,8 @@ background-repeat: no-repeat;}
     color: transparent !important;
 }
 //vendor profile
-
+.mat-form-field .mat-select.mat-select-invalid .mat-select-arrow
+{
+    color: rgba(0, 0, 0, 0.54) !important;
+}
 
