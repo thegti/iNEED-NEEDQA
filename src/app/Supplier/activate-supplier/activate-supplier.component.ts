@@ -12,29 +12,40 @@ import {SharedData} from '../../services/common/SharedData.service'
 })
 export class ActivateSupplierComponent implements OnInit {
   private key: string;
+  public lblMessage:string;
   private commonFields: CommonFields;
   firstFormGroup: FormGroup;
   constructor(private _formBuilder: FormBuilder,
     private router: Router,
     private activeRoute: ActivatedRoute,
     private sharedData: SharedData,
-
+    
     private vendorService: VendorService,) { }
 
   ngOnInit() {
     this.activeRoute.params.subscribe(params => {
       this.key = params['key'];
-      console.log(this.key);
       const reqbody = {
         'KEY':this.key 
      };
+     console.log(reqbody);
      this.vendorService.ActivateVendor(reqbody).subscribe((data: Array<object>) => {
+      console.log('account');
        console.log(data);
-     this.sharedData.SetVendorEmail(data["Data"][0].VND_EMAIL);
+      if (data['Data'] === -8){
+        this.lblMessage="your account is already activated!";
+      }
+      else{
+        this.sharedData.SetVendorEmail(data["Data"][0].VND_EMAIL);
+        this.lblMessage="your account is activated!";
+      }
+    
      });
 
     });
-    this.firstFormGroup.value.lblActivateMsg="test";
+  
+    // this.firstFormGroup.value.lblActivateMsg="test";
+this.lblMessage="test";
 
   }
   

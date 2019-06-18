@@ -7,6 +7,7 @@ import {LocationModel} from '../../business-object/CommonDataObject';
 import {KeywordModel} from '../../business-object/CommonDataObject';
 import {UomModel} from '../../business-object/CommonDataObject';
 import {CountryModel} from '../../business-object/CommonDataObject';
+import {OtpModel} from '../../business-object/CommonDataObject';
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +41,8 @@ export class ApiService {
      SelectCountry(req): any {
       return this.httpClient.post<CountryModel>(`${this.baseUrl}api/Common/SelectCountry`, req, this.header);
    }  
-   
+   GenerateOtp(req):any{
+      return this.httpClient.post<OtpModel>(`${this.baseUrl}api/Common/GenerateOTP`, req, this.header);
+   }
   
 }

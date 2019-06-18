@@ -53,14 +53,19 @@
             <mat-label >name</mat-label> 
            <mat-form-field appearance="outline" fxFlex="50" >
               
-            <input matInput type="text" formControlName="txtName" placeholder="name" autocomplete="off" >
+            <input matInput type="text" formControlName="txtName" placeholder="name" autocomplete="off" [ngClass]="{ 'is-invalid': txtNamevalid.txtName.touched && txtNamevalid.txtName.errors }"  >
             <!-- <mat-error *ngIf="firstFormGroup.controls.txtName.errors?.required && firstFormGroup.controls.txtName.touched" >
                 enter name
               </mat-error> -->
-              <mat-error *ngIf="txtName.errors " [ngClass] = "'error'">
-                <mat-error *ngIf="txtName.errors.required">
+            
+                  <mat-error *ngIf="txtNamevalid.txtName.errors && txtNamevalid.txtName.touched" class="invalid-feedback">
+                      <mat-error *ngIf="txtNamevalid.txtName.errors.required">enter name</mat-error>
+                      <mat-error *ngIf="txtNamevalid.txtName.errors">
+                          enter valid name (minimum 3 letters) 
+                        </mat-error>
+                      <!-- <mat-error *ngIf="txtName.errors.required">
                    enter name 
-                </mat-error>
+                </mat-error> -->
                 <!-- <mat-error *ngIf="txtName.errors.minLength">
                   enter valid name 
                 </mat-error> -->
@@ -107,12 +112,12 @@
                         <div class="static-lbl">
                             <label>+974</label>
                          </div>              
-                        <input matInput  type="text"  formControlName="txtMobile" placeholder="number" autocomplete="off" (keypress)="numericOnly($event)" maxlength="10"  >
-                        <mat-error *ngIf="txtMobile.errors " [ngClass] = "'error'">
-                            <mat-error *ngIf="txtMobile.errors.required">
+                        <input matInput  type="text"  formControlName="txtMobile" placeholder="number" autocomplete="off" (keypress)="numericOnly($event)" maxlength="10" [ngClass]="{ 'is-invalid': mobilevalid.txtMobile.touched && mobilevalid.txtMobile.errors }"  >
+                        <mat-error *ngIf= "mobilevalid.txtMobile.errors && mobilevalid.txtMobile.touched" class="invalid-feedback">
+                            <mat-error *ngIf="mobilevalid.txtMobile.errors.required">
                                enter mobile number 
                             </mat-error>
-                            <mat-error *ngIf="txtMobile.errors.pattern">
+                            <mat-error *ngIf="mobilevalid.txtMobile.errors.pattern">
                               enter valid mobile number 
                             </mat-error>
                           </mat-error>
@@ -135,14 +140,14 @@
       </div>
 
 <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="h45" tab-index=8> 
-        <mat-label>otp</mat-label>
+        <!-- <mat-label>otp</mat-label>
      <mat-form-field appearance="outline" fxFlex="50" class="min-max20">
          <input matInput  type="text"  formControlName="txtOTP" placeholder="otp" >
          <mat-error *ngIf="firstFormGroup.controls.txtOTP.errors?.required && firstFormGroup.controls.txtOTP.touched" >
           enter otp
         </mat-error>
      </mat-form-field> 
-     <mat-label  class="otp-err"></mat-label>
+     <mat-label  class="otp-err"></mat-label> -->
       <div class="btn-container txt-h" style="width:0%; margin-top:7px;">
      <button mat-raised-button  [disabled]="firstFormGroup.invalid" (click)="EnableNextButton()"  [ngClass]="{
         'prev': isFirst,

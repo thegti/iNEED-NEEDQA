@@ -12,11 +12,10 @@
 
 <p class="home-link"><a [routerLink]="['/home']">home</a></p>
 <div>
-<mat-label formControlName="lblActivateMsg" class="account-activation">your account is now active !</mat-label></div>
-<!-- <mat-label>Your account is already activated !</mat-label>
-<mat-label>Your account is not activated. Please try again !</mat-label> -->
+    <p>{{this.lblMessage}}</p>
+  </div>
 <div>
-<mat-label class="account-activation">your account is now activated. please <a [routerLink]="['/login']">login</a>  or go back to <a [routerLink]="['/home']">homepage</a>.</mat-label>
+<mat-label class="account-activation"> please <a [routerLink]="['/login']">login</a>  or go back to <a [routerLink]="['/home']">homepage</a>.</mat-label>
 </div>
 </form>
 </mat-step>

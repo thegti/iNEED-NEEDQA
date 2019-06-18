@@ -80,12 +80,16 @@ const appRoutes: Routes = [
       
         component: SupplierRegistrationComponent
     },
-    // {
-    //     path: 'vendorprofile', 
+    {
+        path: 'vendorprofile', 
       
-    //     component: VendorprofileComponent
-    // },
-
+        component: VendorprofileComponent
+    },
+    {
+        path: 'test', 
+      
+        component: TestComponent
+    },
     // R and D works
 
     {

@@ -25,4 +25,11 @@ export interface CountryModel{
     CNT_CODE  : String;
     CNT_NAME   : String;
 }
+export interface OtpModel{
+    NAME  : number;
+    EMAIL  : String;
+    MOBILE_NO   : String;
+    OTP:String;
+}
+
 
