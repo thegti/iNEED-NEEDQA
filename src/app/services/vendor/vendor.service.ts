@@ -20,7 +20,11 @@ export class VendorService {
 
       SaveVendor(req): any {
         return this.httpClient.post(`${this.baseUrl}api/Vendor/SaveVendor`, req, this.header);
-     }    
+     }  
+     
+     ActivateVendor(req): any {
+      return this.httpClient.post<SavaVendorModel>(`${this.baseUrl}api/Vendor/ActivateVendor`, req, this.header);
+   }  
  
    
   

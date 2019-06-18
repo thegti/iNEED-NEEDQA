@@ -10,9 +10,13 @@
           <form [formGroup]="firstFormGroup" >
 <h1>need</h1>
 
-<p class="home-link"><a [routerLink]="['/home']">Home</a></p>
-<h3>Your account is now active !</h3>
-<p>Your account is now activated. Please <a [routerLink]="['/login']">Login</a>  or go back to <a [routerLink]="['/home']">homepage</a>.</p>
+<p class="home-link"><a [routerLink]="['/home']">home</a></p>
+<div>
+    <p>{{this.lblMessage}}</p>
+  </div>
+<div>
+<mat-label class="account-activation"> please <a [routerLink]="['/login']">login</a>  or go back to <a [routerLink]="['/home']">homepage</a>.</mat-label>
+</div>
 </form>
 </mat-step>
 </mat-horizontal-stepper>

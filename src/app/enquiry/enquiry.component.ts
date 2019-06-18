@@ -20,6 +20,7 @@ import {ConstGroup} from '../utility/LocationConstants';
 import {SerachGroup} from '../utility/SearchConstants';
 import {SavaEnquiryModel} from '../business-object/EnquiryObject';
 import {NextdialogComponent} from '../nextdialog/nextdialog.component';
+import {SharedData} from '../services/common/SharedData.service'
 
 
 @Component({
@@ -62,7 +63,8 @@ export class EnquiryComponent implements OnInit,OnDestroy {
     fileName: string;
     unitOfMeasure: Array<Object>;
     selectedOption: string;
-    filenames:Boolean=true;     
+    filenames:Boolean=true; 
+    IsValidOtp:boolean=false;    
     location: Array<Object> = [{
         'CON_NAME': 'Search',
         'CON_PK': 0
@@ -92,7 +94,10 @@ export class EnquiryComponent implements OnInit,OnDestroy {
     // mobnumPattern = "^((\\+91-?)|0)?[0-9]{10}$"; 
 
 
-    constructor(private apiService: ApiService,private enquiryService: EnquiryService,private authService: AuthService,public _matDialog: MatDialog,  private _formBuilder: FormBuilder,private act_route: ActivatedRoute,private router: Router) { }
+    constructor(private apiService: ApiService,private enquiryService: EnquiryService,
+        private authService: AuthService,public _matDialog: MatDialog, 
+         private _formBuilder: FormBuilder,private act_route: ActivatedRoute,
+         private sharedData: SharedData,private router: Router) { }
     ngOnInit(): void{
 
         
@@ -118,6 +123,10 @@ export class EnquiryComponent implements OnInit,OnDestroy {
         this.GetUom();
         this.filenames=true;   
 
+        // Object.keys(this._formBuilder.controls).forEach(field => {
+        //     const control = this.firstFormGroup.get(field);
+        //     control.markAsTouched({ onlySelf: true });
+        //     });
     }
     
     ResetFormControls(IsNew:boolean)
@@ -126,10 +135,10 @@ export class EnquiryComponent implements OnInit,OnDestroy {
             // captcha: ['', Validators.required],
             ddlsearch: ['', Validators.required],
             ddllocation: ['', Validators.required],
-            txtName:['', [Validators.required,Validators.minLength(3)]],
-            txtEmail: ['',[Validators.required, Validators.email] ],
+            txtName:['', Validators.required],
+            txtEmail: ['',[Validators.required, Validators.email,Validators.maxLength(50)] ],
             txtMobile: ['', [Validators.required,Validators.pattern(this.mobnumPattern),Validators.minLength(10),Validators.maxLength(12)]],
-            txtOTP:['', Validators.required]
+            // txtOTP:['', Validators.required]
             });
             
             this.secondFormGroup = this._formBuilder.group({
@@ -161,6 +170,7 @@ export class EnquiryComponent implements OnInit,OnDestroy {
     }
     selectLocation(e){
         this.selectedLocation=e.value;
+       
         // this.firstFormGroup.controls.ddllocation.reset();
         // this.filteredLocation.next([]);
 
@@ -179,6 +189,7 @@ export class EnquiryComponent implements OnInit,OnDestroy {
     selectSearch(e)
     {
         this.selectedKeyword=e.value;
+        console.log(this.selectedKeyword);
     }
     selectUseTypes(e)
     {
@@ -198,17 +209,22 @@ export class EnquiryComponent implements OnInit,OnDestroy {
     }
     buttonPrevious()
     {
-        var optCode=5555;
-    if( optCode!=this.firstFormGroup.value.txtOTP)
-      {
-          alert('Invalid OTP!') ;
-      }
-      else
-      {
         this.isFirst=true;
         this.next=false; 
         this.secondFormGroup.value.txtSearch= this.selectedText;
-      }
+
+
+    //     var optCode=5555;
+    // if( optCode!=this.firstFormGroup.value.txtOTP)
+    //   {
+    //       alert('Invalid OTP!') ;
+    //   }
+    //   else
+    //   {
+    //     this.isFirst=true;
+    //     this.next=false; 
+    //     this.secondFormGroup.value.txtSearch= this.selectedText;
+    //   }
     }
     
   buttonNext()
@@ -219,17 +235,41 @@ export class EnquiryComponent implements OnInit,OnDestroy {
 
   EnableNextButton()
   {
-    var optCode=5555;
-    if( optCode!=this.firstFormGroup.value.txtOTP)
+      if(!this.IsValidOtp)
       {
-          alert('Invalid OTP!') ;
-      }
-      else
-      {
-        this.next=false;  
-        this.isFirst=true;
-        this.secondFormGroup.value.txtSearch= this.selectedText;
-      }
+
+     
+        var reqbody = {
+            'NAME': this.firstFormGroup.value.txtName,
+            'EMAIL': this.firstFormGroup.value.txtEmail,
+            'MOBILE_NO':this.firstFormGroup.value.txtMobile
+         };
+         console.log(reqbody);
+         this.apiService.GenerateOtp(reqbody).subscribe((data: Array<object>) => {
+             this.sharedData.SetOTP(data['Data']['OTP']);
+             console.log(data['Data']['OTP']);
+        });
+        const dialogRef  = this._matDialog.open(NextdialogComponent);
+        // const sub = dialogRef .componentInstance.onAdd.subscribe((data) => {
+        // });
+        dialogRef .afterClosed().subscribe(result => {
+            if (result === 'submit') {
+                if(this.sharedData.GetIsValidOTP())
+                   {
+                        this.next=false;  
+                        this.isFirst=true;
+                        this.IsValidOtp=true;
+                        this.secondFormGroup.value.txtSearch= this.selectedText;
+                   }
+                }
+            });
+        }
+        else{
+            this.next=false;  
+            this.isFirst=true;
+            this.secondFormGroup.value.txtSearch= this.selectedText;
+
+        }
   }
   selected(event) {
     // let target = event.source.selected._element.nativeElement;
@@ -250,17 +290,17 @@ export class EnquiryComponent implements OnInit,OnDestroy {
         'VNQ_MOBILE': this.firstFormGroup.value.txtMobile,
         'VNQ_KWORD': this.selectedText,
         'VNQ_LOCATION': this.firstFormGroup.value.ddllocation,
-        'VNQ_LOCATION_MODE': this.selectedLocation,
+        'VNQ_LOCATION_MODE': this.selectedLocation> 0 ? this.selectedLocation : 1,
         'VNQ_DESC': this.secondFormGroup.value.txtdDescription,
         'VNQ_UOM': this.secondFormGroup.value.ddlUnit,
         'VNQ_QTY': this.secondFormGroup.value.txtQuantity,
         'VNQ_VALUE': this.secondFormGroup.value.txtApproximate,
-        'VNQ_TYPE': this.selectedKeyword,
+        'VNQ_TYPE': this.selectedKeyword> 0 ? this.selectedKeyword : 1,
         'VNQ_ACTIVE': 1,
         'VNQ_PK': 0,
        'VNQ_MOD_DT':  this.moddate,
         'VNQ_DATE':this.moddate,
-       'VNQ_USE':this.selectedUseType,
+       'VNQ_USE':this.selectedUseType > 0 ? this.selectedUseType : 1,
        'VNQ_CURRENCY':1,
        'VNQ_STATUS':1,
        'VNQ_BIZUNIT':1,
@@ -291,7 +331,8 @@ export class EnquiryComponent implements OnInit,OnDestroy {
              //this.ResetFormControls(false); 
              this.firstFormGroup.reset();
              this.secondFormGroup.reset();
-             this.firstFormGroup.controls.txtEmail.reset();
+            //  this.firstFormGroup.controls.txtEmail.reset();
+            //  this.firstFormGroup.controls.txtMobile.reset();
             this.filenames=false;   
          
         });
@@ -451,13 +492,25 @@ private filterLocation(): void{
      }
 
 
-get txtMobile() {
-    return this.firstFormGroup.get('txtMobile');
- }   
- get txtName()
- {
-    return this.firstFormGroup.get('txtName');
- }
+// get txtMobile() {
+//     return this.firstFormGroup.get('txtMobile');
+//  }   
+get mobilevalid() {
+    return this.firstFormGroup.controls;
+ } 
+ get txtNamevalid() {
+    return this.firstFormGroup.controls;
+ } 
+ get ddlsearchvalid() {
+    return this.firstFormGroup.controls;
+ } 
+ get ddllocationvalid() {
+    return this.firstFormGroup.controls;
+ } 
+//  get txtName()
+//  {
+//     return this.firstFormGroup.get('txtName');
+//  }
  numericOnly(event): boolean {    
     let patt = /^([0-9])$/;
     let result = patt.test(event.key);
@@ -467,27 +520,18 @@ get txtMobile() {
 EnabletestButton()
 {
     
-    // if () {
-    this.confirmNextDialogRef = this._matDialog.open(NextdialogComponent, {
-        disableClose: true
-    });
+    // const dialogRef  = this._matDialog.open(NextdialogComponent);
+    // const sub = dialogRef .componentInstance.onAdd.subscribe((data) => {
+    //   alert(data);
+    // });
+    // dialogRef .afterClosed().subscribe(result => {
+    //     console.log(result);
+    //     if (result === 'submit') {
+    //       }
+    // //   sub.unsubscribe();
+    // });
+    this.router.navigate(['/ActivateSupplier/tTtaiW84fv3SfxQjnkg9TQ==' ]);
 
-    this.confirmNextDialogRef.componentInstance.Message = 'enter otp.';
- 
-    
-    this.confirmNextDialogRef.afterClosed().subscribe(result => {
-        if ( result )
-        {
-            
-        }
-        this.confirmNextDialogRef = null;
-    });
-// });
-
-// else {
-//     this.confirmDialogRef = this._matDialog.open(NextdialogComponent, {
-//         disableClose: true
-//     });
  }
  
  

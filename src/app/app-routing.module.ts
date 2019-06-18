@@ -34,18 +34,15 @@ const appRoutes: Routes = [
    
     },
     {
-        path: 'ActivateSupplier', 
+        path: 'ActivateSupplier/:key',
         component: ActivateSupplierComponent
     },
     {
         path: 'about', 
-      
         component: AboutComponent
     },
-
     {
         path: 'faq', 
-      
         component: FaqComponent
     },
     {
@@ -88,7 +85,11 @@ const appRoutes: Routes = [
       
         component: VendorprofileComponent
     },
-
+    {
+        path: 'test', 
+      
+        component: TestComponent
+    },
     // R and D works
 
     {

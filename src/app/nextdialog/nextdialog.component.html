@@ -1,3 +1,4 @@
+<form [formGroup]="firstFormGroup">
 <h1 matDialogTitle><img src="assets/logos/iNeed-logo.png" width="80px" height="35px">
     
   <button (click)="NextDialogRef.close()" class="popup-close">X</button>
@@ -8,11 +9,22 @@
       <!-- <img src="assets/home/tick.png"><br> -->
     
       <p>enter otp</p>
-      <input type="text" name="otp" placeholder="otp">
-      <button mat-raised-button (click)="verifyOtp()">verify</button>
+      <input matInput type="text"  placeholder="otp" formControlName="lblOtp">
+
+      <button md-raised-button (click)="onButtonClicked()">verify</button>
+      <div>
+        <p class="errorotp">{{this.AttemptOtpMessage}}</p>
+      </div>
+      <div>
+        <p class="errorotp">{{this.InvalidOtpMessage}}</p>
+      </div>
       <!-- <span>{{Message}}</span> -->
   </div>
+
+  
+ 
 <div mat-dialog-content *ngIf="isError" class="forError">
       <img src="assets/home/tick.png"><br>
       <span>{{Message}}</span>
   </div>
+</form>

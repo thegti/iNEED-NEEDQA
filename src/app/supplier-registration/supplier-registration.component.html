@@ -55,7 +55,7 @@
                         <mat-form-field appearance="outline">
                   <mat-select formControlName="ddlCountry"  #singleSelect placeholder="country*" (selectionChange)="onCountrySelect()" >
                     <ngx-mat-select-search [formControl]="countryFilterCtrl" [placeholderLabel]="'search country...'"  [noEntriesFoundLabel]="'No matching Country found'" ></ngx-mat-select-search>
-                    <mat-option *ngFor="let country of filteredCountry | async" [value]="country['CNT_PK'] + ',' + country['CNT_PK']"  >
+                    <mat-option *ngFor="let country of filteredCountry | async" [value]="country['CNT_PK']"  >
                           {{country['CNT_NAME']  }}
                         </mat-option>
             </mat-select>
@@ -78,7 +78,7 @@
                                         <div class="static-lbl">
                                             <label> {{CountryCode}}</label>
                                          </div>              
-                                         <input matInput  type="text" placeholder="mobile*" name="mobnumber"  formControlName="txtMobile" autocomplete="off" required (keypress)="numericOnly($event)">
+                                         <input matInput  type="text" placeholder="mobile*" name="mobnumber"  formControlName="txtMobile" autocomplete="off" required (keypress)="numericOnly($event)" maxlength="10">
                                         <!-- <mat-error>enter mobile no.</mat-error> -->
                                         <mat-error *ngIf="txtMobile.errors " [ngClass] = "'error'">
                                             <mat-error *ngIf="txtMobile.errors.required">
@@ -100,7 +100,7 @@
 
                                     <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" tab-index=8> 
                                             <mat-form-field appearance="outline" fxFlex="50">
-                                             <input matInput type="text" placeholder="email id*" name="email" formControlName="txtEmail" autocomplete="off" required>
+                                             <input matInput type="text" placeholder="email id*" name="email" formControlName="txtEmail" maxlength="50" autocomplete="off" required>
                                              <!-- <mat-error>enter valid email id</mat-error> -->
                                              <mat-error *ngIf=" f.txtEmail.errors && f.txtEmail.touched" class="invalid-feedback">
                                                 <mat-error *ngIf="f.txtEmail.errors.required">Email is required</mat-error>
@@ -111,7 +111,7 @@
 
                                      <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" tab-index=9> 
                                             <mat-form-field appearance="outline" fxFlex="50">
-                                                   <input matInput type="password" formControlName="txtPassword" placeholder="create password*" autocomplete="off" required> 
+                                                   <input matInput type="password" formControlName="txtPassword" placeholder="create password*" maxlength="20" autocomplete="off" required> 
                                                    <mat-error>
                                                    <span *ngIf="secondFormGroup.value.txtPassword==''" > password is required!</span>
                                                   <span *ngIf="secondFormGroup.value.txtPassword!='' && secondFormGroup.controls.txtPassword['status']=='INVALID'" >invalid password(minimum length is 6)</span>
