@@ -530,6 +530,7 @@ background-repeat: no-repeat;}
 
         .demo-content   {
             div         {   display: flex;  align-items: center; color: #0074bc; line-height: 26px;}
+            .mat-tab-label, .mat-tab-link {   font-family: 'coheadlinew08-lightregular';}
             
            mat-label.lft-lbl    {   width:20%; display: inline-block;  margin:0px;} 
 
@@ -543,7 +544,7 @@ background-repeat: no-repeat;}
                 ul li       {   list-style: none;}
                 .mat-tab-header-pagination  {   display: none;}
             }
-            .mat-tab-group  {
+            .mat-tab-group  {   font-family: 'coheadlinew08-lightregular';
                 .mat-tab-header {   border-bottom: none;
                     .mat-tab-label-container {
                         .mat-tab-label  {   

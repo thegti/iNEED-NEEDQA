@@ -396,7 +396,7 @@ mat-icon.status {
                 width: 128px;
             }
         }
-
+/* Pricing */
         &.style-2 {
 
             .badge {
@@ -433,6 +433,8 @@ mat-icon.status {
                     font-size: 40px;
                     font-weight: 300;
                     line-height: 1; color:#c56e02;
+
+                    mat-label   {   font-size: 40px;}
                 }
             }
 
@@ -458,15 +460,23 @@ mat-icon.status {
 
             .cta-button {
                 margin: 12px auto 15px auto;
-                width: 128px; background:#64af02 !important; color:#fff; text-transform: uppercase;
-                box-shadow:0px; -webkit-box-shadow:0px;
+                width: 128px; height:30px!important; background:#64af02 !important; color:#fff; text-transform: uppercase;
+                box-shadow:0px 0px 0px 0px rgba(0, 0, 0, 0.2)!important; -webkit-box-shadow:0px 0px 0px 0px rgba(0, 0, 0, 0.2)!important;
+                position: absolute; bottom: 20px; left: 0; right: 0;
             }
+            .cta-button:hover   {  box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2)!important;
+                -webkit-box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2)!important;
+               }
             .cta-button-monthly
             {
                 margin: 35px auto 15px auto; 
-                width: 128px; background:#64af02 !important; color:#fff; text-transform: uppercase;
+                width: 128px; height:30px!important; background:#64af02 !important; color:#fff; text-transform: uppercase;
                 box-shadow:0px 0px 0px 0px rgba(0, 0, 0, 0.2)!important; -webkit-box-shadow:0px 0px 0px 0px rgba(0, 0, 0, 0.2)!important;
+                position: absolute; bottom: 20px; left: 0; right: 0;
             }
+            .cta-button-monthly:hover   {  box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2)!important;
+                 -webkit-box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2)!important;
+                }
         }
 
         &.style-3 {
