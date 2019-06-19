@@ -1,21 +1,26 @@
-h1,p,h3,p.home-link a,.account-activation
-{
-    color:#000;
-}
-.activateaccount
-{
-    width:50%;
+
+.activateaccount    {   width:50%; margin:5% 0px 0px 0px; background:none; 
+    mat-horizontal-stepper {   background:none; text-align: center;  
+    }
+    
 }
 form{
-    padding: 30px 35px;
+    padding: 30px 35px;  font-family: 'coheadlinew08-lightregular'!important; 
+    font-size:18px;
+
+    h1{
+        margin: 0; color:#fff;  font-size: 30px;
+    }
+    h3  {
+    margin: 0; color:#fff; font-size: 20px;}
+
+    .active-link  {   background: #64af02 !important;
+        color: #fff; padding:0px 15px;
+        box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2) !important;
+        -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2) !important;
+        font-family: 'coheadlinew08-lightregular'!important;
+        border-radius:3px!important; -webkit-border-radius:3px!important; 
+    }    
 }
-.activateaccount h1{
-    margin: 0;
-    font-size: 30px;
-}
-.activateaccount h3
-{
-    margin: 0;
-    font-size: 20px;
-}
+
 

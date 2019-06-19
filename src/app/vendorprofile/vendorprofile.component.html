@@ -1,3 +1,4 @@
+
 <!-- <div class="page-layout simple fullwidth" fxLayout="column"> 
   <div class="content-main padg-top-lft40 mb-24" fxLayout="column" fxLayoutAlign="center center" 
   fxLayout.gt-md="row" fxLayout.gt-sm="row" fxLayout.gt-xs="row">
@@ -59,7 +60,7 @@
                         <!-- <h3 matSubheader >vendor profile</h3> -->
                 
                         <mat-list-item class="mat-list-item">
-                            <span (click)="sidebarMenu('item1')" class="mat-list-item-content active">vendor profile</span>
+                            <span (click)="sidebarMenu('item1')"  class="mat-list-item-content active">vendor profile</span>
                         </mat-list-item>
                         <mat-divider class="mat-divider mat-divider-horizontal"></mat-divider>
                 
@@ -195,6 +196,13 @@
                               <mat-label class="rgt-lbl">31-03-2020</mat-label>
                               
                                </div>
+
+                               <div>
+                                  <mat-label class="lft-lbl">plan</mat-label> 
+                                  <span class="mid-lbl"> :</span>
+                                  <mat-label class="rgt-lbl"></mat-label>
+                                  
+                                   </div>
                   
                    
                   </div>
@@ -202,29 +210,38 @@
                   <div class="demo-content" [hidden]="selectedItem != 'item3'">
                         <mat-tab-group>
                                 <mat-tab label="english"> 
-                                    <div [hidden]="!uploadkeyword">
+                                    <!-- <div [hidden]="!uploadkeyword"> -->
+                                        <div >
                                      <div style="display:flex; margin-bottom:1%;">
                                         <div class="upload">
                                                 <button mat-raised-button type="button"  (click)="UploadKeywordButton()">
                                                    upload csv
                                                  </button>
                                                  </div>
-                                                
+                                               
 
                                                  <div class="add-new-btn">
-                                                        <button mat-raised-button   (click)="addKeywordButton()">
+                                                  <div [hidden]="!uploadkeyword">
+                                                        <button type="button" (click)="AddKeywordButton()" class="activate-btn" >
                                                            add new keyword
                                                          </button>
-                                                  
+                                                        </div>
+                                                         <div class="keywordadd" [hidden]="uploadkeyword">
+                                                          <input matInput type="text">
+                                                          <button type="button"    (click)="AddNewKeywordButton()" class="activate-btn"  >add</button>
                                                          </div>
+                                                 
+                                                </div>
+                                                        
                                         </div>                 
                                                          <div class="keyword-list">
                                                           <ul class="keyword-ul">
+                                                            <li>  {{ keywordList | json }}</li>
                                                             <li>
                                                               <mat-checkbox></mat-checkbox>
                                                               <mat-label>digital service</mat-label> 
                                                               <div class="edit-div">
-                                                              <button mat-raised-button type="button" matTooltip="edit" (click)="addKeywordEditButton()" class="edit-icn"  >                                                                
+                                                              <button mat-raised-button type="button"  (click)="addKeywordEditButton()" class="edit-icn"  >                                                                
                                                                </button>
                                                                </div>
                                                               </li>
@@ -233,7 +250,7 @@
                                                                   <mat-checkbox></mat-checkbox>
                                                                   <mat-label>media production</mat-label> 
                                                                   <div class="edit-div">
-                                                                  <button mat-raised-button type="button" matTooltip="edit" (click)="addKeywordEditButton()" class="edit-icn"  >                                                                
+                                                                  <button mat-raised-button type="button"  (click)="addKeywordEditButton()" class="edit-icn"  >                                                                
                                                                    </button>
                                                                    </div>
                                                                   </li>
@@ -242,7 +259,7 @@
                                                                       <mat-checkbox></mat-checkbox>
                                                                       <mat-label>event managament</mat-label> 
                                                                       <div class="edit-div">
-                                                                      <button mat-raised-button type="button" matTooltip="edit" (click)="addKeywordEditButton()" class="edit-icn"  >                                                                
+                                                                      <button mat-raised-button type="button"  (click)="addKeywordEditButton()" class="edit-icn"  >                                                                
                                                                        </button>
                                                                        </div>
                                                                       </li>
@@ -251,7 +268,7 @@
                                                                           <mat-checkbox></mat-checkbox>
                                                                           <mat-label>pricing</mat-label> 
                                                                           <div class="edit-div">
-                                                                          <button mat-raised-button type="button" matTooltip="edit" (click)="addKeywordEditButton()" class="edit-icn"  >                                                                
+                                                                          <button mat-raised-button type="button"  (click)="addKeywordEditButton()" class="edit-icn"  >                                                                
                                                                            </button>
                                                                            </div>
                                                                           </li>
@@ -259,7 +276,11 @@
                                                           </ul>
                                                          </div>       
                                                         </div>
-                                                        <div [hidden]="uploadkeyword" class="keyword-csv" >
+
+                                                     
+
+                                                        <div class="keyword-csv" >
+                                                        <!-- <div [hidden]="uploadkeyword" class="keyword-csv" > -->
                                                             <h2>keywords csv upload</h2>
                                                             <div>
                                                             <button mat-raised-button   (click)="downloadCsvButton()"   >

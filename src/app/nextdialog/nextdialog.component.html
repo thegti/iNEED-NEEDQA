@@ -1,4 +1,4 @@
-<form [formGroup]="firstFormGroup">
+<form [formGroup]="firstFormGroup" class="form-div">
 <h1 matDialogTitle><img src="assets/logos/iNeed-logo.png" width="80px" height="35px">
     
   <button (click)="NextDialogRef.close()" class="popup-close">X</button>
@@ -9,9 +9,11 @@
       <!-- <img src="assets/home/tick.png"><br> -->
     
       <p>enter otp</p>
-      <input matInput type="text"  placeholder="otp" formControlName="lblOtp">
+      <div class="verify-outer">
+      <input matInput type="text"  placeholder="otp" formControlName="lblOtp" (keypress)="numericOnly($event)" maxlength="10">
 
-      <button md-raised-button (click)="onButtonClicked()">verify</button>
+      <button mat-raised-button  (click)="onButtonClicked()">verify</button>
+    </div>
       <div>
         <p class="errorotp">{{this.AttemptOtpMessage}}</p>
       </div>

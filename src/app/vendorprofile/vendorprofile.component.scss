@@ -16,5 +16,14 @@ input[type="text"] {
 {
     float: left !important;
 }
+[hidden]
+{
+    display: none !important;
+}
+.keywordadd input[type="text"]
+{
+    border: 1px solid;
+    margin-top: 0px;
+}
 
 

@@ -1,14 +1,25 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 import {MatAccordion} from '@angular/material/expansion';
 import { v4 as uuid } from 'uuid';
+import { FormBuilder, FormGroup, Validators, FormArray, FormControl, FormGroupName} from '@angular/forms';
 
 @Component({
   selector: 'app-vendorprofile',
   templateUrl: './vendorprofile.component.html',
   styleUrls: ['./vendorprofile.component.scss']
 })
+
 export class VendorprofileComponent implements OnInit {
+ 
+  // slNo: number;
+  // keyword : string;
+ 
+  keyword = 'Feature 1'
+  keywordList: any = [];
+
+  
 public selectedItem='item1';
+public selectedKeywordItem='selectedkeyword1';
 uploadkeyword:Boolean=true;
 selectedfile: File;
 imgname: any = '';
@@ -19,10 +30,13 @@ url = '../../assets/loginasset/images/display-img.jpg';
 // @ViewChild(MatAccordion) accordion: MatAccordion;
 panelOpenState = false;
 
-  constructor() { }
+  constructor(private _formBuilder: FormBuilder) {
+    
+   }
 
   ngOnInit() {
     this.filenames=true;   
+
   }
   sidebarMenu(item)
   {
@@ -30,7 +44,7 @@ panelOpenState = false;
   }
   UploadKeywordButton()
   {
-    this.uploadkeyword=false;
+    // this.uploadkeyword=false;
   }
   onSelectionchange(event): void{
    
@@ -50,5 +64,19 @@ panelOpenState = false;
       };
      }
    }
-
+   AddKeywordButton()
+   {
+    this.uploadkeyword=false;
+   
+   }
+   AddNewKeywordButton()
+   {
+   
+    this.keywordList.push({keyword:this.keyword});
+  
+  
+    
+   }
+ 
+ 
 }

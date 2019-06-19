@@ -1,5 +1,5 @@
 
- <div class="page-layout simple fullwidth bgstring" fxLayout="column"> <!-- fusePerfectScrollbar -->
+ <div class="page-layout simple fullwidth" fxLayout="column"> <!-- fusePerfectScrollbar -->
     
   <div class="banner-content" fxLayout="column" fxLayoutAlign="center center" 
   fxLayout.gt-md="row" fxLayout.gt-sm="row" fxLayout.gt-xs="row">
@@ -8,14 +8,16 @@
     <mat-horizontal-stepper >
         <mat-step [stepControl]="firstFormGroup">
           <form [formGroup]="firstFormGroup" >
-<h1>need</h1>
+<h1>{{this.lblMessage}}</h1>
 
-<p class="home-link"><a [routerLink]="['/home']">home</a></p>
-<div>
-    <p>{{this.lblMessage}}</p>
-  </div>
-<div>
-<mat-label class="account-activation"> please <a [routerLink]="['/login']">login</a>  or go back to <a [routerLink]="['/home']">homepage</a>.</mat-label>
+<!-- <p class="home-link"><a [routerLink]="['/home']">home</a></p> -->
+<!-- <div>
+    
+  </div> -->
+<div class="margn-top10">
+<mat-label class="account-activation"> please 
+  <a [routerLink]="['/login']" class="active-link">login</a>  
+  or go back to <a [routerLink]="['/home']" class="active-link">homepage</a></mat-label>
 </div>
 </form>
 </mat-step>

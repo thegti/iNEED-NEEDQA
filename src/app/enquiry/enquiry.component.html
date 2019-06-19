@@ -151,15 +151,15 @@
       </div>
 
 <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="h45" tab-index=8> 
-        <!-- <mat-label>otp</mat-label>
-     <mat-form-field appearance="outline" fxFlex="50" class="min-max20">
+        <mat-label></mat-label>
+     <!-- <mat-form-field appearance="outline" fxFlex="50" class="min-max20">
          <input matInput  type="text"  formControlName="txtOTP" placeholder="otp" >
          <mat-error *ngIf="firstFormGroup.controls.txtOTP.errors?.required && firstFormGroup.controls.txtOTP.touched" >
           enter otp
         </mat-error>
      </mat-form-field> 
      <mat-label  class="otp-err"></mat-label> -->
-      <div class="btn-container txt-h" style="width:0%; margin-top:7px;">
+      <div class="btn-container txt-h" >
      <button mat-raised-button  [disabled]="firstFormGroup.invalid" (click)="EnableNextButton()"  [ngClass]="{
         'prev': isFirst,
         'next': !isFirst
