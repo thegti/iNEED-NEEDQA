@@ -227,11 +227,11 @@
                                                          </button>
                                                         </div>
                                                          <div class="keywordadd" [hidden]="!IsHideUploadDiv">
-                                                            <input  matInput type="text" class="relativePosition" (keyup)="ChangeText()" #search formControlName="txtKeyword"  required  >
+                                                            <input  matInput type="text" class="relativePosition" (change)="ChangeText()" #search formControlName="txtKeyword"  required  >
 
                                                             <div class="repeatkeyword">{{this.keywordErrorMsg}}</div> 
-                                                            <button  mat-raised-button  (click)="AddNewKeywordButton()" [disabled]="firstFormGroup.invalid" >add</button>
-                                                            <button  mat-raised-button   (click)="CancelNewKeywordButton()"   >cancel</button>
+                                                            <button type="button"  mat-raised-button  (click)="AddNewKeywordButton()" [disabled]="firstFormGroup.invalid" >add</button>
+                                                            <button type="button"  mat-raised-button   (click)="CancelNewKeywordButton()"   >cancel</button>
                                                          </div>
                                                          
                                                 </div>
@@ -402,7 +402,7 @@
                                 <mat-radio-group>
                                         <mat-radio-button  value="1"  checked (change)="SelectValueTypes($event)"> any value</mat-radio-button>
                                         <mat-radio-button  value="2"  (change)="SelectValueTypes($event)">more than 3000 only</mat-radio-button>
-                                        <input type="text"  placeholder="value" autocomplete="off" >
+                                        <input matInput  type="text"  formControlName="txtValue"   placeholder="value" autocomplete="off" >
                                     </mat-radio-group>
                                  
                               

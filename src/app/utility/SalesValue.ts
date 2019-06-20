@@ -1,5 +1,5 @@
 export enum SalesValueGroup{
-    Product = 1,
-    Services = 2
+    value = 1,
+    greaterValue = 2
     
 }

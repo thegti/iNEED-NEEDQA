@@ -6,7 +6,7 @@ import { environment } from 'environments/environment';
 import {SavaVendorModel} from '../../business-object/VendorObject';
 import {VendorKeywordModel} from '../../business-object/VendorObject';
 import {VendorGetModel} from '../../business-object/VendorObject';
-import {VendorSalesGetModel} from '../../business-object/VendorObject'
+import {VendorSalesLeadModel} from '../../business-object/VendorObject'
 
 
 
@@ -43,10 +43,10 @@ VendorGet(req): any {
 } 
 
 GetSalesLeadSetup(req): any {
-  return this.httpClient.post<VendorSalesGetModel>(`${this.baseUrl}api/Vendor/GetSalesLeadSetup`, req, this.header);
+  return this.httpClient.post<VendorSalesLeadModel>(`${this.baseUrl}api/Vendor/VendorSalesLeadGet`, req, this.header);
 } 
-SaveSalesLeadSetup(req): any {
-  return this.httpClient.post<VendorSalesGetModel>(`${this.baseUrl}api/Vendor/SaveSalesLeadSetup`, req, this.header);
+VendorSalesLeadSave(req): any {
+  return this.httpClient.post<VendorSalesLeadModel>(`${this.baseUrl}api/Vendor/VendorSalesLeadSave`, req, this.header);
 } 
 
 
