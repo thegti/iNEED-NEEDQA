@@ -23,9 +23,13 @@ export interface SavaVendorModel{
     VND_CRTD_DT :Date;
     VND_MOD_BY :number;
     VND_MOD_DT :Date;
-
-
-    
 }
-
+export interface VendorKeywordModel
+{
+    ROW_NO : number;
+    VKW_PK : number;
+    VKW_KWORD : String;
+    VKW_VENDOR : number;
+    VKW_KWORD_TYPE : number;
+}
 

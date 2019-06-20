@@ -71,7 +71,7 @@
                         <mat-divider class="mat-divider mat-divider-horizontal"></mat-divider>
                 
                         <mat-list-item class="mat-list-item">
-                            <span (click)="sidebarMenu('item3')" class="mat-list-item-content">load keywords</span>
+                            <span (click)="sidebarMenu('item3')" class="mat-list-item-content" >load keywords</span>
                         </mat-list-item>
                         
                         <mat-divider class="mat-divider mat-divider-horizontal"></mat-divider>
@@ -221,59 +221,66 @@
                                                
 
                                                  <div class="add-new-btn">
-                                                  <div [hidden]="!uploadkeyword">
-                                                        <button type="button" (click)="AddKeywordButton()" class="activate-btn" >
+                                                  <div [hidden]="IsHideUploadDiv">
+                                                        <button mat-raised-button type="button" (click)="AddKeywordButton()"  >
                                                            add new keyword
                                                          </button>
                                                         </div>
-                                                         <div class="keywordadd" [hidden]="uploadkeyword">
-                                                          <input matInput type="text">
-                                                          <button type="button"    (click)="AddNewKeywordButton()" class="activate-btn"  >add</button>
+                                                         <div class="keywordadd" [hidden]="!IsHideUploadDiv">
+                                                            <input  matInput type="text" class="relativePosition" (keyup)="ChangeText()" #search formControlName="txtKeyword"  required  >
+
+                                                            <div class="repeatkeyword">{{this.keywordErrorMsg}}</div> 
+                                                            <button  mat-raised-button  (click)="AddNewKeywordButton()" [disabled]="firstFormGroup.invalid" >add</button>
+                                                            <button  mat-raised-button   (click)="CancelNewKeywordButton()"   >cancel</button>
                                                          </div>
-                                                 
+                                                         
                                                 </div>
-                                                        
-                                        </div>                 
+                                                   
+                                        </div>     
+                                                     
                                                          <div class="keyword-list">
-                                                          <ul class="keyword-ul">
-                                                            <li>  {{ keywordList | json }}</li>
-                                                            <li>
-                                                              <mat-checkbox></mat-checkbox>
-                                                              <mat-label>digital service</mat-label> 
-                                                              <div class="edit-div">
-                                                              <button mat-raised-button type="button"  (click)="addKeywordEditButton()" class="edit-icn"  >                                                                
-                                                               </button>
-                                                               </div>
-                                                              </li>
+                                                          <table mat-table [dataSource]="dataSource" >
 
-                                                              <li>
-                                                                  <mat-checkbox></mat-checkbox>
-                                                                  <mat-label>media production</mat-label> 
-                                                                  <div class="edit-div">
-                                                                  <button mat-raised-button type="button"  (click)="addKeywordEditButton()" class="edit-icn"  >                                                                
+                                                              <ng-container matColumnDef="checkbox">
+                                                                  <th mat-header-cell *matHeaderCellDef > 
+                                                                      
+                                                               </th>
+                                                              <td mat-cell *matCellDef="let row; let i = index" >
+                                                              <mat-checkbox [value]="row.VKW_KWORD" ></mat-checkbox>
+                                                               </td>
+                                                              </ng-container>
+             
+                                                              <!-- <ng-container matColumnDef="ROW_NO">
+                                                                  <th mat-header-cell *matHeaderCellDef  > ID </th>
+                                                                  <td mat-cell *matCellDef="let row" > {{row.ROW_NO}}</td>
+                                                              </ng-container> -->
+                                                       
+                                                              <ng-container matColumnDef="VKW_KWORD">
+                                                                             <th mat-header-cell *matHeaderCellDef  > keywords </th>
+                                                                             <td mat-cell *matCellDef="let row"> {{row.VKW_KWORD}}</td>
+                                                                         </ng-container>
+                                                                         
+                                                            <ng-container matColumnDef="Edit">
+                                                              <th mat-header-cell *matHeaderCellDef class="txt-rgt" style="width:15%"></th>
+                                                              <td mat-cell *matCellDef="let row" class="txt-rgt" style="width:15%">
+                                                                  <button mat-mini-fab   color="basic" (click)="forEdit(row)"  class="btn-list w22 btn-margn">
+                                                                  <mat-icon>edit</mat-icon>
                                                                    </button>
-                                                                   </div>
-                                                                  </li>
-
-                                                                  <li>
-                                                                      <mat-checkbox></mat-checkbox>
-                                                                      <mat-label>event managament</mat-label> 
-                                                                      <div class="edit-div">
-                                                                      <button mat-raised-button type="button"  (click)="addKeywordEditButton()" class="edit-icn"  >                                                                
-                                                                       </button>
-                                                                       </div>
-                                                                      </li>
-
-                                                                      <li>
-                                                                          <mat-checkbox></mat-checkbox>
-                                                                          <mat-label>pricing</mat-label> 
-                                                                          <div class="edit-div">
-                                                                          <button mat-raised-button type="button"  (click)="addKeywordEditButton()" class="edit-icn"  >                                                                
+                                                                   <!-- <button mat-mini-fab   color="basic" class="btn-list w22 btn-margn" (click)="forView(row)" matTooltip="View">
+                                                                          <mat-icon>remove_red_eye</mat-icon>
                                                                            </button>
-                                                                           </div>
-                                                                          </li>
-
-                                                          </ul>
+                                                                           <button mat-mini-fab   color="basic" class="btn-list w22 btn-margn" (click)="forDelete(row)" matTooltip="Delete">
+                                                                              <mat-icon>delete</mat-icon>
+                                                                          </button> -->
+                                                                  </td>
+                                                            </ng-container>
+                                                           
+                                                          
+                                                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                                            <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+                                                            </tr>
+                                                          </table>
+                                                           
                                                          </div>       
                                                         </div>
 
@@ -303,43 +310,6 @@
                                                                           </button>
                                                                         </div>
                                                                 </div>
-                                                       
-                                                        
-                                                         <!-- <mat-accordion>
-                                                                <mat-expansion-panel>
-                                                                  <mat-expansion-panel-header>
-                                                                    <mat-panel-title>
-                                                                      Personal data
-                                                                    </mat-panel-title>
-                                                                    <mat-panel-description>
-                                                                      Type your name and age
-                                                                    </mat-panel-description>
-                                                                  </mat-expansion-panel-header>
-                                                              
-                                                                  <mat-form-field>
-                                                                    <input matInput placeholder="First name">
-                                                                  </mat-form-field>
-                                                              
-                                                                  <mat-form-field>
-                                                                    <input matInput placeholder="Age">
-                                                                  </mat-form-field>
-                                                                </mat-expansion-panel>
-                                                                <mat-expansion-panel (opened)="panelOpenState = true"
-                                                                                     (closed)="panelOpenState = false">
-                                                                  <mat-expansion-panel-header>
-                                                                    <mat-panel-title>
-                                                                      Self aware panel
-                                                                    </mat-panel-title>
-                                                                    <mat-panel-description>
-                                                                      Currently I am {{panelOpenState ? 'open' : 'closed'}}
-                                                                    </mat-panel-description>
-                                                                  </mat-expansion-panel-header>
-                                                                  <p>I'm visible because I am open</p>
-                                                                </mat-expansion-panel>
-                                                              </mat-accordion> -->
-                                                              
-
-
                                                  
                                 </mat-tab>
                                
@@ -367,6 +337,7 @@
                                 <mat-label >whatsapp number to which sales to be shared</mat-label> 
                                  
                                 <input type="text" formControlName="txtMobile" placeholder="mobile number" autocomplete="off" >
+                                
                         </div>  
                         <div >   
                                 <mat-label >i want leads for </mat-label> 

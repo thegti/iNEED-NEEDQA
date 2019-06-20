@@ -1,4 +1,4 @@
-<div class="page-layout simple fullwidth" fxLayout="column"> 
+<!-- <div class="page-layout simple fullwidth" fxLayout="column"> 
     <div class="content-main padg-top-lft40 mb-24" fxLayout="column" fxLayoutAlign="center center" 
     fxLayout.gt-md="row" fxLayout.gt-sm="row" fxLayout.gt-xs="row">
 
@@ -28,4 +28,46 @@
         </div>
 
 </div>
-</div>
+</div> -->
+
+<div class="page-layout simple fullwidth" fxLayout="column"> 
+                <div class="content-main padg-top-lft40 mb-24" fxLayout="column" fxLayoutAlign="center center" 
+                fxLayout.gt-md="row" fxLayout.gt-sm="row" fxLayout.gt-xs="row">
+
+<table mat-table [dataSource]="dataSource" matSort>
+             
+                 <ng-container matColumnDef="SL_NO">
+                     <th mat-header-cell *matHeaderCellDef  > ID </th>
+                     <td mat-cell *matCellDef="let row" > {{row.SL_NO}}</td>
+                 </ng-container>
+          
+                 <ng-container matColumnDef="VKW_KWORD">
+                                <th mat-header-cell *matHeaderCellDef  > keyword </th>
+                                <td mat-cell *matCellDef="let row"> {{row.VKW_KWORD}}</td>
+                            </ng-container>
+             
+             
+             
+             
+               <ng-container matColumnDef="Edit">
+                 <th mat-header-cell *matHeaderCellDef class="txt-rgt" style="width:15%"></th>
+                 <td mat-cell *matCellDef="let row" class="txt-rgt" style="width:15%">
+                     <button mat-mini-fab   color="basic" (click)="forEdit(row)" matTooltip="Edit" class="btn-list w22 btn-margn">
+                     <mat-icon>edit</mat-icon>
+                      </button>
+                      <!-- <button mat-mini-fab   color="basic" class="btn-list w22 btn-margn" (click)="forView(row)" matTooltip="View">
+                             <mat-icon>remove_red_eye</mat-icon>
+                              </button>
+                              <button mat-mini-fab   color="basic" class="btn-list w22 btn-margn" (click)="forDelete(row)" matTooltip="Delete">
+                                 <mat-icon>delete</mat-icon>
+                             </button> -->
+                     </td>
+               </ng-container>
+              
+             
+               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+               <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+               </tr>
+             </table>
+             </div>
+             </div>

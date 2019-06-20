@@ -18,6 +18,9 @@ import {DialogComponent} from '../dialog/dialog.component';
 import {ConstGroup} from '../utility/LocationConstants';
 import {SerachGroup} from '../utility/SearchConstants';
 import {SavaVendorModel} from '../business-object/VendorObject';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {VendorKeywordModel } from '../business-object/VendorObject'
+
 
 
 @Component({
@@ -28,17 +31,37 @@ import {SavaVendorModel} from '../business-object/VendorObject';
 export class TestComponent implements OnInit {
   
     firstFormGroup:FormGroup;
-    
+    displayedColumns: string[] = ['SL_NO','VKW_KWORD','Edit'];
+    dataSource: MatTableDataSource<VendorKeywordModel>;
+    keywordList: VendorKeywordModel[]=[]; 
+    tempObject: VendorKeywordModel;
    
     constructor(private apiService: ApiService,private vendorService: VendorService,private authService: AuthService,public _matDialog: MatDialog,  private _formBuilder: FormBuilder,private act_route: ActivatedRoute,private router: Router) { }
 
     ngOnInit(): void{
-        this.firstFormGroup = this._formBuilder.group({
-            txtCompany: [''],
+        // this.firstFormGroup = this._formBuilder.group({
+        //     txtCompany: [''],
         
-            });
+        //     });
+        this.GetKeywords();
       
   }
-
+  GetKeywords()
+  {
+    console.log("Test->");
+  //  this.tempObject=
+  //  {
+  //     "ROW_NO" : 1,
+  //     "VKW_KWORD" : "Test 1",
+  //     "VKW_TYPE" : 1,
+  //     "VKW_VENDOR" : 1
+  //  }
+   this.keywordList.push( this.tempObject);
+   this.keywordList.push( this.tempObject);
+   this.keywordList.push( this.tempObject);
+   this.keywordList.push( this.tempObject);
+   this.dataSource = new MatTableDataSource(this.keywordList);
+  console.log(this.keywordList);
+  }
 
 }
