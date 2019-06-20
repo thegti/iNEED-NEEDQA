@@ -132,52 +132,52 @@
 <!------ ITEM 1 --------->                                    
                     <div class="demo-content" [hidden]="selectedItem != 'item1'" >
                       <div>
-                          <mat-label class="lft-lbl">vendor registration id</mat-label> 
+                          <mat-label class="lft-lbl" formControlName="txtRegistrationId" >vendor registration id</mat-label> 
                           <span class="mid-lbl">:</span>
-                          <mat-label class="rgt-lbl">4455</mat-label> 
+                          <mat-label class="rgt-lbl">{{VendorRegistrationId}}</mat-label> 
                         </div>
                           <div>
-                          <mat-label class="lft-lbl">registered name</mat-label>
+                          <mat-label class="lft-lbl" formControlName="txtRegistrationName">registered name</mat-label>
                           <span class="mid-lbl">:</span>
-                          <mat-label class="rgt-lbl">media1 advertising</mat-label>
+                          <mat-label class="rgt-lbl">{{VendorRegistrationName}}</mat-label>
                         </div>
                           <div>
-                              <mat-label class="lft-lbl">address</mat-label> 
+                              <mat-label class="lft-lbl" formControlName="txtRegistrationAddress">address</mat-label> 
                               <span class="mid-lbl">:</span>
-                              <mat-label class="rgt-lbl">sample address</mat-label>
+                              <mat-label class="rgt-lbl">{{VendorRegistrationName}}</mat-label>
                               
                              </div>
                              <div>
-                                <mat-label class="lft-lbl">po box</mat-label> 
+                                <mat-label class="lft-lbl" formControlName="txtRegistrationPin">po box</mat-label> 
                                 <span class="mid-lbl">:</span>
-                                <mat-label class="rgt-lbl">4455</mat-label>
+                                <mat-label class="rgt-lbl">{{VendorAddress}}</mat-label>
                               
                              </div>
                              <div>
-                                <mat-label class="lft-lbl">city</mat-label> 
+                                <mat-label class="lft-lbl" formControlName="txtRegistrationCity">city</mat-label> 
                                 <span class="mid-lbl">:</span>
-                                <mat-label class="rgt-lbl">sample</mat-label>
+                                <mat-label class="rgt-lbl">{{VendorCity}}</mat-label>
                              </div>
                              <div>
-                                <mat-label class="lft-lbl">country</mat-label> 
+                                <mat-label class="lft-lbl" formControlName="txtRegistrationCountry">country</mat-label> 
                                 <span class="mid-lbl">:</span>
-                                <mat-label class="rgt-lbl">qatar</mat-label>
+                                <mat-label class="rgt-lbl">{{VendorCountry}}</mat-label>
                              </div>
                              <div>
-                                <mat-label class="lft-lbl">mob</mat-label> 
+                                <mat-label class="lft-lbl" formControlName="txtRegistrationMobile">mob</mat-label> 
                                 <span class="mid-lbl">:</span>
-                                <mat-label class="rgt-lbl">1234567890</mat-label>
+                                <mat-label class="rgt-lbl">{{VendorMob}}</mat-label>
                              </div>
                              <div>
-                                <mat-label class="lft-lbl">crn no / qid</mat-label> 
+                                <mat-label class="lft-lbl" formControlName="txtRegistrationCrd">crn no / qid</mat-label> 
                                 <span class="mid-lbl">:</span>
-                                <mat-label class="rgt-lbl">4455</mat-label>
+                                <mat-label class="rgt-lbl">{{VendorCrn}}</mat-label>
                               
                              </div>
                              <div>
-                                <mat-label class="lft-lbl">registered email id</mat-label> 
+                                <mat-label class="lft-lbl" formControlName="txtRegistrationEmail">registered email id</mat-label> 
                                 <span class="mid-lbl"> :</span>
-                                <mat-label class="rgt-lbl">sample@g.com</mat-label>
+                                <mat-label class="rgt-lbl">{{VendorEmail}}</mat-label>
                              </div>
                      
                     </div>
@@ -185,22 +185,22 @@
                     <div class="demo-content" [hidden]="selectedItem != 'item2'">
   
                       <div>
-                          <mat-label class="lft-lbl">status</mat-label> 
+                          <mat-label class="lft-lbl" formControlName="txtRegistrationStatus">status</mat-label> 
                           <span class="mid-lbl"> :</span>
-                          <mat-label class="rgt-lbl">active</mat-label>
+                          <mat-label class="rgt-lbl">{{VendorStatus}}</mat-label>
                           
                            </div>
                           <div>
-                              <mat-label class="lft-lbl">account expiry</mat-label> 
+                              <mat-label class="lft-lbl" formControlName="txtRegistrationAccount">account expiry</mat-label> 
                               <span class="mid-lbl"> :</span>
-                              <mat-label class="rgt-lbl">31-03-2020</mat-label>
+                              <mat-label class="rgt-lbl">{{VendorExpiry}}</mat-label>
                               
                                </div>
 
                                <div>
-                                  <mat-label class="lft-lbl">plan</mat-label> 
+                                  <mat-label class="lft-lbl" formControlName="txtRegistrationPlan">plan</mat-label> 
                                   <span class="mid-lbl"> :</span>
-                                  <mat-label class="rgt-lbl"></mat-label>
+                                  <mat-label class="rgt-lbl">{{VendorPlan}}</mat-label>
                                   
                                    </div>
                   
@@ -324,18 +324,18 @@
 
                         <div >   
                                 <mat-label >email to which sales to be shared</mat-label> 
-                                <input type="text" formControlName="txtEmail"  autocomplete="off" >
+                                <input type="text" formControlName="txtSalesEmail"  autocomplete="off" >
                         </div> 
                         <div >   
                                 <mat-label >mobile number to which sales to be shared</mat-label> 
                                  
-                                <input type="text" formControlName="txtMobile" placeholder="mobile number" autocomplete="off" >
+                                <input type="text" formControlName="txtSalesMobile" placeholder="mobile number" autocomplete="off" >
                         </div> 
                         
                         <div >   
                                 <mat-label >whatsapp number to which sales to be shared</mat-label> 
                                  
-                                <input type="text" formControlName="txtMobile" placeholder="mobile number" autocomplete="off" >
+                                <input type="text" formControlName="txtWhatsappMobile" placeholder="mobile number" autocomplete="off" >
                                 
                         </div>  
                         <div >   
@@ -374,7 +374,7 @@
                         </div> 
 
                         <div class="btn-container txt-h" >
-                                <button mat-raised-button   (click)="saveButton()" >
+                                <button mat-raised-button   (click)="SaveSalesLeadButton()" >
                                    save
                                  </button>
                                  <button mat-raised-button    (click)="cancelButton()" >
@@ -392,10 +392,10 @@
                                     <mat-form-field>
                                             
                                             <select matNativeControl required>
-                                              <option value="volvo">Volvo</option>
-                                              <option value="saab">Saab</option>
-                                              <option value="mercedes">Mercedes</option>
-                                              <option value="audi">Audi</option>
+                                              <option value="volvo">1000</option>
+                                              <option value="saab">2000</option>
+                                              <option value="mercedes">2500</option>
+                                              <option value="audi">4000</option>
                                             </select>
                                           </mat-form-field>
                                           <button type="button"    (click)="generateButton()" >

@@ -4,7 +4,12 @@ import { v4 as uuid } from 'uuid';
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl, FormGroupName} from '@angular/forms';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {VendorKeywordModel} from '../business-object/VendorObject';
+import {VendorGetModel} from '../business-object/VendorObject';
 import { VendorService } from '../services/vendor/vendor.service';
+import { UseExistingWebDriver } from 'protractor/built/driverProviders';
+import {User} from '../authentication/user.model';
+import {AuthService} from '../authentication/auth.service';
+import { debug } from 'util';
 
 
 @Component({
@@ -19,26 +24,44 @@ export class VendorprofileComponent implements OnInit {
   displayedColumns: string[] = ['checkbox','VKW_KWORD','Edit'];
   dataSource: MatTableDataSource<VendorKeywordModel>;
   keywordList: VendorKeywordModel[]=[]; 
+  VendorGetList : VendorGetModel[]=[];
   tempObject: VendorKeywordModel;
   tempAddObject: VendorKeywordModel;
   editKeywordObject : VendorKeywordModel;
+  VendortempObject : VendorKeywordModel;
+  salesLeadTempObject : VendorKeywordModel;
+  salesLeadSaveTempObject : VendorKeywordModel;
   firstFormGroup: FormGroup;
   public keywordErrorMsg:String;
  // vendorkeywords: Array<VendorKeywordModel> = [];
-public selectedItem='item1';
-private IsEditRow:boolean=false;
-public selectedKeywordItem='selectedkeyword1';
-IsHideUploadDiv:Boolean=true;
-selectedfile: File;
-imgname: any = '';
-imgChange: Boolean = false;
-formdt: FormData = new FormData();
-filenames:Boolean=true;  
-url = '../../assets/loginasset/images/display-img.jpg';
-// @ViewChild(MatAccordion) accordion: MatAccordion;
-panelOpenState = false;
-
-  constructor(private _formBuilder: FormBuilder,private vendorService: VendorService,) {
+  public selectedItem='item1';
+  private IsEditRow:boolean=false;
+  public selectedKeywordItem='selectedkeyword1';
+  IsHideUploadDiv:Boolean=true;
+  selectedfile: File;
+  imgname: any = '';
+  imgChange: Boolean = false;
+  formdt: FormData = new FormData();
+  filenames:Boolean=true;  
+  url = '../../assets/loginasset/images/display-img.jpg';
+  // @ViewChild(MatAccordion) accordion: MatAccordion;
+  panelOpenState = false;
+  user: User;
+   VendorRegistrationId:String;
+  VendorRegistrationName : String;
+  VendorAddress : String;
+  VendorPin : String;
+  VendorCity : String;
+  VendorCountry : String;
+  VendorMob : String;
+  VendorCrn: String;
+  VendorEmail : String;
+  VendorStatus : String;
+  VendorExpiry : String;
+  VendorPlan : String;
+  private LanguageType: number=1;
+  constructor(private _formBuilder: FormBuilder,private vendorService: VendorService,
+    private authService: AuthService,) {
     
    }
 
@@ -48,7 +71,10 @@ panelOpenState = false;
       txtKeyword: ['', Validators.required],
      
       });
-    this.filenames=true;   
+    this.filenames=true;  
+    this.user= this.authService.getUserDetail();
+    this.GetVendor();
+    
   }
   sidebarMenu(item)
   {
@@ -112,8 +138,8 @@ panelOpenState = false;
        "ROW_NO" : 1,
        "VKW_PK" :0,
        "VKW_KWORD" : "",
-       "VKW_KWORD_TYPE" : 1,
-       "VKW_VENDOR" : 1
+       "VKW_KWORD_TYPE" : this.LanguageType,
+       "VKW_VENDOR" :this.user.VND_PK
     }
     this.vendorService.VendorKeywordGet(this.tempObject).subscribe((data: Array<object>) => {
       this.keywordList = data['Data'];
@@ -126,7 +152,30 @@ panelOpenState = false;
  
   
    }
+   GetVendor()
+   {
+   
+    var reqObj={"VNQ_PK":this.user.VND_PK};
+    console.log(this.tempObject);
+    this.vendorService.VendorGet(reqObj).subscribe((data: Array<object>) => {
+      this.VendorGetList = data['Data'];
+      console.log(data);
+      console.log(this.VendorGetList);
+      this.VendorRegistrationId =this.VendorGetList[0].Vendor_Reg_No;
+      this.VendorRegistrationName=this.VendorGetList[0].Vendor_Name;
+      this.VendorAddress=this.VendorGetList[0].Vendor_Address;
+      this.VendorPin=this.VendorGetList[0].Vendor_PO_No;
+      this.VendorCity=this.VendorGetList[0].Vendor_City;
+      this.VendorCountry=this.VendorGetList[0].Vendor_Country;
+      this.VendorMob=this.VendorGetList[0].Vendor_Mobile;
+      this.VendorCrn=this.VendorGetList[0].Vendor_QID;
+      this.VendorEmail=this.VendorGetList[0].Vendor_Emailid;
+      this.VendorStatus=this.VendorGetList[0].Vendor_Status;
+      this.VendorExpiry=this.VendorGetList[0].Vendor_Account_Expiry;
+      this.VendorPlan =this.VendorGetList[0].Vendor_Plan;
+   });
 
+   }
    AddNewKeywordButton()
    {
      if(this.IsEditRow)
@@ -141,8 +190,8 @@ panelOpenState = false;
           "ROW_NO" : this.keywordList.length+1,
           "VKW_PK":0,
           "VKW_KWORD" : this.firstFormGroup.value.txtKeyword,
-          "VKW_KWORD_TYPE" : 1, //Need to change
-          "VKW_VENDOR" : 1 // need to change
+          "VKW_KWORD_TYPE" : this.LanguageType,
+          "VKW_VENDOR" : this.user.VND_PK
         }
       }
         console.log(this.tempAddObject);
@@ -202,6 +251,43 @@ panelOpenState = false;
       this.searchElement.nativeElement.focus();
     },0);  
    }
+
+
+   GetSalesLeadSetup()
+   {
+    this.salesLeadTempObject=
+    {
+       "ROW_NO" : 1,
+       "VKW_PK" :0,
+       "VKW_KWORD" : "",
+       "VKW_KWORD_TYPE" : 0,
+       "VKW_VENDOR" :0
+    }
+    this.vendorService.GetSalesLeadSetup(this.salesLeadTempObject).subscribe((data: Array<object>) => {
+      this.keywordList = data['Data'];
+      this.dataSource = new MatTableDataSource(this.keywordList);
+     
+   });
+   }
+
+   SaveSalesLeadButton()
+   {
+    this.salesLeadSaveTempObject=
+    {
+       "ROW_NO" : 1,
+       "VKW_PK" :0,
+       "VKW_KWORD" : "",
+       "VKW_KWORD_TYPE" : 0,
+       "VKW_VENDOR" :0
+    }
+    this.vendorService.GetSalesLeadSetup(this.salesLeadSaveTempObject).subscribe((data: Array<object>) => {
+      this.keywordList = data['Data'];
+      this.dataSource = new MatTableDataSource(this.keywordList);
+     
+   });
+   }
+
+
 
  
  

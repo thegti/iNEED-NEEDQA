@@ -4,7 +4,9 @@ import {GlobalUrl} from '../../utility/GlobalUrl';
 import {AuthService} from '../../authentication/auth.service';
 import { environment } from 'environments/environment';
 import {SavaVendorModel} from '../../business-object/VendorObject';
-import {VendorKeywordModel} from '../../business-object/VendorObject'
+import {VendorKeywordModel} from '../../business-object/VendorObject';
+import {VendorGetModel} from '../../business-object/VendorObject'
+
 
 
 
@@ -33,7 +35,18 @@ export class VendorService {
 
  VendorKeywordSave(req): any {
   return this.httpClient.post<VendorKeywordModel>(`${this.baseUrl}api/Vendor/VendorKeywordSave`, req, this.header);
-}  
+} 
+
+VendorGet(req): any {
+  return this.httpClient.post<VendorGetModel>(`${this.baseUrl}api/Vendor/VendorGet`, req, this.header);
+} 
+
+GetSalesLeadSetup(req): any {
+  return this.httpClient.post<VendorKeywordModel>(`${this.baseUrl}api/Vendor/GetSalesLeadSetup`, req, this.header);
+} 
+
+
+
 
  
    

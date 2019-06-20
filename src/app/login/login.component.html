@@ -39,9 +39,10 @@
               </mat-error>
             </mat-form-field>
         </div>
+        <div>{{this.LoginErrorMsg}}</div>
 
         <div class="btn-container-submit">
-                <button mat-raised-button [disabled]="loginform.invalid" (click)="button()" tabindex="3" class="signin-btn" >sign in</button>
+                <button  type="submit" mat-raised-button [disabled]="loginform.invalid" (click)="LoginSignIn()" tabindex="3" class="signin-btn" >sign in</button>
             </div>
 
       <!-- <div class="btn txt-center" fxLayoutAlign="center">

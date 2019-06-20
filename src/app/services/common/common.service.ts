@@ -44,5 +44,6 @@ export class ApiService {
    GenerateOtp(req):any{
       return this.httpClient.post<OtpModel>(`${this.baseUrl}api/Common/GenerateOTP`, req, this.header);
    }
+ 
   
 }

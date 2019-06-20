@@ -33,3 +33,19 @@ export interface VendorKeywordModel
     VKW_KWORD_TYPE : number;
 }
 
+export class VendorGetModel
+{
+     Vendor_Reg_No :String;
+    Vendor_Address :String
+    Vendor_PO_No :String
+    Vendor_City :String
+    Vendor_Country :String
+    Vendor_Name :String
+    Vendor_Mobile :String
+    Vendor_QID :String
+    Vendor_Emailid :String
+    Vendor_Plan :String
+    Vendor_Account_Expiry :String
+    Vendor_Status :String
+}
+
