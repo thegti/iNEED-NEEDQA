@@ -322,22 +322,61 @@
 <!------ ITEM 4 --------->
                   <div class="demo-content" [hidden]="selectedItem != 'item4'">
 
-                        <div >   
+                      <div >   
                                 <mat-label >email to which sales to be shared</mat-label> 
-                                <input type="text" formControlName="txtSalesEmail"  autocomplete="off" >
+                                <mat-form-field appearance="outline" fxFlex="50" >
+                                <input matInput type="text" formControlName="txtSalesEmail"  autocomplete="off" [ngClass]="{ 'is-invalid': validation.txtSalesEmail.touched && validation.txtSalesEmail.errors }" >
+                                <mat-error *ngIf="validation.txtSalesEmail.errors && validation.txtSalesEmail.touched" class="invalid-feedback">
+                                    <mat-error *ngIf="validation.txtSalesEmail.errors.required">email is required</mat-error>
+                                   <mat-error *ngIf="validation.txtSalesEmail.errors.email&& validation.txtSalesEmail.errors"  >enter valid email address</mat-error> 
+                                   </mat-error> 
+                                   </mat-form-field>
                         </div> 
-                        <div >   
+                        <!-- <div >   
                                 <mat-label >mobile number to which sales to be shared</mat-label> 
                                  
                                 <input type="text" formControlName="txtSalesMobile" placeholder="mobile number" autocomplete="off" >
-                        </div> 
+                        </div>  -->
+                        <div> 
+                            <mat-label >mobile number to which sales to be shared</mat-label> 
+                                <mat-form-field appearance="outline" fxFlex="50" class="phon-input"> 
+                                                
+                                    <input matInput  type="text"  formControlName="txtSalesMobile" placeholder="number" autocomplete="off" (keypress)="numericOnly($event)" maxlength="10" [ngClass]="{ 'is-invalid': mobilevalid.txtSalesMobile.touched && mobilevalid.txtSalesMobile.errors }"  >
+                                    <mat-error *ngIf= "mobilevalid.txtSalesMobile.errors && mobilevalid.txtSalesMobile.touched" class="invalid-feedback">
+                                        <mat-error *ngIf="mobilevalid.txtSalesMobile.errors.required">
+                                           enter mobile number 
+                                        </mat-error>
+                                        <mat-error *ngIf="mobilevalid.txtSalesMobile.errors.pattern">
+                                          enter valid mobile number 
+                                        </mat-error>
+                                      </mat-error>
+                                   </mat-form-field>
+                             
+                         </div> 
+
+                         <div> 
+                            <mat-label >whatsapp number to which sales to be shared</mat-label>
+                                <mat-form-field appearance="outline" fxFlex="50" class="phon-input"> 
+                                                
+                                    <input matInput  type="text"  formControlName="txtWhatsappMobile" placeholder="number" autocomplete="off" (keypress)="numericOnly($event)" maxlength="10" [ngClass]="{ 'is-invalid': mobilevalid.txtWhatsappMobile.touched && mobilevalid.txtWhatsappMobile.errors }"  >
+                                    <mat-error *ngIf= "mobilevalid.txtWhatsappMobile.errors && mobilevalid.txtWhatsappMobile.touched" class="invalid-feedback">
+                                        <mat-error *ngIf="mobilevalid.txtWhatsappMobile.errors.required">
+                                           enter mobile number 
+                                        </mat-error>
+                                        <mat-error *ngIf="mobilevalid.txtWhatsappMobile.errors.pattern">
+                                          enter valid mobile number 
+                                        </mat-error>
+                                      </mat-error>
+                                   </mat-form-field>
+                             
+                         </div> 
                         
-                        <div >   
+                        <!-- <div >   
                                 <mat-label >whatsapp number to which sales to be shared</mat-label> 
                                  
                                 <input type="text" formControlName="txtWhatsappMobile" placeholder="mobile number" autocomplete="off" >
                                 
-                        </div>  
+                        </div>   -->
                         <div >   
                                 <mat-label >i want leads for </mat-label> 
                                

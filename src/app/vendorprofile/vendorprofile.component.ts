@@ -10,6 +10,7 @@ import { UseExistingWebDriver } from 'protractor/built/driverProviders';
 import {User} from '../authentication/user.model';
 import {AuthService} from '../authentication/auth.service';
 import { debug } from 'util';
+import {VendorSalesGetModel} from '../business-object/VendorObject';
 
 
 @Component({
@@ -59,6 +60,7 @@ export class VendorprofileComponent implements OnInit {
   VendorStatus : String;
   VendorExpiry : String;
   VendorPlan : String;
+  mobnumPattern = "^((\\+91-?)|0)?[0-9]{10}$"; 
   private LanguageType: number=1;
   constructor(private _formBuilder: FormBuilder,private vendorService: VendorService,
     private authService: AuthService,) {
@@ -67,9 +69,10 @@ export class VendorprofileComponent implements OnInit {
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
-  
       txtKeyword: ['', Validators.required],
-     
+      txtSalesEmail : ['',[Validators.required, Validators.email,Validators.maxLength(50)] ],
+      txtSalesMobile: ['', [Validators.required,Validators.pattern(this.mobnumPattern),Validators.minLength(10),Validators.maxLength(12)]],
+      txtWhatsappMobile: ['', [Validators.pattern(this.mobnumPattern),Validators.minLength(10),Validators.maxLength(12)]],
       });
     this.filenames=true;  
     this.user= this.authService.getUserDetail();
@@ -280,16 +283,25 @@ export class VendorprofileComponent implements OnInit {
        "VKW_KWORD_TYPE" : 0,
        "VKW_VENDOR" :0
     }
-    this.vendorService.GetSalesLeadSetup(this.salesLeadSaveTempObject).subscribe((data: Array<object>) => {
+    this.vendorService.SaveSalesLeadSetup(this.salesLeadSaveTempObject).subscribe((data: Array<object>) => {
       this.keywordList = data['Data'];
       this.dataSource = new MatTableDataSource(this.keywordList);
      
    });
    }
 
+get validation() { 
+     return this.firstFormGroup.controls;
+     }
 
+     get mobilevalid() {
+      return this.firstFormGroup.controls;
+   } 
+   numericOnly(event): boolean {    
+    let patt = /^([0-9])$/;
+    let result = patt.test(event.key);
+    return result;
+} 
 
- 
- 
  
 }

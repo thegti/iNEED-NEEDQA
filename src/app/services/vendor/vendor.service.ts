@@ -5,7 +5,8 @@ import {AuthService} from '../../authentication/auth.service';
 import { environment } from 'environments/environment';
 import {SavaVendorModel} from '../../business-object/VendorObject';
 import {VendorKeywordModel} from '../../business-object/VendorObject';
-import {VendorGetModel} from '../../business-object/VendorObject'
+import {VendorGetModel} from '../../business-object/VendorObject';
+import {VendorSalesGetModel} from '../../business-object/VendorObject'
 
 
 
@@ -42,9 +43,11 @@ VendorGet(req): any {
 } 
 
 GetSalesLeadSetup(req): any {
-  return this.httpClient.post<VendorKeywordModel>(`${this.baseUrl}api/Vendor/GetSalesLeadSetup`, req, this.header);
+  return this.httpClient.post<VendorSalesGetModel>(`${this.baseUrl}api/Vendor/GetSalesLeadSetup`, req, this.header);
 } 
-
+SaveSalesLeadSetup(req): any {
+  return this.httpClient.post<VendorSalesGetModel>(`${this.baseUrl}api/Vendor/SaveSalesLeadSetup`, req, this.header);
+} 
 
 
 
