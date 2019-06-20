@@ -277,7 +277,7 @@ textarea            {   width:50%; border:none; padding:0px 5px;
     font-family: 'dinlight', sans-serif;  color: #121212 !important;
     /*font-weight:bold !important;*/} 
 
-.mat-error  {   color:yellow!important; margin-top:3px; height:12px;}
+.mat-error  {   width: 100%; display: block; color:yellow!important; margin-top:3px; height:12px;}
 .attach-lbl {   font-size:12px; font-style: italic;}
 .mat-horizontal-content-container   {   padding: 0px!important;}
 
@@ -441,10 +441,10 @@ background-repeat: no-repeat;}
 /* LOGIN */
 .login-main     {      
     mat-form-field  {
-    .mat-form-field-wrapper {  
+    .mat-form-field-wrapper {  width:260px;
         .mat-form-field-flex    {  width: 300px!important;   }  
     }   
-
+    .mat-form-field-subscript-wrapper   {   padding:0px;}
 }
 }
 
@@ -619,13 +619,17 @@ background-repeat: no-repeat;}
                 }
              
 /*------- ADD new Keyword -----*/ 
-                .add-new-btn    {   width:100%; display: flex; align-items: center; justify-content: flex-end;
+                .add-new-btn    {   width:39%; display: flex; align-items: center; justify-content:space-around;
                                      margin:1% 0px 0px 0px;
                     button      {   font-family: 'coheadlinew08-lightregular'!important; font-size:16px;
                                     border-radius:3px!important; -webkit-border-radius:3px!important;
                         span    {   position: relative;  top: -3px;}
                     }
+
+                    
                 }
+
+                
 /*--------- Upload CSV -----*/
                 .upload         {   width:100%; display: flex; align-items: center; justify-content: flex-start;
                                     margin:1% 0px 0px 0px;
@@ -749,6 +753,7 @@ background-repeat: no-repeat;}
 
 /* Margin */ 
 .margn-btm0         {   margin-bottom:0px!important;}
+.margn-btm8         {   margin-bottom:8px;}
 
 .margn-top10        {   margin-top:10px;}
 
