@@ -289,22 +289,21 @@
                                                         <div class="keyword-csv" >
                                                         <!-- <div [hidden]="uploadkeyword" class="keyword-csv" > -->
                                                             <h2>keywords csv upload</h2>
-                                                            <div>
+                                                            <div class="dwnlod-sample">
                                                             <button mat-raised-button   (click)="downloadCsvButton()"   >
                                                                     download sample csv
                                                             </button>
                                                                 </div>
-                                                               <br>
-                                                                  <p>please download the format before uploading your file and make sure that your csv file should match with that format</p>
+                                                              <p class="bord-botm">please download the format before uploading your file and make sure that your csv file should match with that format</p>
                                                                
-                                                                  <div >   
+                                                                  <div class="upload-sectn">   
                                                                        
                                                                         <input type="file" #profilepic  formControlName="photo" (change)="onSelectionchange($event)" (change)="detectFiles($event)" style="display:none">
-                                                                        <button type="button"  class="browse-btn" (click)="profilepic.click()"> choose file</button>
-                                                                        <div class="brows-lbl" [hidden]="!filenames"> {{ fileName }} </div>                              
+                                                                        <button type="button"  class="browse-btn-uplod" (click)="profilepic.click()"> choose file</button>
+                                                                        <div class="brows-lbl-uplod" [hidden]="!filenames"> {{ fileName }} </div>                              
                                                                        
                                                              </div>  
-                                                             <div>
+                                                             <div class="upload-btn">
                                                                     <button mat-raised-button   (click)="uploadCsvButton()"   >
                                                                             upload
                                                                           </button>

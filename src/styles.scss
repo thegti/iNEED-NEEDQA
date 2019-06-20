@@ -298,12 +298,12 @@ textarea            {   width:50%; border:none; padding:0px 5px;
 
 .btn-container-submit  {   width:100%; text-align: center; }
 
-.approv-btn         {  min-width:55px; height:25px; margin:0px 0px 0px 1px; border:none; 
+.approv-btn         {  min-width:55px; height:auto; margin:0px 0px 0px 1px; border:none; 
     background:#000;
     padding:5px; box-sizing: border-box; -webkit-box-sizing: border-box; float:right;
     color: #fff; font-family: 'dinlight', sans-serif;}
 
-.activate-btn         {  min-width:55px; height:25px; margin:0px 0px 0px 1px; 
+.activate-btn         {  min-width:55px; height:auto; margin:0px 0px 0px 1px; 
     border:none; background:#000;
     padding:5px; box-sizing: border-box; -webkit-box-sizing: border-box;
     color: #fff; font-family: 'dinlight', sans-serif;}
@@ -525,11 +525,16 @@ background-repeat: no-repeat;}
 .vendor-cont-outer  {   width:100%; display:flex; align-items: center; }
 .vendor-content     {   width:90%; height:270px; border-radius:5px; -webkit-border-radius:5px; 
                         padding:20px 20px 10px 20px; box-sizing:border-box; -webkit-box-sizing:border-box;
-                        
+//vendor profile
+.mat-form-field .mat-select.mat-select-invalid .mat-select-arrow
+{
+    color: rgba(0, 0, 0, 0.54) !important;
+}                        
     form    {   padding:0px; font-family: 'coheadlinew08-lightregular';
 
         .demo-content   {
             div         {   display: flex;  align-items: center; color: #0074bc; line-height: 26px;}
+            .mat-tab-label, .mat-tab-link {   font-family: 'coheadlinew08-lightregular';}
             
            mat-label.lft-lbl    {   width:20%; display: inline-block;  margin:0px;} 
 
@@ -543,7 +548,7 @@ background-repeat: no-repeat;}
                 ul li       {   list-style: none;}
                 .mat-tab-header-pagination  {   display: none;}
             }
-            .mat-tab-group  {
+            .mat-tab-group  {   font-family: 'coheadlinew08-lightregular';
                 .mat-tab-header {   border-bottom: none;
                     .mat-tab-label-container {
                         .mat-tab-label  {   
@@ -609,10 +614,38 @@ background-repeat: no-repeat;}
                                     box-shadow:none!important; -webkit-box-shadow:none!important;
                                     border:1px solid #ccc; border-radius:3px!important; -webkit-border-radius:3px!important; }
                 }
+/*---------- Keyword Upload -----------*/                
                .keyword-csv     {   margin:0px auto;text-align: center;
                 button          {   font-family: 'coheadlinew08-lightregular'!important; font-size:16px;
-                                    border-radius:3px!important; -webkit-border-radius:3px!important;}
-                span            {   position: relative;  top: -3px;}                                   
+                                    border-radius:3px!important; -webkit-border-radius:3px!important;
+                                    height:auto;
+                                }
+                span            {   position: relative;  top: -3px;} 
+                .dwnlod-sample  {   display:flex!important; justify-content: center; 
+                    border-top:1px solid #ccc; padding:10px; } 
+                p               {   margin:0px;}
+                h2              {   margin-bottom: 5px;}
+
+/*------- Upload section -----*/ 
+                .upload-sectn   {   display: flex; justify-content: center; padding:10px;
+                                    flex-direction: row; box-sizing: border-box; flex: 1 0 auto;}
+
+                .browse-btn-uplod     {  min-width:55px; height:auto; margin:0px 0px 0px 1px; 
+                    border:none; background:#0da7b7;
+                    padding:5px; box-sizing: border-box; -webkit-box-sizing: border-box;
+                    color: #fff; font-family: 'dinlight', sans-serif; font-weight: 100;
+                    letter-spacing: 0.5px;}
+
+                .brows-lbl-uplod      {
+                    margin: 0px 2px 0px 5px!important; height: 30px; font-size: 12px;font-weight: 200;
+                    padding-top: 3px; box-sizing: border-box; -webkit-box-sizing: border-box;
+                    letter-spacing: 0.5px; background:#ececec; display:inline-block; min-width:90px;
+                    border-radius: 3px; -webkit-border-radius: 3px;
+                } 
+
+                .upload-btn   {   display: flex; justify-content: center; margin-bottom: 10px;
+                    .mat-raised-button  {   background: #64af02!important;}
+                } 
             }                                 
             }
         } 
@@ -638,6 +671,9 @@ background-repeat: no-repeat;}
 
 /* BgColor */
 .bg-white   {   background: #fff!important;}
+
+/* Border */ 
+.bord-botm  {   border-bottom:1px solid #ccc;}
 
 /* Text Color */ 
 .txt-white  {   color: #fff;}
@@ -714,9 +750,5 @@ background-repeat: no-repeat;}
 {
     color: transparent !important;
 }
-//vendor profile
-.mat-form-field .mat-select.mat-select-invalid .mat-select-arrow
-{
-    color: rgba(0, 0, 0, 0.54) !important;
-}
+
 
