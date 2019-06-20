@@ -325,31 +325,27 @@
                       <div >   
                                 <mat-label >email to which sales to be shared</mat-label> 
                                 <mat-form-field appearance="outline" fxFlex="50" >
-                                <input matInput type="text" formControlName="txtSalesEmail"  autocomplete="off" [ngClass]="{ 'is-invalid': validation.txtSalesEmail.touched && validation.txtSalesEmail.errors }" >
-                                <mat-error *ngIf="validation.txtSalesEmail.errors && validation.txtSalesEmail.touched" class="invalid-feedback">
-                                    <mat-error *ngIf="validation.txtSalesEmail.errors.required">email is required</mat-error>
-                                   <mat-error *ngIf="validation.txtSalesEmail.errors.email&& validation.txtSalesEmail.errors"  >enter valid email address</mat-error> 
-                                   </mat-error> 
+                                <input matInput type="text" formControlName="txtSalesEmail"  autocomplete="off" required >
+                                <!-- <mat-error *ngIf="validation.txtSalesEmail.errors && validation.txtSalesEmail.touched" class="invalid-feedback"> -->
+                                    <mat-error>email is required</mat-error>
+                                   <!-- <mat-error *ngIf="validation.txtSalesEmail.errors.email&& validation.txtSalesEmail.errors"  >enter valid email address</mat-error>  -->
+                                   <!-- </mat-error>  -->
                                    </mat-form-field>
                         </div> 
-                        <!-- <div >   
-                                <mat-label >mobile number to which sales to be shared</mat-label> 
-                                 
-                                <input type="text" formControlName="txtSalesMobile" placeholder="mobile number" autocomplete="off" >
-                        </div>  -->
+                     
                         <div> 
                             <mat-label >mobile number to which sales to be shared</mat-label> 
                                 <mat-form-field appearance="outline" fxFlex="50" class="phon-input"> 
                                                 
-                                    <input matInput  type="text"  formControlName="txtSalesMobile" placeholder="number" autocomplete="off" (keypress)="numericOnly($event)" maxlength="10" [ngClass]="{ 'is-invalid': mobilevalid.txtSalesMobile.touched && mobilevalid.txtSalesMobile.errors }"  >
-                                    <mat-error *ngIf= "mobilevalid.txtSalesMobile.errors && mobilevalid.txtSalesMobile.touched" class="invalid-feedback">
-                                        <mat-error *ngIf="mobilevalid.txtSalesMobile.errors.required">
+                                    <input matInput  type="text"  formControlName="txtSalesMobile" placeholder="number" autocomplete="off" (keypress)="numericOnly($event)" maxlength="10" required   >
+                                    <!-- <mat-error *ngIf= "mobilevalid.txtSalesMobile.errors " class="invalid-feedback"> -->
+                                        <mat-error >
                                            enter mobile number 
                                         </mat-error>
-                                        <mat-error *ngIf="mobilevalid.txtSalesMobile.errors.pattern">
+                                        <!-- <mat-error *ngIf="mobilevalid.txtSalesMobile.errors.pattern">
                                           enter valid mobile number 
-                                        </mat-error>
-                                      </mat-error>
+                                        </mat-error> -->
+                                      <!-- </mat-error> -->
                                    </mat-form-field>
                              
                          </div> 
@@ -358,15 +354,15 @@
                             <mat-label >whatsapp number to which sales to be shared</mat-label>
                                 <mat-form-field appearance="outline" fxFlex="50" class="phon-input"> 
                                                 
-                                    <input matInput  type="text"  formControlName="txtWhatsappMobile" placeholder="number" autocomplete="off" (keypress)="numericOnly($event)" maxlength="10" [ngClass]="{ 'is-invalid': mobilevalid.txtWhatsappMobile.touched && mobilevalid.txtWhatsappMobile.errors }"  >
-                                    <mat-error *ngIf= "mobilevalid.txtWhatsappMobile.errors && mobilevalid.txtWhatsappMobile.touched" class="invalid-feedback">
-                                        <mat-error *ngIf="mobilevalid.txtWhatsappMobile.errors.required">
+                                    <input matInput  type="text"  formControlName="txtWhatsappMobile" placeholder="number" autocomplete="off" (keypress)="numericOnly($event)" maxlength="10" required >
+                                    <!-- <mat-error *ngIf= "mobilevalid.txtWhatsappMobile.errors && mobilevalid.txtWhatsappMobile.touched" class="invalid-feedback"> -->
+                                        <mat-error >
                                            enter mobile number 
                                         </mat-error>
-                                        <mat-error *ngIf="mobilevalid.txtWhatsappMobile.errors.pattern">
+                                        <!-- <mat-error *ngIf="mobilevalid.txtWhatsappMobile.errors.pattern">
                                           enter valid mobile number 
-                                        </mat-error>
-                                      </mat-error>
+                                        </mat-error> -->
+                                      <!-- </mat-error> -->
                                    </mat-form-field>
                              
                          </div> 
@@ -381,9 +377,9 @@
                                 <mat-label >i want leads for </mat-label> 
                                
                                         <mat-radio-group>  
-                                                <mat-radio-button  value="1"  checked (change)="selectUseTypes($event)">personal use</mat-radio-button>
-                                                <mat-radio-button  value="2"  (change)="selectUseTypes($event)">business use</mat-radio-button>
-                                                <mat-radio-button  value="3"  (change)="selectUseTypes($event)">both</mat-radio-button>
+                                                <mat-radio-button  value="1"  checked (change)="SelectUseTypes($event)">personal use</mat-radio-button>
+                                                <mat-radio-button  value="2"  (change)="SelectUseTypes($event)">business use</mat-radio-button>
+                                                <mat-radio-button  value="3"  (change)="SelectUseTypes($event)">both</mat-radio-button>
                                             </mat-radio-group>
                                  
                               
@@ -393,9 +389,9 @@
                                 <mat-label >i want leads for </mat-label> 
                                
                                 <mat-radio-group>
-                                        <mat-radio-button  value="1"  checked (change)="selectSearch($event)"> product</mat-radio-button>
-                                        <mat-radio-button  value="2"  (change)="selectSearch($event)">service</mat-radio-button>
-                                        <mat-radio-button  value="3"  (change)="selectSearch($event)">both</mat-radio-button>
+                                        <mat-radio-button  value="1"  checked (change)="SelectProductTypes($event)"> product</mat-radio-button>
+                                        <mat-radio-button  value="2"  (change)="SelectProductTypes($event)">service</mat-radio-button>
+                                        <mat-radio-button  value="3"  (change)="SelectProductTypes($event)">both</mat-radio-button>
                                     </mat-radio-group>
                                  
                               
@@ -404,8 +400,8 @@
                                 <mat-label >i want leads with </mat-label> 
                                
                                 <mat-radio-group>
-                                        <mat-radio-button  value="1"  checked (change)="selectSearch($event)"> any value</mat-radio-button>
-                                        <mat-radio-button  value="2"  (change)="selectSearch($event)">more than 3000 only</mat-radio-button>
+                                        <mat-radio-button  value="1"  checked (change)="SelectValueTypes($event)"> any value</mat-radio-button>
+                                        <mat-radio-button  value="2"  (change)="SelectValueTypes($event)">more than 3000 only</mat-radio-button>
                                         <input type="text"  placeholder="value" autocomplete="off" >
                                     </mat-radio-group>
                                  

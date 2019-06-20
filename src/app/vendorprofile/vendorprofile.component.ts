@@ -11,6 +11,9 @@ import {User} from '../authentication/user.model';
 import {AuthService} from '../authentication/auth.service';
 import { debug } from 'util';
 import {VendorSalesGetModel} from '../business-object/VendorObject';
+import { SerachGroup } from 'app/utility/SalesLoadUse';
+import {SalesProductGroup} from 'app/utility/SalesProducts';
+import {SalesValueGroup} from 'app/utility/SalesValue';
 
 
 @Component({
@@ -33,6 +36,9 @@ export class VendorprofileComponent implements OnInit {
   salesLeadTempObject : VendorKeywordModel;
   salesLeadSaveTempObject : VendorKeywordModel;
   firstFormGroup: FormGroup;
+  public selectedSalesUse:any;
+  public valueSalesUse:any;
+  public productSalesUse:any;
   public keywordErrorMsg:String;
  // vendorkeywords: Array<VendorKeywordModel> = [];
   public selectedItem='item1';
@@ -72,7 +78,7 @@ export class VendorprofileComponent implements OnInit {
       txtKeyword: ['', Validators.required],
       txtSalesEmail : ['',[Validators.required, Validators.email,Validators.maxLength(50)] ],
       txtSalesMobile: ['', [Validators.required,Validators.pattern(this.mobnumPattern),Validators.minLength(10),Validators.maxLength(12)]],
-      txtWhatsappMobile: ['', [Validators.pattern(this.mobnumPattern),Validators.minLength(10),Validators.maxLength(12)]],
+      txtWhatsappMobile: ['', [Validators.required,Validators.pattern(this.mobnumPattern),Validators.minLength(10),Validators.maxLength(12)]],
       });
     this.filenames=true;  
     this.user= this.authService.getUserDetail();
@@ -82,6 +88,7 @@ export class VendorprofileComponent implements OnInit {
   sidebarMenu(item)
   {
     this.selectedItem=item;
+    console.log(this.selectedItem);
     switch(item)
     {
       case 'item3':
@@ -302,6 +309,66 @@ get validation() {
     let result = patt.test(event.key);
     return result;
 } 
+// selectUseTypes(e)
+// {
+//   var groups=1;
+//   if(this.selectedSalesUse == 1)
+//   {
+//       groups=SerachGroup.Personal;
+//   }
+//   else
+//   if(this.selectedSalesUse == 2)
+//   {
+//       groups=SerachGroup.Business;
+//   }
+//   if(this.selectedSalesUse == 2)
+//   {
+//       groups=SerachGroup.Both;
+//   }
+//   this.selectedSalesUse=e.value;
+//   console.log(this.selectedSalesUse);
+// }
 
- 
+// selectProductTypes(e)
+// {
+//   var groups=1;
+//   if(this.productSalesUse == 1)
+//   {
+//       groups=SalesProductGroup.Product;
+//   }
+//   else
+//   if(this.productSalesUse == 2)
+//   {
+//       groups=SalesProductGroup.Services;
+//   }
+//   if(this.productSalesUse == 2)
+//   {
+//       groups=SerachGroup.Both;
+//   }
+//   this.productSalesUse=e.value;
+
+//   console.log(this.productSalesUse);
+// }
+
+// SelectValueTypes(e)
+// {
+//   var groups=1;
+//   if(this.valueSalesUse == 1)
+//   {
+//       groups=SerachGroup.Personal;
+//   }
+//   else
+//   if(this.valueSalesUse == 2)
+//   {
+//       groups=SerachGroup.Business;
+//   }
+//   if(this.valueSalesUse == 2)
+//   {
+//       groups=SerachGroup.Both;
+//   }
+//   this.selectedSalesUse=e.value;
+  
+//   console.log(this.selectedSalesUse);
+// }
+
 }
