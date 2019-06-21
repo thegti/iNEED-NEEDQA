@@ -14,6 +14,8 @@ import {VendorSalesLeadModel} from '../business-object/VendorObject';
 import { SerachGroup } from 'app/utility/SalesLoadUse';
 import {SalesProductGroup} from 'app/utility/SalesProducts';
 import {SalesValueGroup} from 'app/utility/SalesValue';
+import {VendorsavedialogComponent} from '../vendorsavedialog/vendorsavedialog.component';
+import { MatDialog, MatDialogRef } from '@angular/material';
 
 
 @Component({
@@ -80,9 +82,12 @@ export class VendorprofileComponent implements OnInit {
   IsValueType : boolean =true;
   IsGreaterValueType : boolean;
   private LanguageType: number=1;
-  IsHideTxtValue:boolean=true;
+  public ValueTxtValue:boolean=false;
+  // IsHideTxtValue:boolean=false;
+VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
+  VendorDialogRef: MatDialogRef<VendorsavedialogComponent>;
   constructor(private _formBuilder: FormBuilder,private vendorService: VendorService,
-    private authService: AuthService,) {
+    private authService: AuthService,public _matDialog: MatDialog, ) {
     
    }
 
@@ -108,7 +113,12 @@ export class VendorprofileComponent implements OnInit {
       });
     this.filenames=true;  
     this.user= this.authService.getUserDetail();
-    this.GetVendor();
+
+    setTimeout(()=>{ // this will make the execution after the above boolean has changed
+      this.GetVendor();
+    },0);  
+
+    
     this.SetLeadsFor(1);
     this.SetLeadsTypeFor(1);
     this.SetValueTypeFor(1);
@@ -328,6 +338,8 @@ export class VendorprofileComponent implements OnInit {
    {
     this.moddate =  new Date().toISOString();
     var PK = this.salesLeadList==null ? 0 : this.salesLeadList[0].VST_PK;
+    var strVale=this.firstFormGroup.value.txtValue;
+    strVale=strVale.length>0 ? strVale : 0;
     this.salesLeadSaveTempObject=
     {
       "VST_PK" : PK,
@@ -338,7 +350,7 @@ export class VendorprofileComponent implements OnInit {
       "VST_ENQUIRY_TYPE" :this.productSalesUse> 0 ? this.productSalesUse : 1,	
       "VST_ENQUIRY_USE"	:this.selectedSalesUse> 0 ? this.selectedSalesUse : 1, 
       "VST_CURRENCY" :0,			
-      "VST_MIN_VALUE" :this.firstFormGroup.value.txtValue,
+      "VST_MIN_VALUE" :strVale ,
       "VST_MOD_BY" :this.user.USR_PK,	
       "VST_VALUE_TYPE" :	this.valueSalesUse> 0 ? this.valueSalesUse : 1, 	
       "VST_MOD_DT" :this.moddate,
@@ -347,6 +359,21 @@ export class VendorprofileComponent implements OnInit {
     this.vendorService.VendorSalesLeadSave(this.salesLeadSaveTempObject).subscribe((data: Array<object>) => {
         console.log(data);
       // this.dataSource = new MatTableDataSource(this.keywordList);
+      this.VendorSaveDialogRef = this._matDialog.open(VendorsavedialogComponent, {
+        disableClose: true
+    });
+   
+    this.VendorSaveDialogRef.componentInstance.Message = 'Sales lead details are submitted successfully';
+    
+  this.VendorSaveDialogRef.afterClosed().subscribe(result => {
+    if ( result )
+    {
+       
+    }
+    this.VendorSaveDialogRef = null;
+     
+ 
+});
      
    });
    }
@@ -369,6 +396,7 @@ get validation() {
 SelectUseTypes(e)
 {
   var groups=1;
+  this.selectedSalesUse=e.value;
   if(this.selectedSalesUse == 1)
   {
       groups=SerachGroup.Personal;
@@ -382,7 +410,7 @@ SelectUseTypes(e)
   {
       groups=SerachGroup.Both;
   }
-  this.selectedSalesUse=e.value;
+  
   console.log(this.selectedSalesUse);
 }
 
@@ -402,12 +430,15 @@ SelectUseTypes(e)
   {
     this.IsValueType = type==1 ? true : false;
     this.IsGreaterValueType = type==2 ? true : false;
-    this.IsHideTxtValue = type==2 ? false : true;
+    // this.ValueTxtValue = type==2 ? false : true;
+  
+  
   
   }
 SelectProductTypes(e)
 {
   var groups=1;
+  this.productSalesUse=e.value;
   if(this.productSalesUse == 1)
   {
       groups=SalesProductGroup.Product;
@@ -421,38 +452,31 @@ SelectProductTypes(e)
   {
       groups=SerachGroup.Both;
   }
-  this.productSalesUse=e.value;
+  
 
   console.log(this.productSalesUse);
 }
 
 SelectValueTypes(e)
 {
+  
+  this.valueSalesUse=e.value
   var groups=1;
   if(this.valueSalesUse == 1)
   {
       groups=SalesValueGroup.value;
-      this.IsHideTxtValue=true;
+      this.ValueTxtValue = false;
+      
   }
   else
   if(this.valueSalesUse == 2)
   {
       groups=SalesValueGroup.greaterValue;
-       this.IsHideTxtValue=false;
+      this.ValueTxtValue = true;
+   
       
   }
-  
-  this.selectedSalesUse=e.value;
-  
-  console.log(this.selectedSalesUse);
 
-  // switch(event)
-  // {
-  //   case '':
-       
-  //     break;
-     
-  // }
 }
 cancelButton()
 {
@@ -468,5 +492,6 @@ uploadCsvButton()
 {}
 GenerateButton()
 {}
+
 
 }

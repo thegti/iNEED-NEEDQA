@@ -7,7 +7,7 @@
          <h1>i need</h1>
  <mat-horizontal-stepper >
     <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup" (ngSubmit)="enquirySubmit()">
+      <form [formGroup]="firstFormGroup" >
 
 
           <!-- <div >
@@ -179,7 +179,7 @@
             <h1>i need</h1>
             <mat-horizontal-stepper >
                     <mat-step [stepControl]="secondFormGroup">
-                      <form [formGroup]="secondFormGroup" (ngSubmit)="enquirySubmit()">
+                      <form [formGroup]="secondFormGroup" >
                          
                             <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" tab-index=9>
                                     <mat-label> </mat-label>
@@ -244,7 +244,7 @@
                     </div>  
 
                     <div class="w87per txt-rgt">
-                            <button *ngIf="!enableClose" mat-raised-button  [disabled]="firstFormGroup.invalid || secondFormGroup.invalid"  class="activate-btn" >submit</button>
+                            <button *ngIf="!enableClose" mat-raised-button  [disabled]="firstFormGroup.invalid || secondFormGroup.invalid" (click)="enquirySubmit()"  class="activate-btn" >submit</button>
                        </div>
                        </form>
                        </mat-step>
