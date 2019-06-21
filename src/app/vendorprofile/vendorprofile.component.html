@@ -128,7 +128,7 @@
                 <div class="vendor-cont-outer">
                         <mat-horizontal-stepper class="vendor-content"  fusePerfectScrollbar>
                                 <mat-step [stepControl]="firstFormGroup">
-                                  <form [formGroup]="firstFormGroup" (ngSubmit)="enquirySubmit()">
+                                  <form [formGroup]="firstFormGroup" >
 <!------ ITEM 1 --------->                                    
                     <div class="demo-content" [hidden]="selectedItem != 'item1'" >
                       <div>
@@ -300,7 +300,7 @@
                                                                        
                                                                         <input type="file" #profilepic  formControlName="photo" (change)="onSelectionchange($event)" (change)="detectFiles($event)" style="display:none">
                                                                         <button type="button"  class="browse-btn-uplod" (click)="profilepic.click()"> choose file</button>
-                                                                        <div class="brows-lbl-uplod" [hidden]="!filenames"> {{ fileName }} </div>                              
+                                                                        <!-- <div class="brows-lbl-uplod" [hidden]="!filenames"> {{ fileName }} </div>                               -->
                                                                        
                                                              </div>  
                                                              <div class="upload-btn">
@@ -433,7 +433,7 @@
                                               <option value="audi">4000</option>
                                             </select>
                                           </mat-form-field>
-                                          <button type="button"    (click)="generateButton()" >
+                                          <button type="button"    (click)="GenerateButton()" >
                                                 generate
                                               </button>
                             </div>  

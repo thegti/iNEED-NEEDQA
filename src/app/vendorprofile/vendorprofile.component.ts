@@ -79,6 +79,18 @@ export class VendorprofileComponent implements OnInit {
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
       txtKeyword: ['', Validators.required],
+      txtRegistrationId : [''],
+      txtRegistrationName : [''],
+      txtRegistrationAddress : [''],
+      txtRegistrationPin : [''],
+      txtRegistrationCity : [''],
+      txtRegistrationCountry : [''],
+      txtRegistrationMobile : [''],
+      txtRegistrationCrd : [''],
+      txtRegistrationEmail : [''],
+      txtRegistrationStatus : [''],
+      txtRegistrationAccount : [''],
+      txtRegistrationPlan : [''],
       txtSalesEmail : ['',[Validators.required, Validators.email,Validators.maxLength(50)] ],
       txtSalesMobile: ['', [Validators.required,Validators.pattern(this.mobnumPattern),Validators.minLength(10),Validators.maxLength(12)]],
       txtWhatsappMobile: ['', [Validators.required,Validators.pattern(this.mobnumPattern),Validators.minLength(10),Validators.maxLength(12)]],
@@ -386,5 +398,19 @@ SelectValueTypes(e)
   
   console.log(this.selectedSalesUse);
 }
+cancelButton()
+{
+
+}
+toggleSidebar(value)
+{}
+downloadCsvButton()
+{}
+detectFiles(value)
+{}
+uploadCsvButton()
+{}
+GenerateButton()
+{}
 
 }
