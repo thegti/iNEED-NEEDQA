@@ -7,7 +7,7 @@
 
 
 .mat-radio-button.mat-accent .mat-radio-inner-circle{
-    background-color: #fff !important;
+    background-color: #00cdfb !important;
 
   }
 
@@ -534,10 +534,11 @@ background-repeat: no-repeat;}
 }                        
     form    {   padding:0px; font-family: 'coheadlinew08-lightregular';
 
-        .demo-content   {
+        .demo-content   {   font-family: 'coheadlinew08-lightregular';
             div         {   display: flex;  align-items: center; color: #0074bc; line-height: 26px;}
             .mat-tab-label, .mat-tab-link {   font-family: 'coheadlinew08-lightregular';}
-            
+
+                       
            mat-label.lft-lbl    {   width:20%; display: inline-block;  margin:0px;} 
 
            span.mid-lbl         {   display: inline-block; margin:0px;}
@@ -675,9 +676,49 @@ background-repeat: no-repeat;}
                 .upload-btn   {   display: flex; justify-content: center; margin-bottom: 10px;
                     .mat-raised-button  {   background: #64af02!important;}
                 } 
-            }                                 
             }
-        } 
+            
+
+            }
+        }
+/*---------- Sales Lead -----------*/         
+        .demo-content       {   
+
+           .mat-input-element   {   font-family: 'coheadlinew08-lightregular';} 
+           .sales-div           {   flex-direction: row;  box-sizing: border-box; display: flex;
+                    align-items: baseline; font-size:15px;
+
+                    mat-label   {   margin:0px; line-height: 15px;}
+                    .mat-form-field-appearance-outline .mat-form-field-flex {   padding: 0 .75em 0 0.5em;}
+                    .mat-radio-group    { font-family: 'coheadlinew08-lightregular';
+                        .mat-radio-button   {    
+                            label   {   font-family: 'coheadlinew08-lightregular'; margin:0px 15px 0px 0px;}
+                        }
+                    }
+                    .mat-form-field-appearance-outline .mat-form-field-infix   {   padding:0px;}
+                    
+                }                            
+                .fixd-div   {    width:100%; display: flex;  align-items: center;  justify-content: flex-end;}
+        }
+
+/*---------- Reports -----------*/ 
+.demo-content       {   
+    .mat-input-element  {   font-family: 'coheadlinew08-lightregular';} 
+    .report-div         {   flex-direction: row;  box-sizing: border-box; display: flex;
+        align-items: baseline; font-size:15px;
+        mat-label   {   margin:0px; line-height: 15px;}
+        .mat-form-field-appearance-outline .mat-form-field-flex {   padding: 0 .75em 0 0.5em;}
+        
+        select.mat-input-element {
+            height: 30px;    border-radius: 0px;    -webkit-border-radius: 0px;    background: #fff;
+            border: 1px solid #ccc;
+        }
+
+        .mat-form-field-type-mat-native-select .mat-form-field-infix::after     {   top: 26%;
+            right: 2%;}
+    }
+
+}        
     }
 }
 
