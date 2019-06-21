@@ -1,0 +1,16 @@
+
+ <h1 matDialogTitle><img src="assets/logos/iNeed-logo.png" width="80px" height="35px">
+    
+  <button (click)="VendorDialogRef.close(false)" class="popup-close">X</button>
+   
+</h1>
+
+
+<div mat-dialog-content *ngIf="!isError" class="forSuccess">
+      <img src="assets/home/tick.png"><br>
+      <span>{{Message}}</span>
+  </div>
+<div mat-dialog-content *ngIf="isError" class="forError">
+      <img src="assets/home/tick.png"><br>
+      <span>{{Message}}</span>
+  </div>

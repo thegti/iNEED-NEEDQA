@@ -82,9 +82,15 @@
                         <mat-horizontal-stepper class="vendor-content"  fusePerfectScrollbar>
                                 <mat-step [stepControl]="firstFormGroup">
                                   <form [formGroup]="firstFormGroup"  >
+<<<<<<< HEAD
 <!-- Item 1 -->                               
                     <div class="demo-content" [hidden]="selectedItem != 'item1'" >
                       <div>
+=======
+
+                        <div class="demo-content" [hidden]="selectedItem != 'item1'">  
+                        <div>
+>>>>>>> 8850a1b8f5f4079db23d71674fac67609b87a4a8
                           <mat-label class="lft-lbl" formControlName="txtRegistrationId" >vendor registration id</mat-label> 
                           <span class="mid-lbl">:</span>
                           <mat-label class="rgt-lbl">{{VendorRegistrationId}}</mat-label> 
@@ -94,24 +100,25 @@
                           <span class="mid-lbl">:</span>
                           <mat-label class="rgt-lbl">{{VendorRegistrationName}}</mat-label>
                         </div>
-                          <div>
+                     
+                      <div>
                               <mat-label class="lft-lbl" formControlName="txtRegistrationAddress">address</mat-label> 
                               <span class="mid-lbl">:</span>
                               <mat-label class="rgt-lbl">{{VendorAddress}}</mat-label>
                               
                              </div>
-                             <div>
+                                 <div>
                                 <mat-label class="lft-lbl" formControlName="txtRegistrationPin">po box</mat-label> 
                                 <span class="mid-lbl">:</span>
                                 <mat-label class="rgt-lbl">{{VendorPin}}</mat-label>
                               
                              </div>
-                             <div>
+                            <div>
                                 <mat-label class="lft-lbl" formControlName="txtRegistrationCity">city</mat-label> 
                                 <span class="mid-lbl">:</span>
                                 <mat-label class="rgt-lbl">{{VendorCity}}</mat-label>
                              </div>
-                             <div>
+                            <div>
                                 <mat-label class="lft-lbl" formControlName="txtRegistrationCountry">country</mat-label> 
                                 <span class="mid-lbl">:</span>
                                 <mat-label class="rgt-lbl">{{VendorCountry}}</mat-label>
@@ -131,11 +138,20 @@
                                 <mat-label class="lft-lbl" formControlName="txtRegistrationEmail">registered email id</mat-label> 
                                 <span class="mid-lbl"> :</span>
                                 <mat-label class="rgt-lbl">{{VendorEmail}}</mat-label>
-                             </div>
+                             </div> 
                      
                     </div>
+<<<<<<< HEAD
 <!-- Item 2 -->
                     <div class="demo-content" [hidden]="selectedItem != 'item2'">
+=======
+
+                    
+
+
+                
+                     <div class="demo-content" [hidden]="selectedItem != 'item2'">
+>>>>>>> 8850a1b8f5f4079db23d71674fac67609b87a4a8
   
                       <div>
                           <mat-label class="lft-lbl" formControlName="txtRegistrationStatus">status</mat-label> 
@@ -143,6 +159,7 @@
                           <mat-label class="rgt-lbl">{{VendorStatus}}</mat-label>
                           
                            </div>
+                         
                           <div>
                               <mat-label class="lft-lbl" formControlName="txtRegistrationAccount">account expiry</mat-label> 
                               <span class="mid-lbl"> :</span>
@@ -158,8 +175,13 @@
                                    </div>
                   
                    
+<<<<<<< HEAD
                   </div>
 <!-- Item 3 -->
+=======
+                  </div> 
+
+>>>>>>> 8850a1b8f5f4079db23d71674fac67609b87a4a8
                    <div class="demo-content" [hidden]="selectedItem != 'item3'">
                         <mat-tab-group>
                                 <mat-tab label="english"> 
@@ -270,26 +292,13 @@
                       <div class="sales-div">   
                                 <mat-label >email to which sales to be shared</mat-label> 
                                 <mat-form-field appearance="outline" fxFlex="50" >
-                                <input matInput type="text" formControlName="txtEmail"  autocomplete="off" required >
+                                <input matInput type="text" formControlName="txtEmail" maxlength="50"  autocomplete="off" required >
                              
                                     <mat-error>email is required</mat-error>
                                
                                    </mat-form-field>
                         </div> 
-<!-- 
-                        <div tab-index=1 >   
-                          <mat-label >email to which sales to be shared</mat-label> 
-                          <mat-form-field appearance="outline" fxFlex="50" >
-                          <input matInput type="text" formControlName="txtEmail"  class="form-control"  placeholder="email" maxlength="50" autocomplete="off" [ngClass]="{ 'is-invalid': validation.txtEmail.touched && validation.txtEmail.errors }" >
-                         <mat-error *ngIf="validation.txtEmail.errors && validation.txtEmail.touched" class="invalid-feedback">
-                           <mat-error *ngIf="validation.txtEmail.errors.required">email is required</mat-error>
-                          <mat-error *ngIf="validation.txtEmail.errors.email && validation.txtEmail.errors"  >enter valid email address</mat-error> 
-                          </mat-error> 
-                            
-                             </mat-form-field>
-                       
-                       
-                  </div>  -->
+
                      
                         <div tab-index=2 class="sales-div"> 
                             <mat-label >mobile number to which sales to be shared</mat-label> 
@@ -304,28 +313,13 @@
                                    </mat-form-field>
                              
                          </div> 
-                         <!-- <div > 
-                          <mat-label>phone</mat-label>
-                              <mat-form-field appearance="outline" fxFlex="50" class="phon-input"> 
-                                            
-                                  <input matInput  type="text"  formControlName="txtSalesMobile" placeholder="number" autocomplete="off" (keypress)="numericOnly($event)" maxlength="10" [ngClass]="{ 'is-invalid': mobilevalid1.txtSalesMobile.touched && mobilevalid1.txtSalesMobile.errors }"  >
-                                  <mat-error *ngIf= "mobilevalid1.txtSalesMobile.errors && mobilevalid1.txtMobile.touched" class="invalid-feedback">
-                                      <mat-error *ngIf="mobilevalid1.txtSalesMobile.errors.required">
-                                         enter mobile number 
-                                      </mat-error>
-                                      <mat-error *ngIf="mobilevalid1.txtSalesMobile.errors.pattern">
-                                        enter valid mobile number 
-                                      </mat-error>
-                                    </mat-error>
-                                 </mat-form-field>
-                           
-                       </div>  -->
+                   
 
                          <div tab-index=3 class="sales-div"> 
                             <mat-label >whatsapp number to which sales to be shared</mat-label>
                                 <mat-form-field appearance="outline" fxFlex="50" class="phon-input"> 
                                                 
-                                    <input matInput  type="text"  formControlName="txtWhatsappMobile" placeholder="number" autocomplete="off" (keypress)="numericOnly($event)" maxlength="10" required >
+                                    <input matInput  type="text"  formControlName="txtWhatsappMobile" placeholder="number" autocomplete="off" (keypress)="numericOnly($event)" maxlength="10"  >
                                 
                                         <mat-error >
                                            enter mobile number 
@@ -365,7 +359,7 @@
                                 <mat-radio-group>
                                         <mat-radio-button  value="1" name="ValueType"  [checked]="IsValueType"   (change)="SelectValueTypes($event)"> any value</mat-radio-button>
                                         <mat-radio-button  value="2" name="GreaterValueType"  [checked]="IsGreaterValueType"  (change)="SelectValueTypes($event)">more than 3000 only</mat-radio-button>
-                                        <input matInput  type="text"   formControlName="txtValue"  (keypress)="numericOnly($event)" maxlength="50"  placeholder="value" autocomplete="off"  >
+                                        <input matInput  type="text"   [hidden]="!ValueTxtValue"  formControlName="txtValue"  (keypress)="numericOnly($event)" maxlength="50"  placeholder="value" autocomplete="off"  >
                                     </mat-radio-group>
                                  
                               
@@ -375,9 +369,7 @@
                                 <button type="button" mat-raised-button   (click)="SaveSalesLeadButton()" >
                                    save
                                  </button>
-                                 <!-- <button type="button" mat-raised-button    (click)="cancelButton()" >
-                                        cancel
-                                      </button> -->
+                             
                                  </div>
 
                     </div>

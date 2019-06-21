@@ -35,6 +35,7 @@ import { TestComponent } from './test/test.component';
 import {ActivateSupplierComponent} from './Supplier/activate-supplier/activate-supplier.component';
 import {VendorprofileComponent} from './vendorprofile/vendorprofile.component';
 import {NextdialogComponent} from './nextdialog/nextdialog.component';
+import {VendorsavedialogComponent} from './vendorsavedialog/vendorsavedialog.component';
 
 // R and D works
 import {SearchautoComponent} from './RandD/searchauto/searchauto.component';
@@ -60,6 +61,7 @@ import { EventEmitterService } from './event-emitter.service';
         ActivateSupplierComponent,
         VendorprofileComponent,
         NextdialogComponent,
+        VendorsavedialogComponent,
 
         //R and D works
 
@@ -70,6 +72,7 @@ import { EventEmitterService } from './event-emitter.service';
     entryComponents: [
         DialogComponent,
         NextdialogComponent,
+        VendorsavedialogComponent
         
       ],
     imports     : [

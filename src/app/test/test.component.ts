@@ -29,7 +29,8 @@ import {VendorKeywordModel } from '../business-object/VendorObject'
   styleUrls: ['./test.component.scss']
 })
 export class TestComponent implements OnInit {
-  
+  ValueTxtValue: boolean = false;
+
     firstFormGroup:FormGroup;
     displayedColumns: string[] = ['SL_NO','VKW_KWORD','Edit'];
     dataSource: MatTableDataSource<VendorKeywordModel>;
@@ -63,5 +64,7 @@ export class TestComponent implements OnInit {
    this.dataSource = new MatTableDataSource(this.keywordList);
   console.log(this.keywordList);
   }
-
+  click(){
+    this.ValueTxtValue = true;
+}
 }
