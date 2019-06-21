@@ -49,10 +49,10 @@ export class VendorGetModel
     Vendor_Status :String
 }
 
-export class VendorSalesGetModel
+export class VendorSalesLeadModel
 {
     VST_PK :number;
-    VST_VENDOR :String;
+    VST_VENDOR :number;
     VST_EMAIL :String;	
     VST_MOBILE :String;		
     VST_WHATSAPP :String;
@@ -62,6 +62,7 @@ export class VendorSalesGetModel
     VST_MIN_VALUE :number;
     VST_MOD_BY :number;				
     VST_MOD_DT :Date;
+    VST_VALUE_TYPE :number;
 
 }
 
