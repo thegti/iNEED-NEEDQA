@@ -430,7 +430,7 @@ SelectUseTypes(e)
   {
     this.IsValueType = type==1 ? true : false;
     this.IsGreaterValueType = type==2 ? true : false;
-    // this.ValueTxtValue = type==2 ? false : true;
+    this.ValueTxtValue = type==2 ? false : true;
   
   
   

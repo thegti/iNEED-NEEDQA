@@ -223,6 +223,7 @@
                                                                   <mat-icon>edit</mat-icon>
                                                                    </button>
                                                                   
+                                                                   
                                                                   </td>
                                                             </ng-container>
                                                            
@@ -343,7 +344,7 @@
                                 <mat-radio-group>
                                         <mat-radio-button  value="1" name="ValueType"  [checked]="IsValueType"   (change)="SelectValueTypes($event)"> any value</mat-radio-button>
                                         <mat-radio-button  value="2" name="GreaterValueType"  [checked]="IsGreaterValueType"  (change)="SelectValueTypes($event)">more than 3000 only</mat-radio-button>
-                                        <input matInput  type="text"   [hidden]="!ValueTxtValue"  formControlName="txtValue"  (keypress)="numericOnly($event)" maxlength="50"  placeholder="value" autocomplete="off"  >
+                                        <input matInput  type="text" class="valuetext"  [hidden]="!ValueTxtValue"  formControlName="txtValue"  (keypress)="numericOnly($event)" maxlength="50"  placeholder="value" autocomplete="off"  >
                                     </mat-radio-group>
                                  
                               
