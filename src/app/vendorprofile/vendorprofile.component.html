@@ -82,9 +82,15 @@
                         <mat-horizontal-stepper class="vendor-content"  fusePerfectScrollbar>
                                 <mat-step [stepControl]="firstFormGroup">
                                   <form [formGroup]="firstFormGroup"  >
+<<<<<<< HEAD
+<!-- Item 1 -->                               
+                    <div class="demo-content" [hidden]="selectedItem != 'item1'" >
+                      <div>
+=======
 
                         <div class="demo-content" [hidden]="selectedItem != 'item1'">  
                         <div>
+>>>>>>> 8850a1b8f5f4079db23d71674fac67609b87a4a8
                           <mat-label class="lft-lbl" formControlName="txtRegistrationId" >vendor registration id</mat-label> 
                           <span class="mid-lbl">:</span>
                           <mat-label class="rgt-lbl">{{VendorRegistrationId}}</mat-label> 
@@ -135,12 +141,17 @@
                              </div> 
                      
                     </div>
+<<<<<<< HEAD
+<!-- Item 2 -->
+                    <div class="demo-content" [hidden]="selectedItem != 'item2'">
+=======
 
                     
 
 
                 
                      <div class="demo-content" [hidden]="selectedItem != 'item2'">
+>>>>>>> 8850a1b8f5f4079db23d71674fac67609b87a4a8
   
                       <div>
                           <mat-label class="lft-lbl" formControlName="txtRegistrationStatus">status</mat-label> 
@@ -164,8 +175,13 @@
                                    </div>
                   
                    
+<<<<<<< HEAD
+                  </div>
+<!-- Item 3 -->
+=======
                   </div> 
 
+>>>>>>> 8850a1b8f5f4079db23d71674fac67609b87a4a8
                    <div class="demo-content" [hidden]="selectedItem != 'item3'">
                         <mat-tab-group>
                                 <mat-tab label="english"> 
@@ -271,10 +287,10 @@
                   </div> 
  
 
-
+<!-- Item 4 -->
                   <div class="demo-content" [hidden]="selectedItem != 'item4'" >
 
-                      <div >   
+                      <div class="sales-div">   
                                 <mat-label >email to which sales to be shared</mat-label> 
                                 <mat-form-field appearance="outline" fxFlex="50" >
                                 <input matInput type="text" formControlName="txtEmail" maxlength="50"  autocomplete="off" required >
@@ -285,7 +301,7 @@
                         </div> 
 
                      
-                        <div tab-index=2> 
+                        <div tab-index=2 class="sales-div"> 
                             <mat-label >mobile number to which sales to be shared</mat-label> 
                                 <mat-form-field appearance="outline" fxFlex="50" class="phon-input"> 
                                                 
@@ -300,7 +316,7 @@
                          </div> 
                    
 
-                         <div tab-index=3> 
+                         <div tab-index=3 class="sales-div"> 
                             <mat-label >whatsapp number to which sales to be shared</mat-label>
                                 <mat-form-field appearance="outline" fxFlex="50" class="phon-input"> 
                                                 
@@ -315,7 +331,7 @@
                          </div> 
                         
                     
-                        <div tab-index=4>   
+                        <div tab-index=4 class="sales-div">   
                                 <mat-label >i want leads for </mat-label> 
                                
                                         <mat-radio-group>  
@@ -327,7 +343,7 @@
                               
                         </div>  
              
-                        <div tab-index=5>   
+                        <div tab-index=5 class="sales-div">   
                                 <mat-label >i want leads for </mat-label> 
                                
                                 <mat-radio-group>
@@ -338,7 +354,7 @@
                                  
                               
                         </div>  
-                        <div tab-index=6>   
+                        <div tab-index=6 class="sales-div">   
                                 <mat-label >i want leads with </mat-label> 
                                
                                 <mat-radio-group>
@@ -350,7 +366,7 @@
                               
                         </div> 
 
-                        <div class="btn-container txt-h" >
+                        <div class="fixd-div" >
                                 <button type="button" mat-raised-button   (click)="SaveSalesLeadButton()" >
                                    save
                                  </button>
@@ -359,9 +375,9 @@
 
                     </div>
 
-
+<!-- Item 5 -->
                     <div class="demo-content" [hidden]="selectedItem != 'item5'">
-                            <div >   
+                            <div class="report-div" >   
                                     <mat-label >sales leads generated</mat-label> 
                                      
                                     <mat-form-field>
