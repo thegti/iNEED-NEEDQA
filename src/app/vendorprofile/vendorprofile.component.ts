@@ -1,8 +1,8 @@
 import { Component, OnInit,ViewChild,ElementRef } from '@angular/core';
 import {MatAccordion} from '@angular/material/expansion';
 import { v4 as uuid } from 'uuid';
-import { FormBuilder, FormGroup, Validators, FormArray, FormControl, FormGroupName} from '@angular/forms';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import { FormBuilder, FormGroup, Validators, FormArray, FormControl, FormGroupName} from '@angular/forms';
 import {VendorKeywordModel} from '../business-object/VendorObject';
 import {VendorGetModel} from '../business-object/VendorObject';
 import { VendorService } from '../services/vendor/vendor.service';
@@ -36,6 +36,7 @@ export class VendorprofileComponent implements OnInit {
   VendortempObject : VendorKeywordModel;
   salesLeadTempObject : VendorKeywordModel;
   salesLeadSaveTempObject : VendorSalesLeadModel;
+  salesLeadList : VendorSalesLeadModel;
   private IsEditSalesLead: boolean =false;
   firstFormGroup: FormGroup;
   public selectedSalesUse:any;
@@ -70,7 +71,16 @@ export class VendorprofileComponent implements OnInit {
   VendorPlan : String;
   moddate: any;
   mobnumPattern = "^((\\+91-?)|0)?[0-9]{10}$"; 
+  IsPersonalUse: boolean =true;
+  IsBusinessUse: boolean;
+  IsBoth: boolean;
+  IsProductType: boolean =true;
+  IsServiceType: boolean;
+  IsBothType : boolean;
+  IsValueType : boolean =true;
+  IsGreaterValueType : boolean;
   private LanguageType: number=1;
+  IsHideTxtValue:boolean=true;
   constructor(private _formBuilder: FormBuilder,private vendorService: VendorService,
     private authService: AuthService,) {
     
@@ -91,14 +101,18 @@ export class VendorprofileComponent implements OnInit {
       txtRegistrationStatus : [''],
       txtRegistrationAccount : [''],
       txtRegistrationPlan : [''],
-      txtSalesEmail : ['',[Validators.required, Validators.email,Validators.maxLength(50)] ],
+      txtEmail : ['',[Validators.required, Validators.email,Validators.maxLength(50)] ],
       txtSalesMobile: ['', [Validators.required,Validators.pattern(this.mobnumPattern),Validators.minLength(10),Validators.maxLength(12)]],
-      txtWhatsappMobile: ['', [Validators.required,Validators.pattern(this.mobnumPattern),Validators.minLength(10),Validators.maxLength(12)]],
-      txtValue : ['']
+     txtWhatsappMobile: ['', [Validators.required,Validators.pattern(this.mobnumPattern),Validators.minLength(10),Validators.maxLength(12)]],
+      txtValue : ['',]
       });
     this.filenames=true;  
     this.user= this.authService.getUserDetail();
     this.GetVendor();
+    this.SetLeadsFor(1);
+    this.SetLeadsTypeFor(1);
+    this.SetValueTypeFor(1);
+  
     
   }
   sidebarMenu(item)
@@ -121,6 +135,8 @@ export class VendorprofileComponent implements OnInit {
           break;
     }
   }
+
+
   UploadKeywordButton()
   {
     // this.uploadkeyword=false;
@@ -208,6 +224,7 @@ export class VendorprofileComponent implements OnInit {
    }
    AddNewKeywordButton()
    {
+     console.log(this.keywordList!=null);
      if(this.IsEditRow)
      {
         this.editKeywordObject.VKW_KWORD=this.firstFormGroup.value.txtKeyword;
@@ -217,7 +234,7 @@ export class VendorprofileComponent implements OnInit {
      {
       this.tempAddObject=
         {
-          "ROW_NO" : this.keywordList.length+1,
+          "ROW_NO" : this.keywordList!=null ? this.keywordList.length+1 : 1,
           "VKW_PK":0,
           "VKW_KWORD" : this.firstFormGroup.value.txtKeyword,
           "VKW_KWORD_TYPE" : this.LanguageType,
@@ -227,13 +244,13 @@ export class VendorprofileComponent implements OnInit {
         console.log(this.tempAddObject);
         this.vendorService.VendorKeywordSave(this.tempAddObject).subscribe((data: Array<object>) => {
           // this.keywordList = data['Data'];
-          this.IsEditRow=false;
           console.log(data['Data']);
           if (data['Data'] > 0) {
             this.AddToList(this.IsEditRow);
              this.firstFormGroup = this._formBuilder.group({
               txtKeyword:'',
               });
+              this.IsEditRow=false;
           }
           else if (data['Data'] === 0) {
               this.keywordErrorMsg='already added';
@@ -251,7 +268,11 @@ export class VendorprofileComponent implements OnInit {
 
     AddToList(IsUpdate: boolean)
     {
-      if(IsUpdate)
+      if( this.keywordList==null)
+      {
+       this.GetKeywords();
+      }
+      else if(IsUpdate)
       {
         this.keywordList.forEach(object=>
           {
@@ -285,31 +306,33 @@ export class VendorprofileComponent implements OnInit {
 
    GetSalesLeadSetup()
    {
-   var reqObj= {"VST_VENDOR":  this.user.VND_PK};
+    var reqObj= {"VST_VENDOR":  this.user.VND_PK};
     this.vendorService.GetSalesLeadSetup(reqObj).subscribe((data: Array<object>) => {
       console.log(data);
       this.IsEditSalesLead=true;
-      this.salesLeadSaveTempObject = data['Data'];
+      this.salesLeadList = data['Data'];
       this.firstFormGroup = this._formBuilder.group({
-        // txtSalesEmail:this.
-        txtSalesEmail: [this.salesLeadSaveTempObject[0].VST_EMAIL],
-        txtSalesMobile : [this.salesLeadSaveTempObject[0].VST_MOBILE],
-        txtWhatsappMobile: [this.salesLeadSaveTempObject[0].VST_WHATSAPP],
-        txtValue : [this.salesLeadSaveTempObject[0].VST_MIN_VALUE],
-        
-
+        // txtEmail:this.
+        txtEmail: [this.salesLeadList[0].VST_EMAIL],
+        txtSalesMobile : [this.salesLeadList[0].VST_MOBILE],
+        txtWhatsappMobile: [this.salesLeadList[0].VST_WHATSAPP],
+        txtValue : [this.salesLeadList[0].VST_MIN_VALUE],
         });
+        this.SetLeadsFor(this.salesLeadList[0].VST_ENQUIRY_TYPE);
+        this.SetLeadsTypeFor(this.salesLeadList[0].VST_ENQUIRY_USE);
+        this.SetValueTypeFor(this.salesLeadList[0].VST_VALUE_TYPE);
    });
    }
 
    SaveSalesLeadButton()
    {
     this.moddate =  new Date().toISOString();
+    var PK = this.salesLeadList==null ? 0 : this.salesLeadList[0].VST_PK;
     this.salesLeadSaveTempObject=
     {
-      "VST_PK" : this.IsEditSalesLead ? this.salesLeadSaveTempObject.VST_PK : 0,
+      "VST_PK" : PK,
       "VST_VENDOR" : this.user.VND_PK,
-      "VST_EMAIL" :	this.firstFormGroup.value.txtSalesEmail,
+      "VST_EMAIL" :	this.firstFormGroup.value.txtEmail,
       "VST_MOBILE" : this.firstFormGroup.value.txtSalesMobile,	
       "VST_WHATSAPP" :this.firstFormGroup.value.txtWhatsappMobile,
       "VST_ENQUIRY_TYPE" :this.productSalesUse> 0 ? this.productSalesUse : 1,	
@@ -331,6 +354,9 @@ export class VendorprofileComponent implements OnInit {
 get validation() { 
      return this.firstFormGroup.controls;
      }
+     get mobilevalid1() {
+      return this.firstFormGroup.controls;
+   } 
 
      get mobilevalid() {
       return this.firstFormGroup.controls;
@@ -360,6 +386,25 @@ SelectUseTypes(e)
   console.log(this.selectedSalesUse);
 }
 
+  SetLeadsFor(type:number)
+  {
+    this.IsPersonalUse = type==1 ? true : false;
+    this.IsBusinessUse = type==2 ? true : false;
+    this.IsBoth = type==3 ? true : false;
+  }
+  SetLeadsTypeFor(type:number)
+  {
+    this.IsProductType = type==1 ? true : false;
+    this.IsServiceType = type==2 ? true : false;
+    this.IsBothType = type==3 ? true : false;
+  }
+  SetValueTypeFor(type:number)
+  {
+    this.IsValueType = type==1 ? true : false;
+    this.IsGreaterValueType = type==2 ? true : false;
+    this.IsHideTxtValue = type==2 ? false : true;
+  
+  }
 SelectProductTypes(e)
 {
   var groups=1;
@@ -387,16 +432,27 @@ SelectValueTypes(e)
   if(this.valueSalesUse == 1)
   {
       groups=SalesValueGroup.value;
+      this.IsHideTxtValue=true;
   }
   else
   if(this.valueSalesUse == 2)
   {
       groups=SalesValueGroup.greaterValue;
+       this.IsHideTxtValue=false;
+      
   }
   
   this.selectedSalesUse=e.value;
   
   console.log(this.selectedSalesUse);
+
+  // switch(event)
+  // {
+  //   case '':
+       
+  //     break;
+     
+  // }
 }
 cancelButton()
 {
