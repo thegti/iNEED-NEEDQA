@@ -705,7 +705,7 @@ background-repeat: no-repeat;}
 .demo-content       {   
     .mat-input-element  {   font-family: 'coheadlinew08-lightregular';} 
     .report-div         {   flex-direction: row;  box-sizing: border-box; display: flex;
-        align-items: baseline; font-size:15px;
+        align-items: center; font-size:15px;
         mat-label   {   margin:0px; line-height: 15px;}
         .mat-form-field-appearance-outline .mat-form-field-flex {   padding: 0 .75em 0 0.5em;}
         
@@ -716,6 +716,8 @@ background-repeat: no-repeat;}
 
         .mat-form-field-type-mat-native-select .mat-form-field-infix::after     {   top: 26%;
             right: 2%;}
+        
+        .mat-form-field {   height:35px;}    
     }
 
 }        
