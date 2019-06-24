@@ -628,7 +628,7 @@ background-repeat: no-repeat;}
                 .add-new-btn    {   width:39%; display: flex; align-items: center; justify-content:space-around;
                                      margin:1% 0px 0px 0px;
                     button      {   font-family: 'coheadlinew08-lightregular'!important; font-size:16px;
-                                    border-radius:3px!important; -webkit-border-radius:3px!important;
+                                    
                         span    {   position: relative;  top: -3px;}
                     }
 
@@ -642,17 +642,17 @@ background-repeat: no-repeat;}
                     button      {   font-family: 'coheadlinew01-regularregular'!important; font-weight:bold;
                                     font-size:16px; background:none!important;  color:#0074bc!important;
                                     box-shadow:none!important; -webkit-box-shadow:none!important;
-                                    border:1px solid #ccc; border-radius:3px!important; -webkit-border-radius:3px!important; }
+                                    border:1px solid #ccc; /*border-radius:3px!important; -webkit-border-radius:3px!important;*/ }
                 }
 /*---------- Keyword Upload -----------*/                
                .keyword-csv     {   margin:0px auto;text-align: center;
                 button          {   font-family: 'coheadlinew08-lightregular'!important; font-size:16px;
-                                    border-radius:3px!important; -webkit-border-radius:3px!important;
+                                    /*border-radius:3px!important; -webkit-border-radius:3px!important;*/ 
                                     height:auto;
                                 }
                 span            {   position: relative;  top: -3px;} 
                 .dwnlod-sample  {   display:flex!important; justify-content: center; 
-                    border-top:1px solid #ccc; padding:10px; } 
+                    border-top:1px solid #ccc; padding:10px;  } 
                 p               {   margin:0px;}
                 h2              {   margin-bottom: 5px;}
 
@@ -691,7 +691,7 @@ background-repeat: no-repeat;}
                     mat-label   {   margin:0px; line-height: 15px;}
                     .mat-form-field-appearance-outline .mat-form-field-flex {   padding: 0 .75em 0 0.5em;}
                     .mat-radio-group    { font-family: 'coheadlinew08-lightregular';
-                        .mat-radio-button   {    
+                        .mat-radio-button   {    font-family: 'coheadlinew08-lightregular';
                             label   {   font-family: 'coheadlinew08-lightregular'; margin:0px 15px 0px 0px;}
                         }
                     }
@@ -710,16 +710,25 @@ background-repeat: no-repeat;}
         align-items: center; font-size:15px;
         mat-label   {   margin:0px; line-height: 15px;}
         .mat-form-field-appearance-outline .mat-form-field-flex {   padding: 0 .75em 0 0.5em;}
+
+        .mat-form-field-wrapper {   
+            .mat-form-field-flex    {  
+                .mat-form-field-infix    {  line-height:15px;  }
+             }
+        }
         
         select.mat-input-element {
-            height: 30px;    border-radius: 0px;    -webkit-border-radius: 0px;    background: #fff;
-            border: 1px solid #ccc;
+            height: 34px;    border-radius: 0px;    -webkit-border-radius: 0px;    background: #fff;
+            border: 1px solid #ccc; padding-left:7px!important;
         }
 
         .mat-form-field-type-mat-native-select .mat-form-field-infix::after     {   top: 26%;
             right: 2%;}
         
-        .mat-form-field {   height:35px;}    
+        .mat-form-field     {   height:35px;}   
+        button.mat-raised-button  {   
+            span            {   position: relative;   top: -2px;  right: 2px;}
+        }     
     }
 
 }        
