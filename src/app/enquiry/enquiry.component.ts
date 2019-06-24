@@ -322,6 +322,7 @@ export class EnquiryComponent implements OnInit,OnDestroy {
             this.confirmDialogRef.componentInstance.Message = 'Thank you for submitting your requirment.Ref.No[' + data['Data'] +']. You will be contacted soon, a copy of your requirment is shared in your email.';
             this.isFirst=false;
             this.next=true; 
+            this.IsValidOtp=false;
           this.confirmDialogRef.afterClosed().subscribe(result => {
             if ( result )
             {
