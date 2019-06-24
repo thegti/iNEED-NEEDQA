@@ -5,7 +5,7 @@ import {Injectable, EventEmitter } from '@angular/core';
   })
 export class SharedData 
 {
-    private _email: string;
+    private _email: string='';
     private _OTP: string;
     private _IsValidOTP: boolean;
 

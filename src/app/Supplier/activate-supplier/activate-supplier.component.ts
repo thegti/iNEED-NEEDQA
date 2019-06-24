@@ -32,6 +32,7 @@ export class ActivateSupplierComponent implements OnInit {
      this.vendorService.ActivateVendor(reqbody).subscribe((data: Array<object>) => {
       console.log('account');
        console.log(data);
+       this.lblMessage="your account is not activatted please try latter!";
       if (data['Data'] === -8){
         this.lblMessage="your account is already activated!";
       }
@@ -39,13 +40,12 @@ export class ActivateSupplierComponent implements OnInit {
         this.sharedData.SetVendorEmail(data["Data"][0].VND_EMAIL);
         this.lblMessage="your account is activated!";
       }
-    
      });
 
     });
   
     // this.firstFormGroup.value.lblActivateMsg="test";
-this.lblMessage="test";
+
 
   }
   

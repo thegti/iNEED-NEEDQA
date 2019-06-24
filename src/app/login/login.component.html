@@ -11,7 +11,7 @@
 
               <div fxLayout="row" fxLayoutAlign="start" class="margn-btm0" >
                     <mat-form-field appearance="outline" fxFlex="50" style="width:300px!important;">
-                        <input matInput type="text" tabindex="1" formControlName="txtUsername"  class="form-control" placeholder="username" [value]= this.email maxlength="50" autocomplete="off" [ngClass]="{ 'is-invalid': validation.txtUsername.touched && validation.txtUsername.errors }" >
+                        <input matInput type="text" tabindex="1" formControlName="txtUsername"  class="form-control" placeholder="username"  maxlength="50" autocomplete="off" [ngClass]="{ 'is-invalid': validation.txtUsername.touched && validation.txtUsername.errors }" >
 
                         <!-- <mat-error *ngIf="validation.txtMobile.hasError('required')">Field must not be empty.</mat-error>
                         <mat-error *ngIf="!validation.txtMobile.hasError('required')">E-Mail is invalid.</mat-error> -->
@@ -35,7 +35,7 @@
                  <input matInput type="password" tabindex="2" formControlName="txtPassword" placeholder="create password*" autocomplete="off" maxlength="20"  required> 
                  <mat-error>
                  <span *ngIf="loginform.value.txtPassword==''" > password is required!</span>
-                <span *ngIf="loginform.value.txtPassword!='' && loginform.controls.txtPassword['status']=='INVALID'" >invalid password</span>
+                <span *ngIf="loginform.value.txtPassword!='' && loginform.controls.txtPassword['status']=='INVALID'" >invalid password (minimum 6 characters required)</span>
               </mat-error>
             </mat-form-field>
         </div>

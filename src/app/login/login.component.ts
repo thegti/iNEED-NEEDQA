@@ -23,37 +23,23 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,) { }
     private IsDisableUserName: boolean=false;
   ngOnInit() {
-    this.loginform = this._formBuilder.group({
-      txtUsername: ['',[Validators.required, Validators.email,Validators.maxLength(50)] ],
-      txtPassword: ['',[Validators.minLength(6),Validators.maxLength(20)]],
-    
-    });
-   
     this.email=this.sharedData.GetVendorEmail();
     // this.loginform.value.txtUsername=this.email;
-
-    if(this.email==undefined){
+    if(this.email==undefined || this.email==''){
       this.email='';
-      // this.IsDisableUserName=false;
-      // this.loginform = this._formBuilder.group({
-      //   txtUsername: ['',[Validators.required, Validators.email] ],
-      //   txtPassword: ['',Validators.minLength(6)],
-      // });
-      // this.loginform = this._formBuilder.group({
-      //   name: ({ value: '', disabled: this.IsDisableUserName })
-      // });
-      // this.loginform.value.txtUsername=this.email;
+      this.loginform = this._formBuilder.group({
+        txtUsername: ['',[Validators.required, Validators.email,Validators.maxLength(50)] ],
+        txtPassword: ['',[Validators.minLength(6),Validators.maxLength(20)]],
+      
+      });
     }
     else
     {
-      this.loginform.value.txtUsername=this.email;
       // this.IsDisableUserName=true;
-      // this.loginform = this._formBuilder.group({
-      //   txtUsername: ['',[Validators.required, Validators.email] ],
-      //   txtPassword: ['',Validators.minLength(6)],
-      // });
-      // this.loginform.controls.txtUsername.disable();
-    
+      this.loginform = this._formBuilder.group({
+        txtUsername: [this.email,[Validators.required, Validators.email] ],
+        txtPassword: ['',[Validators.required,Validators.minLength(6)]],
+      });
     }
   }
   LoginSignIn()
@@ -63,7 +49,9 @@ export class LoginComponent implements OnInit {
       'USR_NAME': this.loginform.value.txtUsername,
       'USR_PWD' : this.loginform.value.txtPassword
    };
+   console.log(reqbody);
     this.authService.VendorLoginVendor(reqbody).subscribe(res => {
+      console.log(res);
         if(res['Data'] == -1)
         {
           this.LoginErrorMsg="invalid username or password";
@@ -73,6 +61,9 @@ export class LoginComponent implements OnInit {
           this.authService.loginStatus.emit(true);
           this.router.navigate(['/vendorprofile' ] );
         }
+    },
+    error => {
+      this.LoginErrorMsg = "Internal Server Error!";
     });
   }
   get validation() { 
