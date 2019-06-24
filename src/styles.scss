@@ -526,7 +526,7 @@ background-repeat: no-repeat;}
 /*--------- right side ------*/ 
 .vendor-cont-outer  {   width:100%; display:flex; align-items: center; }
 .vendor-content     {   width:90%; height:270px; border-radius:5px; -webkit-border-radius:5px; 
-                        padding:20px 20px 10px 20px; box-sizing:border-box; -webkit-box-sizing:border-box;
+                        padding:10px 20px 10px 20px; box-sizing:border-box; -webkit-box-sizing:border-box;
 //vendor profile
 .mat-form-field .mat-select.mat-select-invalid .mat-select-arrow
 {
@@ -704,6 +704,20 @@ background-repeat: no-repeat;}
            .sales-div           {   flex-direction: row;  box-sizing: border-box; display: flex;
                     align-items: baseline; font-size:15px;
 
+                    .mat-form-field {   
+                        .mat-form-field-wrapper   {  
+                            .mat-form-field-flex    { 
+                                .mat-form-field-infix   {   border-top:1px!important; margin-right:5px; 
+                                    input.mat-input-element   { margin-top:-1px;}                               
+                                }
+                            } 
+                            .mat-form-field-subscript-wrapper {     display: block; height:20px;
+                                .mat-error       {   width: 100%;   display: block; color: red !important;
+                                                  height: 12px; } 
+                                                }  
+                        }
+                    } 
+
                     mat-label   {   margin:0px; line-height: 15px;}
                     .mat-form-field-appearance-outline .mat-form-field-flex {   padding: 0 .75em 0 0.5em;}
                     .mat-radio-group    { font-family: 'coheadlinew08-lightregular';
@@ -715,19 +729,7 @@ background-repeat: no-repeat;}
                     mat-error {   width: 100%; display: block; color: #ff0028 !important;
                                         height: 32px; margin-top: -2px;}
 
-                                        // .mat-form-field {   
-                                        //     .mat-form-field-wrapper   {  
-                                        //         .mat-form-field-flex    { 
-                                        //             .mat-form-field-infix   {   border-top:1px!important; margin-right:5px;
-                                                       
-                                        //             }
-                                        //         } 
-                                        //         .mat-form-field-subscript-wrapper {     display: block; height:20px;
-                                        //             .mat-error       {   width: 100%;   display: block; color: red !important;
-                                        //                               height: 12px; } 
-                                        //                             }  
-                                        //     }
-                                        // }                
+                                                    
                     
                 }                            
                 .fixd-div   {    width:100%; display: flex;  align-items: center;  justify-content: flex-end;}
