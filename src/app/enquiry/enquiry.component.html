@@ -60,7 +60,7 @@
             <mat-label >name</mat-label> 
            <mat-form-field appearance="outline" fxFlex="50" >
               
-            <input matInput type="text" formControlName="txtName" placeholder="name" maxlength="20" autocomplete="off" [ngClass]="{ 'is-invalid': txtNamevalid.txtName.touched && txtNamevalid.txtName.errors }"  >
+            <input matInput type="text" formControlName="txtName" placeholder="name" maxlength="30" autocomplete="off" [ngClass]="{ 'is-invalid': txtNamevalid.txtName.touched && txtNamevalid.txtName.errors }"  >
             <!-- <mat-error *ngIf="firstFormGroup.controls.txtName.errors?.required && firstFormGroup.controls.txtName.touched" >
                 enter name
               </mat-error> -->
@@ -200,7 +200,7 @@
     <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" tab-index=11> 
             <mat-label>qty.</mat-label>
         <mat-form-field appearance="outline" fxFlex="50" class="min-max28-5">
-            <input matInput  type="number" min="0" formControlName="txtQuantity" placeholder="qty" class="quantitynumber"  >
+            <input matInput  type="number" min="0" formControlName="txtQuantity" maxlength="5" placeholder="qty" class="quantitynumber"  >
             <mat-error *ngIf="secondFormGroup.controls.txtQuantity.errors?.required && secondFormGroup.controls.txtQuantity.touched" >
                 enter quantity
               </mat-error>
@@ -208,7 +208,7 @@
 
         <mat-form-field appearance="outline" fxFlex="50" class="min-max28-5" tab-index=12>
     
-                <mat-select  formControlName="ddlUnit" maxlength="5" placeholder="unit" >
+                <mat-select  formControlName="ddlUnit"  placeholder="unit" >
                     <mat-option *ngFor="let type of unitOfMeasure"  [value]="type['UOM_PK']">
                         {{type['UOM_NAME']  }}
                   </mat-option> 
@@ -222,7 +222,7 @@
                    <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" tab-index=13> 
                         <mat-label>approximate value</mat-label>
                     <mat-form-field appearance="outline" fxFlex="50">
-                        <input matInput  type="number" min="0" formControlName="txtApproximate" class="quantitynumber"  placeholder="approximate value"  >
+                        <input matInput  type="number" min="0" formControlName="txtApproximate" class="quantitynumber" maxlength="8"  placeholder="approximate value"  >
                     </mat-form-field>
                     </div> 
 

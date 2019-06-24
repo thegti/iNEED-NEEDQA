@@ -390,7 +390,7 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
         disableClose: true
     });
    
-    this.VendorSaveDialogRef.componentInstance.Message = 'Sales lead details of  are submitted successfully';
+    this.VendorSaveDialogRef.componentInstance.Message = 'Sales lead details of '+this.VendorRegistrationName+' is submitted successfully';
     
   this.VendorSaveDialogRef.afterClosed().subscribe(result => {
     if ( result )

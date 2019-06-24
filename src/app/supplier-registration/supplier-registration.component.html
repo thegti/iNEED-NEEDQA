@@ -12,7 +12,7 @@
             
             <div fxLayout="row" fxLayoutAlign="flex-end" fxFlex="1 0 auto" class="h45" tab-index=1>
                     <mat-form-field appearance="outline" fxFlex="50">
-                    <input matInput type="text" placeholder="name or company*" name="search" formControlName="txtCompany" autocomplete="off" required >
+                    <input matInput type="text" placeholder="name or company*" name="search" maxlength="30" formControlName="txtCompany" autocomplete="off" required >
                     <mat-error > enter name or company </mat-error>
                     </mat-form-field>
             </div>  
@@ -29,14 +29,14 @@
 
              <div fxLayout="row" fxLayoutAlign="flex-end" fxFlex="1 0 auto" tab-index=3>  
                     <mat-form-field appearance="outline" fxFlex="50">
-                     <input matInput type="text" placeholder="pincode" name="pincode" formControlName="txtPincode" >
+                     <input matInput type="text" placeholder="pincode" maxlength="15" name="pincode" formControlName="txtPincode" >
                     <mat-error>enter pincode</mat-error>
                  </mat-form-field>
              </div> 
 
              <div fxLayout="row" fxLayoutAlign="flex-end" fxFlex="1 0 auto" tab-index=4>   
                     <mat-form-field appearance="outline" fxFlex="50">
-                     <input matInput type="text" placeholder="city" name="city" formControlName="txtCity" >
+                     <input matInput type="text" placeholder="city" maxlength="30" name="city" formControlName="txtCity" >
                      <mat-error>enter city</mat-error>
                  </mat-form-field>
              </div> 
@@ -94,13 +94,13 @@
 
                             <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" tab-index=7> 
                                     <mat-form-field appearance="outline" fxFlex="50">
-                                            <input matInput  type="text" placeholder="cr no or qid(qatar)" name="QID" formControlName="txtQIDText"  >
+                                            <input matInput  type="text" placeholder="cr no or qid(qatar)" maxlength="20" name="QID" formControlName="txtQIDText"  >
                                     </mat-form-field>    
                                     </div>
 
                                     <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" tab-index=8> 
                                             <mat-form-field appearance="outline" fxFlex="50">
-                                             <input matInput type="text" placeholder="email id*" name="email" formControlName="txtEmail" maxlength="50" autocomplete="off" required>
+                                             <input matInput type="text" placeholder="email id*" name="email" formControlName="txtEmail" maxlength="30" autocomplete="off" required>
                                              <!-- <mat-error>enter valid email id</mat-error> -->
                                              <mat-error *ngIf=" f.txtEmail.errors && f.txtEmail.touched" class="invalid-feedback">
                                                 <mat-error *ngIf="f.txtEmail.errors.required">Email is required</mat-error>

@@ -9,8 +9,8 @@ import { FooterModule } from 'app/layout/components/footer/footer.module';
 import { NavbarModule } from 'app/layout/components/navbar/navbar.module';
 import { QuickPanelModule } from 'app/layout/components/quick-panel/quick-panel.module';
 import { ToolbarModule } from 'app/layout/components/toolbar/toolbar.module';
-
 import { HorizontalLayout1Component } from 'app/layout/horizontal/layout-1/layout-1.component';
+
 
 
 @NgModule({
@@ -36,5 +36,12 @@ import { HorizontalLayout1Component } from 'app/layout/horizontal/layout-1/layou
 })
 export class HorizontalLayout1Module
 {
-    
+   
+    constructor() { }
+        ngOnInit() {
+          
+           
+           
+        }
+        
 }
