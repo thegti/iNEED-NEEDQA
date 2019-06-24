@@ -72,9 +72,9 @@ export class HorizontalLayout1Component implements OnInit, OnDestroy
                 this.fuseConfig = config;
             });
             this.email='';
-            this.email=this.sharedData.GetVendorEmail();
-            console.log( this.email);
-            console.log("Welcom->1");
+            // this.email=this.sharedData.GetVendorEmail();
+            // console.log( this.email);
+            // console.log("Welcom->1");
             if(this.email==undefined || this.email==''){
                 this.user= this.authService.getUserDetail();
                 console.log("Welcom->2");
