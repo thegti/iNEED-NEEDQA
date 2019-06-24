@@ -259,7 +259,7 @@
                       <div class="sales-div">   
                                 <mat-label >email to which sales to be shared</mat-label> 
                                 <mat-form-field appearance="outline" fxFlex="50" >
-                                <input matInput formControlName="txtEmail" maxlength="50" placeholder="email">
+                                <input type="text" matInput formControlName="txtEmail" maxlength="50" [value]="vendorEmail"  placeholder="email">
                                 <mat-error *ngIf=" formControls.txtEmail.errors && formControls.txtEmail.touched" class="invalid-feedback">
                                     <mat-error *ngIf="formControls.txtEmail.errors.required">email is required</mat-error>
                                    <mat-error *ngIf="formControls.txtEmail.errors.email&& formControls.txtEmail.errors"  >enter valid email address</mat-error>
@@ -272,7 +272,7 @@
                             <mat-label >mobile number to which sales to be shared</mat-label> 
                                 <mat-form-field appearance="outline" fxFlex="50" class="phon-input"> 
                                                 
-                                    <input matInput  type="text"  formControlName="txtSalesMobile" placeholder="mobile number" autocomplete="off" (keypress)="numericOnly($event)" maxlength="10" required   >
+                                    <input matInput  type="text"  formControlName="txtSalesMobile" [value] ="vendorSalesMobile"  placeholder="mobile number" autocomplete="off" (keypress)="numericOnly($event)" maxlength="10" required   >
                                   
                                     <mat-error *ngIf="formControls.txtSalesMobile.errors && formControls.txtSalesMobile.touched" class="invalid-feedback">
                                             <mat-error *ngIf="formControls.txtSalesMobile.errors.required">enter mobile number </mat-error>
@@ -296,7 +296,7 @@
                          <div tab-index=3 class="sales-div"> 
                             <mat-label >whatsapp number to which sales to be shared</mat-label>
                                 <mat-form-field appearance="outline" fxFlex="50" class="phon-input"> 
-                                    <input matInput  type="text"  formControlName="txtWhatsappMobile" placeholder="mobile number" autocomplete="off" (keypress)="numericOnly($event)" maxlength="10"  >
+                                    <input matInput  type="text"  formControlName="txtWhatsappMobile" [value] ="vendorWhatsappMobile" placeholder="mobile number" autocomplete="off" (keypress)="numericOnly($event)" maxlength="10"  >
                                     <mat-error *ngIf="formControls.txtWhatsappMobile.errors && formControls.txtWhatsappMobile.touched" class="invalid-feedback">
                                     <mat-error *ngIf="formControls.txtWhatsappMobile.errors.pattern "  >enter valid mobile number </mat-error>
                                     </mat-error>
@@ -343,7 +343,7 @@
                                 <mat-radio-group>
                                         <mat-radio-button  value="1" name="ValueType"  [checked]="IsValueType"   (change)="SelectValueTypes($event)"> any value</mat-radio-button>
                                         <mat-radio-button  value="2" name="GreaterValueType"  [checked]="IsGreaterValueType"  (change)="SelectValueTypes($event)">more than 3000 only</mat-radio-button>
-                                        <input matInput  type="text" class="valuetext"  [hidden]="!ValueTxtValue"  formControlName="txtValue"  (keypress)="numericOnly($event)" maxlength="8"  placeholder="value" autocomplete="off"  >
+                                        <input matInput  type="text" class="valuetext"  [hidden]="!ValueTxtValue" [value]="vendorMinValue"  formControlName="txtValue"  (keypress)="numericOnly($event)" maxlength="8"  placeholder="value" autocomplete="off"  >
                                     </mat-radio-group>
                                  
                               
