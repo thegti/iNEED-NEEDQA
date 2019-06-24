@@ -304,22 +304,19 @@
          
               
             </div> -->
-            <mat-form-field appearance="outline" fxFlex="50">
+            <!-- <mat-form-field appearance="outline" fxFlex="50">
                 <input matInput type="email" placeholder="Email" formControlName="email" required>
                 <mat-error *ngFor="let validation of account_validation_messages.email">
                   <mat-error class="error-message" *ngIf="firstFormGroup.get('email').hasError(validation.type) && (firstFormGroup.get('email').dirty || firstFormGroup.get('email').touched)">{{validation.message}}</mat-error>
-                </mat-error>
-              </mat-form-field>
-            <!-- <div fxLayout="row" > 
+                </mat-error> 
+               
+              </mat-form-field>-->
+            <div fxLayout="row" > 
                 <mat-form-field appearance="outline" fxFlex="50">
                  <input matInput type="text" placeholder="email id*" name="email" formControlName="email" maxlength="50" autocomplete="off" required>
-             
-                 <mat-error *ngIf=" f.email.errors && f.email.touched" class="invalid-feedback">
-                    <mat-error *ngIf="f.email.errors.required">Email is required</mat-error>
-                   <mat-error *ngIf="f.email.errors.email&& f.email.errors"  >Enter valid email address</mat-error>
-                  </mat-error>
+                 <mat-error>Invalid email</mat-error>
              </mat-form-field>
-         </div>  -->
+         </div>  
 
                  
 

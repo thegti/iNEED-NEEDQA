@@ -36,6 +36,9 @@ import {ActivateSupplierComponent} from './Supplier/activate-supplier/activate-s
 import {VendorprofileComponent} from './vendorprofile/vendorprofile.component';
 import {NextdialogComponent} from './nextdialog/nextdialog.component';
 import {VendorsavedialogComponent} from './vendorsavedialog/vendorsavedialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
 
 // R and D works
 import {SearchautoComponent} from './RandD/searchauto/searchauto.component';
@@ -95,7 +98,9 @@ import { EventEmitterService } from './event-emitter.service';
         // App modules
         LayoutModule,
         AppMaterialModule,
-        AppRoutingModule
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
     ],
     providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, EventEmitterService],
     bootstrap   : [

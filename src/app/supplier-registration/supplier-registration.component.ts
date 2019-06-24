@@ -187,7 +187,7 @@ export class SupplierRegistrationComponent implements OnInit,OnDestroy {
             this.confirmDialogRef = this._matDialog.open(DialogComponent, {
                 disableClose: true
             });
-            var msg='Thank you for submitting your requirment.Ref.No[' + data['Data'] + ']. You will be contacted soon, a copy of your requirment is shared in your email.';
+            var msg='Please check your email to validate and complete the vendor registration.Ref.No[' + data['Data'] + ']. ';
         //    this.confirmDialogRef.componentInstance.isError=false;
           
           this.confirmDialogRef.componentInstance.Message = msg;

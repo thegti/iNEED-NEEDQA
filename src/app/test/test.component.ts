@@ -146,14 +146,19 @@ this.ResetFormControls(true);
     txtRegistrationStatus : [''],
     txtRegistrationAccount : [''],
     txtRegistrationPlan : [''],
+    email: ['', Validators.email],
     // txtEmail: new FormControl('', Validators.compose([
     //   Validators.required,
     //   Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
     // ])),
-    email: ['', [
-      Validators.required,
-      Validators.email
-  ]],
+  //   email: ['', [
+  //     Validators.required,
+  //     Validators.email
+  // ]],
+  // email: new FormControl('', Validators.compose([
+  //   Validators.required,
+  //   Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+  // ])),
     // txtEmail : ['',[Validators.required, Validators.email,Validators.maxLength(50)] ],
     txtSalesMobile: ['', [Validators.required,Validators.pattern(this.mobnumPattern),Validators.minLength(10)]],
   //  txtWhatsappMobile: ['', [Validators.required,Validators.pattern(this.mobnumPattern),Validators.minLength(10),Validators.maxLength(12)]],

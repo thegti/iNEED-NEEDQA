@@ -60,7 +60,7 @@
             <mat-label >name</mat-label> 
            <mat-form-field appearance="outline" fxFlex="50" >
               
-            <input matInput type="text" formControlName="txtName" placeholder="name" autocomplete="off" [ngClass]="{ 'is-invalid': txtNamevalid.txtName.touched && txtNamevalid.txtName.errors }"  >
+            <input matInput type="text" formControlName="txtName" placeholder="name" maxlength="20" autocomplete="off" [ngClass]="{ 'is-invalid': txtNamevalid.txtName.touched && txtNamevalid.txtName.errors }"  >
             <!-- <mat-error *ngIf="firstFormGroup.controls.txtName.errors?.required && firstFormGroup.controls.txtName.touched" >
                 enter name
               </mat-error> -->
@@ -83,7 +83,7 @@
         <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="h45" tab-index=5>   
                  <mat-label >email</mat-label>  
                  <mat-form-field appearance="outline" fxFlex="50" >
-                 <input matInput type="text" formControlName="txtEmail"  class="form-control" placeholder="email" maxlength="50" autocomplete="off" [ngClass]="{ 'is-invalid': validation.txtEmail.touched && validation.txtEmail.errors }" >
+                 <input matInput type="text" formControlName="txtEmail" maxlength="30"  class="form-control" placeholder="email" maxlength="50" autocomplete="off" [ngClass]="{ 'is-invalid': validation.txtEmail.touched && validation.txtEmail.errors }" >
 
                  <!-- <mat-error *ngIf="validation.txtMobile.hasError('required')">Field must not be empty.</mat-error>
                  <mat-error *ngIf="!validation.txtMobile.hasError('required')">E-Mail is invalid.</mat-error> -->
@@ -208,7 +208,7 @@
 
         <mat-form-field appearance="outline" fxFlex="50" class="min-max28-5" tab-index=12>
     
-                <mat-select  formControlName="ddlUnit" placeholder="unit" >
+                <mat-select  formControlName="ddlUnit" maxlength="5" placeholder="unit" >
                     <mat-option *ngFor="let type of unitOfMeasure"  [value]="type['UOM_PK']">
                         {{type['UOM_NAME']  }}
                   </mat-option> 

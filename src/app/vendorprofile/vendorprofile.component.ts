@@ -26,7 +26,6 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 
 export class VendorprofileComponent implements OnInit {
   @ViewChild('search') searchElement: ElementRef;
-
   displayedColumns: string[] = ['checkbox','VKW_KWORD','Edit'];
   dataSource: MatTableDataSource<VendorKeywordModel>;
   keywordList: VendorKeywordModel[]=[]; 
@@ -93,31 +92,19 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
-      txtKeyword: ['', Validators.required],
-      txtRegistrationId : [''],
-      txtRegistrationName : [''],
-      txtRegistrationAddress : [''],
-      txtRegistrationPin : [''],
-      txtRegistrationCity : [''],
-      txtRegistrationCountry : [''],
-      txtRegistrationMobile : [''],
-      txtRegistrationCrd : [''],
-      txtRegistrationEmail : [''],
-      txtRegistrationStatus : [''],
-      txtRegistrationAccount : [''],
-      txtRegistrationPlan : [''],
-      txtEmail : ['',[Validators.required, Validators.email,Validators.maxLength(50)] ],
-      txtSalesMobile: ['', [Validators.required,Validators.pattern(this.mobnumPattern),Validators.minLength(10)]],
-    //  txtWhatsappMobile: ['', [Validators.required,Validators.pattern(this.mobnumPattern),Validators.minLength(10),Validators.maxLength(12)]],
-      txtValue : ['',]
+       txtKeyword: [''],
+       txtEmail : ['',[Validators.required, Validators.email]],
+       txtSalesMobile: ['', [Validators.required,Validators.pattern(this.mobnumPattern)]],
+       txtWhatsappMobile: ['', [Validators.pattern(this.mobnumPattern)]],
+       txtValue : ['']
       });
       
     this.filenames=true;  
     this.user= this.authService.getUserDetail();
-
-    setTimeout(()=>{ // this will make the execution after the above boolean has changed
-      this.GetVendor();
-    },0);  
+    this.GetVendor();
+    // setTimeout(()=>{ // this will make the execution after the above boolean has changed
+    //  
+    // },0);  
 
     
     this.SetLeadsFor(1);
@@ -127,6 +114,7 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
    
     
   }
+ 
   sidebarMenu(item)
   {
     this.selectedItem=item;
@@ -136,8 +124,13 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
       case 'item3':
           this.GetKeywords();
           this.IsHideUploadDiv=false;
+          
           this.firstFormGroup = this._formBuilder.group({
-            txtKeyword:'',
+            txtKeyword: ['', Validators.required],
+            txtEmail : [''],
+            txtSalesMobile: [''],
+            txtWhatsappMobile: [''],
+            txtValue : ['']
             });
              this.keywordErrorMsg='';
         break;
@@ -175,11 +168,17 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
    {
     this.IsHideUploadDiv=true;
     this.firstFormGroup = this._formBuilder.group({
-      txtKeyword:'',
+      txtKeyword: ['', Validators.required],
+      txtEmail : [''],
+      txtSalesMobile: [''],
+      txtWhatsappMobile: [''],
+      txtValue : ['']
       });
       this.firstFormGroup.value.txtKeyword.reset();
+      
    
    }
+   
   //  AddNewKeywordButton()
   //  {
    
@@ -187,7 +186,9 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
   //  }
    CancelNewKeywordButton()
    {
-    this.IsHideUploadDiv=false;
+    setTimeout(()=>{ // this will make the execution after the above boolean has changed
+      this.IsHideUploadDiv=false;
+    },10);  
    }
    GetKeywords()
    {
@@ -259,15 +260,23 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
           console.log(data['Data']);
           if (data['Data'] > 0) {
             this.AddToList(this.IsEditRow);
-             this.firstFormGroup = this._formBuilder.group({
-              txtKeyword:'',
+            this.firstFormGroup = this._formBuilder.group({
+              txtKeyword: ['', Validators.required],
+              txtEmail : [''],
+              txtSalesMobile: [''],
+              txtWhatsappMobile: [''],
+              txtValue : ['']
               });
               this.IsEditRow=false;
           }
           else if (data['Data'] === 0) {
               this.keywordErrorMsg='already added';
               this.firstFormGroup = this._formBuilder.group({
-                txtKeyword:'',
+                txtKeyword: ['', Validators.required],
+                txtEmail : [''],
+                txtSalesMobile: [''],
+                txtWhatsappMobile: [''],
+                txtValue : ['']
                 });
           }
       });
@@ -301,16 +310,22 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
       }
     }
       
+    
    forEdit(value): any {
-    this.IsHideUploadDiv=true;
+   
+
     this.editKeywordObject=value   
-    this.firstFormGroup.value.txtKeyword=this.editKeywordObject.VKW_KWORD;
     this.firstFormGroup = this._formBuilder.group({
       txtKeyword: [this.editKeywordObject.VKW_KWORD, Validators.required],
+      txtEmail : [''],
+      txtSalesMobile: [''],
+      txtWhatsappMobile: [''],
+      txtValue : ['']
       });
     this.IsEditRow=true;
     this.keywordErrorMsg='';
     setTimeout(()=>{ // this will make the execution after the above boolean has changed
+      this.IsHideUploadDiv=true;
       this.searchElement.nativeElement.focus();
     },0);  
    }
@@ -319,16 +334,26 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
    GetSalesLeadSetup()
    {
     var reqObj= {"VST_VENDOR":  this.user.VND_PK};
+    this.firstFormGroup = this._formBuilder.group({
+        txtEmail : ['',[Validators.required, Validators.email,Validators.maxLength(50)] ],
+        txtSalesMobile: ['', [Validators.required,Validators.pattern(this.mobnumPattern)]],
+        txtWhatsappMobile: ['', [Validators.pattern(this.mobnumPattern)]],
+        txtKeyword : [''],
+        txtValue : ['']
+       });
+       
     this.vendorService.GetSalesLeadSetup(reqObj).subscribe((data: Array<object>) => {
       console.log(data);
       this.IsEditSalesLead=true;
       this.salesLeadList = data['Data'];
       this.firstFormGroup = this._formBuilder.group({
         // txtEmail:this.
-        txtEmail: [this.salesLeadList[0].VST_EMAIL],
-        txtSalesMobile : [this.salesLeadList[0].VST_MOBILE],
-        txtWhatsappMobile: [this.salesLeadList[0].VST_WHATSAPP],
+        txtEmail: [this.salesLeadList[0].VST_EMAIL,Validators.required, Validators.email],
+        txtSalesMobile : [this.salesLeadList[0].VST_MOBILE,Validators.required,Validators.pattern(this.mobnumPattern)],
+        txtWhatsappMobile: [this.salesLeadList[0].VST_WHATSAPP,Validators.pattern(this.mobnumPattern)],
         txtValue : [this.salesLeadList[0].VST_MIN_VALUE],
+        txtKeyword:[''],
+        
         });
         this.SetLeadsFor(this.salesLeadList[0].VST_ENQUIRY_TYPE);
         this.SetLeadsTypeFor(this.salesLeadList[0].VST_ENQUIRY_USE);
@@ -365,7 +390,7 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
         disableClose: true
     });
    
-    this.VendorSaveDialogRef.componentInstance.Message = 'Sales lead details are submitted successfully';
+    this.VendorSaveDialogRef.componentInstance.Message = 'Sales lead details of  are submitted successfully';
     
   this.VendorSaveDialogRef.afterClosed().subscribe(result => {
     if ( result )
@@ -495,6 +520,14 @@ uploadCsvButton()
 {}
 GenerateButton()
 {}
+get formControls() { return this.firstFormGroup.controls; }
+// get txtSalesMobile() {
+//   return this.firstFormGroup.get('txtSalesMobile');
+// }  
+// get txtWhatsappMobile() {
+//   return this.firstFormGroup.get('txtWhatsappMobile');
+// }  
+
 
 
 }

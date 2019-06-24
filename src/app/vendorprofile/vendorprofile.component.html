@@ -40,10 +40,6 @@
                         <mat-list-item class="mat-list-item" [ngClass]="{active:  selectedItem == 'item5'}">
                             <span (click)="sidebarMenu('item5')" class="mat-list-item-content">reports</span>
                         </mat-list-item>
-                
-                        
-                
-                       
                     </mat-list>
                 </div>
                 
@@ -56,111 +52,88 @@
     
         <!-- CENTER -->
         <div class="center" fxLayout="row">
-    
-            <!-- CONTENT HEADER -->
-            <!-- <div class="header accent p-24">
-                <h2 class="m-0">Left sidebar with inner scroll</h2>
-            </div> -->
-            <!-- / CONTENT HEADER -->
-    
-            <!-- CONTENT CARD -->
-            <!-- <div class="content-card"> -->
-    
-                <!-- CONTENT TOOLBAR -->
                 <div class="toolbar">
-    
                     <button mat-icon-button class="sidebar-toggle" fxHide.gt-md fxShow.gt-sm
                             (click)="toggleSidebar('carded-left-sidebar-2')">
                         <mat-icon>menu</mat-icon>
                     </button>
-    
-                
-    
                 </div>
-              
                 <div class="vendor-cont-outer" >
                         <mat-horizontal-stepper class="vendor-content"  fusePerfectScrollbar>
                                 <mat-step [stepControl]="firstFormGroup">
                                   <form [formGroup]="firstFormGroup"  >
 
                         <div class="demo-content" [hidden]="selectedItem != 'item1'">  
-                           
                         <div>
-                          <mat-label class="lft-lbl" formControlName="txtRegistrationId" >vendor registration id</mat-label> 
+                          <mat-label class="lft-lbl"  >vendor registration id</mat-label> 
                           <span class="mid-lbl">:</span>
                           <mat-label class="rgt-lbl">{{VendorRegistrationId}}</mat-label> 
                         </div>
                           <div>
-                          <mat-label class="lft-lbl" formControlName="txtRegistrationName">registered name</mat-label>
+                          <mat-label class="lft-lbl" >registered name</mat-label>
                           <span class="mid-lbl">:</span>
                           <mat-label class="rgt-lbl">{{VendorRegistrationName}}</mat-label>
                         </div>
                      
-                      <div>
-                              <mat-label class="lft-lbl" formControlName="txtRegistrationAddress">address</mat-label> 
+                           <div>
+                              <mat-label class="lft-lbl" >address</mat-label> 
                               <span class="mid-lbl">:</span>
                               <mat-label class="rgt-lbl">{{VendorAddress}}</mat-label>
                               
                              </div>
                                  <div>
-                                <mat-label class="lft-lbl" formControlName="txtRegistrationPin">po box</mat-label> 
+                                <mat-label class="lft-lbl" >po box</mat-label> 
                                 <span class="mid-lbl">:</span>
                                 <mat-label class="rgt-lbl">{{VendorPin}}</mat-label>
                               
                              </div>
                             <div>
-                                <mat-label class="lft-lbl" formControlName="txtRegistrationCity">city</mat-label> 
+                                <mat-label class="lft-lbl" >city</mat-label> 
                                 <span class="mid-lbl">:</span>
                                 <mat-label class="rgt-lbl">{{VendorCity}}</mat-label>
                              </div>
                             <div>
-                                <mat-label class="lft-lbl" formControlName="txtRegistrationCountry">country</mat-label> 
+                                <mat-label class="lft-lbl" >country</mat-label> 
                                 <span class="mid-lbl">:</span>
                                 <mat-label class="rgt-lbl">{{VendorCountry}}</mat-label>
                              </div>
                              <div>
-                                <mat-label class="lft-lbl" formControlName="txtRegistrationMobile">mob</mat-label> 
+                                <mat-label class="lft-lbl" >mob</mat-label> 
                                 <span class="mid-lbl">:</span>
                                 <mat-label class="rgt-lbl">{{VendorMob}}</mat-label>
                              </div>
                              <div>
-                                <mat-label class="lft-lbl" formControlName="txtRegistrationCrd">crn no / qid</mat-label> 
+                                <mat-label class="lft-lbl" >crn no / qid</mat-label> 
                                 <span class="mid-lbl">:</span>
                                 <mat-label class="rgt-lbl">{{VendorCrn}}</mat-label>
                               
                              </div>
                              <div>
-                                <mat-label class="lft-lbl" formControlName="txtRegistrationEmail">registered email id</mat-label> 
+                                <mat-label class="lft-lbl" >registered email id</mat-label> 
                                 <span class="mid-lbl"> :</span>
                                 <mat-label class="rgt-lbl">{{VendorEmail}}</mat-label>
                              </div> 
-                     
                     </div>
 <!-- Item 2 -->
-                    
-
-                    
-
-
                 
                      <div class="demo-content" [hidden]="selectedItem != 'item2'">
   
                       <div>
-                          <mat-label class="lft-lbl" formControlName="txtRegistrationStatus">status</mat-label> 
+                          <mat-label class="lft-lbl" >status</mat-label> 
                           <span class="mid-lbl"> :</span>
                           <mat-label class="rgt-lbl">{{VendorStatus}}</mat-label>
                           
                            </div>
                          
                           <div>
-                              <mat-label class="lft-lbl" formControlName="txtRegistrationAccount">account expiry</mat-label> 
+                              <mat-label class="lft-lbl" >account expiry</mat-label> 
                               <span class="mid-lbl"> :</span>
                               <mat-label class="rgt-lbl">{{VendorExpiry}}</mat-label>
                               
                                </div>
 
                                <div>
-                                  <mat-label class="lft-lbl" formControlName="txtRegistrationPlan">plan</mat-label> 
+                                  <mat-label class="lft-lbl" >plan</mat-label> 
                                   <span class="mid-lbl"> :</span>
                                   <mat-label class="rgt-lbl">{{VendorPlan}}</mat-label>
                                   
@@ -191,10 +164,14 @@
                                                          </button>
                                                         </div>
                                                          <div class="keywordadd" [hidden]="!IsHideUploadDiv">
-                                                            <input  matInput type="text" class="relativePosition" (change)="ChangeText()" #search formControlName="txtKeyword"  required  >
+                                                                <mat-form-field >
+                                                                        <input matInput type="text" class="relativePosition" (change)="ChangeText()" formControlName="txtKeyword" maxlength="50" required>
+                                                                        <mat-error >enter keyword</mat-error>
+                                                                        </mat-form-field>
 
                                                             <div class="repeatkeyword">{{this.keywordErrorMsg}}</div> 
-                                                            <button type="button"  mat-raised-button  (click)="AddNewKeywordButton()" [disabled]="firstFormGroup.invalid" >add</button>
+                                                            <button type="button"  mat-raised-button [disabled]="(firstFormGroup.value.txtKeyword.length === 0 )" (click)="AddNewKeywordButton()"  >add</button>
+
                                                             <button type="button"  mat-raised-button   (click)="CancelNewKeywordButton()"   >cancel</button>
                                                          </div>
                                                          
@@ -282,10 +259,11 @@
                       <div class="sales-div">   
                                 <mat-label >email to which sales to be shared</mat-label> 
                                 <mat-form-field appearance="outline" fxFlex="50" >
-                                <input matInput type="text" formControlName="txtEmail" maxlength="50"  autocomplete="off" required >
-                             
-                                    <mat-error>email is required</mat-error>
-                               
+                                <input matInput formControlName="txtEmail" maxlength="50">
+                                <mat-error *ngIf=" formControls.txtEmail.errors && formControls.txtEmail.touched" class="invalid-feedback">
+                                    <mat-error *ngIf="formControls.txtEmail.errors.required">Email is required</mat-error>
+                                   <mat-error *ngIf="formControls.txtEmail.errors.email&& formControls.txtEmail.errors"  >Enter valid email address</mat-error>
+                                  </mat-error>
                                    </mat-form-field>
                         </div> 
 
@@ -296,44 +274,42 @@
                                                 
                                     <input matInput  type="text"  formControlName="txtSalesMobile" placeholder="number" autocomplete="off" (keypress)="numericOnly($event)" maxlength="10" required   >
                                   
-                                        <mat-error >
+                                    <mat-error *ngIf="formControls.txtSalesMobile.errors && formControls.txtSalesMobile.touched" class="invalid-feedback">
+                                            <mat-error *ngIf="formControls.txtSalesMobile.errors.required">enter mobile number </mat-error>
+                                           <mat-error *ngIf="formControls.txtSalesMobile.errors.pattern "  >enter valid mobile number </mat-error>
+                                          </mat-error>
+
+                                   <!-- <mat-error *ngIf="txtSalesMobile.errors " >
+                                        <mat-error *ngIf="txtSalesMobile.errors.required">
                                            enter mobile number 
                                         </mat-error>
+                                        <mat-error *ngIf="txtSalesMobile.errors.pattern">
+                                          enter valid mobile number 
+                                        </mat-error>
+                                      </mat-error> -->
                                       
                                    </mat-form-field>
                              
                          </div> 
-
-                              <!-- <div tab-index=2 class="sales-div" > 
-                                        <mat-label>phone</mat-label>
-                                        <mat-form-field appearance="outline" fxFlex="50" class="phon-input"> 
-                                   
-                                                <input matInput  type="text"  formControlName="txtSalesMobile" placeholder="number" autocomplete="off" (keypress)="numericOnly($event)" maxlength="10" [ngClass]="{ 'is-invalid': mobilevalid.txtSalesMobile.touched && mobilevalid.txtSalesMobile.errors }"  >
-                                                <mat-error *ngIf= "mobilevalid.txtSalesMobile.errors && mobilevalid.txtSalesMobile.touched" class="invalid-feedback">
-                                                    <mat-error *ngIf="mobilevalid.txtSalesMobile.errors.required">
-                                                       enter mobile number 
-                                                    </mat-error>
-                                                    <mat-error *ngIf="mobilevalid.txtSalesMobile.errors.pattern">
-                                                      enter valid mobile number 
-                                                    </mat-error>
-                                                  </mat-error>
-                                               </mat-form-field>
-                                     </div>  -->
-
-      
                    
 
                          <div tab-index=3 class="sales-div"> 
                             <mat-label >whatsapp number to which sales to be shared</mat-label>
                                 <mat-form-field appearance="outline" fxFlex="50" class="phon-input"> 
-                                                
                                     <input matInput  type="text"  formControlName="txtWhatsappMobile" placeholder="number" autocomplete="off" (keypress)="numericOnly($event)" maxlength="10"  >
-                                
-                                        <mat-error class="materror-sales">
-                                           enter mobile number 
+                                    <mat-error *ngIf="formControls.txtWhatsappMobile.errors && formControls.txtWhatsappMobile.touched" class="invalid-feedback">
+                                    <mat-error *ngIf="formControls.txtWhatsappMobile.errors.pattern "  >enter valid mobile number </mat-error>
+                                    </mat-error>
+
+                                    <!-- <mat-error *ngIf="txtWhatsappMobile.errors " >
+                                            <mat-error *ngIf="txtWhatsappMobile.errors.required">
+                                                    enter mobile number 
+                                                 </mat-error>
+                                        <mat-error *ngIf="txtWhatsappMobile.errors.pattern">
+                                          enter valid mobile number 
                                         </mat-error>
-                                     
-                                   </mat-form-field>
+                                      </mat-error> -->
+                                </mat-form-field>
                              
                          </div> 
                         
@@ -406,12 +382,8 @@
   </mat-step>
   </mat-horizontal-stepper>
                 </div>
-              
-    
-        
     
         </div>
-     
     
     </div>
     
