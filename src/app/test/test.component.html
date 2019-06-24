@@ -1,43 +1,427 @@
-<!-- 
+<div class="page-layout carded left-sidebar inner-scroll">
+    <!-- TOP BACKGROUND -->
+    <!-- <div class="top-bg accent"></div> -->
+    <!-- / TOP BACKGROUND -->
+    <!-- SIDEBAR -->
+    <fuse-sidebar class="sidebar min-max25" name="carded-left-sidebar-2" position="left" lockedOpen="gt-md">
+        <!-- SIDEBAR HEADER -->
+         <!-- <div class="header p-24 accent">
+            <h2 class="m-0">Sidebar header</h2>
+        </div> -->
+        <!-- / SIDEBAR HEADER -->
+        <!-- SIDEBAR CONTENT -->
+        <div class="content leftsidebar" fusePerfectScrollbar>
+            <div class="demo-sidebar">
+                <mat-list class="mat-list mat-list-base">
+               
+                    <mat-list-item class="mat-list-item" [ngClass]="{active:  selectedItem == 'item1'}">
+                        <span (click)="sidebarMenu('item1')"   class="mat-list-item-content ">vendor profile</span>
+                    </mat-list-item>
+                    <mat-divider class="mat-divider mat-divider-horizontal"></mat-divider>
+            
+                    <mat-list-item class="mat-list-item" [ngClass]="{active:  selectedItem == 'item2'}">
+                        <span (click)="sidebarMenu('item2')"  class="mat-list-item-content">account status</span>
+                    </mat-list-item>
+                    
+                    <mat-divider class="mat-divider mat-divider-horizontal"></mat-divider>
+            
+                    <mat-list-item class="mat-list-item" [ngClass]="{active:  selectedItem == 'item3'}">
+                        <span (click)="sidebarMenu('item3')" class="mat-list-item-content" >load keywords</span>
+                    </mat-list-item>
+                    
+                    <mat-divider class="mat-divider mat-divider-horizontal"></mat-divider>
+            
+                    <mat-list-item class="mat-list-item" [ngClass]="{active:  selectedItem == 'item4'}">
+                        <span (click)="sidebarMenu('item4')" class="mat-list-item-content">sales lead setup</span>
+                    </mat-list-item>
+                    
+                    <mat-divider class="mat-divider mat-divider-horizontal"></mat-divider>
+            
+                    <mat-list-item class="mat-list-item" [ngClass]="{active:  selectedItem == 'item5'}">
+                        <span (click)="sidebarMenu('item5')" class="mat-list-item-content">reports</span>
+                    </mat-list-item>
+            
+                    
+            
+                   
+                </mat-list>
+            </div>
+            
+            
+        </div>
+        <!-- / SIDEBAR CONTENT -->
 
-<div class="page-layout simple fullwidth" fxLayout="column"> 
-                <div class="content-main padg-top-lft40 mb-24" fxLayout="column" fxLayoutAlign="center center" 
-                fxLayout.gt-md="row" fxLayout.gt-sm="row" fxLayout.gt-xs="row">
+    </fuse-sidebar>
+    <!-- / SIDEBAR -->
 
-<table mat-table [dataSource]="dataSource" matSort>
-             
-                 <ng-container matColumnDef="SL_NO">
-                     <th mat-header-cell *matHeaderCellDef  > ID </th>
-                     <td mat-cell *matCellDef="let row" > {{row.SL_NO}}</td>
-                 </ng-container>
+    <!-- CENTER -->
+    <div class="center" fxLayout="row">
+
+        <!-- CONTENT HEADER -->
+        <!-- <div class="header accent p-24">
+            <h2 class="m-0">Left sidebar with inner scroll</h2>
+        </div> -->
+        <!-- / CONTENT HEADER -->
+
+        <!-- CONTENT CARD -->
+        <!-- <div class="content-card"> -->
+
+            <!-- CONTENT TOOLBAR -->
+            <div class="toolbar">
+
+                <button mat-icon-button class="sidebar-toggle" fxHide.gt-md fxShow.gt-sm
+                        (click)="toggleSidebar('carded-left-sidebar-2')">
+                    <mat-icon>menu</mat-icon>
+                </button>
+
+            
+
+            </div>
           
-                 <ng-container matColumnDef="VKW_KWORD">
-                                <th mat-header-cell *matHeaderCellDef  > keyword </th>
-                                <td mat-cell *matCellDef="let row"> {{row.VKW_KWORD}}</td>
-                            </ng-container>
-             
-             
-             
-             
-               <ng-container matColumnDef="Edit">
-                 <th mat-header-cell *matHeaderCellDef class="txt-rgt" style="width:15%"></th>
-                 <td mat-cell *matCellDef="let row" class="txt-rgt" style="width:15%">
-                     <button mat-mini-fab   color="basic" (click)="forEdit(row)" matTooltip="Edit" class="btn-list w22 btn-margn">
-                     <mat-icon>edit</mat-icon>
-                      </button>
-                     
-                     </td>
-               </ng-container>
+            <div class="vendor-cont-outer" >
+                    <mat-horizontal-stepper class="vendor-content"  fusePerfectScrollbar>
+                            <mat-step [stepControl]="firstFormGroup">
+                              <form [formGroup]="firstFormGroup"  >
+<!-- Item 1 -->                               
               
-             
-               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-               <tr mat-row *matRowDef="let row; columns: displayedColumns;">
-               </tr>
-             </table>
-             </div>
-             </div> -->
-            <div>
 
-<input class="txt" type="text" placeholder="name" [hidden]="ValueTxtValue" />
-<button (click)="click()">Click me</button>
-</div> 
+                    <div class="demo-content" [hidden]="selectedItem != 'item1'">  
+                       
+                    <div>
+                      <mat-label class="lft-lbl" formControlName="txtRegistrationId" >vendor registration id</mat-label> 
+                      <span class="mid-lbl">:</span>
+                      <mat-label class="rgt-lbl">{{VendorRegistrationId}}</mat-label> 
+                    </div>
+                      <div>
+                      <mat-label class="lft-lbl" formControlName="txtRegistrationName">registered name</mat-label>
+                      <span class="mid-lbl">:</span>
+                      <mat-label class="rgt-lbl">{{VendorRegistrationName}}</mat-label>
+                    </div>
+                 
+                  <div>
+                          <mat-label class="lft-lbl" formControlName="txtRegistrationAddress">address</mat-label> 
+                          <span class="mid-lbl">:</span>
+                          <mat-label class="rgt-lbl">{{VendorAddress}}</mat-label>
+                          
+                         </div>
+                             <div>
+                            <mat-label class="lft-lbl" formControlName="txtRegistrationPin">po box</mat-label> 
+                            <span class="mid-lbl">:</span>
+                            <mat-label class="rgt-lbl">{{VendorPin}}</mat-label>
+                          
+                         </div>
+                        <div>
+                            <mat-label class="lft-lbl" formControlName="txtRegistrationCity">city</mat-label> 
+                            <span class="mid-lbl">:</span>
+                            <mat-label class="rgt-lbl">{{VendorCity}}</mat-label>
+                         </div>
+                        <div>
+                            <mat-label class="lft-lbl" formControlName="txtRegistrationCountry">country</mat-label> 
+                            <span class="mid-lbl">:</span>
+                            <mat-label class="rgt-lbl">{{VendorCountry}}</mat-label>
+                         </div>
+                         <div>
+                            <mat-label class="lft-lbl" formControlName="txtRegistrationMobile">mob</mat-label> 
+                            <span class="mid-lbl">:</span>
+                            <mat-label class="rgt-lbl">{{VendorMob}}</mat-label>
+                         </div>
+                         <div>
+                            <mat-label class="lft-lbl" formControlName="txtRegistrationCrd">crn no / qid</mat-label> 
+                            <span class="mid-lbl">:</span>
+                            <mat-label class="rgt-lbl">{{VendorCrn}}</mat-label>
+                          
+                         </div>
+                         <div>
+                            <mat-label class="lft-lbl" formControlName="txtRegistrationEmail">registered email id</mat-label> 
+                            <span class="mid-lbl"> :</span>
+                            <mat-label class="rgt-lbl">{{VendorEmail}}</mat-label>
+                         </div> 
+                 
+                </div>
+<!-- Item 2 -->
+                
+
+                
+
+
+                
+                 <div class="demo-content" [hidden]="selectedItem != 'item2'">
+
+                  <div>
+                      <mat-label class="lft-lbl" formControlName="txtRegistrationStatus">status</mat-label> 
+                      <span class="mid-lbl"> :</span>
+                      <mat-label class="rgt-lbl">{{VendorStatus}}</mat-label>
+                      
+                       </div>
+                     
+                      <div>
+                          <mat-label class="lft-lbl" formControlName="txtRegistrationAccount">account expiry</mat-label> 
+                          <span class="mid-lbl"> :</span>
+                          <mat-label class="rgt-lbl">{{VendorExpiry}}</mat-label>
+                          
+                           </div>
+
+                           <div>
+                              <mat-label class="lft-lbl" formControlName="txtRegistrationPlan">plan</mat-label> 
+                              <span class="mid-lbl"> :</span>
+                              <mat-label class="rgt-lbl">{{VendorPlan}}</mat-label>
+                              
+                               </div>
+              
+               
+              </div>
+<!-- Item 3 -->
+              
+
+               <div class="demo-content" [hidden]="selectedItem != 'item3'">
+                    <mat-tab-group>
+                            <mat-tab label="english"> 
+                             
+                                    <div >
+                                 <div style="display:flex; margin-bottom:1%;">
+                                    <div class="upload">
+                                            <button mat-raised-button type="button"  (click)="UploadKeywordButton()">
+                                               upload csv
+                                             </button>
+                                             </div>
+                                           
+
+                                             <div class="add-new-btn">
+                                              <div [hidden]="IsHideUploadDiv">
+                                                    <button mat-raised-button type="button" (click)="AddKeywordButton()"  >
+                                                       add new keyword
+                                                     </button>
+                                                    </div>
+                                                     <div class="keywordadd" [hidden]="!IsHideUploadDiv">
+                                                        <input  matInput type="text" class="relativePosition" (change)="ChangeText()" #search formControlName="txtKeyword"  required  >
+
+                                                        <div class="repeatkeyword">{{this.keywordErrorMsg}}</div> 
+                                                        <button type="button"  mat-raised-button  (click)="AddNewKeywordButton()" [disabled]="firstFormGroup.invalid" >add</button>
+                                                        <button type="button"  mat-raised-button   (click)="CancelNewKeywordButton()"   >cancel</button>
+                                                     </div>
+                                                     
+                                            </div>
+                                               
+                                    </div>     
+                                                 
+                                                     <div class="keyword-list">
+                                                      <table mat-table [dataSource]="dataSource" >
+
+                                                          <ng-container matColumnDef="checkbox">
+                                                              <th mat-header-cell *matHeaderCellDef > 
+                                                                  
+                                                           </th>
+                                                          <td mat-cell *matCellDef="let row; let i = index" >
+                                                          <mat-checkbox [value]="row.VKW_KWORD" ></mat-checkbox>
+                                                           </td>
+                                                          </ng-container>
+         
+                                                     
+                                                   
+                                                          <ng-container matColumnDef="VKW_KWORD">
+                                                                         <th mat-header-cell *matHeaderCellDef  > keywords </th>
+                                                                         <td mat-cell *matCellDef="let row"> {{row.VKW_KWORD}}</td>
+                                                                     </ng-container>
+                                                                     
+                                                        <ng-container matColumnDef="Edit">
+                                                          <th mat-header-cell *matHeaderCellDef class="txt-rgt" style="width:15%"></th>
+                                                          <td mat-cell *matCellDef="let row" class="txt-rgt" style="width:15%">
+                                                              <button type="button"  mat-mini-fab   color="basic" (click)="forEdit(row)"  class="btn-list w22 btn-margn">
+                                                              <mat-icon>edit</mat-icon>
+                                                               </button>
+                                                              
+                                                               
+                                                              </td>
+                                                        </ng-container>
+                                                       
+                                                      
+                                                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                                        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+                                                        </tr>
+                                                      </table>
+                                                       
+                                                     </div>       
+                                                    </div>
+
+                                                 
+
+                                                    <div class="keyword-csv" >
+                                                  
+                                                        <h2>keywords csv upload</h2>
+                                                        <div class="dwnlod-sample">
+                                                        <button mat-raised-button   (click)="downloadCsvButton()"   >
+                                                                download sample csv
+                                                        </button>
+                                                            </div>
+                                                          <p class="bord-botm">please download the format before uploading your file and make sure that your csv file should match with that format</p>
+                                                           
+                                                              <div class="upload-sectn">   
+                                                                   
+                                                                    <input type="file" #profilepic  formControlName="photo" (change)="onSelectionchange($event)" (change)="detectFiles($event)" style="display:none">
+                                                                    <button type="button"  class="browse-btn-uplod" (click)="profilepic.click()"> choose file</button>
+                                                             
+                                                                   
+                                                         </div>  
+                                                         <div class="upload-btn">
+                                                                <button mat-raised-button   (click)="uploadCsvButton()"   >
+                                                                        upload
+                                                                      </button>
+                                                                    </div>
+                                                            </div>
+                                             
+                            </mat-tab>
+                           
+                            <mat-tab label="arabic"> arabic </mat-tab>
+                            
+                          </mat-tab-group>
+                         
+              </div> 
+
+
+<!-- Item 4 -->
+              <div class="demo-content" [hidden]="selectedItem != 'item4'" >
+
+                  
+                  <!-- <div class="sales-div">   
+                      <mat-label >email to which sales to be shared</mat-label> 
+                      <mat-form-field appearance="outline" fxFlex="50" >
+                      <input matInput type="text" formControlName="txtEmail" maxlength="50"  autocomplete="off" required >
+                   
+                       
+                          <mat-error *ngFor="let validation of account_validation_messages.txtEmail">
+                              <mat-error class="error-message" *ngIf="firstFormGroup.get('txtEmail').hasError(validation.type) && (firstFormGroup.get('txtEmail').dirty || firstFormGroup.get('txtEmail').touched)">{{validation.message}}</mat-error>
+                            </mat-error>
+                     
+                         </mat-form-field>
+              </div> -->
+              <!-- <div class="sales-div">
+                <mat-form-field appearance="outline" fxFlex="50">
+                    <input matInput placeholder="Email address" type="email" formControlName="email">
+                    <mat-error>
+                        {{errors.email}}
+                    </mat-error>
+                </mat-form-field>
+         
+              
+            </div> -->
+            <mat-form-field appearance="outline" fxFlex="50">
+                <input matInput type="email" placeholder="Email" formControlName="email" required>
+                <mat-error *ngFor="let validation of account_validation_messages.email">
+                  <mat-error class="error-message" *ngIf="firstFormGroup.get('email').hasError(validation.type) && (firstFormGroup.get('email').dirty || firstFormGroup.get('email').touched)">{{validation.message}}</mat-error>
+                </mat-error>
+              </mat-form-field>
+            <!-- <div fxLayout="row" > 
+                <mat-form-field appearance="outline" fxFlex="50">
+                 <input matInput type="text" placeholder="email id*" name="email" formControlName="email" maxlength="50" autocomplete="off" required>
+             
+                 <mat-error *ngIf=" f.email.errors && f.email.touched" class="invalid-feedback">
+                    <mat-error *ngIf="f.email.errors.required">Email is required</mat-error>
+                   <mat-error *ngIf="f.email.errors.email&& f.email.errors"  >Enter valid email address</mat-error>
+                  </mat-error>
+             </mat-form-field>
+         </div>  -->
+
+                 
+
+                          <!-- <div tab-index=2 class="sales-div" > 
+                                    <mat-label>phone</mat-label>
+                                    <mat-form-field appearance="outline" fxFlex="50" class="phon-input"> 
+                               
+                                            <input matInput  type="text"  formControlName="txtSalesMobile" placeholder="number" autocomplete="off" (keypress)="numericOnly($event)" maxlength="10" [ngClass]="{ 'is-invalid': mobilevalid.txtSalesMobile.touched  &&mobilevalid.txtSalesMobile.errors }"  >
+                                            <mat-error *ngIf= "mobilevalid.txtSalesMobile.errors && mobilevalid.txtSalesMobile.touched" class="invalid-feedback">
+                                                <mat-error *ngIf="mobilevalid.txtSalesMobile.errors.required">
+                                                   enter mobile number 
+                                                </mat-error>
+                                                <mat-error *ngIf="mobilevalid.txtSalesMobile.errors.pattern">
+                                                  enter valid mobile number 
+                                                </mat-error>
+                                              </mat-error>
+                                           </mat-form-field>
+                                 </div>  -->
+
+  
+               
+                             
+                                
+                            
+                                <div tab-index=4 class="sales-div">   
+                                        <mat-label >i want leads for </mat-label> 
+                                       
+                                                <mat-radio-group>  
+                                                        <mat-radio-button  value="1" name="PersonalUse"  [checked]="IsPersonalUse" (change)="SelectUseTypes($event)">personal use</mat-radio-button>
+                                                        <mat-radio-button  value="2" name="BusinessUse" [checked]="IsBusinessUse"  (change)="SelectUseTypes($event)">business use</mat-radio-button>
+                                                        <mat-radio-button  value="3" name="Both" [checked]="IsBoth" (change)="SelectUseTypes($event)">both</mat-radio-button>
+                                                    </mat-radio-group>
+                                         
+                                      
+                                </div>  
+                     
+                                <div tab-index=5 class="sales-div">   
+                                        <mat-label >i want leads for </mat-label> 
+                                       
+                                        <mat-radio-group>
+                                                <mat-radio-button  value="1"  name="ProductType"  [checked]="IsProductType"  (change)="SelectProductTypes($event)"> product</mat-radio-button>
+                                                <mat-radio-button  value="2" name="ServiceType"  [checked]="IsServiceType"  (change)="SelectProductTypes($event)">service</mat-radio-button>
+                                                <mat-radio-button  value="3" name="BothType"  [checked]="IsBothType"  (change)="SelectProductTypes($event)">both</mat-radio-button>
+                                            </mat-radio-group>
+                                         
+                                      
+                                </div>  
+                                <div tab-index=6 class="sales-div">   
+                                        <mat-label >i want leads with </mat-label> 
+                                       
+                                        <mat-radio-group>
+                                                <mat-radio-button  value="1" name="ValueType"  [checked]="IsValueType"   (change)="SelectValueTypes($event)"> any value</mat-radio-button>
+                                                <mat-radio-button  value="2" name="GreaterValueType"  [checked]="IsGreaterValueType"  (change)="SelectValueTypes($event)">more than 3000 only</mat-radio-button>
+                                                <input matInput  type="text" class="valuetext"  [hidden]="!ValueTxtValue"  formControlName="txtValue"  (keypress)="numericOnly($event)" maxlength="10"  placeholder="value" autocomplete="off"  >
+                                            </mat-radio-group>
+                                         
+                                      
+                                </div> 
+        
+                                <!-- <div class="fixd-div" >
+                                        <button type="button" mat-raised-button   (click)="SaveSalesLeadButton()" >
+                                           save
+                                         </button>
+                                     
+                                         </div>
+         -->
+                            </div>
+                
+                    
+              
+
+                
+
+<!-- Item 5 -->
+                <div class="demo-content" [hidden]="selectedItem != 'item5'">
+                        <div class="report-div" >   
+                                <mat-label >sales leads generated</mat-label> 
+                                 
+                                <mat-form-field>
+                                        
+                                        <select matNativeControl required>
+                                          <option value="volvo">1000</option>
+                                          <option value="saab">2000</option>
+                                          <option value="mercedes">2500</option>
+                                          <option value="audi">4000</option>
+                                        </select>
+                                      </mat-form-field>
+                                      <button type="button" (click)="GenerateButton()" >
+                                            generate
+                                          </button>
+                        </div>  
+                </div>
+
+</form>
+</mat-step>
+</mat-horizontal-stepper>
+            </div>
+          
+
+    
+
+    </div>
+ 
+
+</div>

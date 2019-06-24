@@ -12,6 +12,7 @@ import { ToolbarModule } from 'app/layout/components/toolbar/toolbar.module';
 
 import { HorizontalLayout1Component } from 'app/layout/horizontal/layout-1/layout-1.component';
 
+
 @NgModule({
     declarations: [
         HorizontalLayout1Component
@@ -35,4 +36,5 @@ import { HorizontalLayout1Component } from 'app/layout/horizontal/layout-1/layou
 })
 export class HorizontalLayout1Module
 {
+    
 }

@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
       // this.loginform = this._formBuilder.group({
       //   name: ({ value: '', disabled: this.IsDisableUserName })
       // });
-
+      // this.loginform.value.txtUsername=this.email;
     }
     else
     {
@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
       //   txtUsername: ['',[Validators.required, Validators.email] ],
       //   txtPassword: ['',Validators.minLength(6)],
       // });
-     // this.loginform.controls.txtUsername.disable();
+      // this.loginform.controls.txtUsername.disable();
     
     }
   }

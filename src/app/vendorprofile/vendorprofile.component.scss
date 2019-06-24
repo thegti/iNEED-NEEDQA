@@ -40,7 +40,9 @@
 }
 input[type="text"].valuetext
 {
-border: 1px solid rgba(0,0,0,.2);
+border: 1px solid rgba(0,0,0,0.2);
+display: inline-block;    width: 20%!important; padding-left:10px!important;
+font-family: 'coheadlinew08-lightregular';
 }
 
 

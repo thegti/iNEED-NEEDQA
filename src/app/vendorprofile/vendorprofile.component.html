@@ -14,30 +14,30 @@
                 <div class="demo-sidebar">
                     <mat-list class="mat-list mat-list-base">
                         <!-- <h3 matSubheader >vendor profile</h3> -->
-                        <mat-list-item class="mat-list-item">
-                            <span (click)="sidebarMenu('item1')"  class="mat-list-item-content active">vendor profile</span>
+                        <mat-list-item class="mat-list-item" [ngClass]="{active:  selectedItem == 'item1'}">
+                            <span (click)="sidebarMenu('item1')"   class="mat-list-item-content ">vendor profile</span>
                         </mat-list-item>
                         <mat-divider class="mat-divider mat-divider-horizontal"></mat-divider>
                 
-                        <mat-list-item class="mat-list-item">
-                            <span (click)="sidebarMenu('item2')" class="mat-list-item-content">account status</span>
+                        <mat-list-item class="mat-list-item" [ngClass]="{active:  selectedItem == 'item2'}">
+                            <span (click)="sidebarMenu('item2')"  class="mat-list-item-content">account status</span>
                         </mat-list-item>
                         
                         <mat-divider class="mat-divider mat-divider-horizontal"></mat-divider>
                 
-                        <mat-list-item class="mat-list-item">
+                        <mat-list-item class="mat-list-item" [ngClass]="{active:  selectedItem == 'item3'}">
                             <span (click)="sidebarMenu('item3')" class="mat-list-item-content" >load keywords</span>
                         </mat-list-item>
                         
                         <mat-divider class="mat-divider mat-divider-horizontal"></mat-divider>
                 
-                        <mat-list-item class="mat-list-item">
+                        <mat-list-item class="mat-list-item" [ngClass]="{active:  selectedItem == 'item4'}">
                             <span (click)="sidebarMenu('item4')" class="mat-list-item-content">sales lead setup</span>
                         </mat-list-item>
                         
                         <mat-divider class="mat-divider mat-divider-horizontal"></mat-divider>
                 
-                        <mat-list-item class="mat-list-item">
+                        <mat-list-item class="mat-list-item" [ngClass]="{active:  selectedItem == 'item5'}">
                             <span (click)="sidebarMenu('item5')" class="mat-list-item-content">reports</span>
                         </mat-list-item>
                 
@@ -82,15 +82,12 @@
                         <mat-horizontal-stepper class="vendor-content"  fusePerfectScrollbar>
                                 <mat-step [stepControl]="firstFormGroup">
                                   <form [formGroup]="firstFormGroup"  >
-<<<<<<< HEAD
 <!-- Item 1 -->                               
-                    <div class="demo-content" [hidden]="selectedItem != 'item1'" >
-                      <div>
-=======
+                  
 
                         <div class="demo-content" [hidden]="selectedItem != 'item1'">  
+                           
                         <div>
->>>>>>> 8850a1b8f5f4079db23d71674fac67609b87a4a8
                           <mat-label class="lft-lbl" formControlName="txtRegistrationId" >vendor registration id</mat-label> 
                           <span class="mid-lbl">:</span>
                           <mat-label class="rgt-lbl">{{VendorRegistrationId}}</mat-label> 
@@ -141,17 +138,14 @@
                              </div> 
                      
                     </div>
-<<<<<<< HEAD
 <!-- Item 2 -->
-                    <div class="demo-content" [hidden]="selectedItem != 'item2'">
-=======
+                    
 
                     
 
 
                 
                      <div class="demo-content" [hidden]="selectedItem != 'item2'">
->>>>>>> 8850a1b8f5f4079db23d71674fac67609b87a4a8
   
                       <div>
                           <mat-label class="lft-lbl" formControlName="txtRegistrationStatus">status</mat-label> 
@@ -175,13 +169,10 @@
                                    </div>
                   
                    
-<<<<<<< HEAD
                   </div>
 <!-- Item 3 -->
-=======
-                  </div> 
+                  
 
->>>>>>> 8850a1b8f5f4079db23d71674fac67609b87a4a8
                    <div class="demo-content" [hidden]="selectedItem != 'item3'">
                         <mat-tab-group>
                                 <mat-tab label="english"> 
@@ -314,6 +305,24 @@
                                    </mat-form-field>
                              
                          </div> 
+
+                              <!-- <div tab-index=2 class="sales-div" > 
+                                        <mat-label>phone</mat-label>
+                                        <mat-form-field appearance="outline" fxFlex="50" class="phon-input"> 
+                                   
+                                                <input matInput  type="text"  formControlName="txtSalesMobile" placeholder="number" autocomplete="off" (keypress)="numericOnly($event)" maxlength="10" [ngClass]="{ 'is-invalid': mobilevalid.txtSalesMobile.touched && mobilevalid.txtSalesMobile.errors }"  >
+                                                <mat-error *ngIf= "mobilevalid.txtSalesMobile.errors && mobilevalid.txtSalesMobile.touched" class="invalid-feedback">
+                                                    <mat-error *ngIf="mobilevalid.txtSalesMobile.errors.required">
+                                                       enter mobile number 
+                                                    </mat-error>
+                                                    <mat-error *ngIf="mobilevalid.txtSalesMobile.errors.pattern">
+                                                      enter valid mobile number 
+                                                    </mat-error>
+                                                  </mat-error>
+                                               </mat-form-field>
+                                     </div>  -->
+
+      
                    
 
                          <div tab-index=3 class="sales-div"> 
@@ -322,7 +331,7 @@
                                                 
                                     <input matInput  type="text"  formControlName="txtWhatsappMobile" placeholder="number" autocomplete="off" (keypress)="numericOnly($event)" maxlength="10"  >
                                 
-                                        <mat-error >
+                                        <mat-error class="materror-sales">
                                            enter mobile number 
                                         </mat-error>
                                      
@@ -360,7 +369,7 @@
                                 <mat-radio-group>
                                         <mat-radio-button  value="1" name="ValueType"  [checked]="IsValueType"   (change)="SelectValueTypes($event)"> any value</mat-radio-button>
                                         <mat-radio-button  value="2" name="GreaterValueType"  [checked]="IsGreaterValueType"  (change)="SelectValueTypes($event)">more than 3000 only</mat-radio-button>
-                                        <input matInput  type="text" class="valuetext"  [hidden]="!ValueTxtValue"  formControlName="txtValue"  (keypress)="numericOnly($event)" maxlength="50"  placeholder="value" autocomplete="off"  >
+                                        <input matInput  type="text" class="valuetext"  [hidden]="!ValueTxtValue"  formControlName="txtValue"  (keypress)="numericOnly($event)" maxlength="10"  placeholder="value" autocomplete="off"  >
                                     </mat-radio-group>
                                  
                               

@@ -107,10 +107,11 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
       txtRegistrationAccount : [''],
       txtRegistrationPlan : [''],
       txtEmail : ['',[Validators.required, Validators.email,Validators.maxLength(50)] ],
-      txtSalesMobile: ['', [Validators.required,Validators.pattern(this.mobnumPattern),Validators.minLength(10),Validators.maxLength(12)]],
-     txtWhatsappMobile: ['', [Validators.required,Validators.pattern(this.mobnumPattern),Validators.minLength(10),Validators.maxLength(12)]],
+      txtSalesMobile: ['', [Validators.required,Validators.pattern(this.mobnumPattern),Validators.minLength(10)]],
+    //  txtWhatsappMobile: ['', [Validators.required,Validators.pattern(this.mobnumPattern),Validators.minLength(10),Validators.maxLength(12)]],
       txtValue : ['',]
       });
+      
     this.filenames=true;  
     this.user= this.authService.getUserDetail();
 
@@ -123,6 +124,7 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
     this.SetLeadsTypeFor(1);
     this.SetValueTypeFor(1);
   
+   
     
   }
   sidebarMenu(item)
@@ -387,6 +389,7 @@ get validation() {
 
      get mobilevalid() {
       return this.firstFormGroup.controls;
+  
    } 
    numericOnly(event): boolean {    
     let patt = /^([0-9])$/;
@@ -430,7 +433,7 @@ SelectUseTypes(e)
   {
     this.IsValueType = type==1 ? true : false;
     this.IsGreaterValueType = type==2 ? true : false;
-    this.ValueTxtValue = type==2 ? false : true;
+    this.ValueTxtValue = type==2 ? true : false;
   
   
   

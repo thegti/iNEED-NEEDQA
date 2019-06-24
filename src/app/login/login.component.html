@@ -35,7 +35,7 @@
                  <input matInput type="password" tabindex="2" formControlName="txtPassword" placeholder="create password*" autocomplete="off" maxlength="20"  required> 
                  <mat-error>
                  <span *ngIf="loginform.value.txtPassword==''" > password is required!</span>
-                <span *ngIf="loginform.value.txtPassword!='' && loginform.controls.txtPassword['status']=='INVALID'" >invalid password(minimum length is 6)</span>
+                <span *ngIf="loginform.value.txtPassword!='' && loginform.controls.txtPassword['status']=='INVALID'" >invalid password</span>
               </mat-error>
             </mat-form-field>
         </div>

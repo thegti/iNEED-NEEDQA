@@ -696,6 +696,8 @@ background-repeat: no-repeat;}
                         }
                     }
                     .mat-form-field-appearance-outline .mat-form-field-infix   {   padding:0px;}
+                    mat-error {   width: 100%; display: block; color: #ff0028 !important;
+                                        height: 32px; margin-top: -2px;}
                     
                 }                            
                 .fixd-div   {    width:100%; display: flex;  align-items: center;  justify-content: flex-end;}

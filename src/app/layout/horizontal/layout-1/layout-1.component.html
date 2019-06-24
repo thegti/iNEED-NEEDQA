@@ -14,11 +14,14 @@
     <ng-container>
             <ng-container *ngTemplateOutlet="topNavbar" ></ng-container>
         </ng-container>
-    <!-- / NAVBAR: Top -->
+    <!-- / NAVBAR: Top -->   <form fxLayout="column" fxLayoutAlign="start"  name="form"  class="padg-lft0"
+        [formGroup]="loginform"> 
     <div class="welcom-div">
             <label>welcome : </label>
-            <span>username or email</span>
+            <span>username or email </span>
+            <!-- <input  type="text" tabindex="1" formControlName="txtUsername"   class="form-control" placeholder="username" [value]= this.email maxlength="50" autocomplete="off" > -->
         </div>
+        </form>
 </div>
 <div class="head-rgt">
     <!-- TOOLBAR: Above -->

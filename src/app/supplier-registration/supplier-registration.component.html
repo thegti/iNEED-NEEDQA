@@ -114,7 +114,7 @@
                                                    <input matInput type="password" formControlName="txtPassword" placeholder="create password*" maxlength="20" autocomplete="off" required> 
                                                    <mat-error>
                                                    <span *ngIf="secondFormGroup.value.txtPassword==''" > password is required!</span>
-                                                  <span *ngIf="secondFormGroup.value.txtPassword!='' && secondFormGroup.controls.txtPassword['status']=='INVALID'" >invalid password(minimum length is 6)</span>
+                                                  <span *ngIf="secondFormGroup.value.txtPassword!='' && secondFormGroup.controls.txtPassword['status']=='INVALID'" >password must be at least 6 characters long</span>
                                                 </mat-error>
                                             </mat-form-field>
                                             </div>
