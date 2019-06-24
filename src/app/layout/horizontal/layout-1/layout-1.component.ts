@@ -71,6 +71,7 @@ export class HorizontalLayout1Component implements OnInit, OnDestroy
             .subscribe((config) => {
                 this.fuseConfig = config;
             });
+            this.email='';
             this.email=this.sharedData.GetVendorEmail();
             console.log( this.email);
             console.log("Welcom->1");
@@ -79,13 +80,11 @@ export class HorizontalLayout1Component implements OnInit, OnDestroy
                 console.log("Welcom->2");
                 console.log(this.user);
                 this.email = this.user.VND_EMAIL;
-                 this.IsHidewWelcome=false;
+                this.IsHidewWelcome=false;
             }
-            else
+            else if(this.email!=undefined && this.email!='')
             {
-            //  this.loginform.value.txtUsername=this.email;
-              
-            
+                this.IsHidewWelcome=false;
             }
     }
 

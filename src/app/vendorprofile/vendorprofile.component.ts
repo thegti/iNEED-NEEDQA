@@ -341,23 +341,27 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
         txtKeyword : [''],
         txtValue : ['']
        });
-       
+       console.log(reqObj);
     this.vendorService.GetSalesLeadSetup(reqObj).subscribe((data: Array<object>) => {
       console.log(data);
       this.IsEditSalesLead=true;
       this.salesLeadList = data['Data'];
+      console.log(this.salesLeadList);
+      
+      this.SetLeadsFor(this.salesLeadList[0].VST_ENQUIRY_TYPE);
+      this.SetLeadsTypeFor(this.salesLeadList[0].VST_ENQUIRY_USE);
+      this.SetValueTypeFor(this.salesLeadList[0].VST_VALUE_TYPE);
+      console.log(this.salesLeadList[0].VST_EMAIL);
       this.firstFormGroup = this._formBuilder.group({
-        // txtEmail:this.
-        txtEmail: [this.salesLeadList[0].VST_EMAIL,Validators.required, Validators.email],
+        txtEmail: [this.salesLeadList[0].VST_EMAIL, Validators.required, Validators.email],
         txtSalesMobile : [this.salesLeadList[0].VST_MOBILE,Validators.required,Validators.pattern(this.mobnumPattern)],
         txtWhatsappMobile: [this.salesLeadList[0].VST_WHATSAPP,Validators.pattern(this.mobnumPattern)],
         txtValue : [this.salesLeadList[0].VST_MIN_VALUE],
         txtKeyword:[''],
-        
         });
-        this.SetLeadsFor(this.salesLeadList[0].VST_ENQUIRY_TYPE);
-        this.SetLeadsTypeFor(this.salesLeadList[0].VST_ENQUIRY_USE);
-        this.SetValueTypeFor(this.salesLeadList[0].VST_VALUE_TYPE);
+   },
+   error => {
+     alert("Internal Server Error!");
    });
    }
 

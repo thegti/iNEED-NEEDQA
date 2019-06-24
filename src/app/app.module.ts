@@ -37,7 +37,8 @@ import {VendorprofileComponent} from './vendorprofile/vendorprofile.component';
 import {NextdialogComponent} from './nextdialog/nextdialog.component';
 import {VendorsavedialogComponent} from './vendorsavedialog/vendorsavedialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import {LogoutComponent} from './logout/logout.component'
+ 
 
 
 // R and D works
@@ -65,6 +66,7 @@ import { EventEmitterService } from './event-emitter.service';
         VendorprofileComponent,
         NextdialogComponent,
         VendorsavedialogComponent,
+        LogoutComponent,
 
         //R and D works
 

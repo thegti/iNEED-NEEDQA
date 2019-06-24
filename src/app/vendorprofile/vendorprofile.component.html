@@ -272,7 +272,7 @@
                             <mat-label >mobile number to which sales to be shared</mat-label> 
                                 <mat-form-field appearance="outline" fxFlex="50" class="phon-input"> 
                                                 
-                                    <input matInput  type="text"  formControlName="txtSalesMobile" placeholder="number" autocomplete="off" (keypress)="numericOnly($event)" maxlength="10" required   >
+                                    <input matInput  type="text"  formControlName="txtSalesMobile" placeholder="mobile number" autocomplete="off" (keypress)="numericOnly($event)" maxlength="10" required   >
                                   
                                     <mat-error *ngIf="formControls.txtSalesMobile.errors && formControls.txtSalesMobile.touched" class="invalid-feedback">
                                             <mat-error *ngIf="formControls.txtSalesMobile.errors.required">enter mobile number </mat-error>
@@ -296,7 +296,7 @@
                          <div tab-index=3 class="sales-div"> 
                             <mat-label >whatsapp number to which sales to be shared</mat-label>
                                 <mat-form-field appearance="outline" fxFlex="50" class="phon-input"> 
-                                    <input matInput  type="text"  formControlName="txtWhatsappMobile" placeholder="number" autocomplete="off" (keypress)="numericOnly($event)" maxlength="10"  >
+                                    <input matInput  type="text"  formControlName="txtWhatsappMobile" placeholder="mobile number" autocomplete="off" (keypress)="numericOnly($event)" maxlength="10"  >
                                     <mat-error *ngIf="formControls.txtWhatsappMobile.errors && formControls.txtWhatsappMobile.touched" class="invalid-feedback">
                                     <mat-error *ngIf="formControls.txtWhatsappMobile.errors.pattern "  >enter valid mobile number </mat-error>
                                     </mat-error>
