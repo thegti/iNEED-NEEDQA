@@ -97,7 +97,7 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
        txtKeyword: [''],
-       txtEmail : ['',[Validators.required, Validators.email]],
+       txtEmail : ['jj',[Validators.required, Validators.email]],
        txtSalesMobile: ['', [Validators.required,Validators.pattern(this.mobnumPattern)]],
        txtWhatsappMobile: ['', [Validators.pattern(this.mobnumPattern)]],
        txtValue : ['']
@@ -114,9 +114,6 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
     this.SetLeadsFor(1);
     this.SetLeadsTypeFor(1);
     this.SetValueTypeFor(1);
-    this.GetSalesLeadSetup();
-  
-   
     
   }
  
@@ -356,19 +353,19 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
       this.SetLeadsFor(this.salesLeadList[0].VST_ENQUIRY_TYPE);
       this.SetLeadsTypeFor(this.salesLeadList[0].VST_ENQUIRY_USE);
       this.SetValueTypeFor(this.salesLeadList[0].VST_VALUE_TYPE);
-      console.log(this.salesLeadList[0].VST_EMAIL);
-      this.vendorEmail=this.salesLeadList[0].VST_EMAIL;
-      this.vendorSalesMobile=this.salesLeadList[0].VST_MOBILE;
-      this.vendorWhatsappMobile=this.salesLeadList[0].VST_WHATSAPP;
-      this.vendorMinValue=this.salesLeadList[0].VST_MIN_VALUE;
+      // console.log(this.salesLeadList[0].VST_EMAIL);
+      // this.vendorEmail=this.salesLeadList[0].VST_EMAIL;
+      // this.vendorSalesMobile=this.salesLeadList[0].VST_MOBILE;
+      // this.vendorWhatsappMobile=this.salesLeadList[0].VST_WHATSAPP;
+      // this.vendorMinValue=this.salesLeadList[0].VST_MIN_VALUE;
 
       this.firstFormGroup = this._formBuilder.group({
-        txtEmail: [this.salesLeadList[0].VST_ENQUIRY_TYPE, Validators.required, Validators.email],
-        txtSalesMobile : [this.salesLeadList[0].VST_MOBILE,Validators.required,Validators.pattern(this.mobnumPattern)],
-        txtWhatsappMobile: [this.salesLeadList[0].VST_WHATSAPP,Validators.pattern(this.mobnumPattern)],
-        txtValue : [this.salesLeadList[0].VST_MIN_VALUE],
-        txtKeyword:[''],
-        });
+        txtEmail : [this.salesLeadList[0].VST_EMAIL,[Validators.required, Validators.email,Validators.maxLength(50)] ],
+        txtSalesMobile: [this.salesLeadList[0].VST_MOBILE, [Validators.required,Validators.pattern(this.mobnumPattern)]],
+        txtWhatsappMobile: [this.salesLeadList[0].VST_MOBILE, [Validators.pattern(this.mobnumPattern)]],
+        txtKeyword : [''],
+        txtValue : [this.salesLeadList[0].VST_MIN_VALUE]
+       });
    },
    error => {
      alert("Internal Server Error!");
