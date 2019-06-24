@@ -259,10 +259,10 @@
                       <div class="sales-div">   
                                 <mat-label >email to which sales to be shared</mat-label> 
                                 <mat-form-field appearance="outline" fxFlex="50" >
-                                <input matInput formControlName="txtEmail" maxlength="50">
+                                <input matInput formControlName="txtEmail" maxlength="50" placeholder="email">
                                 <mat-error *ngIf=" formControls.txtEmail.errors && formControls.txtEmail.touched" class="invalid-feedback">
-                                    <mat-error *ngIf="formControls.txtEmail.errors.required">Email is required</mat-error>
-                                   <mat-error *ngIf="formControls.txtEmail.errors.email&& formControls.txtEmail.errors"  >Enter valid email address</mat-error>
+                                    <mat-error *ngIf="formControls.txtEmail.errors.required">email is required</mat-error>
+                                   <mat-error *ngIf="formControls.txtEmail.errors.email&& formControls.txtEmail.errors"  >enter valid email address</mat-error>
                                   </mat-error>
                                    </mat-form-field>
                         </div> 
