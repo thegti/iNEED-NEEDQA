@@ -193,13 +193,16 @@ input .mat-input-element:-internal-autofill-selected  {
 .mat-select-search-clear {    position: absolute; right: 4px;  top: -3px!important;}
 
 /* Search & Select */ 
-.cdk-overlay-pane   {   /*width:12%; height:200px;*/ display: inline-flex;
+.cdk-overlay-pane   {   /*width:29%; height:200px;*/ display: inline-flex;
         margin-top:0px!important; transform: translateX(-16px) translateY(17px)!important; 
-        -webkit-transform: translateX(-16px) translateY(17px)!important;
+        -webkit-transform: translateX(-16px) translateY(-70%)!important;
+        min-width: auto!important;  max-width: 311px;
 
-        .ng-trigger     {   min-width: calc(70% + 32px)!important; 
+        .ng-trigger     {   transform-origin: 50% 21px 0px !important;   font-size: 14px !important;
+            opacity: 1 !important; min-width: calc(90% + 32px)!important; 
+            transform: scaleY(1) !important; 
 
-            .mat-select-search-inner    {   width:78%!important;}
+            .mat-select-search-inner    {   width:100%!important;}
         
         }
 
