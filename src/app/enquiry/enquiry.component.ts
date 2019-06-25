@@ -317,9 +317,9 @@ export class EnquiryComponent implements OnInit,OnDestroy {
             this.confirmDialogRef = this._matDialog.open(DialogComponent, {
                 disableClose: true
             });
-            var msg='Thank you for submitting your requirment.Ref.No[' + data['Data'] + ']. You will be contacted soon, a copy of your requirment is shared in your email.';
+            var msg='thank you for submitting your requirment.ref.no[' + data['Data'] + ']. you will be contacted soon, a copy of your requirment is shared in your email.';
             console.log(msg);
-            this.confirmDialogRef.componentInstance.Message = 'Thank you for submitting your requirment.Ref.No[' + data['Data'] +']. You will be contacted soon, a copy of your requirment is shared in your email.';
+            this.confirmDialogRef.componentInstance.Message = 'thank you for submitting your requirment.ref.no[' + data['Data'] +']. you will be contacted soon, a copy of your requirment is shared in your email.';
             this.isFirst=false;
             this.next=true; 
             this.IsValidOtp=false;

@@ -206,7 +206,25 @@ input .mat-input-element:-internal-autofill-selected  {
         
         }
 
-} 
+}
+
+#cdk-overlay-4.cdk-overlay-pane    {   transform: translateX(-16px) translateY(17px) !important;
+    -webkit-transform: translateX(-16px) translateY(0%) !important;
+}
+
+#cdk-overlay-3.cdk-overlay-pane    {   transform: translateX(-16px) translateY(17px) !important;
+    -webkit-transform: translateX(-16px) translateY(0%) !important;
+}
+#cdk-overlay-2.cdk-overlay-pane    {   transform: translateX(-16px) translateY(17px) !important;
+    -webkit-transform: translateX(-16px) translateY(0%) !important;
+}
+#cdk-overlay-1.cdk-overlay-pane    {   transform: translateX(-16px) translateY(17px) !important;
+    -webkit-transform: translateX(-16px) translateY(0%) !important;
+}
+
+#cdk-overlay-0.cdk-overlay-pane    {   transform: translateX(-16px) translateY(17px) !important;
+    -webkit-transform: translateX(-16px) translateY(0%) !important;
+}
 
 .enquiry-textarea {  
     .mat-form-field-wrapper{

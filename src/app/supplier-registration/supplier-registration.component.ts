@@ -187,7 +187,7 @@ export class SupplierRegistrationComponent implements OnInit,OnDestroy {
             this.confirmDialogRef = this._matDialog.open(DialogComponent, {
                 disableClose: true
             });
-            var msg='Please check your email to validate and complete the vendor registration.Ref.No[' + data['Data'] + ']. ';
+            var msg='please check your email to validate and complete the vendor registration.ref.no[' + data['Data'] + ']. ';
         //    this.confirmDialogRef.componentInstance.isError=false;
           
           this.confirmDialogRef.componentInstance.Message = msg;
@@ -207,16 +207,16 @@ export class SupplierRegistrationComponent implements OnInit,OnDestroy {
             });
             this.confirmDialogRef.componentInstance.isError = true;
             if (data['Data'] === -1){
-                this.confirmDialogRef.componentInstance.Message = 'Error Occured';
+                this.confirmDialogRef.componentInstance.Message = 'error occured';
             }else if (data['Data'] === -2) {
-                this.confirmDialogRef.componentInstance.Message = 'Already Exixts';
+                this.confirmDialogRef.componentInstance.Message = 'already exixts';
             }else if (data['Data'] === -3) {
                 this.confirmDialogRef.componentInstance.Message = 'Another user modified this record';
             }else if (data['Data'] === 0) {
                 this.confirmDialogRef.componentInstance.Message = 'Record Already Exixts';
             }
             else if (data['Data'] === -11) {
-                this.confirmDialogRef.componentInstance.Message = 'This Email ID Already Registered';
+                this.confirmDialogRef.componentInstance.Message = 'this email id already registered';
             }
         }
         

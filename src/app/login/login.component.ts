@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
         }
     },
     error => {
-      this.LoginErrorMsg = "Internal Server Error!";
+      this.LoginErrorMsg = "internal server error!";
     });
   }
   get validation() { 
