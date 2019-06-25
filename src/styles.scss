@@ -197,6 +197,12 @@ input .mat-input-element:-internal-autofill-selected  {
         margin-top:0px!important; transform: translateX(-16px) translateY(17px)!important; 
         -webkit-transform: translateX(-16px) translateY(17px)!important;
 
+        .ng-trigger     {   min-width: calc(70% + 32px)!important; 
+
+            .mat-select-search-inner    {   width:78%!important;}
+        
+        }
+
 } 
 
 .enquiry-textarea {  
