@@ -317,6 +317,13 @@
                  <mat-error>Invalid email</mat-error>
              </mat-form-field>
          </div>  
+         <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" tab-index=13> 
+            <mat-label>approximate value</mat-label>
+        <mat-form-field appearance="outline" fxFlex="50">
+            <input matInput  type="text" min="0" formControlName="txtApproximate" class="quantitynumber" maxlength="2"  placeholder="approximate value" (keypress)="numericOnly($event)"  >
+        </mat-form-field>
+        </div> 
+
 
                  
 

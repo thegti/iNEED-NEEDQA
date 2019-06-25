@@ -147,6 +147,7 @@ this.ResetFormControls(true);
     txtRegistrationAccount : [''],
     txtRegistrationPlan : [''],
     email: ['', Validators.email],
+    txtApproximate:[''],
     // txtEmail: new FormControl('', Validators.compose([
     //   Validators.required,
     //   Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')

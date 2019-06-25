@@ -362,7 +362,7 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
       this.firstFormGroup = this._formBuilder.group({
         txtEmail : [this.salesLeadList[0].VST_EMAIL,[Validators.required, Validators.email,Validators.maxLength(50)] ],
         txtSalesMobile: [this.salesLeadList[0].VST_MOBILE, [Validators.required,Validators.pattern(this.mobnumPattern)]],
-        txtWhatsappMobile: [this.salesLeadList[0].VST_MOBILE, [Validators.pattern(this.mobnumPattern)]],
+        txtWhatsappMobile: [this.salesLeadList[0].VST_WHATSAPP, [Validators.pattern(this.mobnumPattern)]],
         txtKeyword : [''],
         txtValue : [this.salesLeadList[0].VST_MIN_VALUE]
        });

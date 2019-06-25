@@ -200,7 +200,7 @@
     <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" tab-index=11> 
             <mat-label>qty.</mat-label>
         <mat-form-field appearance="outline" fxFlex="50" class="min-max28-5">
-            <input matInput  type="number" min="0" formControlName="txtQuantity" max="5" placeholder="qty" class="quantitynumber" (keypress)="numericOnly($event)"  >
+            <input matInput  type="text" min="0" formControlName="txtQuantity" maxlength="5" placeholder="qty" class="quantitynumber" (keypress)="numericOnly($event)"  >
             <mat-error *ngIf="secondFormGroup.controls.txtQuantity.errors?.required && secondFormGroup.controls.txtQuantity.touched" >
                 enter quantity
               </mat-error>
@@ -222,7 +222,7 @@
                    <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" tab-index=13> 
                         <mat-label>approximate value</mat-label>
                     <mat-form-field appearance="outline" fxFlex="50">
-                        <input matInput  type="number" min="0" formControlName="txtApproximate" class="quantitynumber" max="8"  placeholder="approximate value" (keypress)="numericOnly($event)"  >
+                        <input matInput  type="type" min="0" formControlName="txtApproximate" class="quantitynumber" maxlength="8"  placeholder="approximate value" (keypress)="numericOnly($event)"  >
                     </mat-form-field>
                     </div> 
 
