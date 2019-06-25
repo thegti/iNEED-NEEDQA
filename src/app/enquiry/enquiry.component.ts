@@ -137,7 +137,7 @@ export class EnquiryComponent implements OnInit,OnDestroy {
             ddllocation: ['', Validators.required],
             txtName:['',[Validators.required,Validators.minLength(3)]],
             txtEmail: ['',[Validators.required, Validators.email,Validators.maxLength(50)] ],
-            txtMobile: ['', [Validators.required,Validators.pattern(this.mobnumPattern),Validators.minLength(10),Validators.maxLength(12)]],
+            txtMobile: ['', [Validators.required,Validators.pattern(this.mobnumPattern)]],
             // txtOTP:['', Validators.required]
             });
             
