@@ -90,7 +90,7 @@ export class EnquiryComponent implements OnInit,OnDestroy {
     public searchFilterCtrl: FormControl = new FormControl();
     public filteredLocation: ReplaySubject<Array<any>> = new ReplaySubject<Array<any>>(1);
     public filteredSearch: ReplaySubject<Array<any>> = new ReplaySubject<Array<any>>(1);
-    mobnumPattern = "^((\\+91-?)|0)?[0-9]{10}$"; 
+    mobnumPattern = "^((\\+91-?)|0)?[0-9]{8}$"; 
     // mobnumPattern = "^((\\+91-?)|0)?[0-9]{10}$"; 
 
 

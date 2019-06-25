@@ -45,7 +45,7 @@ export class HorizontalLayout1Component implements OnInit, OnDestroy
         private router: Router,
         private activeRoute: ActivatedRoute,
         private sharedData: SharedData,
-        private authService: AuthService,
+        public authService: AuthService,
     )
     {
         // Set the defaults
@@ -76,7 +76,8 @@ export class HorizontalLayout1Component implements OnInit, OnDestroy
             // console.log( this.email);
             // console.log("Welcom->1");
             if(this.email==undefined || this.email==''){
-                this.user= this.authService.getUserDetail();
+                this.user= this.authService.getUserDetail(); 
+                
                 console.log("Welcom->2");
                 console.log(this.user);
                 this.email = this.user.VND_EMAIL;

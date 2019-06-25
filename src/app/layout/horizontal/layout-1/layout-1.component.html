@@ -18,7 +18,7 @@
         [formGroup]="loginform"> 
     <div class="welcom-div" > 
             <label >welcome : </label>
-            <span >{{this.email}} </span>
+            <span >{{this.authService.getUserEmail()}} </span>
              <!-- <input matInput  type="text" tabindex="1" formControlName="txtUsername"   class="form-control" placeholder="username" [value]= this.email maxlength="50" autocomplete="off" >   -->
         </div>
         </form>
