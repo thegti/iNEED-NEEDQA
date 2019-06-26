@@ -73,7 +73,7 @@ public getUserEmail()
 }
 
 public get isLoggedIn(): Boolean { 
-    return !!sessionStorage.getItem('token'); 
+    return !!sessionStorage.getItem('user'); 
   }  
 public get getToken(): any{
      return sessionStorage.getItem('token'); 

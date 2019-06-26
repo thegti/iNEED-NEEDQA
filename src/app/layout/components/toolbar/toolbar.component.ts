@@ -8,6 +8,9 @@ import { FuseConfigService } from '@fuse/services/config.service';
 import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 
 import { navigation } from 'app/navigation/navigation';
+import {AuthService} from '../../../authentication/auth.service';
+import {SharedData} from '../../../services/common/SharedData.service';
+import {User} from '../../../authentication/user.model';
 
 @Component({
     selector     : 'toolbar',
@@ -25,6 +28,9 @@ export class ToolbarComponent implements OnInit, OnDestroy
     navigation: any;
     selectedLanguage: any;
     userStatusOptions: any[];
+    email: String;
+    user: User;
+  
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -39,7 +45,7 @@ export class ToolbarComponent implements OnInit, OnDestroy
     constructor(
         private _fuseConfigService: FuseConfigService,
         private _fuseSidebarService: FuseSidebarService,
-        private _translateService: TranslateService
+        private _translateService: TranslateService, private authService: AuthService,private sharedData: SharedData,
     )
     {
         // Set the defaults
@@ -102,8 +108,11 @@ export class ToolbarComponent implements OnInit, OnDestroy
     /**
      * On init
      */
+   
     ngOnInit(): void
     {
+     
+       
         // Subscribe to the config changes
         this._fuseConfigService.config
             .pipe(takeUntil(this._unsubscribeAll))
@@ -115,6 +124,13 @@ export class ToolbarComponent implements OnInit, OnDestroy
 
         // Set the selected language from default languages
         this.selectedLanguage = _.find(this.languages, {'id': this._translateService.currentLang});
+   
+   
+    
+    
+        
+   
+   
     }
 
     /**
@@ -141,6 +157,13 @@ export class ToolbarComponent implements OnInit, OnDestroy
         this._fuseSidebarService.getSidebar(key).toggleOpen();
     }
 
+
+    logout(): void {
+     
+        this.authService.logout();
+      
+    }
+
     /**
      * Search
      *
@@ -165,4 +188,5 @@ export class ToolbarComponent implements OnInit, OnDestroy
         // Use the selected language for translations
         this._translateService.use(lang.id);
     }
+  
 }

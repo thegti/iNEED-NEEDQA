@@ -49,6 +49,10 @@ VendorSalesLeadSave(req): any {
   return this.httpClient.post<VendorSalesLeadModel>(`${this.baseUrl}api/Vendor/VendorSalesLeadSave`, req, this.header);
 } 
 
+VendorKeywordDelete(req): any {
+  return this.httpClient.post<VendorSalesLeadModel>(`${this.baseUrl}api/Vendor/VendorKeywordDelete`, req, this.header);
+} 
+
 
 
  

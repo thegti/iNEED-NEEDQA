@@ -16,6 +16,10 @@ import {SalesProductGroup} from 'app/utility/SalesProducts';
 import {SalesValueGroup} from 'app/utility/SalesValue';
 import {VendorsavedialogComponent} from '../vendorsavedialog/vendorsavedialog.component';
 import { MatDialog, MatDialogRef } from '@angular/material';
+import {DialogComponent} from '../dialog/dialog.component';
+import {VendorkeyworddeletedialogComponent} from '../vendorkeyworddeletedialog/vendorkeyworddeletedialog.component'
+import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
+import { from } from 'rxjs';
 
 
 @Component({
@@ -34,6 +38,7 @@ export class VendorprofileComponent implements OnInit {
   tempObject: VendorKeywordModel;
   tempAddObject: VendorKeywordModel;
   editKeywordObject : VendorKeywordModel;
+  DeleteKeywordObject :VendorKeywordModel;
   VendortempObject : VendorKeywordModel;
   salesLeadTempObject : VendorKeywordModel;
   salesLeadSaveTempObject : VendorSalesLeadModel;
@@ -86,6 +91,8 @@ export class VendorprofileComponent implements OnInit {
   IsGreaterValueType : boolean;
   private LanguageType: number=1;
   public ValueTxtValue:boolean=false;
+  KeywordDeleteDialogRef: MatDialogRef<VendorkeyworddeletedialogComponent>;
+  KeywordDialogRef: MatDialogRef<VendorkeyworddeletedialogComponent>;
   // IsHideTxtValue:boolean=false;
 VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
   VendorDialogRef: MatDialogRef<VendorsavedialogComponent>;
@@ -307,8 +314,9 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
           this.dataSource = new MatTableDataSource(this.keywordList);
       }
       else{
-          this.keywordList.push( this.tempAddObject);
-          this.dataSource = new MatTableDataSource(this.keywordList);
+        this.GetKeywords();
+          // this.keywordList.push( this.tempAddObject);
+          // this.dataSource = new MatTableDataSource(this.keywordList);
       }
     }
       
@@ -331,6 +339,53 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
       this.searchElement.nativeElement.focus();
     },0);  
    }
+
+
+   forDelete(value): void {
+    this.DeleteKeywordObject=value   
+    this.KeywordDeleteDialogRef = this._matDialog.open(VendorkeyworddeletedialogComponent, {
+        disableClose: false
+    });
+
+    this.KeywordDeleteDialogRef.componentInstance.Message  = 'are you sure you want to delete?';
+
+    this.KeywordDeleteDialogRef.afterClosed().subscribe(result => {
+        if ( result )
+        {
+          
+          var reqObj={ "VKW_VENDOR" :this.user.VND_PK,"VKW_PK": this.DeleteKeywordObject.VKW_PK};
+             console.log(reqObj) ;
+          
+            this.vendorService.VendorKeywordDelete(reqObj).subscribe((res: Array<object>) => {
+              if (res['Data'] > 0) {
+                     
+                this.KeywordDeleteDialogRef = this._matDialog.open(VendorkeyworddeletedialogComponent, {
+                    disableClose: true
+                });        
+                this.KeywordDeleteDialogRef.componentInstance.Message = 'keyword deleted successfully';
+                this.GetKeywords();
+             
+ 
+        }
+        else {
+          this.KeywordDeleteDialogRef = this._matDialog.open(VendorkeyworddeletedialogComponent, {
+              disableClose: true
+          });
+          this.KeywordDeleteDialogRef.componentInstance.isError = true;
+          if (res['Data']=== -1){
+              this.KeywordDeleteDialogRef.componentInstance.Message = 'error occured';
+          }
+        }
+    
+    });
+  };
+  this.KeywordDeleteDialogRef = null;
+  });
+}
+
+
+
+ 
 
 
    GetSalesLeadSetup()
