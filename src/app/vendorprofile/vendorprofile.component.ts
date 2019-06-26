@@ -268,6 +268,10 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
           // this.keywordList = data['Data'];
           console.log(data['Data']);
           if (data['Data'] > 0) {
+            this.KeywordDeleteDialogRef = this._matDialog.open(VendorkeyworddeletedialogComponent, {
+              disableClose: true
+          });        
+          this.KeywordDeleteDialogRef.componentInstance.Message = 'keyword saved successfully';
             this.AddToList(this.IsEditRow);
             this.firstFormGroup = this._formBuilder.group({
               txtKeyword: ['', Validators.required],

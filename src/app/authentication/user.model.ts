@@ -6,5 +6,8 @@ export interface User{
     VND_MOBILE : String,
     USR_NAME : String,
     USR_PK : number,
-    USER_TOKEN : String
+    USER_TOKEN : String,
+    ROLE_NAME : String,
+    ROLE_PK : number
+
   }
