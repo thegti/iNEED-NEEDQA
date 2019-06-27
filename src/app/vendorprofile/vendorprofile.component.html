@@ -300,10 +300,25 @@
                                 <mat-label >i want leads with </mat-label> 
                                 <mat-radio-group>
                                         <mat-radio-button  value="1" name="ValueType"  [checked]="IsValueType"   (change)="SelectValueTypes($event)"> any value</mat-radio-button>
-                                        <mat-radio-button  value="2" name="GreaterValueType"  [checked]="IsGreaterValueType"  (change)="SelectValueTypes($event)">more than <span> {{this.configvalue}}</span>  only</mat-radio-button>
-                                        <input matInput  type="text" class="valuetext"  [hidden]="!ValueTxtValue" [value]="vendorMinValue"  formControlName="txtValue"  (keypress)="numericOnly($event)" maxlength="8"  placeholder="value" autocomplete="off"  >
+                                        <!--<span> {{this.configvalue}}</span> -->
+                                        <mat-radio-button  value="2" name="GreaterValueType"  [checked]="IsGreaterValueType"  (change)="SelectValueTypes($event)" style="width:140px;" >more than qr</mat-radio-button>
+                                        <input matInput  type="text" class="valuetext"   formControlName="txtValue"   
+                                        (keypress)="numericOnly($event)" maxlength="8"  placeholder="value" autocomplete="off"  ><span style="vertical-align: bottom">only</span>
                                     </mat-radio-group>
+                                    
                         </div> 
+
+                        <!-- <div tab-index=6 class="sales-div sales-span">   
+                            <mat-label >i want leads with </mat-label> 
+                            <mat-radio-group>
+                                    <mat-radio-button  value="1" name="ValueType"  [checked]="IsValueType"   (change)="SelectValueTypes($event)"> any value</mat-radio-button>
+                                   
+                                    <mat-radio-button  value="2" name="GreaterValueType"  [checked]="IsGreaterValueType"  (change)="SelectValueTypes($event)" style="width:120px;" >more than qr</mat-radio-button>
+                                    <input matInput  type="text" class="valuetext"  [hidden]="!ValueTxtValue" [value]="vendorMinValue"  formControlName="txtValue"   
+                                    (keypress)="numericOnly($event)" maxlength="8"  placeholder="value" autocomplete="off"  ><span style="vertical-align: bottom">only</span>
+                                </mat-radio-group>
+                                
+                    </div>  -->
                         <div class="fixd-div" >
                                 <button type="button" mat-raised-button [disabled]="firstFormGroup.controls['txtEmail' && 'txtSalesMobile' ].invalid"    (click)="SaveSalesLeadButton()" >
                                    save

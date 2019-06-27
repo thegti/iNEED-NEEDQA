@@ -189,7 +189,7 @@ export class EnquiryComponent implements OnInit,OnDestroy {
     selectSearch(e)
     {
         this.selectedKeyword=e.value;
-        console.log(this.selectedKeyword);
+      
     }
     selectUseTypes(e)
     {
@@ -205,7 +205,7 @@ export class EnquiryComponent implements OnInit,OnDestroy {
             }
 
         }
-        console.log(this.selectedText);
+       
     }
     buttonPrevious()
     {
@@ -244,10 +244,10 @@ export class EnquiryComponent implements OnInit,OnDestroy {
             'EMAIL': this.firstFormGroup.value.txtEmail,
             'MOBILE_NO':this.firstFormGroup.value.txtMobile
          };
-         console.log(reqbody);
+        
          this.apiService.GenerateOtp(reqbody).subscribe((data: Array<object>) => {
              this.sharedData.SetOTP(data['Data']['OTP']);
-             console.log(data['Data']['OTP']);
+           
         });
         const dialogRef  = this._matDialog.open(NextdialogComponent);
         // const sub = dialogRef .componentInstance.onAdd.subscribe((data) => {
@@ -309,17 +309,16 @@ export class EnquiryComponent implements OnInit,OnDestroy {
        'VNQ_MOD_BY':1
 
     };
-    console.log(this.enquiryRequest );
+   
     this.enquiryService.SaveEnquiry(this.enquiryRequest).subscribe((data: Array<object>) => {
         if (data['Data'] > 0) {
-            console.log('data0');
-            console.log(data['Data']);
+           
             this.confirmDialogRef = this._matDialog.open(DialogComponent, {
                 disableClose: true
             });
-            var msg='thank you for submitting your requirment.ref.no[' + data['Data'] + ']. you will be contacted soon, a copy of your requirment is shared in your email.';
-            console.log(msg);
-            this.confirmDialogRef.componentInstance.Message = 'thank you for submitting your requirment.ref.no[' + data['Data'] +']. you will be contacted soon, a copy of your requirment is shared in your email.';
+           
+            // this.confirmDialogRef.componentInstance.Message = 'thank you for submitting your requirment.ref.no[' + data['Data'] +']. you will be contacted soon, a copy of your requirment is shared in your email.';
+            this.confirmDialogRef.componentInstance.Message = 'thank you for submitting your requirement. you will be contacted soon, a copy of your requirment is sent to your email.';
             this.isFirst=false;
             this.next=true; 
             this.IsValidOtp=false;
@@ -358,7 +357,7 @@ export class EnquiryComponent implements OnInit,OnDestroy {
   detectFiles(event) {
     this.selectedFiles = event.target.files;
     this.fileName = this.selectedFiles[0].name;
-    console.log('selectedFiles: ' + this.fileName );
+    
   }
   onSelectionchange(event): void{
    
@@ -407,15 +406,12 @@ private filterLocation(): void{
         'CON_GROUP': group,
         'AUTO_SEARCH': search
      };
-    console.log(reqbody);
+   
      this.apiService.ConstGetAuto(reqbody).subscribe((data: Array<object>) => {
-        console.log("in");
-       
         this.location = data['Data'];
-        console.log(this.location);
         this.location.splice(0,0,this.searchDataNull);
         this.filteredLocation.next(this.location);
-        console.log(this.filteredLocation);
+       
      });
  }
  getKeyword(): any {
@@ -444,10 +440,9 @@ private filterLocation(): void{
         'VKW_KWORD_TYPE': groups,
         'AUTO_SEARCH': search
      };
-     console.log(reqbody);
+   
      this.apiService.KeyWordGetAuto(reqbody).subscribe((data: Array<object>) => {
         this.keyword = data['Data'];
-        console.log(this.keyword );
         this.keyword.splice(0,0,this.keywordDataNull);
         this.filteredSearch.next(this.keyword);
      });

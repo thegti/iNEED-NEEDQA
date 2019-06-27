@@ -756,7 +756,10 @@ background-repeat: no-repeat;}
                     .mat-radio-group    { font-family: 'coheadlinew08-lightregular';
                         .mat-radio-button   {    width: 150px; font-family: 'coheadlinew08-lightregular';
                             label   {   font-family: 'coheadlinew08-lightregular'; margin:0px 15px 0px 0px;}
+                            .w120  {   width:120px!important;}
                         }
+
+                        
                     }
                     .mat-form-field-appearance-outline .mat-form-field-infix   {   padding:0px;}
                     mat-error {   width: 100%; display: block; color: #ff0028 !important;
