@@ -28,17 +28,16 @@ export class ActivateSupplierComponent implements OnInit {
       const reqbody = {
         'KEY':this.key 
      };
-     console.log(reqbody);
+     
      this.vendorService.ActivateVendor(reqbody).subscribe((data: Array<object>) => {
-      console.log('account');
-       console.log(data);
+     
        this.lblMessage="your account is not activatted please try latter!";
       if (data['Data'] === -8){
         this.lblMessage="your account is already activated!";
       }
       else{
         this.sharedData.SetVendorEmail(data["Data"][0].VND_EMAIL);
-        this.lblMessage="your account is activated!";
+        this.lblMessage="thank you for verifying your email. your account is now activated!.";
       }
      });
 

@@ -104,7 +104,6 @@ export class SupplierRegistrationComponent implements OnInit,OnDestroy {
      };
      this.apiService.CountryFilterGetAuto(reqbody).subscribe((data: Array<object>) => {
         this.countries = data['Data'];
-        console.log(this.countries );
         this.countries.splice(0,0,this.keywordDataNull);
         this.filteredCountry.next(this.countries);
      });
@@ -148,8 +147,6 @@ export class SupplierRegistrationComponent implements OnInit,OnDestroy {
     var selectedCntVal=this.secondFormGroup.value.ddlCountry;
     // var selectedCntArray=selectedCntVal.split(',');
     this.moddate =  new Date().toISOString();
-    console.log("Test");
-    console.log(this.secondFormGroup.value.ddlCountry);
     this.enableClose=false;
     this.vendorRequest = {
         'VND_NAME': this.firstFormGroup.value.txtCompany,
@@ -180,14 +177,14 @@ export class SupplierRegistrationComponent implements OnInit,OnDestroy {
         'VND_MOD_BY':1
 
     };
-    console.log(this.vendorRequest);
+
     this.vendorService.SaveVendor(this.vendorRequest).subscribe((data: Array<object>) => {
         if (data['Data'] > 0) {
             
             this.confirmDialogRef = this._matDialog.open(DialogComponent, {
                 disableClose: true
             });
-            var msg='thank for submitting vendor registration at  <a routerLink="http://need.qa/#/home"> www.need.qa </a>. a verification email has been sent to your email. kindly check your email and activate your account. ';
+            var msg='thank for submitting vendor registration at  www.need.qa. a verification email has been sent to your email. kindly check your email and activate your account. ';
         //    this.confirmDialogRef.componentInstance.isError=false;
           
           this.confirmDialogRef.componentInstance.Message = msg;

@@ -49,9 +49,9 @@ export class LoginComponent implements OnInit {
       'USR_NAME': this.loginform.value.txtUsername,
       'USR_PWD' : this.loginform.value.txtPassword
    };
-   console.log(reqbody);
+
     this.authService.VendorLoginVendor(reqbody).subscribe(res => {
-      console.log(res);
+     
         if(res['Data'] == -1)
         {
           this.LoginErrorMsg="invalid username or password";

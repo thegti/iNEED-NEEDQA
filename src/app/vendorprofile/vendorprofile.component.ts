@@ -132,7 +132,6 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
   sidebarMenu(item)
   {
     this.selectedItem=item;
-    console.log(this.selectedItem);
     switch(item)
     {
       case 'item3':
@@ -229,11 +228,8 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
    {
    
     var reqObj={"VNQ_PK":this.user.VND_PK};
-    console.log(this.tempObject);
     this.vendorService.VendorGet(reqObj).subscribe((data: Array<object>) => {
       this.VendorGetList = data['Data'];
-      console.log(data);
-      console.log(this.VendorGetList);
       this.VendorRegistrationId =this.VendorGetList[0].Vendor_Reg_No;
       this.VendorRegistrationName=this.VendorGetList[0].Vendor_Name;
       this.VendorAddress=this.VendorGetList[0].Vendor_Address;
@@ -251,7 +247,7 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
    }
    AddNewKeywordButton()
    {
-     console.log(this.keywordList!=null);
+  
      if(this.IsEditRow)
      {
         this.editKeywordObject.VKW_KWORD=this.firstFormGroup.value.txtKeyword;
@@ -268,10 +264,10 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
           "VKW_VENDOR" : this.user.VND_PK
         }
       }
-        console.log(this.tempAddObject);
+       
         this.vendorService.VendorKeywordSave(this.tempAddObject).subscribe((data: Array<object>) => {
           // this.keywordList = data['Data'];
-          console.log(data['Data']);
+        
           if (data['Data'] > 0) {
             this.KeywordDeleteDialogRef = this._matDialog.open(VendorkeyworddeletedialogComponent, {
               disableClose: true
@@ -363,7 +359,7 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
         {
           
           var reqObj={ "VKW_VENDOR" :this.user.VND_PK,"VKW_PK": this.DeleteKeywordObject.VKW_PK};
-             console.log(reqObj) ;
+           
           
             this.vendorService.VendorKeywordDelete(reqObj).subscribe((res: Array<object>) => {
               if (res['Data'] > 0) {
@@ -392,11 +388,6 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
   });
 }
 
-
-
- 
-
-
    GetSalesLeadSetup()
    {
     var reqObj= {"VST_VENDOR":  this.user.VND_PK};
@@ -407,12 +398,12 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
         txtKeyword : [''],
         txtValue : ['']
        });
-       console.log(reqObj);
+      
     this.vendorService.GetSalesLeadSetup(reqObj).subscribe((data: Array<object>) => {
-      console.log(data);
+     
       this.IsEditSalesLead=true;
       this.salesLeadList = data['Data'];
-      console.log(this.salesLeadList);
+  
       
       this.SetLeadsFor(this.salesLeadList[0].VST_ENQUIRY_TYPE);
       this.SetLeadsTypeFor(this.salesLeadList[0].VST_ENQUIRY_USE);
@@ -457,15 +448,16 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
       "VST_VALUE_TYPE" :	this.valueSalesUse> 0 ? this.valueSalesUse : 1, 	
       "VST_MOD_DT" :this.moddate,
     }
-    console.log(this.salesLeadSaveTempObject);
+   
     this.vendorService.VendorSalesLeadSave(this.salesLeadSaveTempObject).subscribe((data: Array<object>) => {
-        console.log(data);
+      
       // this.dataSource = new MatTableDataSource(this.keywordList);
       this.VendorSaveDialogRef = this._matDialog.open(VendorsavedialogComponent, {
         disableClose: true
     });
    
-    this.VendorSaveDialogRef.componentInstance.Message = 'sales lead details of '+this.VendorRegistrationName+' is submitted successfully';
+    // this.VendorSaveDialogRef.componentInstance.Message = 'sales lead details of '+this.VendorRegistrationName+' is submitted successfully';
+    this.VendorSaveDialogRef.componentInstance.Message = 'sales lead details are submitted successfully';
     
   this.VendorSaveDialogRef.afterClosed().subscribe(result => {
     if ( result )
@@ -480,6 +472,7 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
    });
    }
 
+   
 get validation() { 
      return this.firstFormGroup.controls;
      }
@@ -514,7 +507,7 @@ SelectUseTypes(e)
       groups=SerachGroup.Both;
   }
   
-  console.log(this.selectedSalesUse);
+ 
 }
 
   SetLeadsFor(type:number)
@@ -557,7 +550,7 @@ SelectProductTypes(e)
   }
   
 
-  console.log(this.productSalesUse);
+ 
 }
 
 SelectValueTypes(e)
