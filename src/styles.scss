@@ -56,7 +56,12 @@ input::-webkit-input-placeholder {
 
 .head-lft       {   width:70%; float:left;}
 .welcom-div     {   height:25px; padding-left:9.5%; font-family: 'coheadlinew01-regularregular', sans-serif;
-                    font-size:17px; color:#0074bc;}
+                    font-size:17px; color:#0074bc;
+                
+                    @include media-breakpoint('xs') {
+                        height:auto;
+                    }
+                }
 .head-rgt       {   width:30%; float: left;
                     @include media-breakpoint('md'){
                     width:30%;
