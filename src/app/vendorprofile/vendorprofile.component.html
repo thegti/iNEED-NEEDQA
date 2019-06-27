@@ -351,7 +351,7 @@
                                 <mat-radio-group>
                                         <mat-radio-button  value="1" name="ValueType"  [checked]="IsValueType"   (change)="SelectValueTypes($event)"> any value</mat-radio-button>
                                         <mat-radio-button  value="2" name="GreaterValueType"  [checked]="IsGreaterValueType"  (change)="SelectValueTypes($event)">more than <span> 3000 </span>  only</mat-radio-button>
-                                        <input matInput  type="text" class="valuetext"  [hidden]="!ValueTxtValue" [value]="vendorMinValue"  formControlName="txtValue"  (keypress)="numericOnly($event)" maxlength="8"  placeholder="value" autocomplete="off"  >
+                                        <input matInput  type="text" class="valuetext margnlft-10per"  [hidden]="!ValueTxtValue" [value]="vendorMinValue"  formControlName="txtValue"  (keypress)="numericOnly($event)" maxlength="8"  placeholder="value" autocomplete="off"  >
                                     </mat-radio-group>
                                  
                               
