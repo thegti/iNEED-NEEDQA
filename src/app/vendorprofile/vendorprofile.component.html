@@ -22,21 +22,18 @@
                         <mat-list-item class="mat-list-item" [ngClass]="{active:  selectedItem == 'item2'}">
                             <span (click)="sidebarMenu('item2')"  class="mat-list-item-content">account status</span>
                         </mat-list-item>
-                        
                         <mat-divider class="mat-divider mat-divider-horizontal"></mat-divider>
                 
                         <mat-list-item class="mat-list-item" [ngClass]="{active:  selectedItem == 'item3'}">
                             <span (click)="sidebarMenu('item3')" class="mat-list-item-content" >load keywords</span>
                         </mat-list-item>
-                        
                         <mat-divider class="mat-divider mat-divider-horizontal"></mat-divider>
                 
                         <mat-list-item class="mat-list-item" [ngClass]="{active:  selectedItem == 'item4'}">
                             <span (click)="sidebarMenu('item4')" class="mat-list-item-content">sales lead setup</span>
                         </mat-list-item>
-                        
                         <mat-divider class="mat-divider mat-divider-horizontal"></mat-divider>
-                
+
                         <mat-list-item class="mat-list-item" [ngClass]="{active:  selectedItem == 'item5'}">
                             <span (click)="sidebarMenu('item5')" class="mat-list-item-content">reports</span>
                         </mat-list-item>
@@ -117,26 +114,20 @@
 <!-- Item 2 -->
                 
                      <div class="demo-content" [hidden]="selectedItem != 'item2'">
-  
                       <div>
                           <mat-label class="lft-lbl" >status</mat-label> 
                           <span class="mid-lbl"> :</span>
                           <mat-label class="rgt-lbl">{{VendorStatus}}</mat-label>
-                          
                            </div>
-                         
                           <div>
                               <mat-label class="lft-lbl" >account expiry</mat-label> 
                               <span class="mid-lbl"> :</span>
                               <mat-label class="rgt-lbl">{{VendorExpiry}}</mat-label>
-                              
                                </div>
-
                                <div>
                                   <mat-label class="lft-lbl" >plan</mat-label> 
                                   <span class="mid-lbl"> :</span>
                                   <mat-label class="rgt-lbl">{{VendorPlan}}</mat-label>
-                                  
                                    </div>
                   
                    
@@ -197,7 +188,6 @@
                                                                              <th mat-header-cell *matHeaderCellDef  > keywords </th>
                                                                              <td mat-cell *matCellDef="let row"> {{row.VKW_KWORD}}</td>
                                                                          </ng-container>
-                                                                         
                                                             <ng-container matColumnDef="Edit">
                                                               <th mat-header-cell *matHeaderCellDef class="txt-rgt" style="width:15%"></th>
                                                               <td mat-cell *matCellDef="let row" class="txt-rgt" style="width:15%">
@@ -207,12 +197,8 @@
                                                                    <button type="button" mat-mini-fab   color="basic" class="btn-list w22 btn-margn" (click)="forDelete(row)" >
                                                                     <mat-icon>delete</mat-icon>
                                                                 </button>
-                                                                  
-                                                                   
                                                                   </td>
                                                             </ng-container>
-                                                           
-                                                          
                                                             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                                                             <tr mat-row *matRowDef="let row; columns: displayedColumns;">
                                                             </tr>
@@ -221,10 +207,7 @@
                                                          </div>       
                                                         </div>
 
-                                                     
-
                                                         <div class="keyword-csv" >
-                                                      
                                                             <h2>keywords csv upload</h2>
                                                             <div class="dwnlod-sample">
                                                             <button mat-raised-button   (click)="downloadCsvButton()"   >
@@ -248,9 +231,7 @@
                                                                 </div>
                                                  
                                 </mat-tab>
-                               
                                 <mat-tab label="arabic"> arabic </mat-tab>
-                                
                               </mat-tab-group>
                              
                   </div> 
@@ -258,7 +239,6 @@
 
 <!-- Item 4 -->
                   <div class="demo-content" [hidden]="selectedItem != 'item4'" >
-
                       <div class="sales-div">   
                                 <mat-label >email to which sales to be shared</mat-label> 
                                 <mat-form-field appearance="outline" fxFlex="50" >
@@ -281,16 +261,6 @@
                                             <mat-error *ngIf="formControls.txtSalesMobile.errors.required">enter mobile number </mat-error>
                                            <mat-error *ngIf="formControls.txtSalesMobile.errors.pattern "  >enter valid mobile number </mat-error>
                                           </mat-error>
-
-                                   <!-- <mat-error *ngIf="txtSalesMobile.errors " >
-                                        <mat-error *ngIf="txtSalesMobile.errors.required">
-                                           enter mobile number 
-                                        </mat-error>
-                                        <mat-error *ngIf="txtSalesMobile.errors.pattern">
-                                          enter valid mobile number 
-                                        </mat-error>
-                                      </mat-error> -->
-                                      
                                    </mat-form-field>
                              
                          </div> 
@@ -303,28 +273,11 @@
                                     <mat-error *ngIf="formControls.txtWhatsappMobile.errors && formControls.txtWhatsappMobile.touched" class="invalid-feedback">
                                     <mat-error *ngIf="formControls.txtWhatsappMobile.errors.pattern "  >enter valid mobile number </mat-error>
                                     </mat-error>
-
-                                    <!-- <mat-error *ngIf="txtWhatsappMobile.errors " >
-                                            <mat-error *ngIf="txtWhatsappMobile.errors.required">
-                                                    enter mobile number 
-                                                 </mat-error>
-                                        <mat-error *ngIf="txtWhatsappMobile.errors.pattern">
-                                          enter valid mobile number 
-                                        </mat-error>
-                                      </mat-error> -->
                                 </mat-form-field>
-                             
                          </div> 
-
-
-   
-
-
-                        
                     
                         <div tab-index=4 class="sales-div">   
                                 <mat-label >i want leads for </mat-label> 
-                               
                                         <mat-radio-group>  
                                                 <mat-radio-button  value="1" name="PersonalUse"  [checked]="IsPersonalUse" (change)="SelectUseTypes($event)">personal use</mat-radio-button>
                                                 <mat-radio-button  value="2" name="BusinessUse" [checked]="IsBusinessUse"  (change)="SelectUseTypes($event)">business use</mat-radio-button>
@@ -336,33 +289,25 @@
              
                         <div tab-index=5 class="sales-div">   
                                 <mat-label >i want leads for </mat-label> 
-                               
                                 <mat-radio-group>
                                         <mat-radio-button  value="1"  name="ProductType"  [checked]="IsProductType"  (change)="SelectProductTypes($event)"> product</mat-radio-button>
                                         <mat-radio-button  value="2" name="ServiceType"  [checked]="IsServiceType"  (change)="SelectProductTypes($event)">service</mat-radio-button>
                                         <mat-radio-button  value="3" name="BothType"  [checked]="IsBothType"  (change)="SelectProductTypes($event)">both</mat-radio-button>
                                     </mat-radio-group>
-                                 
                               
                         </div>  
-                        <div tab-index=6 class="sales-div">   
+                        <div tab-index=6 class="sales-div sales-span">   
                                 <mat-label >i want leads with </mat-label> 
-                               
                                 <mat-radio-group>
                                         <mat-radio-button  value="1" name="ValueType"  [checked]="IsValueType"   (change)="SelectValueTypes($event)"> any value</mat-radio-button>
-                                        <mat-radio-button  value="2" name="GreaterValueType"  [checked]="IsGreaterValueType"  (change)="SelectValueTypes($event)">more than <span> 3000 </span>  only</mat-radio-button>
-                                        <input matInput  type="text" class="valuetext margnlft-10per"  [hidden]="!ValueTxtValue" [value]="vendorMinValue"  formControlName="txtValue"  (keypress)="numericOnly($event)" maxlength="8"  placeholder="value" autocomplete="off"  >
+                                        <mat-radio-button  value="2" name="GreaterValueType"  [checked]="IsGreaterValueType"  (change)="SelectValueTypes($event)">more than <span> {{this.configvalue}}</span>  only</mat-radio-button>
+                                        <input matInput  type="text" class="valuetext"  [hidden]="!ValueTxtValue" [value]="vendorMinValue"  formControlName="txtValue"  (keypress)="numericOnly($event)" maxlength="8"  placeholder="value" autocomplete="off"  >
                                     </mat-radio-group>
-                                 
-                              
                         </div> 
-
-
                         <div class="fixd-div" >
                                 <button type="button" mat-raised-button [disabled]="firstFormGroup.controls['txtEmail' && 'txtSalesMobile' ].invalid"    (click)="SaveSalesLeadButton()" >
                                    save
                                  </button>
-                             
                                  </div>
 
                     </div>
@@ -371,9 +316,7 @@
                     <div class="demo-content" [hidden]="selectedItem != 'item5'">
                             <div class="report-div" >   
                                     <mat-label >sales leads generated</mat-label> 
-                                     
                                     <mat-form-field>
-                                            
                                             <select matNativeControl required>
                                               <option value="volvo">1000</option>
                                               <option value="saab">2000</option>
