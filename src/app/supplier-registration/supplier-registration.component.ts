@@ -187,7 +187,7 @@ export class SupplierRegistrationComponent implements OnInit,OnDestroy {
             this.confirmDialogRef = this._matDialog.open(DialogComponent, {
                 disableClose: true
             });
-            var msg='please check your email to validate and complete the vendor registration.ref.no[' + data['Data'] + ']. ';
+            var msg='thank for submitting vendor registration at  <a routerLink="http://need.qa/#/home"> www.need.qa </a>. a verification email has been sent to your email. kindly check your email and activate your account. ';
         //    this.confirmDialogRef.componentInstance.isError=false;
           
           this.confirmDialogRef.componentInstance.Message = msg;
