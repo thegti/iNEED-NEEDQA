@@ -23,7 +23,7 @@
 
         </div>
 
-        <div class="" fxFlex="0 1 auto" fxLayout="row" fxLayoutAlign="start center">
+        <div class="logoutvendor" fxFlex="0 1 auto" fxLayout="row" fxLayoutAlign="start center">
 
             <!-- <button mat-button [matMenuTriggerFor]="userMenu"
                     class="user-button">
@@ -58,11 +58,15 @@
             <!-- <fuse-search-bar (input)="search($event)"></fuse-search-bar> -->
 
             <!-- <div class="toolbar-separator"></div> -->
+            <a routerLink="/vendorprofile">  <button type="button"  mat-mini-fab [hidden]="!this.authService.isLoggedIn"   color="basic" class="btn-list w22 btn-margn">
+                <mat-icon>account_circle</mat-icon>
+                 </button></a>
 
             <button mat-raised-button type="button" mat-raised-button (click)="logout()" [hidden]="!this.authService.isLoggedIn">
                  
                     <span>Logout</span>
                 </button>
+
                 <!-- <input type="text" placeholder="test" [hidden]="hideElement"> -->
 
             <button mat-button fxHide fxShow.gt-xs

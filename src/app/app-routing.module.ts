@@ -85,6 +85,7 @@ const appRoutes: Routes = [
       
         component: VendorprofileComponent
     },
+   
     {
         path: 'test', 
       

@@ -80,7 +80,8 @@ export class VendorprofileComponent implements OnInit {
   VendorExpiry : String;
   VendorPlan : String;
   moddate: any;
-  mobnumPattern = "^((\\+91-?)|0)?[0-9]{10}$"; 
+   mobnumPattern = "^((\\+91-?)|0)?[0-9]{10}$"; 
+  //  mobnumPattern = "/([5-9][0-9])|([1-9]\d{3}\d*)/"; 
   IsPersonalUse: boolean =true;
   IsBusinessUse: boolean;
   IsBoth: boolean;

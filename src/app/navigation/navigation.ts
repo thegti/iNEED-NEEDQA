@@ -108,15 +108,15 @@ export const navigation: FuseNavigation[] = [
         url      : 'ihave',
       
     },
-    {
-        id       : 'vendorprofile',
-        title    : 'vendor profile',
-        translate: '',
-        type     : 'item',
-        icon     : '',
-        url      : 'vendorprofile',
+    // {
+    //     id       : 'vendorprofile',
+    //     title    : 'vendor profile',
+    //     translate: '',
+    //     type     : 'item',
+    //     icon     : '',
+    //     url      : 'vendorprofile',
       
-    },
+    // },
     // {
     //     id       : 'test',
     //     title    : 'test',

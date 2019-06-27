@@ -210,20 +210,26 @@ input .mat-input-element:-internal-autofill-selected  {
 
 #cdk-overlay-4.cdk-overlay-pane    {   transform: translateX(-16px) translateY(17px) !important;
     -webkit-transform: translateX(-16px) translateY(0%) !important;
+  
+    
 }
 
 #cdk-overlay-3.cdk-overlay-pane    {   transform: translateX(-16px) translateY(17px) !important;
     -webkit-transform: translateX(-16px) translateY(0%) !important;
+  
 }
 #cdk-overlay-2.cdk-overlay-pane    {   transform: translateX(-16px) translateY(17px) !important;
     -webkit-transform: translateX(-16px) translateY(0%) !important;
+    
 }
 #cdk-overlay-1.cdk-overlay-pane    {   transform: translateX(-16px) translateY(17px) !important;
     -webkit-transform: translateX(-16px) translateY(0%) !important;
+   
 }
 
 #cdk-overlay-0.cdk-overlay-pane    {   transform: translateX(-16px) translateY(17px) !important;
     -webkit-transform: translateX(-16px) translateY(0%) !important;
+   
 }
 
 .enquiry-textarea {  
@@ -894,5 +900,26 @@ background-repeat: no-repeat;}
 {
     color: transparent !important;
 }
-
+//change below style for keyword delete popup.here mat-raised button removed
+.btn-container-submit-delete
+{
+    .mat-dialog-actions
+    {
+        display: block !important;
+    }
+}
+//change this style for logout butto
+.logoutvendor
+{
+    .mat-raised-button
+    {
+        height: 30px !important;
+        font-family: 'coheadlinew08-lightregular', sans-serif !important;
+        padding: 0px 10px 15px 10px !important;
+    }
+    .mat-button-wrapper
+    {
+        line-height: 1 !important;
+    }
+}
 
