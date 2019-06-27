@@ -9,6 +9,7 @@ import { VendorService } from '../services/vendor/vendor.service';
 import { UseExistingWebDriver } from 'protractor/built/driverProviders';
 import {User} from '../authentication/user.model';
 import {AuthService} from '../authentication/auth.service';
+import { ApiService } from '../services/common/common.service';
 import { debug } from 'util';
 import {VendorSalesLeadModel} from '../business-object/VendorObject';
 import { SerachGroup } from 'app/utility/SalesLoadUse';
@@ -92,13 +93,15 @@ export class VendorprofileComponent implements OnInit {
   IsGreaterValueType : boolean;
   private LanguageType: number=1;
   public ValueTxtValue:boolean=false;
+  public  configvalue: String;
+
   KeywordDeleteDialogRef: MatDialogRef<VendorkeyworddeletedialogComponent>;
   KeywordDialogRef: MatDialogRef<VendorkeyworddeletedialogComponent>;
   // IsHideTxtValue:boolean=false;
 VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
   VendorDialogRef: MatDialogRef<VendorsavedialogComponent>;
   constructor(private _formBuilder: FormBuilder,private vendorService: VendorService,
-    private authService: AuthService,public _matDialog: MatDialog, ) {
+    private authService: AuthService,private apiService: ApiService,public _matDialog: MatDialog, ) {
     
    }
 
@@ -122,6 +125,7 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
     this.SetLeadsFor(1);
     this.SetLeadsTypeFor(1);
     this.SetValueTypeFor(1);
+    this.ConfigGet();
     
   }
  
@@ -597,8 +601,17 @@ get formControls() { return this.firstFormGroup.controls; }
 // }  
 // get txtWhatsappMobile() {
 //   return this.firstFormGroup.get('txtWhatsappMobile');
-// }  
+// }   
 
+ConfigGet()
+{
+    const reqbody = {
+      "CNS_SETTING" : "VND_TXT_VAL"
+     };
+     this.apiService.ConfigGet(reqbody).subscribe((data: Array<object>) => {
+      this.configvalue = data['Data'][0].CNS_DATA;
+     });
 
+}
 
 }
