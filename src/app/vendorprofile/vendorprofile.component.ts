@@ -396,35 +396,60 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
         txtSalesMobile: ['', [Validators.required,Validators.pattern(this.mobnumPattern)]],
         txtWhatsappMobile: ['', [Validators.pattern(this.mobnumPattern)]],
         txtKeyword : [''],
-        txtValue : ['']
+        txtValue : [this.configvalue]
        });
       
     this.vendorService.GetSalesLeadSetup(reqObj).subscribe((data: Array<object>) => {
      
-      this.IsEditSalesLead=true;
-      this.salesLeadList = data['Data'];
-  
-      
-      this.SetLeadsFor(this.salesLeadList[0].VST_ENQUIRY_TYPE);
-      this.SetLeadsTypeFor(this.salesLeadList[0].VST_ENQUIRY_USE);
-      this.SetValueTypeFor(this.salesLeadList[0].VST_VALUE_TYPE);
-      // console.log(this.salesLeadList[0].VST_EMAIL);
-      // this.vendorEmail=this.salesLeadList[0].VST_EMAIL;
-      // this.vendorSalesMobile=this.salesLeadList[0].VST_MOBILE;
-      // this.vendorWhatsappMobile=this.salesLeadList[0].VST_WHATSAPP;
-      // this.vendorMinValue=this.salesLeadList[0].VST_MIN_VALUE;
+      if(data['Data']!=null){
+          this.IsEditSalesLead=true;
+          this.salesLeadList = data['Data'];
+          console.log(">>");
+          console.log(data);
+          
+          this.SetLeadsFor(this.salesLeadList[0].VST_ENQUIRY_USE);
+          this.SetLeadsTypeFor(this.salesLeadList[0].VST_ENQUIRY_TYPE);
+          this.SetValueTypeFor(this.salesLeadList[0].VST_VALUE_TYPE);
+          // console.log(this.salesLeadList[0].VST_EMAIL);
+          // this.vendorEmail=this.salesLeadList[0].VST_EMAIL;
+          // this.vendorSalesMobile=this.salesLeadList[0].VST_MOBILE;
+          // this.vendorWhatsappMobile=this.salesLeadList[0].VST_WHATSAPP;
+          // this.vendorMinValue=this.salesLeadList[0].VST_MIN_VALUE;
 
-      this.firstFormGroup = this._formBuilder.group({
-        txtEmail : [this.salesLeadList[0].VST_EMAIL,[Validators.required, Validators.email,Validators.maxLength(50)] ],
-        txtSalesMobile: [this.salesLeadList[0].VST_MOBILE, [Validators.required,Validators.pattern(this.mobnumPattern)]],
-        txtWhatsappMobile: [this.salesLeadList[0].VST_WHATSAPP, [Validators.pattern(this.mobnumPattern)]],
-        txtKeyword : [''],
-        txtValue : [this.salesLeadList[0].VST_MIN_VALUE]
-       });
+          this.firstFormGroup = this._formBuilder.group({
+            txtEmail : [this.salesLeadList[0].VST_EMAIL,[Validators.required, Validators.email,Validators.maxLength(50)] ],
+            txtSalesMobile: [this.salesLeadList[0].VST_MOBILE, [Validators.required,Validators.pattern(this.mobnumPattern)]],
+            txtWhatsappMobile: [this.salesLeadList[0].VST_WHATSAPP, [Validators.pattern(this.mobnumPattern)]],
+            txtKeyword : [''],
+            txtValue : [this.salesLeadList[0].VST_MIN_VALUE]
+          });
+      }
    },
    error => {
      alert("Internal Server Error!");
    });
+   }
+
+   SetLeadsFor(type:number)
+   {
+     this.IsPersonalUse = type==1 ? true : false;
+     this.IsBusinessUse = type==2 ? true : false;
+     this.IsBoth = type==3 ? true : false;
+     this.selectedSalesUse=type;
+   }
+   SetLeadsTypeFor(type:number)
+   {
+     this.IsProductType = type==1 ? true : false;
+     this.IsServiceType = type==2 ? true : false;
+     this.IsBothType = type==3 ? true : false;
+     this.productSalesUse=type;
+   }
+   SetValueTypeFor(type:number)
+   {
+     this.IsValueType = type==1 ? true : false;
+     this.IsGreaterValueType = type==2 ? true : false;
+     this.ValueTxtValue = type==2 ? true : false;
+     this.valueSalesUse=type;
    }
 
    SaveSalesLeadButton()
@@ -433,6 +458,9 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
     var PK = this.salesLeadList==null ? 0 : this.salesLeadList[0].VST_PK;
     var strVale=this.firstFormGroup.value.txtValue;
     strVale=strVale.length>0 ? strVale : 0;
+    if(this.valueSalesUse==1)// If any value selected
+      strVale="0";
+    console.log(strVale);
     this.salesLeadSaveTempObject=
     {
       "VST_PK" : PK,
@@ -448,29 +476,33 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
       "VST_VALUE_TYPE" :	this.valueSalesUse> 0 ? this.valueSalesUse : 1, 	
       "VST_MOD_DT" :this.moddate,
     }
-   
+   console.log(this.salesLeadSaveTempObject);
     this.vendorService.VendorSalesLeadSave(this.salesLeadSaveTempObject).subscribe((data: Array<object>) => {
+      if(data["Data"]>0)
+          {
+            this.GetSalesLeadSetup();
+          // this.dataSource = new MatTableDataSource(this.keywordList);
+          this.VendorSaveDialogRef = this._matDialog.open(VendorsavedialogComponent,  {
+            disableClose: true
+            });
       
-      // this.dataSource = new MatTableDataSource(this.keywordList);
-      this.VendorSaveDialogRef = this._matDialog.open(VendorsavedialogComponent, {
-        disableClose: true
-    });
-   
-    // this.VendorSaveDialogRef.componentInstance.Message = 'sales lead details of '+this.VendorRegistrationName+' is submitted successfully';
-    this.VendorSaveDialogRef.componentInstance.Message = 'sales lead details are submitted successfully';
+        // this.VendorSaveDialogRef.componentInstance.Message = 'sales lead details of '+this.VendorRegistrationName+' is submitted successfully';
+          this.VendorSaveDialogRef.componentInstance.Message = 'sales lead details are submitted successfully';
+        
+          this.VendorSaveDialogRef.afterClosed().subscribe(result => {
+            if ( result )
+              {
+
+              }
+          this.VendorSaveDialogRef = null;
+          });
+        }
+        else{
+          alert("server error!")
+        }
+     });
     
-  this.VendorSaveDialogRef.afterClosed().subscribe(result => {
-    if ( result )
-    {
-       
     }
-    this.VendorSaveDialogRef = null;
-     
- 
-});
-     
-   });
-   }
 
    
 get validation() { 
@@ -510,27 +542,7 @@ SelectUseTypes(e)
  
 }
 
-  SetLeadsFor(type:number)
-  {
-    this.IsPersonalUse = type==1 ? true : false;
-    this.IsBusinessUse = type==2 ? true : false;
-    this.IsBoth = type==3 ? true : false;
-  }
-  SetLeadsTypeFor(type:number)
-  {
-    this.IsProductType = type==1 ? true : false;
-    this.IsServiceType = type==2 ? true : false;
-    this.IsBothType = type==3 ? true : false;
-  }
-  SetValueTypeFor(type:number)
-  {
-    this.IsValueType = type==1 ? true : false;
-    this.IsGreaterValueType = type==2 ? true : false;
-    this.ValueTxtValue = type==2 ? true : false;
-  
-  
-  
-  }
+
 SelectProductTypes(e)
 {
   var groups=1;
