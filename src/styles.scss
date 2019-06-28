@@ -136,7 +136,7 @@ mat-horizontal-stepper  {
 
 .mat-radio-group    {   
     @media screen and (min-width:200px) and (max-width:399px){
-        margin-left:20px;
+        margin-left:11px;
     }
 }
 
@@ -145,6 +145,10 @@ mat-horizontal-stepper  {
 .mat-form-field  {   
     min-width:60%; max-width:60%; display:inline-block!important;
     font-family: 'dinlight', sans-serif!important; font-size:14px!important;
+
+    @media screen and (min-width:200px) and (max-width:399px){
+        min-width:70%; max-width:70%;
+    }
 }
 .mat-form-field-wrapper  {   
     width:87%; display:inline-block!important; padding:0px; height:40px;
@@ -331,9 +335,26 @@ textarea            {   width:50%; border:none; padding:0px 5px;
     background:#fff;padding:4px 0px 0px; box-sizing: border-box;  -webkit-box-sizing: border-box;
     font-family: 'dinlight', sans-serif;}
 
-.btn-container  {   width:52%; float:right;} 
+.btn-container  {   width:52%; float:right;
+
+    @media screen and (min-width:200px) and (max-width:399px){
+        width:60%;
+    }
+
+    @media screen and (min-width:400px) and (max-width:600px)    {   width:60%;}
+} 
 .btn-container-center  {   width:53%; text-align: center; /*overflow:hidden; display: flex;
         align-items: center;    justify-content: center;*/
+
+        @media screen and (min-width:200px) and (max-width:399px){
+            width: 70%; text-align: center; display: flex; place-content: center;
+            margin: 0px auto !important;
+        }
+
+        @media screen and (min-width:400px) and (max-width:600px){
+            width: 70%; text-align: center; display: flex; place-content: center;
+            margin: 0px auto !important;
+        }
 }
 
 .btn-container-submit  {   width:100%; text-align: center; }
@@ -399,7 +420,12 @@ textarea            {   width:50%; border:none; padding:0px 5px;
 
 .phon-input     {  
     .mat-form-field-infix input    {  width: 75%!important;
-        margin-left: 3px;}
+        margin-left: 3px;
+    
+        @media screen and (min-width:200px) and (max-width:399px){
+            width: 70%!important;
+        }
+    }
 }
 
 /* Slide */
@@ -422,17 +448,30 @@ background-repeat: no-repeat;}
 .foot-div ul li { list-style: none; display: inline-block}
 .foot-div li    { margin:0px 10px 0px 0px;}
 .highlite       {  font-family: 'coheadlinew08-lightregular'; font-size: 40px;
+
+    @media screen and (min-width:200px) and (max-width:399px){
+        display:none;
+    }
                     @include media-breakpoint ('xs'){
                         font-size: 35px;
                     } 
 }
 .foot-div span  { margin:0px 10px 0px 0px;
+
+    @media screen and (min-width:200px) and (max-width:399px){
+        height:33px;
+    }
                   @include media-breakpoint ('xs'){ 
                       height:39px; margin:0px;
                   }
 }
 .foot-div a     {  margin:0px 10px 0px 0px; font-family: 'coheadlinew08-lightregular'; 
                     line-height: 70px;
+
+                    @media screen and (min-width:200px) and (max-width:399px){
+                        margin: 0px; padding: 0px 10px;
+                    }
+
                     @include media-breakpoint ('xs'){
                         line-height:37px; height:40px;
                     }
@@ -840,7 +879,15 @@ background-repeat: no-repeat;}
         mat-icon    {   margin-right:4px; color: #0074bc!important;}
     }
 
-    .toolbar-separator  {   height:20px;}
+    .toolbar-separator  {   height:20px;
+    
+        @media screen and (min-width:200px) and (max-width:399px){
+            display:none;
+        }
+
+        @include media-breakpoint ('xs')    {   display:none;}
+        @include media-breakpoint ('sm')    {   display:none;}
+    }
     
 }
 
@@ -855,10 +902,19 @@ background-repeat: no-repeat;}
     
     /*@include media-breakpoint ('xs')    {   bottom: 62px;}*/
     @media screen and (min-width:200px) and (max-width:499px){
-        bottom:62px;
+        bottom:12px;
+        img {   width:30px;}
     }
 }
 .watsap-icn:hover   {   transform: scale(0.9);}
+
+/* Scroll Bar */ 
+.ps .ps__rail-x:hover, .ps .ps__rail-y:hover, .ps .ps__rail-x:focus, .ps .ps__rail-y:focus, .ps .ps__rail-x.ps--clicking, .ps .ps__rail-y.ps--clicking
+{   
+    background:none;
+}
+
+.ps__thumb-y    {   background:#3b3b3b;}
 
 /* BgColor */
 .bg-white   {   background: #fff!important;}

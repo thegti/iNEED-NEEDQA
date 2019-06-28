@@ -3,7 +3,24 @@
     overflow:hidden;
 
     h1  {   width:100%; color:#fff; font-size:34px; text-align:center;
-        font-family: 'coheadlinew08-lightregular', sans-serif;}
+        font-family: 'coheadlinew08-lightregular', sans-serif;
+
+        @media screen and (min-width:200px) and (max-width:399px){
+            margin:0px 0px 10px 0px;
+            font-size:30px;
+        }
+
+        @media screen and (min-width:400px) and (max-width:600px)    {   
+            margin:0px 0px 10px 0px;
+            font-size:30px;
+        }
+    
+    }
+
+        @media screen and (min-width:200px) and (max-width:399px){
+            width: 100%; padding:5px;
+        }
+        @media screen and (min-width:400px) and (max-width:600px)    {   width: 100%; padding:5px;}
 }
 
 .content-lft        {   width:50%; float: left; text-align:right;
@@ -15,7 +32,19 @@
         font-family: 'Titillium Web', sans-serif!important; }  
 
 .mat-horizontal-stepper-header-container        {   display:none!important;}
-.mat-step-header    {   display:none!important;}    
+.mat-step-header    {   display:none!important;} 
+
+@media screen and (min-width:200px) and (max-width:399px){
+    width: 100%; margin:0px auto;
+    
+    div     {   place-content: center!important;}
+        }
+        
+        @media screen and (min-width:400px) and (max-width:600px){
+            width: 100%; margin:0px auto;
+            
+            div     {   place-content: center!important;}
+                }        
 }
 
 .content-rgt        {   width:50%; float: left;
@@ -28,7 +57,17 @@
     
     .mat-horizontal-stepper-header-container        {   display:none!important;}
 
-    
+    @media screen and (min-width:200px) and (max-width:399px){
+        width: 100%; margin:0px auto;
+
+        div     {   place-content: center!important;}
+            }
+            
+            @media screen and (min-width:400px) and (max-width:600px){
+                width: 100%; margin:0px auto;
+                
+                div     {   place-content: center!important;}
+                    }             
 }  
 
 
