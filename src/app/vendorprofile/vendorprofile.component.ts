@@ -404,9 +404,6 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
       if(data['Data']!=null){
           this.IsEditSalesLead=true;
           this.salesLeadList = data['Data'];
-          console.log(">>");
-          console.log(data);
-          
           this.SetLeadsFor(this.salesLeadList[0].VST_ENQUIRY_USE);
           this.SetLeadsTypeFor(this.salesLeadList[0].VST_ENQUIRY_TYPE);
           this.SetValueTypeFor(this.salesLeadList[0].VST_VALUE_TYPE);
@@ -457,10 +454,11 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
     this.moddate =  new Date().toISOString();
     var PK = this.salesLeadList==null ? 0 : this.salesLeadList[0].VST_PK;
     var strVale=this.firstFormGroup.value.txtValue;
-    strVale=strVale.length>0 ? strVale : 0;
+    if(!strVale)//If empty String
+      strVale="0";
     if(this.valueSalesUse==1)// If any value selected
       strVale="0";
-    console.log(strVale);
+   
     this.salesLeadSaveTempObject=
     {
       "VST_PK" : PK,
@@ -476,7 +474,7 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
       "VST_VALUE_TYPE" :	this.valueSalesUse> 0 ? this.valueSalesUse : 1, 	
       "VST_MOD_DT" :this.moddate,
     }
-   console.log(this.salesLeadSaveTempObject);
+   
     this.vendorService.VendorSalesLeadSave(this.salesLeadSaveTempObject).subscribe((data: Array<object>) => {
       if(data["Data"]>0)
           {
@@ -567,7 +565,7 @@ SelectProductTypes(e)
 
 SelectValueTypes(e)
 {
-  
+ 
   this.valueSalesUse=e.value
   var groups=1;
   if(this.valueSalesUse == 1)
