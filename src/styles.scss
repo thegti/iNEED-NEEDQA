@@ -149,6 +149,9 @@ mat-horizontal-stepper  {
     @media screen and (min-width:200px) and (max-width:399px){
         min-width:70%; max-width:70%;
     }
+
+    @include media-breakpoint ('sm') {  min-width:80%; max-width:80%; }
+
 }
 .mat-form-field-wrapper  {   
     width:87%; display:inline-block!important; padding:0px; height:40px;
@@ -352,6 +355,11 @@ textarea            {   width:50%; border:none; padding:0px 5px;
         }
 
         @media screen and (min-width:400px) and (max-width:600px){
+            width: 70%; text-align: center; display: flex; place-content: center;
+            margin: 0px auto !important;
+        }
+
+        @include media-breakpoint ('sm') {  
             width: 70%; text-align: center; display: flex; place-content: center;
             margin: 0px auto !important;
         }
@@ -891,9 +899,6 @@ background-repeat: no-repeat;}
     
 }
 
-
-
-
 /* ---------------COMMON------------- */
 
 .needqa     {   font-family: 'coheadlinew01-boldregular'; color: #0074bc;}
@@ -1001,5 +1006,20 @@ background-repeat: no-repeat;}
 {
     color: transparent !important;
 }
+
+
+/* ---------------Media Query------------- */
+.content-main       {
+    @include media-breakpoint ('sm')    {
+        width: 645px!important; padding:5px!important;
+    }
+
+    h1      {
+        @include media-breakpoint ('sm')    {
+            margin:0px 0px 20px 0px;
+        }
+    }
+}
+/* ---------------Media Query------------- */
 
 
