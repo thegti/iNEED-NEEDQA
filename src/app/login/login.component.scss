@@ -7,6 +7,18 @@
         /*div     {   margin:0px 0px 10px 0px;}  */ 
         
      
+@media screen and (min-width:200px) and (max-width:399px){
+    width: 70%;
+
+    h1      {   margin:10px;}
+}
+
+@media screen and (min-width:400px) and (max-width:600px)    {   width: 70%;
+
+    h1      {   margin:10px;}
+}
+
+
 }
 
 .user-btn         {  width:50%; height:30px; margin:0px 0px 0px 1px; border:none; 

@@ -362,6 +362,7 @@ textarea            {   width:50%; border:none; padding:0px 5px;
         @include media-breakpoint ('sm') {  
             width: 70%; text-align: center; display: flex; place-content: center;
             margin: 0px auto !important;
+
         }
 }
 
@@ -565,6 +566,34 @@ background-repeat: no-repeat;}
 
 
 /* Vendor Profile */ 
+
+fuse-sidebar    {
+    @include media-breakpoint ('sm'){
+        
+            min-width: 0 !important;
+            max-width: 80vw !important;
+            width: 80vw !important;
+        
+    }
+}
+
+fuse-sidebar.animations-enabled {
+    transition-property: transform,width,min-width,max-width,-webkit-transform;
+    transition-duration: 150ms;
+    transition-timing-function: ease-in-out;
+}
+
+fuse-sidebar.open {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+
+fuse-sidebar.left-positioned {
+    left: 0;
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+}
+
 /*---------- left side ------*/ 
 .leftsidebar    {   display:flex; align-items:center; margin-left:30%;}
 
@@ -1017,6 +1046,18 @@ background-repeat: no-repeat;}
     h1      {
         @include media-breakpoint ('sm')    {
             margin:0px 0px 20px 0px;
+        }
+    }
+}
+
+.demo-content   {
+    @media screen and (min-width:200px) and (max-width:399px){
+        overflow-x:scroll;
+    }
+
+    mat-label.lft-lbl    {   
+        @media screen and (min-width:200px) and (max-width:399px){
+            width:auto; min-width:180px;
         }
     }
 }
