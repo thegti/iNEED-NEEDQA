@@ -59,7 +59,7 @@
                         <mat-horizontal-stepper class="vendor-content"  fusePerfectScrollbar>
                                 <mat-step [stepControl]="firstFormGroup">
                                   <form [formGroup]="firstFormGroup"  >
-
+<!-- Item 1 -->
                         <div class="demo-content" [hidden]="selectedItem != 'item1'">  
                         <div>
                           <mat-label class="lft-lbl"  >vendor registration id</mat-label> 
@@ -135,12 +135,12 @@
 <!-- Item 3 -->
                   
 
-                   <div class="demo-content" [hidden]="selectedItem != 'item3'">
+                   <div class="demo-content" [hidden]="selectedItem != 'item3'" fusePerfectScrollbar>
                         <mat-tab-group>
                                 <mat-tab label="english"> 
                                  
                                         <div >
-                                     <div style="display:flex; margin-bottom:1%;">
+                                     <div class="upload-outer">
                                         <div class="upload">
                                                 <button mat-raised-button type="button"  (click)="UploadKeywordButton()">
                                                    upload csv

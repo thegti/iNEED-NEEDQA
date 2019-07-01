@@ -661,12 +661,27 @@ fuse-sidebar.left-positioned {
             padding:0px 0px 0px 2%;  box-sizing:border-box; -webkit-box-sizing:border-box;}
 
             mat-tab-group   {   
-                div   {   display:inherit;}
+                div   {   display:inherit;
+                    @media screen and (min-width:200px) and (max-width:399px){
+                        display:block;
+                    }
+                }
                 ul li       {   list-style: none;}
                 .mat-tab-header-pagination  {   display: none;}
             }
             .mat-tab-group  {   font-family: 'coheadlinew08-lightregular';
                 .mat-tab-header {   border-bottom: none;
+                    .mat-tab-body-wrapper   {
+                        .mat-tab-body   {   
+                            .mat-tab-body-content   {  
+                                .upload-outer     {   display:flex; margin-bottom:1%;
+                                    @media screen and (min-width:200px) and (max-width:399px){
+                                        display:block; background:aqua;
+                                    }
+                                }
+                             }
+                        }
+                    }
                     .mat-tab-label-container {
                         .mat-tab-label  {   
                             height:35px;   padding: 0 24px;  cursor: pointer;
@@ -732,8 +747,25 @@ fuse-sidebar.left-positioned {
                         }
                         
                     }
-                    td:nth-child(1) {   width:7%;}
-                    td.mat-cell     {   border-bottom-color:transparent;}
+                    td:nth-child(1) {   width:7%;
+                        @media screen and (min-width:200px) and (max-width:399px){
+                            width: 4%;
+                        }
+                    }
+
+                    td:nth-child(2) {   width:auto;
+                        @media screen and (min-width:200px) and (max-width:399px){
+                            width: 30%;
+                        }
+                    }
+
+
+                    td.mat-cell     {   border-bottom-color:transparent;
+                        
+                        @media screen and (min-width:200px) and (max-width:399px){
+                            padding:0px;
+                        }
+                    }
                    
                 }    
                 }
@@ -761,6 +793,9 @@ fuse-sidebar.left-positioned {
                             }
                         }
                     }
+                    @media screen and (min-width:200px) and (max-width:399px){
+                        justify-content:flex-start;
+                    }
                 }
 
                
@@ -782,7 +817,12 @@ fuse-sidebar.left-positioned {
                                 }
                 span            {   position: relative;  top: -3px;} 
                 .dwnlod-sample  {   display:flex!important; justify-content: center; 
-                    border-top:1px solid #ccc; padding:10px;  } 
+                                    border-top:1px solid #ccc; padding:10px; 
+                                
+                                    @media screen and (min-width:200px) and (max-width:399px){
+                                        padding:5px 0px 0px;;
+                                    }
+                                } 
                 p               {   margin:0px;}
                 h2              {   margin-bottom: 5px;}
 
@@ -816,7 +856,7 @@ fuse-sidebar.left-positioned {
 
            .mat-input-element   {   font-family: 'coheadlinew08-lightregular';} 
            .sales-div           {   flex-direction: row;  box-sizing: border-box; display: flex;
-                    align-items: baseline; font-size:15px;
+                                    align-items: baseline; font-size:15px;
 
                     .mat-form-field {   
                         .mat-form-field-wrapper   {  
@@ -847,7 +887,9 @@ fuse-sidebar.left-positioned {
                                         height: 32px; margin-top: -2px;}
 
                                                     
-                    
+                          @media screen and (min-width:200px) and (max-width:399px){
+                              display:block;
+                          }  
                 }                            
                 .fixd-div   {    width:100%; display: flex;  align-items: center;  justify-content: flex-end;}
         }
