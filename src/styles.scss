@@ -734,6 +734,7 @@ fuse-sidebar.left-positioned {
 .vendor-cont-outer  {   width:100%; display:flex; align-items: center; }
 .vendor-content     {   width:90%; height:270px; border-radius:5px; -webkit-border-radius:5px; 
                         padding:10px 20px 10px 20px; box-sizing:border-box; -webkit-box-sizing:border-box;
+                        overflow-y: auto;
 //vendor profile
 .mat-form-field .mat-select.mat-select-invalid .mat-select-arrow
 {
