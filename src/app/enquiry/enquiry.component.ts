@@ -29,7 +29,7 @@ import {SharedData} from '../services/common/SharedData.service'
   styleUrls: ['./enquiry.component.scss']
 })
 export class EnquiryComponent implements OnInit,OnDestroy {
-
+    public OtpMsg :string;
     public selectedText: string;
     enableClose: Boolean = false;
     public selectedLocation: any;
@@ -247,8 +247,28 @@ export class EnquiryComponent implements OnInit,OnDestroy {
         
          this.apiService.GenerateOtp(reqbody).subscribe((data: Array<object>) => {
              this.sharedData.SetOTP(data['Data']['OTP']);
-           
+
+             this.OtpMsg = 'an otp has been sent to your ';
+          
+             if(data['Data']['BY_MAIL']== true &&  data['Data']['BY_SMS'] == true )
+             {
+
+                this.OtpMsg = this.OtpMsg + 'mobile and email';
+                
+             }
+             else if(data['Data']['BY_MAIL'] == true )
+             {
+                this.OtpMsg = this.OtpMsg  + 'email';
+                
+             }
+             else if(data['Data']['BY_SMS']  == true )
+             {
+                this.OtpMsg = this.OtpMsg  + 'mobile';
+                
+             }
+             this.sharedData.SetOtpMsg(this.OtpMsg );
         });
+        
         const dialogRef  = this._matDialog.open(NextdialogComponent);
         // const sub = dialogRef .componentInstance.onAdd.subscribe((data) => {
         // });

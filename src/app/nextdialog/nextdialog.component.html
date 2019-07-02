@@ -11,8 +11,11 @@
       <p>enter otp</p>
       <div class="verify-outer">
       <input matInput type="text"  placeholder="otp" formControlName="lblOtp" (keypress)="numericOnly($event)" maxlength="10">
-
+    
       <button mat-raised-button  (click)="onButtonClicked()">proceed</button>
+    </div>
+    <div>
+      <p>{{this.OtpMessage}}</p>
     </div>
       <div>
         <p class="errorotp">{{this.AttemptOtpMessage}}</p>

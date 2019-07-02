@@ -1,5 +1,6 @@
 import { CommonFields } from './Interfaces';
 import {Injectable, EventEmitter } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 @Injectable({
     providedIn: 'root'
   })
@@ -7,6 +8,8 @@ export class SharedData
 {
     private _email: string='';
     private _OTP: string;
+    private _OTPMsg = new Subject<string>();
+
     private _IsValidOTP: boolean;
 
 
@@ -29,6 +32,13 @@ export class SharedData
     }
     public GetIsValidOTP(){
         return this._IsValidOTP;
+    }
+    public SetOtpMsg (val:string)
+    {
+        this._OTPMsg.next(val);
+    }
+    public GetOTPMsg() : Observable<string> {
+        return this._OTPMsg.asObservable();
     }
     public SetOTP(val:string)
     {

@@ -12,6 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class NextdialogComponent implements OnInit {
   firstFormGroup: FormGroup;
   public Message: string;
+  public OtpMessage : string;
   public AttemptOtpMessage:string;
   public InvalidOtpMessage:string;
   private attemptCount: number;
@@ -34,6 +35,9 @@ ngOnInit() {
     // captcha: ['', Validators.required],
     lblOtp: [''],
     
+    });
+     this.sharedData.GetOTPMsg().subscribe(msg=>{
+      this.OtpMessage =msg;
     });
 }
 onButtonClicked()
