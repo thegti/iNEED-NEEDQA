@@ -4,6 +4,15 @@
 
     fuse-sidebar {
         background: map-get($background, background);
+
+        @media screen and (min-width:200px) and (max-width:399px){
+            background:#0074bc;
+        }
+
+        @media screen and (min-width:400px) and (max-width:600px)    {   
+            background:#0074bc;
+        }
+        
     }
 
     .fuse-sidebar-overlay {
