@@ -10,17 +10,23 @@ fuse-sidebar {
     overflow-x: hidden;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    width: 280px;
-    min-width: 280px;
-    max-width: 280px;
+    width: 300px;
+    min-width: 300px;
+    max-width: 300px;
     z-index: 1000;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.35);
+
+    /*@media screen and (min-width:200px) and (max-width:399px){
+        min-width: 0 !important;
+        max-width:95vw !important;
+        width:95vw !important;
+    }
 
     @include media-breakpoint('xs') {
         min-width: 0 !important;
         max-width:72vw !important;
         width:72vw !important;
-    }
+    }*/
 
     &.left-positioned {
         left: 0;
