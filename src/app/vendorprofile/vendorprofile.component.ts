@@ -21,6 +21,7 @@ import {DialogComponent} from '../dialog/dialog.component';
 import {VendorkeyworddeletedialogComponent} from '../vendorkeyworddeletedialog/vendorkeyworddeletedialog.component'
 import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
 import { from } from 'rxjs';
+import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 
 
 @Component({
@@ -100,7 +101,7 @@ export class VendorprofileComponent implements OnInit {
   // IsHideTxtValue:boolean=false;
 VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
   VendorDialogRef: MatDialogRef<VendorsavedialogComponent>;
-  constructor(private _formBuilder: FormBuilder,private vendorService: VendorService,
+  constructor(private _formBuilder: FormBuilder,private vendorService: VendorService,  private _fuseSidebarService: FuseSidebarService,
     private authService: AuthService,private apiService: ApiService,public _matDialog: MatDialog, ) {
     
    }
@@ -588,8 +589,15 @@ cancelButton()
 {
 
 }
-toggleSidebar(value)
-{}
+  /**
+     * Toggle sidebar
+     *
+     * @param name
+     */
+    toggleSidebar(name): void
+    {
+        this._fuseSidebarService.getSidebar(name).toggleOpen();
+    }
 downloadCsvButton()
 {}
 detectFiles(value)
