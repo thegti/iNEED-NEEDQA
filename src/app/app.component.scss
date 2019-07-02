@@ -54,7 +54,7 @@
         min-width:0px;
         max-width:22vw;*/
         height:420px;
-        top:21%;
+        top:21%; background:#fff;
 
         @include media-breakpoint ('xs') {
             top:16%;
