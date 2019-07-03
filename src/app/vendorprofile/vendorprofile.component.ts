@@ -321,6 +321,7 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
       }
       else{
         this.GetKeywords();
+        
           // this.keywordList.push( this.tempAddObject);
           // this.dataSource = new MatTableDataSource(this.keywordList);
       }
