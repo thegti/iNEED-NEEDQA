@@ -1,15 +1,9 @@
 <mat-tab-group class="price-main">
         <mat-tab label="monthly"> 
             
-                <div id="price-tables" class="page-layout simple fullwidth">                 
-                    
+                <div id="price-tables" class="page-layout simple fullwidth">  
                        
                         <div class="content" fxLayout="column">
-                                <!-- <mat-horizontal-stepper>
-                                        <mat-step [stepControl]="firstFormGroup">
-                                          <form [formGroup]="firstFormGroup"  > -->
-                    
-                          
                             <div class="price-tables" fxLayout="row wrap" fxLayoutAlign="center center">
                     
                                 <div class="price-table style-2 mat-elevation-z4 price-div" fxLayout="column">
@@ -24,12 +18,6 @@
                                                </span>
                                            <mat-label id="forlblSlvMnKeywords"> keywords</mat-label> 
                                         </div>
-                                        <!-- <div class="term">
-                                            <span class="text-bold">
-                                                    <mat-label id="lblSlvArbMnKeywords">50</mat-label>
-                                            </span>
-                                            <mat-label id="forlblSlvArbMnKeywords"> arabic keywords</mat-label> 
-                                        </div> -->
                                         
                                     </div>
 
@@ -39,13 +27,13 @@
                                                 
                                             </div>
                                              <div class="value">
+                                                     <!-- {{this.plans[0].DISPLAY_RATE | number: '1.0-0'}} here the display rate= 100.00 . so for removing that .00 we are ising pipe here.then value become 100 only -->
                                                     <mat-label id="lblSlvMnPrice">{{this.plans[0].DISPLAY_RATE | number: '1.0-0'}}</mat-label>
                                                 </div>
                                         </div>                        
                                         <div class="period">
                                                 <mat-label id="lblSlvMnType">per month</mat-label>
                                             </div> 
-                    
                                             <button mat-raised-button class=" cta-button-monthly" (click)="PayementButton(0)">
                                             <mat-label id="dtrSlvMnBuy">buy</mat-label>
                                            </button>
@@ -54,9 +42,7 @@
 
                                 <div class="price-table style-2 mat-elevation-z4 price-div" fxLayout="column">
                                         <div class="badge monthly-badge">{{this.plans[1].PLN_NAME}}</div>
-                                     <div class="package-type mat-accent-fg"></div>                    
-                                   
-                    
+                                     <div class="package-type mat-accent-fg"></div>   
                                     <div class="terms" fxLayout="column" fxLayoutAlign="start center">
                                         <div class="term">
                                             <span class="text-bold">
@@ -65,14 +51,6 @@
                                                 <mat-label id="forlblGldMnKeywords"> keywords</mat-label>
                                            
                                         </div>
-                                        <!-- <div class="term">
-                                            <span class="text-bold">
-                                                    <mat-label id="lblGlvArbMnKeywords">100</mat-label>
-                                               </span>
-                                                <mat-label id="forlblGlvArbMnKeywords"> arabic keywords</mat-label>
-                                           
-                                        </div> -->
-                                        
                                     </div>
 
                                     <div class="price" fxLayout="row" fxLayoutAlign="center start">
@@ -101,18 +79,10 @@
                                     <div class="terms" fxLayout="column" fxLayoutAlign="start center">
                                         <div class="term">
                                             <span class="text-bold">
-                                                
                                                     <mat-label id="lblDmdMnKeywords">{{this.plans[2].PLN_WORDS1}}</mat-label>
                                                 </span>
                                                 <mat-label id="forlblDmdMnKeywords"> keywords</mat-label>
                                         </div>
-                                        <!-- <div class="term">
-                                            <span class="text-bold">
-                                                    <mat-label id="lblDmdArbMnKeywords">200</mat-label>
-                                               </span>
-                                                <mat-label id="forlblDmdArbMnKeywords">arabic keywords</mat-label>
-                                            
-                                        </div> -->
                                         
                                     </div>
 
@@ -174,10 +144,6 @@
                     
                             </div>
                            
-                    
-                    <!-- </form>
-                    </mat-step>
-                    </mat-horizontal-stepper> -->
                         </div>
                     
                     </div>
@@ -189,25 +155,17 @@
 <!-- ------------- YEARLY ------------         -->
         <mat-tab class="yearly" label="yearly"> 
         
-                <div id="price-tables" class="page-layout simple fullwidth">                 
-                    
+                <div id="price-tables" class="page-layout simple fullwidth">    
                        
                         <div class="content" fxLayout="column">
-                                <!-- <mat-horizontal-stepper>
-                                        <mat-step [stepControl]="secondFormGroup">
-                                          <form [formGroup]="secondFormGroup"  > -->
-                    
-                          
                             <div class="price-tables" fxLayout="row wrap" fxLayoutAlign="center center">
                     
                                 <div class="price-table style-2 mat-elevation-z4 price-div" fxLayout="column">
                                         <div class="badge yearly-badge">{{this.plans[4].PLN_NAME}}</div>
-                                    <div class="package-type mat-accent-fg">{{this.plans[4].PLN_DISP_TEXT1}}</div>                   
-                                   
-                    
+
+                                    <div class="package-type mat-accent-fg">{{this.plans[4].PLN_DISP_TEXT1}}</div> 
+                                     
                                     <div class="terms" fxLayout="column" fxLayoutAlign="start center">
-                                        
-                                                                                    
                                         <div class="term">
                                             <span class="text-bold">
                                                     <mat-label id="lblSlvYrKeywords">{{this.plans[4].PLN_WORDS1}}</mat-label>
@@ -215,14 +173,7 @@
                                                 <mat-label id="forlblSlvYrKeywords"> keywords</mat-label>
                                             
                                         </div>
-                                        <!-- <div class="term">
-                                            <span class="text-bold">
-                                                    <mat-label id="lblSlvYrArbKeywords">50</mat-label>
-                                                </span>
-                                                <mat-label id="lblSlvYrArbKeywords">arabic keywords</mat-label>
-                                            
-                                        </div> -->
-                                        
+                                      
                                     </div>
 
                                     <div class="price" fxLayout="row" fxLayoutAlign="center start">
@@ -257,14 +208,7 @@
                                                 <mat-label id="forlblGldYrKeywords"> keywords</mat-label>
                                             
                                         </div>
-                                        <!-- <div class="term">
-                                            <span class="text-bold">
-                                                    <mat-label id="lblGldYrArbKeywords">100</mat-label>
-                                                </span>
-                                                <mat-label id="forlblGldYrArbKeywords"> arabic keywords</mat-label>
-                                           
-                                        </div> -->
-                                        
+                                     
                                     </div>
 
                                     <div class="price" fxLayout="row" fxLayoutAlign="center start">
@@ -300,14 +244,7 @@
                                                 <mat-label id="forlblDmdYrKeywords"> keywords</mat-label>
                                             
                                         </div>
-                                        <!-- <div class="term">
-                                            <span class="text-bold">
-                                                    <mat-label id="lblDmdYrArbKeywords">200</mat-label>
-                                                </span>
-                                                <mat-label id="forlblDmdYrArbKeywords">arabic keywords</mat-label>
-                                            
-                                        </div> -->
-                                        
+                                      
                                     </div>
 
                                     <div class="price" fxLayout="row" fxLayoutAlign="center start">
@@ -344,8 +281,7 @@
                                             
                                         </div>
                                         <div class="term">
-                                           <!--  <span class="text-bold">50</span>
-                                            Arabic Keywords-->
+                                        
                                         </div> 
                                         
                                     </div>
@@ -369,11 +305,7 @@
                                 </div>                    
                     
                             </div>
-                           
-                    
-                    <!-- </form>
-                    </mat-step>
-                    </mat-horizontal-stepper> -->
+                          
                         </div>
                     
                     </div>
