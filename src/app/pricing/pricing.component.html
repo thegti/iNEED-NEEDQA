@@ -39,7 +39,7 @@
                                                 
                                             </div>
                                              <div class="value">
-                                                    <mat-label id="lblSlvMnPrice">{{this.plans[0].DISPLAY_RATE}}</mat-label>
+                                                    <mat-label id="lblSlvMnPrice">{{this.plans[0].DISPLAY_RATE | number: '1.0-0'}}</mat-label>
                                                 </div>
                                         </div>                        
                                         <div class="period">
@@ -80,14 +80,14 @@
                                                     <mat-label id="lblGldMnCurrency">qr</mat-label>
                                                 </div>
                                             <div class="value">
-                                                    <mat-label id="lblGldMnPrice">{{this.plans[1].DISPLAY_RATE}}</mat-label>
+                                                    <mat-label id="lblGldMnPrice">{{this.plans[1].DISPLAY_RATE | number: '1.0-0'}}</mat-label>
                                                 </div>
                                         </div>                        
                                         <div class="period">
                                                 <mat-label id="lblGldMnType">per month</mat-label>
                                             </div>
                     
-                                            <a routerLink="/payment"><button mat-raised-button class=" cta-button-monthly" (click)="PayementButton('2')">
+                                            <a routerLink="/payment"><button mat-raised-button class=" cta-button-monthly" (click)="PayementButton('1')">
                                             <mat-label id="dtrGldMnBuy">buy</mat-label>
                                         </button></a>
                     
@@ -121,14 +121,14 @@
                                                     <mat-label id="lblDmdMnCurrency">qr</mat-label>  
                                                 </div>
                                             <div class="value">
-                                                    <mat-label id="lblDmdMnPrice">{{this.plans[2].DISPLAY_RATE}}</mat-label>
+                                                    <mat-label id="lblDmdMnPrice">{{this.plans[2].DISPLAY_RATE | number: '1.0-0'}}</mat-label>
                                                 </div>
                                         </div>                        
                                         <div class="period">
                                                 <mat-label id="lblDmdMnType">per month</mat-label>
                                            </div>
                     
-                                           <a routerLink="/payment"><button mat-raised-button class=" cta-button-monthly" (click)="PayementButton('3')">
+                                           <a routerLink="/payment"><button mat-raised-button class=" cta-button-monthly" (click)="PayementButton('2')">
                                             <mat-label id="dtrDmdMnBuy">buy</mat-label>
                                         </button></a>
                     
@@ -158,14 +158,14 @@
                                                     <mat-label id="lblPltnumMnCurrency">qr</mat-label>  
                                                 </div>
                                             <div class="value">
-                                                    <mat-label id="lblPltnumMnPrice">{{this.plans[3].DISPLAY_RATE}}</mat-label>
+                                                    <mat-label id="lblPltnumMnPrice">{{this.plans[3].DISPLAY_RATE | number: '1.0-0'}}</mat-label>
                                                 </div>
                                         </div>                        
                                         <div class="period">
                                                 <mat-label id="lblPltnumMnType">per month</mat-label>
                                             </div>
                     
-                                            <a routerLink="/payment"><button mat-raised-button class=" cta-button-monthly" (click)="PayementButton('4')">
+                                            <a routerLink="/payment"><button mat-raised-button class=" cta-button-monthly" (click)="PayementButton('3')">
                                             <mat-label id="dtrPltnumMnBuy">buy</mat-label>
                                         </button></a>
                     
@@ -230,13 +230,13 @@
                                                     <mat-label id="lblSlvYrCurrency">qr</mat-label>    
                                                 </div>
                                             <div class="value">
-                                                    <mat-label id="lblSlvYrPrice">{{this.plans[4].DISPLAY_RATE}}</mat-label>
+                                                    <mat-label id="lblSlvYrPrice">{{this.plans[4].DISPLAY_RATE | number: '1.0-0'}}</mat-label>
                                                 </div>
                                         </div>                        
                                         <div class="period">
                                                 <mat-label id="lblSlvYrType">per year</mat-label>
                                           </div>
-                                          <a routerLink="/payment"><button mat-raised-button class=" cta-button" (click)="PayementButton('11')">
+                                          <a routerLink="/payment"><button mat-raised-button class=" cta-button" (click)="PayementButton('4')">
                                             <mat-label id="dtrSlvYrBuy">buy</mat-label>
                                         </button></a>
                     
@@ -272,14 +272,14 @@
                                                     <mat-label id="lblGldYrCurrency">qr</mat-label>   
                                                 </div>
                                             <div class="value">
-                                                    <mat-label id="lblSlvYrPrice">{{this.plans[5].DISPLAY_RATE}}</mat-label>
+                                                    <mat-label id="lblSlvYrPrice">{{this.plans[5].DISPLAY_RATE | number: '1.0-0'}}</mat-label>
                                                 </div>
                                         </div>                        
                                         <div class="period">
                                                 <mat-label id="lblGldYrType">per year</mat-label>
                                             </div>
                     
-                                            <a routerLink="/payment"><button mat-raised-button class=" cta-button" (click)="PayementButton('12')">
+                                            <a routerLink="/payment"><button mat-raised-button class=" cta-button" (click)="PayementButton('5')">
                                             <mat-label id="dtrGldYrBuy">buy</mat-label>
                                         </button></a>
                     
@@ -315,14 +315,14 @@
                                                     <mat-label id="lblDmdYrCurrency">qr</mat-label>   
                                                 </div>
                                             <div class="value">
-                                                    <mat-label id="lblDmdYrPrice">{{this.plans[6].DISPLAY_RATE}}</mat-label>
+                                                    <mat-label id="lblDmdYrPrice">{{this.plans[6].DISPLAY_RATE | number: '1.0-0'}}</mat-label>
                                                 </div>
                                         </div>                        
                                         <div class="period">
                                                 <mat-label id="lblDmdYrType">per year</mat-label>
                                            </div>
                     
-                                           <a routerLink="/payment"><button mat-raised-button class=" cta-button" (click)="PayementButton('13')">
+                                           <a routerLink="/payment"><button mat-raised-button class=" cta-button" (click)="PayementButton('6')">
                                             <mat-label id="dtrDmdYrBuy">buy</mat-label>
                                         </button></a>
                     
@@ -355,14 +355,14 @@
                                                     <mat-label id="lblPltnumYrCurrency">qr</mat-label>   
                                                 </div>
                                             <div class="value">
-                                                    <mat-label id="lblPltnumYrPrice">{{this.plans[7].DISPLAY_RATE}}</mat-label>
+                                                    <mat-label id="lblPltnumYrPrice">{{this.plans[7].DISPLAY_RATE | number: '1.0-0'}}</mat-label>
                                                 </div>
                                         </div>                        
                                         <div class="period">
                                                 <mat-label id="lblPltnumYrType">per year</mat-label>
                                             </div>
                     
-                                            <a routerLink="/payment"><button mat-raised-button class=" cta-button" (click)="PayementButton('14')">
+                                            <a routerLink="/payment"><button mat-raised-button class=" cta-button" (click)="PayementButton('7')">
                                             <mat-label id="dtrPltnumYrBuy">buy</mat-label>
                                         </button></a>
                     

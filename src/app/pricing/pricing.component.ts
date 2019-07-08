@@ -35,7 +35,7 @@ export class PricingComponent implements OnInit {
     this.curPlan={
         "PLAN_NAME": this.plans[index].PLN_NAME,
         "PLAN_ID": this.plans[index].PLN_PK,
-        "PLAN_VALUE": this.plans[index].PLN_RATE};
+        "PLAN_VALUE": this.plans[index].DISPLAY_RATE};
         
     // this.planService.setPlan(this.curPlan);
     // this.router.navigate(['/payment/']);
@@ -53,10 +53,10 @@ export class PricingComponent implements OnInit {
     var reqbody = {
      'USER_PK':1
    };
- console.log(reqbody);
+ 
    this.vendorService.PlanGet(reqbody).subscribe((data: Array<object>) => {
       this.plans = data['Data'];
-   
+      
    });
   }
 }

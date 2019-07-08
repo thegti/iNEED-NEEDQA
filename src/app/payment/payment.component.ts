@@ -30,10 +30,7 @@ export class PaymentComponent implements OnInit {
     //this.initConfig();
   }
   private initConfig(): void {
-  // console.log("fix->", this.currentPlan.PLAN_VALUE.toFixed(2));
-  console.log("fix->", this.currentPlan.PLAN_VALUE.toFixed(2));
     this.payPalConfig = {
-      
     currency: 'USD',
     clientId: 'sb',
     createOrderOnClient: (data) => <ICreateOrderRequest>{
@@ -42,11 +39,11 @@ export class PaymentComponent implements OnInit {
         {
           amount: {
             currency_code: 'USD',
-            value: this.currentPlan.PLAN_VALUE.toFixed(2).toString(),
+            value: this.currentPlan.PLAN_VALUE.toString(),
             breakdown: {
               item_total: {
                 currency_code: 'USD',
-                value: this.currentPlan.PLAN_VALUE.toFixed(2).toString(),
+                value: this.currentPlan.PLAN_VALUE.toString(),
               }
             }
           },
@@ -57,7 +54,7 @@ export class PaymentComponent implements OnInit {
               category: 'DIGITAL_GOODS',
               unit_amount: {
                 currency_code: 'USD',
-                value: this.currentPlan.PLAN_VALUE.toFixed(2).toString(),
+                value: this.currentPlan.PLAN_VALUE.toString(),
               },
             }
           ]

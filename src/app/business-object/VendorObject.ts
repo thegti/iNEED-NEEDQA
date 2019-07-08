@@ -96,6 +96,7 @@ export interface VendorNameModel
     PLN_DISP_TEXT1 : String,
     PLN_DISP_TEXT2 : String,
     PLN_DISP_TEXT3 : String,
-    PLN_RATE : number
+    PLN_RATE : String,
+    DISPLAY_RATE : String
         
  }
