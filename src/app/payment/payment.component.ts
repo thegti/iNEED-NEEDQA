@@ -18,6 +18,7 @@ export class PaymentComponent implements OnInit {
   public payPalConfig ? : IPayPalConfig;
   showSuccess: boolean;
   currentPlan: IPlan;
+  public onAprooveMsg:String;
   firstFormGroup: FormGroup;
   constructor(private _formBuilder: FormBuilder,
     private planService: PlanService, private router: Router) { }
@@ -27,6 +28,7 @@ export class PaymentComponent implements OnInit {
     });
     this.currentPlan= this.planService.getPlan();
     this.initConfig();
+   
     //this.initConfig();
   }
   private initConfig(): void {
@@ -49,7 +51,7 @@ export class PaymentComponent implements OnInit {
           },
           items: [
             {
-              name: "tt",
+              name: this.currentPlan.PLAN_NAME,
               quantity: '1',
               category: 'DIGITAL_GOODS',
               unit_amount: {
@@ -69,6 +71,7 @@ export class PaymentComponent implements OnInit {
       layout: 'vertical'
     },
     onApprove: (data, actions) => {
+     this.onAprooveMsg = 'transaction is approved';
       console.log('onApprove - transaction was approved, but not authorized', data, actions);
       actions.order.get().then(details => {
         console.log('onApprove - you can get full order details inside onApprove: ', details);
@@ -80,12 +83,14 @@ export class PaymentComponent implements OnInit {
     },
     onCancel: (data, actions) => {
       console.log('OnCancel', data, actions);
+     
     },
     onError: err => {
       console.log('OnError', err);
     },
     onClick: (data, actions) => {
       console.log('onClick', data, actions);
+  
     },
   };
   }
