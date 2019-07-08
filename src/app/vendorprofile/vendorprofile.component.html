@@ -1,4 +1,6 @@
+<mat-label class="rgt-lbl-name">{{VendorRegistrationName}}</mat-label>
   <div class="page-layout carded left-sidebar inner-scroll">
+     
         <!-- TOP BACKGROUND -->
         <!-- <div class="top-bg accent"></div> -->
         <!-- / TOP BACKGROUND -->
@@ -10,10 +12,16 @@
             </div> -->
             <!-- / SIDEBAR HEADER -->
             <!-- SIDEBAR CONTENT -->
+            
             <div class="content leftsidebar" fusePerfectScrollbar>
+                   
                 <div class="demo-sidebar">
                     <mat-list class="mat-list mat-list-base">
                         <!-- <h3 matSubheader >vendor profile</h3> -->
+                        <mat-list-item [hidden]="!IsAdmin" class="mat-list-item" [ngClass]="{active:  selectedItem == 'item0'}">
+                            <a routerLink="/vendorlisting"> <span class="mat-list-item-content ">vendor Listing</span></a> 
+                        </mat-list-item>
+                        <mat-divider class="mat-divider mat-divider-horizontal"></mat-divider>
                         <mat-list-item class="mat-list-item" [ngClass]="{active:  selectedItem == 'item1'}">
                             <span (click)="sidebarMenu('item1')"   class="mat-list-item-content ">vendor profile</span>
                         </mat-list-item>

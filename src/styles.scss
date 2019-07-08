@@ -1273,4 +1273,66 @@ fuse-sidebar    {
 
 /* ---------------Media Query------------- */
 
-
+.vendorlisting
+{
+    
+        width: 100%;
+        margin: 3% 1% 1% 1%;
+        background: #fff;
+        border-radius: 8px;
+        -webkit-border-radius: 8px;
+        border: 1px solid #c3c3c3;
+        padding: 10px;
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+    
+    .myclass1 {
+        width: 800px;
+        margin-left: 53px;
+        margin-top: 17px;
+    }
+    .mat-horizontal-content-container {
+        overflow: hidden;
+        padding: 0 24px 24px 24px;
+    }
+    .mat-form-field {
+        font-size: 14px;
+        width: 98%;
+        margin-left: 1%;
+        margin-top: 1%;
+    }
+    .mat-button-focus-overlay {
+        opacity: 0;
+        transition: opacity .2s cubic-bezier(.35,0,.25,1),background-color .2s cubic-bezier(.35,0,.25,1);
+    }
+    .mat-mini-fab.mat-primary {
+        background: #74909e !important;
+    }
+    .mat-form-field-appearance-outline .mat-form-field-infix {
+        padding: 1em 0 1em 0 !important;
+    }
+    .mat-form-field-infix {
+        display: block;
+        position: relative;
+        flex: auto;
+        min-width: 0;
+        width: 180px;
+    }
+    .mat-form-field
+    {
+        min-width: auto !important;
+    }
+    .mat-form-field-ripple
+    {
+        background-color: rgba(0, 0, 0, 0.87);
+       
+    }
+    .mat-form-field-underline
+    {
+        transform-origin: 50%;
+        transform: scaleX(.5);
+        opacity: 0;
+        transition: background-color .3s cubic-bezier(.55,0,.55,.2);
+        height: 1px !important;
+    }
+}

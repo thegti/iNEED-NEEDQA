@@ -33,7 +33,7 @@ export interface VendorKeywordModel
     VKW_KWORD_TYPE : number;
 }
 
-export class VendorGetModel
+export interface VendorGetModel
 {
      Vendor_Reg_No :String;
     Vendor_Address :String
@@ -49,7 +49,7 @@ export class VendorGetModel
     Vendor_Status :String
 }
 
-export class VendorSalesLeadModel
+export interface VendorSalesLeadModel
 {
     VST_PK :number;
     VST_VENDOR :number;
@@ -65,4 +65,37 @@ export class VendorSalesLeadModel
     VST_VALUE_TYPE :number;
 
 }
+export interface VendorNameModel
+{
+    VND_NAME : String;
+    VND_NAME_TEXT : String;
 
+    USER_PK: number,
+    VND_CITY   : String;
+    VND_MOBILE : String;
+    VND_EMAIL  : String;
+    PLAN_NAME_TEXT : String;
+    VND_CODE   : String;
+    VPL_VALID_DATE_TO : Date;
+    VND_STATUS : String;
+    KWORD_COUNT : String;
+    TOTAL_ROW_COUNT : String;
+    VND_PK : number;
+	VKW_PK : number;
+}
+ export interface PlanGetModel
+ {
+   
+    PLN_PK : number,
+    PLN_CODE : String,
+    PLN_NAME : String,
+    PLN_MODE : number,
+    PLN_WORDS1 : number,
+    PLN_WORDS2 : number,
+    PLN_DESC : String,
+    PLN_DISP_TEXT1 : String,
+    PLN_DISP_TEXT2 : String,
+    PLN_DISP_TEXT3 : String,
+    PLN_RATE : number
+        
+ }

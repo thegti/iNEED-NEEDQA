@@ -14,10 +14,13 @@ import { TestComponent } from './test/test.component';
 import { EnquiryComponent } from './enquiry/enquiry.component';
 import {ActivateSupplierComponent} from './Supplier/activate-supplier/activate-supplier.component';
 import {VendorprofileComponent} from './vendorprofile/vendorprofile.component';
+import {VendorlistingComponent} from './vendorlisting/vendorlisting.component';
+import {PaymentComponent} from './payment/payment.component';
 
 // R and D works
 import {SearchautoComponent} from './RandD/searchauto/searchauto.component';
 import {ValidatorsComponent} from './RandD/validators/validators.component';
+
 
 
 const appRoutes: Routes = [
@@ -91,6 +94,18 @@ const appRoutes: Routes = [
       
         component: TestComponent
     },
+
+       {
+        path: 'vendorlisting', 
+      
+        component: VendorlistingComponent
+       },
+       {
+        path: 'payment', 
+      
+        component: PaymentComponent
+       },
+
     // R and D works
 
     {

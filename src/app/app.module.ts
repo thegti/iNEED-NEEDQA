@@ -38,14 +38,14 @@ import {NextdialogComponent} from './nextdialog/nextdialog.component';
 import {VendorsavedialogComponent} from './vendorsavedialog/vendorsavedialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {VendorkeyworddeletedialogComponent} from './vendorkeyworddeletedialog/vendorkeyworddeletedialog.component';
-
+import {VendorlistingComponent} from './vendorlisting/vendorlisting.component';
+import {PaymentComponent} from './payment/payment.component';
  
-
-
 // R and D works
 import {SearchautoComponent} from './RandD/searchauto/searchauto.component';
 import {ValidatorsComponent} from './RandD/validators/validators.component'
 import { EventEmitterService } from './event-emitter.service';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 @NgModule({
     declarations: [
@@ -67,8 +67,9 @@ import { EventEmitterService } from './event-emitter.service';
         VendorprofileComponent,
         NextdialogComponent,
         VendorsavedialogComponent,
-    
+        VendorlistingComponent,
         VendorkeyworddeletedialogComponent,
+        PaymentComponent,
 
         //R and D works
 
@@ -106,6 +107,7 @@ import { EventEmitterService } from './event-emitter.service';
         AppRoutingModule,
         FormsModule,
         ReactiveFormsModule,
+        NgxPayPalModule,
     ],
     providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, EventEmitterService],
     bootstrap   : [

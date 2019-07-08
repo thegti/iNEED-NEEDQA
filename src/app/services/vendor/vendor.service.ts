@@ -6,7 +6,10 @@ import { environment } from 'environments/environment';
 import {SavaVendorModel} from '../../business-object/VendorObject';
 import {VendorKeywordModel} from '../../business-object/VendorObject';
 import {VendorGetModel} from '../../business-object/VendorObject';
-import {VendorSalesLeadModel} from '../../business-object/VendorObject'
+import {VendorSalesLeadModel} from '../../business-object/VendorObject';
+import {VendorNameModel} from '../../business-object/VendorObject';
+import {PlanGetModel} from '../../business-object/VendorObject';
+// import {GetVendorListModel} from '../../business-object/VendorObject'
 
 
 
@@ -53,9 +56,17 @@ VendorKeywordDelete(req): any {
   return this.httpClient.post<VendorSalesLeadModel>(`${this.baseUrl}api/Vendor/VendorKeywordDelete`, req, this.header);
 } 
 
+VendorNameGetAuto(req ): any {
+  return this.httpClient.post<VendorNameModel>(`${this.baseUrl}api/Vendor/VendorAuto`, req, this.header );
+}    
 
+GetVendorList(req ): any {
+  return this.httpClient.post<VendorNameModel>(`${this.baseUrl}api/Vendor/VendorGetList`, req, this.header );
+}    
 
- 
+PlanGet(req ): any {
+  return this.httpClient.post<PlanGetModel>(`${this.baseUrl}api/Vendor/PlanGet`, req, this.header );
+}    
    
   
 }

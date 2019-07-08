@@ -77,9 +77,6 @@ export class HorizontalLayout1Component implements OnInit, OnDestroy
             // console.log("Welcom->1");
             if(this.email==undefined || this.email==''){
                 this.user= this.authService.getUserDetail(); 
-                
-                console.log("Welcom->2");
-                console.log(this.user);
                 this.email = this.user.VND_EMAIL;
                 this.IsHidewWelcome=false;
             }

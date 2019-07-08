@@ -9,7 +9,7 @@ export class GlobalUrl{
 //   public  API_BASE_URL = 'http://202.88.227.185/NEEDQAAPI/';
 
 
-public pageSize = 20;
+public pageSize = 20
 
 
 }

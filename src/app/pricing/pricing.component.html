@@ -5,19 +5,22 @@
                     
                        
                         <div class="content" fxLayout="column">
+                                <!-- <mat-horizontal-stepper>
+                                        <mat-step [stepControl]="firstFormGroup">
+                                          <form [formGroup]="firstFormGroup"  > -->
                     
                           
                             <div class="price-tables" fxLayout="row wrap" fxLayoutAlign="center center">
                     
                                 <div class="price-table style-2 mat-elevation-z4 price-div" fxLayout="column">
-                                        <div class="badge monthly-badge">silver</div>
+                                        <div class="badge monthly-badge">{{this.plans[0].PLN_NAME}}</div>
                                      <div class="package-type mat-accent-fg"></div>                    
                                    
                     
                                     <div class="terms" fxLayout="column" fxLayoutAlign="start center">
                                         <div class="term">
                                             <span class="text-bold">
-                                                <mat-label id="lblSlvMnKeywords">50</mat-label>
+                                                <mat-label id="lblSlvMnKeywords">{{this.plans[0].PLN_WORDS1}}</mat-label>
                                                </span>
                                            <mat-label id="forlblSlvMnKeywords"> keywords</mat-label> 
                                         </div>
@@ -35,30 +38,29 @@
                                                     <mat-label id="lblSlvMnCurrency">qr</mat-label>
                                                 
                                             </div>
-                                            <div class="value">
-                                                    <mat-label id="lblSlvMnPrice">100</mat-label>
+                                             <div class="value">
+                                                    <mat-label id="lblSlvMnPrice">{{this.plans[0].DISPLAY_RATE}}</mat-label>
                                                 </div>
                                         </div>                        
                                         <div class="period">
                                                 <mat-label id="lblSlvMnType">per month</mat-label>
-                                            </div>
+                                            </div> 
                     
-                                    <button mat-raised-button class=" cta-button-monthly">
+                                            <button mat-raised-button class=" cta-button-monthly" (click)="PayementButton(0)">
                                             <mat-label id="dtrSlvMnBuy">buy</mat-label>
-                                        
-                                    </button>
+                                           </button>
                     
                                 </div> 
 
                                 <div class="price-table style-2 mat-elevation-z4 price-div" fxLayout="column">
-                                        <div class="badge monthly-badge">gold</div>
+                                        <div class="badge monthly-badge">{{this.plans[1].PLN_NAME}}</div>
                                      <div class="package-type mat-accent-fg"></div>                    
                                    
                     
                                     <div class="terms" fxLayout="column" fxLayoutAlign="start center">
                                         <div class="term">
                                             <span class="text-bold">
-                                                    <mat-label id="lblGldArabMnKeywords">100</mat-label>
+                                                    <mat-label id="lblGldArabMnKeywords">{{this.plans[1].PLN_WORDS1}}</mat-label>
                                                 </span>
                                                 <mat-label id="forlblGldMnKeywords"> keywords</mat-label>
                                            
@@ -78,21 +80,21 @@
                                                     <mat-label id="lblGldMnCurrency">qr</mat-label>
                                                 </div>
                                             <div class="value">
-                                                    <mat-label id="lblGldMnPrice">150</mat-label>
+                                                    <mat-label id="lblGldMnPrice">{{this.plans[1].DISPLAY_RATE}}</mat-label>
                                                 </div>
                                         </div>                        
                                         <div class="period">
                                                 <mat-label id="lblGldMnType">per month</mat-label>
                                             </div>
                     
-                                    <button mat-raised-button class="cta-button-monthly">
+                                            <a routerLink="/payment"><button mat-raised-button class=" cta-button-monthly" (click)="PayementButton('2')">
                                             <mat-label id="dtrGldMnBuy">buy</mat-label>
-                                        </button>
+                                        </button></a>
                     
                                 </div> 
 
                                 <div class="price-table style-2 mat-elevation-z4 price-div" fxLayout="column">
-                                        <div class="badge monthly-badge">diamond</div>
+                                        <div class="badge monthly-badge">{{this.plans[2].PLN_NAME}}</div>
                                      <div class="package-type mat-accent-fg"></div>                    
                                    
                     
@@ -100,7 +102,7 @@
                                         <div class="term">
                                             <span class="text-bold">
                                                 
-                                                    <mat-label id="lblDmdMnKeywords">200</mat-label>
+                                                    <mat-label id="lblDmdMnKeywords">{{this.plans[2].PLN_WORDS1}}</mat-label>
                                                 </span>
                                                 <mat-label id="forlblDmdMnKeywords"> keywords</mat-label>
                                         </div>
@@ -119,21 +121,21 @@
                                                     <mat-label id="lblDmdMnCurrency">qr</mat-label>  
                                                 </div>
                                             <div class="value">
-                                                    <mat-label id="lblDmdMnPrice">200</mat-label>
+                                                    <mat-label id="lblDmdMnPrice">{{this.plans[2].DISPLAY_RATE}}</mat-label>
                                                 </div>
                                         </div>                        
                                         <div class="period">
                                                 <mat-label id="lblDmdMnType">per month</mat-label>
                                            </div>
                     
-                                    <button mat-raised-button class="cta-button-monthly">
+                                           <a routerLink="/payment"><button mat-raised-button class=" cta-button-monthly" (click)="PayementButton('3')">
                                             <mat-label id="dtrDmdMnBuy">buy</mat-label>
-                                        </button>
+                                        </button></a>
                     
                                 </div> 
 
                                 <div class="price-table style-2 mat-elevation-z4 price-div" fxLayout="column">
-                                        <div class="badge monthly-badge">platinum</div>
+                                        <div class="badge monthly-badge">{{this.plans[3].PLN_NAME}}</div>
                                      <div class="package-type mat-accent-fg"></div>                    
                                    
                     
@@ -156,16 +158,16 @@
                                                     <mat-label id="lblPltnumMnCurrency">qr</mat-label>  
                                                 </div>
                                             <div class="value">
-                                                    <mat-label id="lblPltnumMnPrice">250</mat-label>
+                                                    <mat-label id="lblPltnumMnPrice">{{this.plans[3].DISPLAY_RATE}}</mat-label>
                                                 </div>
                                         </div>                        
                                         <div class="period">
                                                 <mat-label id="lblPltnumMnType">per month</mat-label>
                                             </div>
                     
-                                    <button mat-raised-button class="cta-button-monthly">
+                                            <a routerLink="/payment"><button mat-raised-button class=" cta-button-monthly" (click)="PayementButton('4')">
                                             <mat-label id="dtrPltnumMnBuy">buy</mat-label>
-                                        </button>
+                                        </button></a>
                     
                                 </div>
                     
@@ -173,7 +175,9 @@
                             </div>
                            
                     
-                    
+                    <!-- </form>
+                    </mat-step>
+                    </mat-horizontal-stepper> -->
                         </div>
                     
                     </div>
@@ -189,13 +193,16 @@
                     
                        
                         <div class="content" fxLayout="column">
+                                <!-- <mat-horizontal-stepper>
+                                        <mat-step [stepControl]="secondFormGroup">
+                                          <form [formGroup]="secondFormGroup"  > -->
                     
                           
                             <div class="price-tables" fxLayout="row wrap" fxLayoutAlign="center center">
                     
                                 <div class="price-table style-2 mat-elevation-z4 price-div" fxLayout="column">
-                                        <div class="badge yearly-badge">silver</div>
-                                    <div class="package-type mat-accent-fg">pay only for 10 months</div>                   
+                                        <div class="badge yearly-badge">{{this.plans[4].PLN_NAME}}</div>
+                                    <div class="package-type mat-accent-fg">{{this.plans[4].PLN_DISP_TEXT1}}</div>                   
                                    
                     
                                     <div class="terms" fxLayout="column" fxLayoutAlign="start center">
@@ -203,7 +210,7 @@
                                                                                     
                                         <div class="term">
                                             <span class="text-bold">
-                                                    <mat-label id="lblSlvYrKeywords">50</mat-label>
+                                                    <mat-label id="lblSlvYrKeywords">{{this.plans[4].PLN_WORDS1}}</mat-label>
                                                 </span>
                                                 <mat-label id="forlblSlvYrKeywords"> keywords</mat-label>
                                             
@@ -223,22 +230,21 @@
                                                     <mat-label id="lblSlvYrCurrency">qr</mat-label>    
                                                 </div>
                                             <div class="value">
-                                                    <mat-label id="lblSlvYrPrice">1000</mat-label>
+                                                    <mat-label id="lblSlvYrPrice">{{this.plans[4].DISPLAY_RATE}}</mat-label>
                                                 </div>
                                         </div>                        
                                         <div class="period">
                                                 <mat-label id="lblSlvYrType">per year</mat-label>
                                           </div>
-                    
-                                    <button mat-raised-button class="cta-button">
+                                          <a routerLink="/payment"><button mat-raised-button class=" cta-button" (click)="PayementButton('11')">
                                             <mat-label id="dtrSlvYrBuy">buy</mat-label>
-                                        </button>
+                                        </button></a>
                     
                                 </div>
 
                                 <div class="price-table style-2 mat-elevation-z4 price-div" fxLayout="column">
-                                        <div class="badge yearly-badge">gold</div>
-                                    <div class="package-type mat-accent-fg">pay only for 10 months</div>                   
+                                        <div class="badge yearly-badge">{{this.plans[5].PLN_NAME}}</div>
+                                    <div class="package-type mat-accent-fg">{{this.plans[5].PLN_DISP_TEXT1}}</div>                   
                                    
                     
                                     <div class="terms" fxLayout="column" fxLayoutAlign="start center">
@@ -246,7 +252,7 @@
                                                                                     
                                         <div class="term">
                                             <span class="text-bold">
-                                                    <mat-label id="lblGldYrKeywords">100</mat-label>
+                                                    <mat-label id="lblGldYrKeywords">{{this.plans[5].PLN_WORDS1}}</mat-label>
                                                 </span>
                                                 <mat-label id="forlblGldYrKeywords"> keywords</mat-label>
                                             
@@ -266,22 +272,22 @@
                                                     <mat-label id="lblGldYrCurrency">qr</mat-label>   
                                                 </div>
                                             <div class="value">
-                                                    <mat-label id="lblSlvYrPrice">1500</mat-label>
+                                                    <mat-label id="lblSlvYrPrice">{{this.plans[5].DISPLAY_RATE}}</mat-label>
                                                 </div>
                                         </div>                        
                                         <div class="period">
                                                 <mat-label id="lblGldYrType">per year</mat-label>
                                             </div>
                     
-                                    <button mat-raised-button class="cta-button">
+                                            <a routerLink="/payment"><button mat-raised-button class=" cta-button" (click)="PayementButton('12')">
                                             <mat-label id="dtrGldYrBuy">buy</mat-label>
-                                        </button>
+                                        </button></a>
                     
                                 </div>
 
                                 <div class="price-table style-2 mat-elevation-z4 price-div" fxLayout="column">
-                                        <div class="badge yearly-badge">diamond</div>
-                                    <div class="package-type mat-accent-fg">pay only for 10 months</div>                   
+                                        <div class="badge yearly-badge">{{this.plans[6].PLN_NAME}}</div>
+                                    <div class="package-type mat-accent-fg">{{this.plans[6].PLN_DISP_TEXT1}}</div>                   
                                    
                     
                                     <div class="terms" fxLayout="column" fxLayoutAlign="start center">
@@ -289,7 +295,7 @@
                                                                                     
                                         <div class="term">
                                             <span class="text-bold">
-                                                    <mat-label id="lblDmdYrKeywords">200</mat-label>
+                                                    <mat-label id="lblDmdYrKeywords">{{this.plans[6].PLN_WORDS1}}</mat-label>
                                                 </span>
                                                 <mat-label id="forlblDmdYrKeywords"> keywords</mat-label>
                                             
@@ -309,22 +315,22 @@
                                                     <mat-label id="lblDmdYrCurrency">qr</mat-label>   
                                                 </div>
                                             <div class="value">
-                                                    <mat-label id="lblDmdYrPrice">2000</mat-label>
+                                                    <mat-label id="lblDmdYrPrice">{{this.plans[6].DISPLAY_RATE}}</mat-label>
                                                 </div>
                                         </div>                        
                                         <div class="period">
                                                 <mat-label id="lblDmdYrType">per year</mat-label>
                                            </div>
                     
-                                    <button mat-raised-button class="cta-button">
+                                           <a routerLink="/payment"><button mat-raised-button class=" cta-button" (click)="PayementButton('13')">
                                             <mat-label id="dtrDmdYrBuy">buy</mat-label>
-                                        </button>
+                                        </button></a>
                     
                                 </div>
 
                                 <div class="price-table style-2 mat-elevation-z4 price-div" fxLayout="column">
-                                        <div class="badge yearly-badge">platinum</div>
-                                    <div class="package-type mat-accent-fg">pay only for 10 months</div>                   
+                                        <div class="badge yearly-badge">{{this.plans[7].PLN_NAME}}</div>
+                                    <div class="package-type mat-accent-fg">{{this.plans[7].PLN_DISP_TEXT1}}</div>                   
                                    
                     
                                     <div class="terms" fxLayout="column" fxLayoutAlign="start center">
@@ -349,23 +355,25 @@
                                                     <mat-label id="lblPltnumYrCurrency">qr</mat-label>   
                                                 </div>
                                             <div class="value">
-                                                    <mat-label id="lblPltnumYrPrice">2500</mat-label>
+                                                    <mat-label id="lblPltnumYrPrice">{{this.plans[7].DISPLAY_RATE}}</mat-label>
                                                 </div>
                                         </div>                        
                                         <div class="period">
                                                 <mat-label id="lblPltnumYrType">per year</mat-label>
                                             </div>
                     
-                                    <button mat-raised-button class="cta-button">
+                                            <a routerLink="/payment"><button mat-raised-button class=" cta-button" (click)="PayementButton('14')">
                                             <mat-label id="dtrPltnumYrBuy">buy</mat-label>
-                                        </button>
+                                        </button></a>
                     
                                 </div>                    
                     
                             </div>
                            
                     
-                    
+                    <!-- </form>
+                    </mat-step>
+                    </mat-horizontal-stepper> -->
                         </div>
                     
                     </div>

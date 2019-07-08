@@ -8,6 +8,6 @@ export interface User{
     USR_PK : number,
     USER_TOKEN : String,
     ROLE_NAME : String,
-    ROLE_PK : number
+    ROL_PK : number
 
   }

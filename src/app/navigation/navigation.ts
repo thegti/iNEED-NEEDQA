@@ -38,7 +38,7 @@ export const navigation: FuseNavigation[] = [
     {
         id       : 'home',
         title    : 'home',
-        translate: '',
+        translate:  'NAV.HOME',
         type     : 'item',
         icon     : '',
         url      : 'home',

@@ -95,6 +95,7 @@ export class VendorprofileComponent implements OnInit {
   private LanguageType: number=1;
   public ValueTxtValue:boolean=false;
   public  configvalue: String;
+  IsAdmin : boolean =false;
 
   KeywordDeleteDialogRef: MatDialogRef<VendorkeyworddeletedialogComponent>;
   KeywordDialogRef: MatDialogRef<VendorkeyworddeletedialogComponent>;
@@ -117,12 +118,11 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
       
     this.filenames=true;  
     this.user= this.authService.getUserDetail();
+    this.IsAdmin = this.user.ROL_PK==1 ? true : false;
     this.GetVendor();
     // setTimeout(()=>{ // this will make the execution after the above boolean has changed
     //  
     // },0);  
-
-    
     this.SetLeadsFor(1);
     this.SetLeadsTypeFor(1);
     this.SetValueTypeFor(1);
@@ -138,7 +138,6 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
       case 'item3':
           this.GetKeywords();
           this.IsHideUploadDiv=false;
-          
           this.firstFormGroup = this._formBuilder.group({
             txtKeyword: ['', Validators.required],
             txtEmail : [''],
@@ -189,8 +188,6 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
       txtValue : ['']
       });
       this.firstFormGroup.value.txtKeyword.reset();
-      
-   
    }
    
   //  AddNewKeywordButton()
@@ -222,12 +219,10 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
 
     // this.keywordList.push( this.tempObject);
     // this.keywordList.push( this.tempObject);
- 
-  
    }
+
    GetVendor()
    {
-   
     var reqObj={"VNQ_PK":this.user.VND_PK};
     this.vendorService.VendorGet(reqObj).subscribe((data: Array<object>) => {
       this.VendorGetList = data['Data'];
@@ -321,7 +316,7 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
       }
       else{
         this.GetKeywords();
-        
+
           // this.keywordList.push( this.tempAddObject);
           // this.dataSource = new MatTableDataSource(this.keywordList);
       }
@@ -355,23 +350,17 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
     });
 
     this.KeywordDeleteDialogRef.componentInstance.Message  = 'are you sure you want to delete?';
-
     this.KeywordDeleteDialogRef.afterClosed().subscribe(result => {
         if ( result )
         {
-          
           var reqObj={ "VKW_VENDOR" :this.user.VND_PK,"VKW_PK": this.DeleteKeywordObject.VKW_PK};
-           
-          
             this.vendorService.VendorKeywordDelete(reqObj).subscribe((res: Array<object>) => {
-              if (res['Data'] > 0) {
-                     
+              if (res['Data'] > 0) {                     
                 this.KeywordDeleteDialogRef = this._matDialog.open(VendorkeyworddeletedialogComponent, {
                     disableClose: true
                 });        
                 this.KeywordDeleteDialogRef.componentInstance.Message = 'keyword deleted successfully';
                 this.GetKeywords();
-             
  
         }
         else {
@@ -402,7 +391,6 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
        });
       
     this.vendorService.GetSalesLeadSetup(reqObj).subscribe((data: Array<object>) => {
-     
       if(data['Data']!=null){
           this.IsEditSalesLead=true;
           this.salesLeadList = data['Data'];

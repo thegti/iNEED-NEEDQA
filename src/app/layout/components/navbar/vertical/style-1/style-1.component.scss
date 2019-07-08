@@ -120,9 +120,9 @@ navbar {
             padding: 12px 12px 12px 20px;
 
             @include media-breakpoint('xs') {
-                min-height: 56px;
-                max-height: 56px;
-                height: 56px;
+                min-height: 36px;
+                max-height: 36px;
+                height: 36px;
             }
 
             .logo {
@@ -192,7 +192,7 @@ navbar {
 
             .navbar-content {
                 flex: 1 1 auto;
-                padding: /*27px 0px*/ 55px 0px 27px 0px;
+                padding: /*27px 0px*/ 10px 0px 27px 0px;
             }
         }
     }

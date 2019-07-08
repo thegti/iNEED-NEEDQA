@@ -15,6 +15,7 @@ import {User} from '../authentication/user.model';
   }) 
 export class AuthService
 {
+  private result = new Subject<boolean>();
   header = { headers: { Authorization: `Bearer ${this.getToken}` } };
   countryID: any;
   redirectUrl: string;
@@ -53,6 +54,34 @@ getUser(): User
   return this.user;
 }
  
+public ChangeVendorID(vendorID:number)
+{
+  
+  return new Promise((resolve,reject)=>{
+
+    // setTimeout(() => {
+      if (sessionStorage.getItem('user')) {
+        this.user=<User>JSON.parse(sessionStorage.getItem('user'));
+        this.user[0].VND_PK=vendorID;
+        sessionStorage.setItem('user', JSON.stringify(this.user));
+        resolve('done');
+      }  
+    // }, 10);
+    
+  }
+  );
+  
+}
+
+public SetVendorID(vendorID:number) : Observable<boolean> {
+  this.user=<User>JSON.parse(sessionStorage.getItem('user'));
+  this.user[0].VND_PK=vendorID;
+  sessionStorage.setItem('user', JSON.stringify(this.user));
+  this.result.next(true);
+  return this.result.asObservable();
+}
+
+
 public getUserDetail(): any {     
   if (sessionStorage.getItem('user')) {
     this.user=<User>JSON.parse(sessionStorage.getItem('user'));
@@ -63,7 +92,6 @@ public getUserDetail(): any {
 }
 public getUserEmail()
 {
-
   if (sessionStorage.getItem('user')) {
     this.user=<User>JSON.parse(sessionStorage.getItem('user'));
     return  this.user[0].VND_EMAIL;
