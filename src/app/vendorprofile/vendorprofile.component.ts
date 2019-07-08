@@ -22,6 +22,7 @@ import {VendorkeyworddeletedialogComponent} from '../vendorkeyworddeletedialog/v
 import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
 import { from } from 'rxjs';
 import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
+import { Router,ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -103,7 +104,8 @@ export class VendorprofileComponent implements OnInit {
 VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
   VendorDialogRef: MatDialogRef<VendorsavedialogComponent>;
   constructor(private _formBuilder: FormBuilder,private vendorService: VendorService,  private _fuseSidebarService: FuseSidebarService,
-    private authService: AuthService,private apiService: ApiService,public _matDialog: MatDialog, ) {
+    private authService: AuthService,private apiService: ApiService,public _matDialog: MatDialog,
+    private router: Router, ) {
     
    }
 
@@ -612,6 +614,10 @@ ConfigGet()
       this.configvalue = data['Data'][0].CNS_DATA;
      });
 
+}
+vendorlistingClick()
+{
+  this.router.navigate(['/vendorlisting/' ]);
 }
 
 }
