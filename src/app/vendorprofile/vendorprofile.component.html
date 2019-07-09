@@ -1,4 +1,4 @@
-<mat-label class="rgt-lbl-name">{{VendorRegistrationName}}</mat-label>
+
   <div class="page-layout carded left-sidebar inner-scroll">
      
         <!-- TOP BACKGROUND -->
@@ -13,13 +13,13 @@
             <!-- / SIDEBAR HEADER -->
             <!-- SIDEBAR CONTENT -->
             
-            <div class="content leftsidebar" fusePerfectScrollbar>
+            <div class="content leftsidebar" >
                    
-                <div class="demo-sidebar">
+                <div class="demo-sidebar" fusePerfectScrollbar>
                     <mat-list class="mat-list mat-list-base">
                         <!-- <h3 matSubheader >vendor profile</h3> -->
                         <mat-list-item [hidden]="!IsAdmin" class="mat-list-item" [ngClass]="{active:  selectedItem == 'item0'}">
-                          <span class="mat-list-item-content" (click)="vendorlistingClick()">vendor Listing</span>
+                          <span class="mat-list-item-content vendr-list-menu" (click)="vendorlistingClick()">vendor Listing</span>
                         </mat-list-item>
                         <mat-divider class="mat-divider mat-divider-horizontal"></mat-divider>
                         <mat-list-item class="mat-list-item" [ngClass]="{active:  selectedItem == 'item1'}">
@@ -67,6 +67,7 @@
                         <mat-horizontal-stepper class="vendor-content"  fusePerfectScrollbar>
                                 <mat-step [stepControl]="firstFormGroup">
                                   <form [formGroup]="firstFormGroup"  >
+                                       <div class="vendr-name"> <mat-label >{{VendorRegistrationName}}</mat-label></div>
 <!-- Item 1 -->
                         <div class="demo-content" [hidden]="selectedItem != 'item1'">  
                         <div>

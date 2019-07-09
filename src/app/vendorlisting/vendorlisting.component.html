@@ -2,14 +2,14 @@
 <div class="vendorlisting">
     
   
-  <div class="mat-elevation-z8 tableclass">
+  <div class="tableclass table-list">
    
-    <button mat-mini-fab (click)="enbleSearch()" class="forbut" color="primary">
+    <button (click)="enbleSearch()" class="forbut search">
         <mat-icon>search</mat-icon>
          </button>
           <div class="horizontal-stepper-wrapper  myclass1" *ngIf="enableSearch">
             
-            <mat-horizontal-stepper class="mat-elevation-z4 myclass1" [linear]="true">
+            <mat-horizontal-stepper class="myclass1" [linear]="true">
               
                 <mat-step [stepControl]="stprMain">
 
@@ -19,8 +19,8 @@
                         <!-- <div fxFlex="1 0 auto" fxLayout="row"> -->
                             <div fxLayout="row" fxFlex="1 0 auto"  fxLayoutAlign="center center" >
                               <mat-form-field appearance="outline" fxFlex="100">
-                                 <mat-label>Select Vendor</mat-label>
-                                 <mat-select formControlName="ddlVendorName"  #singleSelect >
+                                 <!-- <mat-label>Select Vendor</mat-label> -->
+                                 <mat-select formControlName="ddlVendorName"  #singleSelect placeholder="select vendor">
                                   <ngx-mat-select-search [formControl]="VendorNameFilterCtrl" [placeholderLabel]="'Search Vendor...'"  [noEntriesFoundLabel]="'No matching Vendor found'"></ngx-mat-select-search>
                                   <mat-option *ngFor="let vendorname of filteredVendorName | async" [value]="vendorname['VND_PK']">
                                    <!-- {{member['MMM_NAME_TEXT']  + ' ' + member['MMM_NAME2'] + ' ' + member['MMM_NAME3'] }} -->
@@ -32,8 +32,8 @@
                              
 
                                <mat-form-field appearance="outline" fxFlex="100" class="for2field">
-                                <mat-label>Select Keyword</mat-label>
-                                <mat-select formControlName="ddlVendorKeyword" #singleSelect  >
+                                <!-- <mat-label>Select Keyword</mat-label> -->
+                                <mat-select formControlName="ddlVendorKeyword" #singleSelect  placeholder="select keyword">
                                        <ngx-mat-select-search [formControl]="VendorKeywordFilterCtrl" [placeholderLabel]="'Search Keyword...'"  [noEntriesFoundLabel]="'No matching Plan found'"></ngx-mat-select-search>
                                        <mat-option *ngFor="let keyword of filteredVendorKeyword | async" [value]="keyword['VKW_PK']">
                                          {{keyword['VKW_KWORD']}}
@@ -46,11 +46,11 @@
             
                         <div fxLayout="row" fxLayoutAlign="center center">
                             <button class="mr-8" mat-raised-button (click)="closeFun()" type="button" color="primary">
-                                Cancel
+                                cancel
                             </button>
                             <!-- <button mat-raised-button [disabled]="!makesearch" (click)="filterMembers()"  color="accent"> -->
-                                <button mat-raised-button (click)="filterMembers()"  color="accent">
-                               Search
+                                <button mat-raised-button (click)="filterMembers()">
+                               search
                             </button>
                         </div>
             
@@ -63,37 +63,37 @@
     <!-- <mat-form-field>
             <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
           </mat-form-field> -->
-<table mat-table [dataSource]="dataSource" matSort   >
+<table mat-table [dataSource]="dataSource" matSort class="w100per ">
    <!--ID Column-->
     <ng-container matColumnDef="VND_NAME " >
-        <th mat-header-cell *matHeaderCellDef style="width:7%" > Name </th>
-        <td mat-cell *matCellDef="let row" style="width:7%" > {{row.VND_NAME }}</td>
+        <th mat-header-cell *matHeaderCellDef > Name </th>
+        <td mat-cell *matCellDef="let row" style="width:33%" > {{row.VND_NAME }}</td>
     </ng-container>
   <!-- Name Column -->
   <ng-container matColumnDef="VND_CITY">
-    <th mat-header-cell *matHeaderCellDef style="width:7%" > City </th>
-    <td mat-cell *matCellDef="let row" style="width:7%"> {{row.VND_CITY }}</td>
+    <th mat-header-cell *matHeaderCellDef > City </th>
+    <td mat-cell *matCellDef="let row" style="width:20%"> {{row.VND_CITY }}</td>
   </ng-container>
   <ng-container matColumnDef="VPL_VALID_DATE_TO ">
-    <th mat-header-cell *matHeaderCellDef style="width:8%"> Plan Expiry </th>
-    <td mat-cell *matCellDef="let row" style="width:8%"> {{row.VPL_VALID_DATE_TO }} </td>
+    <th mat-header-cell *matHeaderCellDef > Plan Expiry </th>
+    <td mat-cell *matCellDef="let row" style="width:10%"> {{row.VPL_VALID_DATE_TO }} </td>
   </ng-container>
 
   <!-- Mobile Column -->
   <ng-container matColumnDef="KWORD_COUNT">
-    <th mat-header-cell *matHeaderCellDef style="width:10%"> Keyword </th>
-    <td mat-cell *matCellDef="let row" style="width:10%"> {{row.KWORD_COUNT}} </td>
+    <th mat-header-cell *matHeaderCellDef > Keyword </th>
+    <td mat-cell *matCellDef="let row" style="width:7%"> {{row.KWORD_COUNT}} </td>
   </ng-container>
 
   <!-- Church Column -->
   <ng-container matColumnDef="VND_STATUS">
-    <th mat-header-cell *matHeaderCellDef style="width:30%"> Status </th>
-    <td mat-cell *matCellDef="let row" style="width:30%"> {{row.VND_STATUS}} </td>
+    <th mat-header-cell *matHeaderCellDef > Status </th>
+    <td mat-cell *matCellDef="let row" style="width:10%"> {{row.VND_STATUS}} </td>
   </ng-container>
   <ng-container matColumnDef="Edit">
-    <th mat-header-cell *matHeaderCellDef class="txt-rgt" style="width:15%"></th>
-    <td mat-cell *matCellDef="let row" class="txt-rgt" style="width:15%">
-        <button mat-mini-fab   color="basic" (click)="forEdit(row)"  class="btn-list w22 btn-margn">
+    <th mat-header-cell *matHeaderCellDef class="txt-rgt"></th>
+    <td mat-cell *matCellDef="let row" class="txt-rgt" style="width:10%">
+        <button  (click)="forEdit(row)"  class="btn-list w22 btn-margn">
         <mat-icon>edit</mat-icon>
          </button>
        
@@ -105,12 +105,14 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;">
   </tr>
 </table>
-    <button  mat-mini-fab type="button" class="forprev" [disabled]="disableprev" (click)="previousPage()">
-        <mat-icon>keyboard_arrow_left</mat-icon>
-    </button>
-    <button  mat-mini-fab type="button" class="fornext" [disabled]="disablenext" (click)="nextPage()">
-        <mat-icon>keyboard_arrow_right</mat-icon>
-    </button> 
+    <div class="paginatn-footr">
+        <button type="button" class="forprev" [disabled]="disableprev" (click)="previousPage()">
+            <mat-icon>keyboard_arrow_left</mat-icon>
+        </button>
+        <button type="button" class="fornext" [disabled]="disablenext" (click)="nextPage()">
+            <mat-icon>keyboard_arrow_right</mat-icon>
+        </button> 
+    </div>
 
 </div>
 </div>
