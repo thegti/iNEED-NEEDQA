@@ -23,6 +23,7 @@ import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/conf
 import { from } from 'rxjs';
 import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 import { Router,ActivatedRoute } from '@angular/router';
+import {VendorEmailChangedialogComponent} from '../vendor-email-changedialog/vendor-email-changedialog.component';
 
 
 @Component({
@@ -100,6 +101,9 @@ export class VendorprofileComponent implements OnInit {
 
   KeywordDeleteDialogRef: MatDialogRef<VendorkeyworddeletedialogComponent>;
   KeywordDialogRef: MatDialogRef<VendorkeyworddeletedialogComponent>;
+
+  EmailChangeDialogRef: MatDialogRef<VendorEmailChangedialogComponent>;
+  EmailDialogRef: MatDialogRef<VendorEmailChangedialogComponent>;
   // IsHideTxtValue:boolean=false;
 VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
   VendorDialogRef: MatDialogRef<VendorsavedialogComponent>;
@@ -129,6 +133,7 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
     this.SetLeadsTypeFor(1);
     this.SetValueTypeFor(1);
     this.ConfigGet();
+   
     
   }
  
@@ -617,7 +622,20 @@ ConfigGet()
 }
 vendorlistingClick()
 {
-  this.router.navigate(['/vendorlisting/' ]);
+  this.router.navigate(['/vendorlisting/']);
 }
+PlanRenewalButton()
+{
+  this.router.navigate(['/payment/']);
+}
+EmailChangeButton()
+{
+  this.EmailChangeDialogRef = this._matDialog.open(VendorEmailChangedialogComponent, {
+    disableClose: true
+});   
+// this.EmailChangeDialogRef.componentInstance.MessageEmail = 'email';
+
+}
+
 
 }

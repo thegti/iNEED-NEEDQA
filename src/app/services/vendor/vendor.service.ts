@@ -9,6 +9,8 @@ import {VendorGetModel} from '../../business-object/VendorObject';
 import {VendorSalesLeadModel} from '../../business-object/VendorObject';
 import {VendorNameModel} from '../../business-object/VendorObject';
 import {PlanGetModel} from '../../business-object/VendorObject';
+
+import {ChangeVendorEmailModel} from '../../business-object/VendorObject';
 // import {GetVendorListModel} from '../../business-object/VendorObject'
 
 
@@ -68,5 +70,7 @@ PlanGet(req ): any {
   return this.httpClient.post<PlanGetModel>(`${this.baseUrl}api/Vendor/PlanGet`, req, this.header );
 }    
    
-  
+ChangeVendorEmail(req): any {
+  return this.httpClient.post<ChangeVendorEmailModel>(`${this.baseUrl}api/Vendor/VendorEmailChange`, req, this.header);
+}  
 }

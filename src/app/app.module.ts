@@ -40,6 +40,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {VendorkeyworddeletedialogComponent} from './vendorkeyworddeletedialog/vendorkeyworddeletedialog.component';
 import {VendorlistingComponent} from './vendorlisting/vendorlisting.component';
 import {PaymentComponent} from './payment/payment.component';
+import {VendorEmailChangedialogComponent} from './vendor-email-changedialog/vendor-email-changedialog.component';
  
 // R and D works
 import {SearchautoComponent} from './RandD/searchauto/searchauto.component';
@@ -70,6 +71,7 @@ import { NgxPayPalModule } from 'ngx-paypal';
         VendorlistingComponent,
         VendorkeyworddeletedialogComponent,
         PaymentComponent,
+        VendorEmailChangedialogComponent,
 
         //R and D works
 
@@ -81,7 +83,8 @@ import { NgxPayPalModule } from 'ngx-paypal';
         DialogComponent,
         NextdialogComponent,
         VendorsavedialogComponent,
-        VendorkeyworddeletedialogComponent
+        VendorkeyworddeletedialogComponent,
+        VendorEmailChangedialogComponent
         
       ],
     imports     : [

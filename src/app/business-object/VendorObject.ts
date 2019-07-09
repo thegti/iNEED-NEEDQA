@@ -100,3 +100,10 @@ export interface VendorNameModel
     DISPLAY_RATE : String
         
  }
+ export interface ChangeVendorEmailModel
+ {
+    VND_PK : number;
+    VND_EMAIL  : String;
+    VND_NAME : String;
+    VND_NEW_EMAIL : String;
+ }
