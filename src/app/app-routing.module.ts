@@ -101,7 +101,8 @@ const appRoutes: Routes = [
        {
         path: 'vendorlisting', 
       
-        component: VendorlistingComponent
+        component: VendorlistingComponent,
+        canActivate: [AuthGuard]
        },
        {
         path: 'payment', 

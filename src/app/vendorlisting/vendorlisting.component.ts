@@ -32,6 +32,9 @@ export class VendorlistingComponent implements OnInit {
   makesearch: Boolean = false;
   vndKeyWord: String =null;
   pageNo = 1;
+  enableAll: Boolean = false;
+  showPagination : boolean =false;
+  totalPages:number;
   disableprev: Boolean = true;
     disablenext: Boolean = true;
    confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;
@@ -92,6 +95,7 @@ vendorgetlistrequest = {
     this.getKeyword();
     this.getVendorText();
     this.GetVendorList(this.vendorgetlistrequest);
+   
   }
 
  //Vendor Name get auto
@@ -161,38 +165,46 @@ vendorgetlistrequest = {
  public GetVendorList(reqObj): void {
   this.vendorService.GetVendorList(reqObj).subscribe((data: Array<object>) => {
     this.vendorlist = data['Data'];
-    console.log(this.vendorlist);
+    this.totalPages=this.vendorlist[0].TOTAL_ROW_COUNT/this.GlobalUrls.pageSize;
+    if(this.totalPages>1)
+    this.showPagination=true;
+   else
+   this.showPagination=false;
     this.dataSource = new MatTableDataSource(this.vendorlist);
   });
   
   reqObj = {
+    
     'PAGE_NO':  this.pageNo + 1,
     'PAGE_SIZE' : this.GlobalUrls.pageSize,
     'USER_PK': 1,
     'VND_NAME_TEXT ': this.stprMain.value.ddlVendorName,
   'VKW_KWORD': this.stprMain.value.ddlVendorKeyword,
   };
+ 
   this.vendorService.GetVendorList(reqObj).subscribe((data: Array<object>) => {
     if (data['Data'] === null) {
       this.disablenext = true;
    }else {
        this.disablenext = false;  
    }
+   
   });
 }
 nextPage(): any {
-     
   this.pageNo += 1;
   this.disableprev = false;
   var reqObj = {
+    
     'PAGE_NO':  this.pageNo,
     'PAGE_SIZE' : this.GlobalUrls.pageSize,
     'USER_PK': 1,
     'VND_NAME_TEXT ': this.stprMain.value.ddlVendorName,
     'VKW_KWORD': this.stprMain.value.ddlVendorKeyword,
   };
- 
+
   this.GetVendorList(reqObj);
+ 
  }
 previousPage(): any {
   this.pageNo -= 1;
@@ -208,9 +220,25 @@ previousPage(): any {
     'VKW_KWORD': this.stprMain.value.ddlVendorKeyword,
   };
   this.GetVendorList(reqObj);
+ 
    }
   
-
+   getAllVendors()
+   {
+    this.pageNo -= 1;
+    this.disableprev = false;
+    
+     var reqObj = {
+      'PAGE_NO':  this.pageNo,
+      'PAGE_SIZE' : this.GlobalUrls.pageSize,
+      'USER_PK': 1,
+      'VND_NAME_TEXT ': this.stprMain.value.ddlVendorName,
+      'VKW_KWORD': this.stprMain.value.ddlVendorKeyword,
+    };
+    this.enableSearch = false;
+    this.GetVendorList(reqObj);
+    this.enableAll = false;
+   }
   enbleSearch(): any {
     this.enableSearch = true;
     this.makesearch = false;
@@ -250,6 +278,7 @@ previousPage(): any {
     };
     this.GetVendorList(reqObj);
     this.enableSearch = false;
+    this.enableAll = true;
     //var resultObj=  this.keywordVendor.filter(k => k['VKW_PK']== this.stprMain.value.ddlVendorKeyword)
  }
 

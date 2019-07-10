@@ -69,7 +69,6 @@ export interface VendorNameModel
 {
     VND_NAME : String;
     VND_NAME_TEXT : String;
-
     USER_PK: number,
     VND_CITY   : String;
     VND_MOBILE : String;
@@ -79,9 +78,11 @@ export interface VendorNameModel
     VPL_VALID_DATE_TO : Date;
     VND_STATUS : String;
     KWORD_COUNT : String;
-    TOTAL_ROW_COUNT : String;
+    // TOTAL_ROW_COUNT : String;
+    TOTAL_ROW_COUNT : number;
     VND_PK : number;
-	VKW_PK : number;
+    VKW_PK : number;
+    
 }
  export interface PlanGetModel
  {
