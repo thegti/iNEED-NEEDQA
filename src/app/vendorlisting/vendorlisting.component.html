@@ -7,8 +7,8 @@
     <button (click)="enbleSearch()" class="forbut search">
         <mat-icon>search</mat-icon>
          </button>
-         <button mat-raised-button *ngIf="enableAll" class="forAll" (click)="getAllVendors()"  color="primary">
-          view all vendors
+         <button *ngIf="enableAll" class="back-arrw" (click)="getAllVendors()" >
+          <mat-icon>arrow_back_ios</mat-icon>
        </button>
           <div class="horizontal-stepper-wrapper  myclass1" *ngIf="enableSearch">
             
