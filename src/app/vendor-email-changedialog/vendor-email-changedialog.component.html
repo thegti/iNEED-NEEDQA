@@ -48,7 +48,7 @@
  </mat-step>
  </mat-horizontal-stepper>
 <div mat-dialog-content *ngIf="!isError" class="forSuccess">{{MessageEmail}}</div>
-<div mat-dialog-content *ngIf="isError" class="forError">{{Message}}</div>
+<div mat-dialog-content *ngIf="isError" class="forError">{{MessageEmail}}</div>
 <div class="btn-container-submit-delete">
 <div mat-dialog-actions class="pt-24 " fxLayout="row">
     <!-- <button  class="mat-accent mr-16 forOk for" (click)="EmailDialogRef.close(true)">ok</button> -->

@@ -74,9 +74,18 @@ get validation() {
     this.EmailChangeDialogRef = null;
     });
   }
-  else{
-    alert("server error!")
-  }
+  // else{
+  //   alert("server error!")
+  // }
+  else {
+    this.EmailChangeDialogRef = this._matDialog.open(VendorEmailChangedialogComponent, {
+        disableClose: true
+    });
+    this.EmailChangeDialogRef.componentInstance.isError = true;
+    if (data['Data'] === -1){
+        this.EmailChangeDialogRef.componentInstance.MessageEmail = 'Error Occured';
+    }
+}
   });
   }
   
