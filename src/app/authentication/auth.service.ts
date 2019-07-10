@@ -92,9 +92,11 @@ public getUserDetail(): any {
 }
 public getUserEmail()
 {
+  
   if (sessionStorage.getItem('user')) {
     this.user=<User>JSON.parse(sessionStorage.getItem('user'));
     return  this.user[0].VND_EMAIL;
+  
   } else {
     return null;
   }
