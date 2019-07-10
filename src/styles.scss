@@ -892,7 +892,7 @@ fuse-sidebar.left-positioned {
                         span    {   position: relative;  top: -3px;}
                     }
 
-                    .keywordadd    {       
+                    .keywordadd    {       display: flex;   justify-content: flex-start;
                         .mat-form-field {   
                             .mat-form-field-wrapper   {  
                                 .mat-form-field-flex    { 
@@ -1024,7 +1024,7 @@ fuse-sidebar.left-positioned {
 .demo-content       {   
     .mat-input-element  {   font-family: 'coheadlinew08-lightregular';} 
     .report-div         {   flex-direction: row;  box-sizing: border-box; display: flex;
-        align-items: center; font-size:15px; border-bottom: 1px solid #ccc; padding-bottom: 15px;
+        align-items: center; font-size:15px; border-bottom: 1px solid #ccc; padding: 10px;
 
         mat-label   {   margin:0px; line-height: 15px;}
         .mat-form-field-appearance-outline .mat-form-field-flex {   padding: 0 .75em 0 0.5em;}
@@ -1044,9 +1044,9 @@ fuse-sidebar.left-positioned {
             right: 2%;}
         
         .mat-form-field     {   height:35px;}   
-        button.mat-raised-button  {   
+        /*button.mat-raised-button  {   
             span            {   position: relative;   top: -2px;  right: 2px;}
-        }     
+        } */    
     }
 
 }        
@@ -1180,7 +1180,7 @@ fuse-sidebar.left-positioned {
     
     .mat-raised-button  {   min-width:70px!important;}  
     
-    .paginatn-footr     {   background: #f2f2f2; border:1px solid #e0e0e0; text-align:right;
+    .paginatn-footr     {   background: #fdfdfd; border:1px solid #e0e0e0; text-align:right;
         button          {   border-top:none; border-bottom:none; border-right:none;
                             border-left:1px solid #ddd; }
              .mat-icon  {   line-height:1.3;}
@@ -1189,7 +1189,7 @@ fuse-sidebar.left-positioned {
     
     .mat-table  {   width:100%; font-family: 'coheadlinew08-lightregular'; 
 
-        tr:nth-child(even)    { background:#F0FFFF; height:30px;}
+        tr:nth-child(even)    { background:#f8f8f8; height:30px;}
         tr.mat-header-row     { height:10px;}
         tr.mat-row            { height:30px;}
 
@@ -1290,6 +1290,8 @@ fuse-sidebar.left-positioned {
 .min-max20      {   min-width:20%!important; max-width:20%!important;}
 .min-max25      {   min-width:25%!important; max-width:25%!important;}
 .min-max28-5    {   min-width:28%!important; max-width:28%!important;}
+
+.min-max110     {   min-width: 110px!important;  max-width: 110px!important;}
 
 /*PX*/ 
 .w290       {   width:290px !important;}
