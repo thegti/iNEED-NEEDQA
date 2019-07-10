@@ -1176,9 +1176,15 @@ fuse-sidebar.left-positioned {
                 .mat-icon   {   display: unset; color: #0074bc; font-size: 1.3em; font-weight: bold!important;}
             }
 
+    .back-arrw     {   float: right; margin-right:1%; border:none;  background: #f3f3f3;
+                border-radius: 50%;  width: 35px;  height: 35px;
+
+                .mat-icon   {   display: unset; color: #0074bc; font-size: 1.3em; font-weight: bold!important;}
+            }            
+
     button      {   background:none; border:none; }            
     
-    .mat-raised-button  {   min-width:70px!important;}  
+    /*.mat-raised-button  {   min-width:70px!important;}  */
     
     .paginatn-footr     {   background: #fdfdfd; border:1px solid #e0e0e0; text-align:right;
         button          {   border-top:none; border-bottom:none; border-right:none;
@@ -1292,6 +1298,7 @@ fuse-sidebar.left-positioned {
 .min-max28-5    {   min-width:28%!important; max-width:28%!important;}
 
 .min-max110     {   min-width: 110px!important;  max-width: 110px!important;}
+.min-max130     {   min-width: 130px!important;  max-width: 130px!important;}
 
 /*PX*/ 
 .w290       {   width:290px !important;}
