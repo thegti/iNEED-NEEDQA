@@ -21,7 +21,7 @@
                         <mat-list-item [hidden]="!IsAdmin" class="mat-list-item" [ngClass]="{active:  selectedItem == 'item0'}">
                           <span class="mat-list-item-content vendr-list-menu" (click)="vendorlistingClick()">vendor Listing</span>
                         </mat-list-item>
-                        <mat-divider class="mat-divider mat-divider-horizontal"></mat-divider>
+                        <mat-divider [hidden]="!IsAdmin" class="mat-divider mat-divider-horizontal"></mat-divider>
                         <mat-list-item class="mat-list-item" [ngClass]="{active:  selectedItem == 'item1'}">
                             <span (click)="sidebarMenu('item1')"   class="mat-list-item-content ">vendor profile</span>
                         </mat-list-item>
