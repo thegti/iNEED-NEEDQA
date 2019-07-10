@@ -7,6 +7,9 @@
     <button (click)="enbleSearch()" class="forbut search">
         <mat-icon>search</mat-icon>
          </button>
+         <button mat-raised-button *ngIf="enableAll" class="forAll" (click)="getAllVendors()"  color="primary">
+          view all vendors
+       </button>
           <div class="horizontal-stepper-wrapper  myclass1" *ngIf="enableSearch">
             
             <mat-horizontal-stepper class="myclass1" [linear]="true">
@@ -105,11 +108,11 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;">
   </tr>
 </table>
-    <div class="paginatn-footr">
-        <button type="button" class="forprev" [disabled]="disableprev" (click)="previousPage()">
+    <div class="paginatn-footr" *ngIf ="showPagination" >
+        <button type="button"  class="forprev" [disabled]="disableprev" (click)="previousPage()">
             <mat-icon>keyboard_arrow_left</mat-icon>
         </button>
-        <button type="button" class="fornext" [disabled]="disablenext" (click)="nextPage()">
+        <button type="button"  class="fornext" [disabled]="disablenext" (click)="nextPage()">
             <mat-icon>keyboard_arrow_right</mat-icon>
         </button> 
     </div>
