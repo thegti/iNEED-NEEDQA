@@ -118,7 +118,7 @@
                                 <mat-label class="lft-lbl" >registered email id</mat-label> 
                                 <span class="mid-lbl"> :</span>
                                 <mat-label class="rgt-lbl">{{VendorEmail}}</mat-label>
-                                <button mat-raised-button type="button"  (click)="EmailChangeButton()">
+                                <button mat-raised-button type="button"  (click)="EmailChangeButton()" class="min-max110">
                                    change email
                                   </button>
                              </div> 
@@ -135,7 +135,7 @@
                               <mat-label class="lft-lbl" >account expiry</mat-label> 
                               <span class="mid-lbl"> :</span>
                               <mat-label class="rgt-lbl">{{VendorExpiry}}</mat-label>
-                              <button mat-raised-button type="button"  (click)="PlanRenewalButton()">
+                              <button mat-raised-button type="button"  (click)="PlanRenewalButton()" class="min-max110">
                                 plan renewal
                               </button>
                                </div>
@@ -354,7 +354,7 @@
                                               <option value="audi">4000</option>
                                             </select>
                                           </mat-form-field>
-                                          <button type="button" mat-raised-button (click)="GenerateButton()" >
+                                          <button type="button" mat-raised-button (click)="GenerateButton()" class="min-max110" >
                                                 generate
                                               </button>
                             </div>  
