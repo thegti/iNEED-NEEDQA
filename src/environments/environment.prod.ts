@@ -3,7 +3,8 @@ export const environment = {
     hmr       : false,
     baseUrl: 'http://202.88.227.185/NEEDQAAPI/',
     DefaultCountry : 5,
-    DefaultCountryCode : "+974"
+    DefaultCountryCode : "+974",
+    DEFAULT_UOM : 18
 
     // Live
 

@@ -20,7 +20,8 @@ import { ConstGroup } from '../utility/LocationConstants';
 import { SerachGroup } from '../utility/SearchConstants';
 import { SavaEnquiryModel } from '../business-object/EnquiryObject';
 import { NextdialogComponent } from '../nextdialog/nextdialog.component';
-import { SharedData } from '../services/common/SharedData.service'
+import { SharedData } from '../services/common/SharedData.service';
+import { environment } from 'environments/environment';
 
 
 @Component({
@@ -34,6 +35,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
     enableClose: Boolean = false;
     public selectedLocation: any;
     selectedEnquiry: any;
+    public DEFAULT_UOM: Number;
     public selectedlocationService: any;
     public selectedTypeService: any;
     public selectedKeyword: any;
@@ -115,6 +117,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
             });
         this.GetUom();
         this.filenames = true;
+        this.ConfigSettings();
 
         // Object.keys(this._formBuilder.controls).forEach(field => {
         //     const control = this.firstFormGroup.get(field);
@@ -422,7 +425,12 @@ export class EnquiryComponent implements OnInit, OnDestroy {
         };
         this.apiService.GetUom(reqbody).subscribe((data: Array<object>) => {
             this.unitOfMeasure = data['Data'];
+            this.secondFormGroup.controls.ddlUnit.setValue(environment.DEFAULT_UOM);
         });
+    }
+    ConfigSettings() {
+        
+        this.DEFAULT_UOM = environment.DEFAULT_UOM;
     }
 
     resolved(value) {

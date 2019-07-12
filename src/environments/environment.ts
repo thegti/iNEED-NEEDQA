@@ -11,7 +11,8 @@ export const environment = {
     // baseUrl: 'http://need.qa/needapi/',
     //buildpath    ng build --aot --base-href /
     DefaultCountry : 5,
-    DefaultCountryCode : "+974"
+    DefaultCountryCode : "+974",
+    DEFAULT_UOM : 18
 };
 
 /*
