@@ -70,9 +70,18 @@ input::-webkit-input-placeholder {
 .welcom-div     {   height:25px; padding-left:5%; font-family: 'coheadlinew01-regularregular', sans-serif;
                     font-size:17px; color:#0074bc;
                 
-                    @include media-breakpoint('xs') {
-                        height:auto;
-                    }
+                    @include media-breakpoint('xs') { height:auto;   }
+
+                    @media screen and (min-width:200px) and (max-width:399px){   
+                       font-size:13px; word-break: break-word;  width: 80%;  }
+                        
+                    @media screen and (min-width:400px) and (max-width:600px)    {   
+                        font-size:13px; word-break: break-word;  width: 80%;}
+
+                    label   {  
+                        @media screen and (min-width:200px) and (max-width:399px){   
+                            color:#929292; }
+                     }
                 }
 .head-rgt       {   width:40%; float: left;
                     @include media-breakpoint('md'){
@@ -771,7 +780,8 @@ fuse-sidebar.left-positioned {
                        
            mat-label.lft-lbl    {   width:20%; display: inline-block;  margin:0px;
 
-            @media screen and (min-width:200px) and (max-width:399px)   {   font-size:14px; }
+            @media screen and (min-width:200px) and (max-width:399px)   {   
+                font-size:13px; color:#797979; }
         } 
 
            span.mid-lbl         {   display: inline-block; margin:0px;
@@ -1127,6 +1137,14 @@ fuse-sidebar.left-positioned {
         overflow: visible;
         
         mat-icon    {   margin-right:4px; color: #0074bc!important;}
+
+        @media screen and (min-width:200px) and (max-width:399px){   
+            padding:0px; line-height: 13px;   height: 28px;
+          }
+        
+        @media screen and (min-width:400px) and (max-width:600px)    {  
+            padding:0px; line-height: 13px;   height: 28px;
+        }
     }
 
     .toolbar-separator  {   height:20px;
@@ -1138,6 +1156,12 @@ fuse-sidebar.left-positioned {
         @include media-breakpoint ('xs')    {   display:none;}
         @include media-breakpoint ('sm')    {   display:none;}
     }
+
+    @media screen and (min-width:200px) and (max-width:399px){   
+        position: absolute;    top: -50px; right: 0; display:block!important; }
+
+    @media screen and (min-width:400px) and (max-width:600px)    {   
+        position: absolute;    top: -50px; right: 0; display:block!important; }
     
 }
 
