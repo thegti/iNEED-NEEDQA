@@ -148,7 +148,7 @@ mat-horizontal-stepper  {
 
 .mat-radio-group    {   
     @media screen and (min-width:200px) and (max-width:399px){
-        margin-left:11px;
+        margin:0px;
     }
 }
 
@@ -159,10 +159,10 @@ mat-horizontal-stepper  {
     font-family: 'dinlight', sans-serif!important; font-size:14px!important;
 
     @media screen and (min-width:200px) and (max-width:399px){
-        min-width:70%; max-width:70%;
+        min-width:95%; max-width:95%!important;
     }
 
-    @include media-breakpoint ('sm') {  min-width:80%; max-width:80%; }
+    @include media-breakpoint ('sm') {  min-width:95%; max-width:95%!important; }
 
 }
 .mat-form-field-wrapper  {   
@@ -269,7 +269,11 @@ input .mat-input-element:-internal-autofill-selected  {
 }
 
 .mat-select-trigger {   height:0px;}
-mat-label       {   width:35%; font-size:16px; margin-top:1%;}
+mat-label       {   width:35%; font-size:16px; margin-top:1%;
+
+    @media screen and (min-width:200px) and (max-width:399px)   {   width: 100%;   }
+    @media screen and (min-width:400px) and (max-width:600px)   {   width:100%;}
+}
 mat-icon        {   font-size:19px; color:#3a3a3a;}
 
 .mat-select     {   
@@ -754,19 +758,36 @@ fuse-sidebar.left-positioned {
     form    {   padding:0px; font-family: 'coheadlinew08-lightregular';
 
         .demo-content   {   font-family: 'coheadlinew08-lightregular';
-            div         {   display: flex;  align-items: center; color: #0074bc; line-height: 24px;}
+            div         {   display: flex;  align-items: center; color: #0074bc; line-height: 24px;
+
+                @media screen and (min-width:200px) and (max-width:399px)   {   
+                    display: block; line-height: 20px; margin:0px 0px 5px 0px }
+
+                @media screen and (min-width:400px) and (max-width:600px)   {   
+                    display: block; line-height: 22px; }
+            }
             .mat-tab-label, .mat-tab-link {   font-family: 'coheadlinew08-lightregular';}
 
                        
-           mat-label.lft-lbl    {   width:20%; display: inline-block;  margin:0px;} 
+           mat-label.lft-lbl    {   width:20%; display: inline-block;  margin:0px;
 
-           span.mid-lbl         {   display: inline-block; margin:0px;}
+            @media screen and (min-width:200px) and (max-width:399px)   {   font-size:14px; }
+        } 
+
+           span.mid-lbl         {   display: inline-block; margin:0px;
+
+            @media screen and (min-width:200px) and (max-width:399px)   {   display: none;  }
+        }
 
            mat-label.rgt-lbl    {   width:70%; display:inline-block; margin:0px;
-            padding:0px 0px 0px 2%;  box-sizing:border-box; -webkit-box-sizing:border-box;}
+            padding:0px 0px 0px 2%;  box-sizing:border-box; -webkit-box-sizing:border-box;
+
+            @media screen and (min-width:200px) and (max-width:399px)   {   padding:0px; font-weight: bold;  }
+        }
 
             mat-tab-group   {   
                 div   {   display:inherit;     justify-content: center;
+
                     @media screen and (min-width:200px) and (max-width:399px){
                         display:block;
                     }
@@ -775,7 +796,15 @@ fuse-sidebar.left-positioned {
                     }
                 }
                 ul li       {   list-style: none;}
-                .mat-tab-header-pagination  {   display: none;}
+                .mat-tab-header-pagination  {   display: none;
+
+                    @media screen and (min-width:200px) and (max-width:399px){
+                        display: none!important;
+                    }
+                    @media screen and (min-width:400px) and (max-width:600px)    {   
+                        display: none!important;
+                    }
+                }
             }
             .mat-tab-group  {   font-family: 'coheadlinew08-lightregular';
                 .mat-tab-header {   border-bottom: none;
@@ -913,6 +942,13 @@ fuse-sidebar.left-positioned {
                                                     }  
                             }
                         }
+                        
+                        @media screen and (min-width:200px) and (max-width:399px){
+                            display:block;
+                        }
+                        @media screen and (min-width:400px) and (max-width:600px)    {  
+                            display:block;
+                            }
                     }
                     @media screen and (min-width:200px) and (max-width:399px){
                         justify-content:flex-start;
@@ -961,7 +997,7 @@ fuse-sidebar.left-positioned {
 
                 .browse-btn-uplod     {  min-width:55px; height:auto; margin:0px 0px 0px 1px; 
                     border:none; background:#0da7b7;
-                    padding:5px; box-sizing: border-box; -webkit-box-sizing: border-box;
+                    padding:3px 5px 7px 5px; box-sizing: border-box; -webkit-box-sizing: border-box;
                     color: #fff; font-family: 'dinlight', sans-serif; font-weight: 100;
                     letter-spacing: 0.5px;}
 
@@ -1017,11 +1053,11 @@ fuse-sidebar.left-positioned {
 
                                                     
                           @media screen and (min-width:200px) and (max-width:399px){
-                              display:block;
+                              display:block!important;
                           } 
                           
                           @media screen and (min-width:400px) and (max-width:600px)    {   
-                              display:block;
+                              display:block!important;
                             }
                 }                            
                 .fixd-div   {    width:100%; display: flex;  align-items: center;  justify-content: flex-end;}
@@ -1054,6 +1090,8 @@ fuse-sidebar.left-positioned {
         /*button.mat-raised-button  {   
             span            {   position: relative;   top: -2px;  right: 2px;}
         } */    
+
+        @media screen and (min-width:200px) and (max-width:399px){  display: block; min-height:133px;  }
     }
 
 }        
