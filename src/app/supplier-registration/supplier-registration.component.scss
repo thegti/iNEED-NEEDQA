@@ -37,7 +37,7 @@
 .mat-step-header    {   display:none!important;} 
 
 @media screen and (min-width:200px) and (max-width:399px){
-    width: 100%; margin:0px auto;
+    width: 100%; margin:0px auto; display: flex;   align-items: center;  place-content: center;
     
     div     {   place-content: center!important;}
         }
@@ -60,7 +60,7 @@
     .mat-horizontal-stepper-header-container        {   display:none!important;}
 
     @media screen and (min-width:200px) and (max-width:399px){
-        width: 100%; margin:0px auto;
+        width: 100%; margin:0px auto; display: flex;  align-items: center;  place-content: center;
 
         div     {   place-content: center!important;}
             }

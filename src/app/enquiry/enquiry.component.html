@@ -9,7 +9,7 @@
           <form [formGroup]="firstFormGroup">
 
             <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="h29" tab-index=1>
-              <mat-label> </mat-label>
+              <mat-label  class="blnk-lbl"> </mat-label>
               <mat-radio-group>
                 <mat-radio-button value="1" checked (change)="selectSearch($event)"> product</mat-radio-button>
                 <mat-radio-button value="2" (change)="selectSearch($event)">service</mat-radio-button>
@@ -43,7 +43,7 @@
             </div>
 
             <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="h35" tab-index=3>
-              <mat-label>from</mat-label>
+              <mat-label  class="sub-lbl">from</mat-label>
               <mat-radio-group>
                 <mat-radio-button value="1" checked (change)="selectLocation($event)">qatar</mat-radio-button>
                 <mat-radio-button value="2" (change)="selectLocation($event)">outside qatar</mat-radio-button>
