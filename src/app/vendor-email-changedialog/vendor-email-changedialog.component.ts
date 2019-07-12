@@ -16,9 +16,12 @@ import { VendorService } from '../services/vendor/vendor.service';
 })
 export class VendorEmailChangedialogComponent implements OnInit {
   EmailChangeDialogRef: MatDialogRef<VendorEmailChangedialogComponent>;
+  
  
   public MessageEmail: string;
   public isError: Boolean = false;
+  public HideEmailPopup:boolean=true;
+  HideEmailSuccessPopup:boolean=false;
   email: String;
   user: User;
   emailchange:String;
@@ -38,7 +41,6 @@ export class VendorEmailChangedialogComponent implements OnInit {
 ngOnInit() {
 
   this.user= this.authService.getUserDetail();
-  console.log(this.user);
   this.firstFormGroup = this._formBuilder.group({
     txtEmail: ['',[Validators.required, Validators.email,Validators.maxLength(50)] ],
     // txtcross1: ['',[Validators.required, Validators.email,Validators.maxLength(50)] ],
@@ -50,29 +52,18 @@ get validation() {
   }
   EmailNewChangeButton()
   {
-   var reqObj={"VNQ_PK":this.user.VND_PK,
-   "VNQ_NAME":this.user.VND_NAME,
-   "VND_EMAIL":this.user.VND_EMAIL,
-   "VND_NEW_EMAIL":this.firstFormGroup.value.txtEmail,
+    
+   var reqObj={"VND_PK":this.user.VND_PK,
+   "VND_NAME":this.user.VND_NAME,
+   "VND_MAIL":this.firstFormGroup.value.txtEmail,
   };
-   console.log('req',reqObj);
   
   this.vendorService.ChangeVendorEmail(reqObj).subscribe((data: Array<object>) => {
     // this.keywordList = data['Data'];
-  
     if (data['Data'] > 0) {
-      this.EmailChangeDialogRef = this._matDialog.open(VendorEmailChangedialogComponent, {
-        disableClose: true
-    }); 
-    this.EmailChangeDialogRef.componentInstance.MessageEmail = 'email changed';
-        
-    this.EmailChangeDialogRef.afterClosed().subscribe(result => {
-      if ( result )
-        {
-
-        }
-    this.EmailChangeDialogRef = null;
-    });
+    this.HideEmailSuccessPopup=true;
+    this.HideEmailPopup=false;
+    this.MessageEmail = 'email changed successfully';
   }
   // else{
   //   alert("server error!")
@@ -88,5 +79,10 @@ get validation() {
 }
   });
   }
-  
+  EmailSuccessDialogRefClose()
+  {
+  this.EmailDialogRef.close(false);
+    this.authService.logout();
+   
+  }
 }

@@ -206,7 +206,8 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
    {
     setTimeout(()=>{ // this will make the execution after the above boolean has changed
       this.IsHideUploadDiv=false;
-    },10);  
+    },10);
+    this.keywordErrorMsg='';
    }
    GetKeywords()
    {

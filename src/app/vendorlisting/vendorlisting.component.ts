@@ -1,20 +1,20 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
-import { FormBuilder, FormGroup, Validators, FormArray, FormControl} from '@angular/forms';
-import {GlobalUrl} from '../utility/GlobalUrl';
-import {DialogComponent} from '../dialog/dialog.component';
-import { Router,ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
+import { GlobalUrl } from '../utility/GlobalUrl';
+import { DialogComponent } from '../dialog/dialog.component';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 import { ReplaySubject } from 'rxjs';
 import { ApiService } from '../services/common/common.service';
-import {VendorService} from '../services/vendor/vendor.service';
-import {VendorNameModel} from 'app/business-object/VendorObject';
+import { VendorService } from '../services/vendor/vendor.service';
+import { VendorNameModel } from 'app/business-object/VendorObject';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { stringToKeyValue } from '@angular/flex-layout/extended/typings/style/style-transforms';
-import {User} from '../authentication/user.model';
-import {AuthService} from '../authentication/auth.service';
+import { User } from '../authentication/user.model';
+import { AuthService } from '../authentication/auth.service';
 
 
 
@@ -24,47 +24,47 @@ import {AuthService} from '../authentication/auth.service';
   styleUrls: ['./vendorlisting.component.scss']
 })
 export class VendorlistingComponent implements OnInit {
-  displayedColumns: string[] = ['VND_NAME ','VND_CITY', 'VPL_VALID_DATE_TO ','KWORD_COUNT','VND_STATUS', 'Edit'];
+  displayedColumns: string[] = ['VND_NAME ', 'VND_CITY', 'VPL_VALID_DATE_TO ', 'KWORD_COUNT', 'VND_STATUS', 'Edit'];
   dataSource: MatTableDataSource<VendorNameModel>;
   vendorlist: VendorNameModel[];
   stprMain: FormGroup;
   enableSearch: Boolean = false;
   makesearch: Boolean = false;
-  vndKeyWord: String =null;
+  vndKeyWord: String = null;
   pageNo = 1;
   enableAll: Boolean = false;
-  showPagination : boolean =false;
-  totalPages:number;
+  showPagination: boolean = false;
+  totalPages: number;
   disableprev: Boolean = true;
-    disablenext: Boolean = true;
-   confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;
-   DialogRef: MatDialogRef<DialogComponent>;
-   public VendorNameFilterCtrl: FormControl = new FormControl();
-   public VendorKeywordFilterCtrl: FormControl = new FormControl();
-   public filteredVendorName: ReplaySubject<Array<any>> = new ReplaySubject<Array<any>>(1);
-   public filteredVendorKeyword: ReplaySubject<Array<any>> = new ReplaySubject<Array<any>>(1);
-   keywordVendor: Array<object> = [];
-   VendorGetList:any;
-   user: User;
-   vendorname: Array<Object> = [{
+  disablenext: Boolean = true;
+  confirmDialogRef: MatDialogRef<FuseConfirmDialogComponent>;
+  DialogRef: MatDialogRef<DialogComponent>;
+  public VendorNameFilterCtrl: FormControl = new FormControl();
+  public VendorKeywordFilterCtrl: FormControl = new FormControl();
+  public filteredVendorName: ReplaySubject<Array<any>> = new ReplaySubject<Array<any>>(1);
+  public filteredVendorKeyword: ReplaySubject<Array<any>> = new ReplaySubject<Array<any>>(1);
+  keywordVendor: Array<object> = [];
+  VendorGetList: any;
+  user: User;
+  vendorname: Array<Object> = [{
     'VND_NAME_TEXT': 'Search',
-    }];
-   keyword: Array<Object> = [{
+  }];
+  keyword: Array<Object> = [{
     'VKW_KWORD': 'Search',
-}];
-vendorNameDataNull = {
-  'VND_NAME_TEXT': '--Select--',
-}
-keywordDataNull = {
+  }];
+  vendorNameDataNull = {
+    'VND_NAME_TEXT': '--Select--',
+  }
+  keywordDataNull = {
     'VKW_KWORD': '--Select--',
-}
-vendorgetlistrequest = {
-  'PAGE_NO': 1,
-  'PAGE_SIZE' : this.GlobalUrls.pageSize,
-  'USER_PK': 1,
-  'VND_NAME_TEXT ': null,
-  'VKW_KWORD': null,
-};
+  }
+  vendorgetlistrequest = {
+    'PAGE_NO': 1,
+    'PAGE_SIZE': this.GlobalUrls.pageSize,
+    'USER_PK': 1,
+    'VND_NAME_TEXT ': null,
+    'VKW_KWORD': null,
+  };
 
   constructor(private apiService: ApiService,
     private vendorService: VendorService,
@@ -73,164 +73,158 @@ vendorgetlistrequest = {
     public _matDialog: MatDialog,
     private router: Router,
     private GlobalUrls: GlobalUrl,
-    private authService: AuthService,) { }
+    private authService: AuthService, ) { }
 
   ngOnInit() {
     this.stprMain = this._formBuilder.group({
       ddlVendorName: [null],
-      ddlVendorKeyword : [null]
-      
+      ddlVendorKeyword: [null]
+
     });
-    this.user= this.authService.getUserDetail();
+    this.user = this.authService.getUserDetail();
     this.pageNo = 1;
-      this.disableprev = true;
+    this.disableprev = true;
     this.VendorKeywordFilterCtrl.valueChanges
-    .subscribe(() => {
+      .subscribe(() => {
         this.filterKeywordSerach();
-    });
+      });
     this.VendorNameFilterCtrl.valueChanges
-    .subscribe(() => {
+      .subscribe(() => {
         this.filterVendorSerach();
-    });
+      });
     this.getKeyword();
     this.getVendorText();
     this.GetVendorList(this.vendorgetlistrequest);
-   
+
   }
 
- //Vendor Name get auto
+  //Vendor Name get auto
 
   getVendorText(): any {
     this.filteredVendorName.next(this.vendorname.slice());
   }
 
-  private filterVendorSerach(): void{
+  private filterVendorSerach(): void {
     let search = this.VendorNameFilterCtrl.value;
     if (!search) {
-        this.filteredVendorName.next(this.vendorname.slice());
-        return;
-    } 
+      this.filteredVendorName.next(this.vendorname.slice());
+      return;
+    }
     else {
       search = search.toLowerCase();
     }
-    
+
     var reqbody = {
-      
-        'AUTO_SEARCH': search
-     };
-     this.vendorService.VendorNameGetAuto(reqbody).subscribe((data: Array<object>) => {
-        this.vendorname = data['Data'];
-        this.vendorname.splice(0,0,this.vendorNameDataNull);
-        this.filteredVendorName.next(this.vendorname);
-     });
- }
+
+      'AUTO_SEARCH': search
+    };
+    this.vendorService.VendorNameGetAuto(reqbody).subscribe((data: Array<object>) => {
+      this.vendorname = data['Data'];
+      this.vendorname.splice(0, 0, this.vendorNameDataNull);
+      this.filteredVendorName.next(this.vendorname);
+    });
+  }
 
   //Keyword get auto
   getKeyword(): any {
     this.filteredVendorKeyword.next(this.keyword.slice());
   }
 
-  private filterKeywordSerach(): void{
+  private filterKeywordSerach(): void {
     let search = this.VendorKeywordFilterCtrl.value;
     if (!search) {
-        this.filteredVendorKeyword.next(this.keyword.slice());
-        return;
-    } 
+      this.filteredVendorKeyword.next(this.keyword.slice());
+      return;
+    }
     else {
       search = search.toLowerCase();
     }
-    
+
     var reqbody = {
-       
-        'AUTO_SEARCH': search
-     };
-   
-     this.apiService.KeyWordGetAuto(reqbody).subscribe((data: Array<object>) => {
-        this.keyword = data['Data'];
-        this.keywordVendor=this.keyword;
-        this.keyword.splice(0,0,this.keywordDataNull);
-        this.filteredVendorKeyword.next(this.keyword);
-     
-      //   this.keywordVendor = {
-      //     'VKW_KWORD': 'VKW_PK '
-      // };
-      // this.stprMain.controls.ddlVendorKeyword.setValue(this.currentMem['MMM_TITLE'])
-      
-     });
- }
+
+      'AUTO_SEARCH': search
+    };
+
+    this.apiService.KeyWordGetAuto(reqbody).subscribe((data: Array<object>) => {
+      this.keyword = data['Data'];
+      this.keywordVendor = this.keyword;
+      this.keyword.splice(0, 0, this.keywordDataNull);
+      this.filteredVendorKeyword.next(this.keyword);
+
+    });
+  }
 
 
- // Get vendor list in grid
+  // Get vendor list in grid
 
- public GetVendorList(reqObj): void {
-  this.vendorService.GetVendorList(reqObj).subscribe((data: Array<object>) => {
-    this.vendorlist = data['Data'];
-    this.totalPages=this.vendorlist[0].TOTAL_ROW_COUNT/this.GlobalUrls.pageSize;
-    if(this.totalPages>1)
-    this.showPagination=true;
-   else
-   this.showPagination=false;
-    this.dataSource = new MatTableDataSource(this.vendorlist);
-  });
-  
-  reqObj = {
-    
-    'PAGE_NO':  this.pageNo + 1,
-    'PAGE_SIZE' : this.GlobalUrls.pageSize,
-    'USER_PK': 1,
-    'VND_NAME_TEXT ': this.stprMain.value.ddlVendorName,
-  'VKW_KWORD': this.stprMain.value.ddlVendorKeyword,
-  };
- 
-  this.vendorService.GetVendorList(reqObj).subscribe((data: Array<object>) => {
-    if (data['Data'] === null) {
-      this.disablenext = true;
-   }else {
-       this.disablenext = false;  
-   }
-   
-  });
-}
-nextPage(): any {
-  this.pageNo += 1;
-  this.disableprev = false;
-  var reqObj = {
-    
-    'PAGE_NO':  this.pageNo,
-    'PAGE_SIZE' : this.GlobalUrls.pageSize,
-    'USER_PK': 1,
-    'VND_NAME_TEXT ': this.stprMain.value.ddlVendorName,
-    'VKW_KWORD': this.stprMain.value.ddlVendorKeyword,
-  };
+  public GetVendorList(reqObj): void {
+    this.vendorService.GetVendorList(reqObj).subscribe((data: Array<object>) => {
+      this.vendorlist = data['Data'];
+      this.totalPages = this.vendorlist[0].TOTAL_ROW_COUNT / this.GlobalUrls.pageSize;
+      if (this.totalPages > 1)
+        this.showPagination = true;
+      else
+        this.showPagination = false;
+      this.dataSource = new MatTableDataSource(this.vendorlist);
+    });
 
-  this.GetVendorList(reqObj);
- 
- }
-previousPage(): any {
-  this.pageNo -= 1;
-  this.disablenext = false;
-  if (this.pageNo < 2) {
+    reqObj = {
+
+      'PAGE_NO': this.pageNo + 1,
+      'PAGE_SIZE': this.GlobalUrls.pageSize,
+      'USER_PK': 1,
+      'VND_NAME_TEXT ': this.stprMain.value.ddlVendorName,
+      'VKW_KWORD': this.stprMain.value.ddlVendorKeyword,
+    };
+
+    this.vendorService.GetVendorList(reqObj).subscribe((data: Array<object>) => {
+      if (data['Data'] === null) {
+        this.disablenext = true;
+      } else {
+        this.disablenext = false;
+      }
+
+    });
+  }
+  nextPage(): any {
+    this.pageNo += 1;
+    this.disableprev = false;
+    var reqObj = {
+
+      'PAGE_NO': this.pageNo,
+      'PAGE_SIZE': this.GlobalUrls.pageSize,
+      'USER_PK': 1,
+      'VND_NAME_TEXT ': this.stprMain.value.ddlVendorName,
+      'VKW_KWORD': this.stprMain.value.ddlVendorKeyword,
+    };
+
+    this.GetVendorList(reqObj);
+
+  }
+  previousPage(): any {
+    this.pageNo -= 1;
+    this.disablenext = false;
+    if (this.pageNo < 2) {
       this.disableprev = true;
-   }
-   var reqObj = {
-    'PAGE_NO':  this.pageNo,
-    'PAGE_SIZE' : this.GlobalUrls.pageSize,
-    'USER_PK': 1,
-    'VND_NAME_TEXT ': this.stprMain.value.ddlVendorName,
-    'VKW_KWORD': this.stprMain.value.ddlVendorKeyword,
-  };
-  this.GetVendorList(reqObj);
- 
-   }
-  
-   getAllVendors()
-   {
+    }
+    var reqObj = {
+      'PAGE_NO': this.pageNo,
+      'PAGE_SIZE': this.GlobalUrls.pageSize,
+      'USER_PK': 1,
+      'VND_NAME_TEXT ': this.stprMain.value.ddlVendorName,
+      'VKW_KWORD': this.stprMain.value.ddlVendorKeyword,
+    };
+    this.GetVendorList(reqObj);
+
+  }
+
+  getAllVendors() {
     this.pageNo -= 1;
     this.disableprev = false;
-    
-     var reqObj = {
-      'PAGE_NO':  this.pageNo,
-      'PAGE_SIZE' : this.GlobalUrls.pageSize,
+
+    var reqObj = {
+      'PAGE_NO': this.pageNo,
+      'PAGE_SIZE': this.GlobalUrls.pageSize,
       'USER_PK': 1,
       'VND_NAME_TEXT ': this.stprMain.value.ddlVendorName,
       'VKW_KWORD': this.stprMain.value.ddlVendorKeyword,
@@ -238,7 +232,7 @@ previousPage(): any {
     this.enableSearch = false;
     this.GetVendorList(reqObj);
     this.enableAll = false;
-   }
+  }
   enbleSearch(): any {
     this.enableSearch = true;
     this.makesearch = false;
@@ -249,29 +243,28 @@ previousPage(): any {
     this.pageNo = 1;
     this.disableprev = true;
     var reqObj = {
-      'PAGE_NO':  this.pageNo,
+      'PAGE_NO': this.pageNo,
       'USER_PK': 1,
-      'PAGE_SIZE' : this.GlobalUrls.pageSize,
+      'PAGE_SIZE': this.GlobalUrls.pageSize,
       'VND_NAME_TEXT ': null,
       'VKW_KWORD': null,
     };
-   
+
     this.GetVendorList(reqObj);
-   }
-  
+  }
+
   filterMembers(): void {
     this.pageNo = 1;
     this.disableprev = true;
-    this.vndKeyWord=null;
+    this.vndKeyWord = null;
     let resultObj = this.keywordVendor.find(x => x['VKW_PK'] === this.stprMain.value.ddlVendorKeyword);
-    if(resultObj)
-    {
-      if(resultObj["VKW_KWORD"]!="--Select--")
-        this.vndKeyWord=resultObj["VKW_KWORD"];
+    if (resultObj) {
+      if (resultObj["VKW_KWORD"] != "--Select--")
+        this.vndKeyWord = resultObj["VKW_KWORD"];
     }
     var reqObj = {
-      'PAGE_NO':  this.pageNo,
-      'PAGE_SIZE' : this.GlobalUrls.pageSize,
+      'PAGE_NO': this.pageNo,
+      'PAGE_SIZE': this.GlobalUrls.pageSize,
       'USER_PK': 1,
       'VND_PK': this.stprMain.value.ddlVendorName,
       'VKW_KWORD': this.vndKeyWord,
@@ -279,27 +272,25 @@ previousPage(): any {
     this.GetVendorList(reqObj);
     this.enableSearch = false;
     this.enableAll = true;
-    //var resultObj=  this.keywordVendor.filter(k => k['VKW_PK']== this.stprMain.value.ddlVendorKeyword)
- }
+  }
 
   applyFilter(filterValue: string): void {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-   
-    forEdit(value): any {   
-      var vendorPK=value["VND_PK"];
-      this.authService.ChangeVendorID(vendorPK).then(()=>{
-        console.log(this.authService.getUser());
-        this.router.navigate(['/vendorprofile/' ]);
-      });
 
-      // another method  using observable subscribe
-      //   var vendorPK=value["VND_PK"];
-      //   this.authService.SetVendorID(vendorPK).subscribe(()=> {
-      //     this.router.navigate(['/vendorprofile/' ]);
-      // });
+  forEdit(value): any {
+    var vendorPK = value["VND_PK"];
+    this.authService.ChangeVendorID(vendorPK).then(() => {
+      this.router.navigate(['/vendorprofile/']);
+    });
 
-     
- }
+    // another method  using observable subscribe
+    //   var vendorPK=value["VND_PK"];
+    //   this.authService.SetVendorID(vendorPK).subscribe(()=> {
+    //     this.router.navigate(['/vendorprofile/' ]);
+    // });
+
+
+  }
 }

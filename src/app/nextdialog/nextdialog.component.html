@@ -12,7 +12,7 @@
       <div class="verify-outer">
       <input matInput type="text"  placeholder="otp" formControlName="lblOtp" (keypress)="numericOnly($event)" maxlength="10">
     
-      <button mat-raised-button  (click)="onButtonClicked()">proceed</button>
+      <button type="button" mat-raised-button  (click)="onButtonClicked()">proceed</button>
     </div>
     <div>
       <p>{{this.OtpMessage}}</p>

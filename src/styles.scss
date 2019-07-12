@@ -449,6 +449,13 @@ textarea            {   width:50%; border:none; padding:0px 5px;
     }
 }
 
+.verify-outer   {   display: flex; align-items: baseline; justify-content: space-between;
+    button.mat-raised-button {
+        span      {   position: relative; top: -2px;}
+    }
+}
+
+
 /* Slide */
 .howitworks     { background:#fff !important;
 background-repeat: no-repeat;}
@@ -1121,12 +1128,16 @@ fuse-sidebar.left-positioned {
     .myclass1 {
         width: 90%; margin:0px auto;
 
-        mat-horizontal-stepper  {   border: 1px solid #ddd; padding: 10px;
-             margin: 10px!important;}
+        mat-horizontal-stepper  {   border: 1px solid #ddd;}
     }
     .mat-horizontal-content-container {
         overflow: hidden;
         padding: 0 24px 24px 24px;
+
+        .mat-horizontal-stepper-content     {   margin: 0px auto;   width: 90%;
+
+            form    {   margin: 0px auto;  width: 80%; padding:10px;}
+        }
     }
     .mat-form-field {
         font-size: 14px;

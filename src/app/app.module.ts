@@ -1,4 +1,4 @@
-import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FuseConfirmDialogModule } from '@fuse/components/confirm-dialog/confirm-dialog.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -23,28 +23,29 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { IhaveComponent } from './ihave/ihave.component';
 import { SupplierRegistrationComponent } from './supplier-registration/supplier-registration.component';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { DialogComponent } from './dialog/dialog.component';
 import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
-import {AppMaterialModule} from './app-material.module';
+import { AppMaterialModule } from './app-material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { EnquiryComponent } from './enquiry/enquiry.component';
 import { TestComponent } from './test/test.component';
-import {ActivateSupplierComponent} from './Supplier/activate-supplier/activate-supplier.component';
-import {VendorprofileComponent} from './vendorprofile/vendorprofile.component';
-import {NextdialogComponent} from './nextdialog/nextdialog.component';
-import {VendorsavedialogComponent} from './vendorsavedialog/vendorsavedialog.component';
+import { ActivateSupplierComponent } from './Supplier/activate-supplier/activate-supplier.component';
+import { VendorprofileComponent } from './vendorprofile/vendorprofile.component';
+import { NextdialogComponent } from './nextdialog/nextdialog.component';
+import { VendorsavedialogComponent } from './vendorsavedialog/vendorsavedialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {VendorkeyworddeletedialogComponent} from './vendorkeyworddeletedialog/vendorkeyworddeletedialog.component';
-import {VendorlistingComponent} from './vendorlisting/vendorlisting.component';
-import {PaymentComponent} from './payment/payment.component';
-import {VendorEmailChangedialogComponent} from './vendor-email-changedialog/vendor-email-changedialog.component';
- 
+import { VendorkeyworddeletedialogComponent } from './vendorkeyworddeletedialog/vendorkeyworddeletedialog.component';
+import { VendorlistingComponent } from './vendorlisting/vendorlisting.component';
+import { PaymentComponent } from './payment/payment.component';
+import { VendorEmailChangedialogComponent } from './vendor-email-changedialog/vendor-email-changedialog.component';
+
+
 // R and D works
-import {SearchautoComponent} from './RandD/searchauto/searchauto.component';
-import {ValidatorsComponent} from './RandD/validators/validators.component'
+import { SearchautoComponent } from './RandD/searchauto/searchauto.component';
+import { ValidatorsComponent } from './RandD/validators/validators.component'
 import { EventEmitterService } from './event-emitter.service';
 import { NgxPayPalModule } from 'ngx-paypal';
 
@@ -73,21 +74,23 @@ import { NgxPayPalModule } from 'ngx-paypal';
         PaymentComponent,
         VendorEmailChangedialogComponent,
 
+
         //R and D works
 
         SearchautoComponent,
         ValidatorsComponent
-       
+
     ],
     entryComponents: [
         DialogComponent,
         NextdialogComponent,
         VendorsavedialogComponent,
         VendorkeyworddeletedialogComponent,
-        VendorEmailChangedialogComponent
-        
-      ],
-    imports     : [
+        VendorEmailChangedialogComponent,
+
+
+    ],
+    imports: [
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
@@ -112,13 +115,12 @@ import { NgxPayPalModule } from 'ngx-paypal';
         ReactiveFormsModule,
         NgxPayPalModule,
     ],
-    providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, EventEmitterService],
-    bootstrap   : [
+    providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, EventEmitterService],
+    bootstrap: [
         AppComponent
     ],
-    
-    schemas : [ CUSTOM_ELEMENTS_SCHEMA ]
+
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule
-{
+export class AppModule {
 }

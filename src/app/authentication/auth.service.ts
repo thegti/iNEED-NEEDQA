@@ -1,20 +1,19 @@
-import {Injectable, EventEmitter } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 
-import {Subject} from 'rxjs/subject';
+import { Subject } from 'rxjs/subject';
 import { Observable } from 'rxjs';
 // import { getMatIconFailedToSanitizeUrlError } from '@angular/material';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {GlobalUrl} from '../utility/GlobalUrl';
+import { GlobalUrl } from '../utility/GlobalUrl';
 import { environment } from 'environments/environment';
-import {User} from '../authentication/user.model';
+import { User } from '../authentication/user.model';
 
 
 @Injectable({
-    providedIn: 'root'
-  }) 
-export class AuthService
-{
+  providedIn: 'root'
+})
+export class AuthService {
   private result = new Subject<boolean>();
   header = { headers: { Authorization: `Bearer ${this.getToken}` } };
   countryID: any;
@@ -26,96 +25,93 @@ export class AuthService
   baseUrl = environment.baseUrl;
   constructor(
     private GlobalUrls: GlobalUrl,
-    private httpClient: HttpClient,  
-    private router: Router){}
+    private httpClient: HttpClient,
+    private router: Router) { }
 
 
-public GetHeader(): any
-{
-if ( !!sessionStorage.getItem('token')) {
-    return { headers: { Authorization: `Bearer ${sessionStorage.getItem('token')}` } };
-}
-else{ return {};
-}
+  public GetHeader(): any {
+    if (!!sessionStorage.getItem('token')) {
+      return { headers: { Authorization: `Bearer ${sessionStorage.getItem('token')}` } };
+    }
+    else {
+      return {};
+    }
 
-}
- 
-VendorLoginVendor(req):any{
-  return this.httpClient.post<User>(`${this.baseUrl}api/Vendor/LoginVendor`, req, this.header);
-}
-public manageSession(data: User): void {
-  sessionStorage.setItem('token', data['Token']);
- // sessionStorage.setItem('refresh', data.refresh_token);
-  sessionStorage.setItem('user', JSON.stringify(data));
-}
+  }
 
-getUser(): User
-{
-  return this.user;
-}
- 
-public ChangeVendorID(vendorID:number)
-{
-  
-  return new Promise((resolve,reject)=>{
+  VendorLoginVendor(req): any {
+    return this.httpClient.post<User>(`${this.baseUrl}api/Vendor/LoginVendor`, req, this.header);
+  }
+  public manageSession(data: User): void {
+    sessionStorage.setItem('token', data['Token']);
+    // sessionStorage.setItem('refresh', data.refresh_token);
+    sessionStorage.setItem('user', JSON.stringify(data));
+  }
 
-    // setTimeout(() => {
+  getUser(): User {
+    return this.user;
+  }
+
+  public ChangeVendorID(vendorID: number) {
+
+    return new Promise((resolve, reject) => {
+
+      // setTimeout(() => {
       if (sessionStorage.getItem('user')) {
-        this.user=<User>JSON.parse(sessionStorage.getItem('user'));
-        this.user[0].VND_PK=vendorID;
+        this.user = <User>JSON.parse(sessionStorage.getItem('user'));
+        this.user[0].VND_PK = vendorID;
         sessionStorage.setItem('user', JSON.stringify(this.user));
         resolve('done');
-      }  
-    // }, 10);
-    
-  }
-  );
-  
-}
+      }
+      // }, 10);
 
-public SetVendorID(vendorID:number) : Observable<boolean> {
-  this.user=<User>JSON.parse(sessionStorage.getItem('user'));
-  this.user[0].VND_PK=vendorID;
-  sessionStorage.setItem('user', JSON.stringify(this.user));
-  this.result.next(true);
-  return this.result.asObservable();
-}
+    }
+    );
+
+  }
+
+  public SetVendorID(vendorID: number): Observable<boolean> {
+    this.user = <User>JSON.parse(sessionStorage.getItem('user'));
+    this.user[0].VND_PK = vendorID;
+    sessionStorage.setItem('user', JSON.stringify(this.user));
+    this.result.next(true);
+    return this.result.asObservable();
+  }
 
 
-public getUserDetail(): any {     
-  if (sessionStorage.getItem('user')) {
-    this.user=<User>JSON.parse(sessionStorage.getItem('user'));
-    return  this.user[0];
-  } else {
-    return null;
+  public getUserDetail(): any {
+    if (sessionStorage.getItem('user')) {
+      this.user = <User>JSON.parse(sessionStorage.getItem('user'));
+      return this.user[0];
+    } else {
+      return null;
+    }
   }
-}
-public getUserEmail()
-{
-  
-  if (sessionStorage.getItem('user')) {
-    this.user=<User>JSON.parse(sessionStorage.getItem('user'));
-    return  this.user[0].VND_EMAIL;
-  
-  } else {
-    return null;
-  }
-}
+  public getUserEmail() {
 
-public get isLoggedIn(): Boolean { 
-    return !!sessionStorage.getItem('user'); 
-  }  
-public get getToken(): any{
-     return sessionStorage.getItem('token'); 
+    if (sessionStorage.getItem('user')) {
+      this.user = <User>JSON.parse(sessionStorage.getItem('user'));
+      return this.user[0].VND_EMAIL;
+
+    } else {
+      return null;
+    }
   }
-public logout(): void {
-  this.redirectUrl = document.location.pathname;
-  sessionStorage.removeItem('token');
-  sessionStorage.removeItem('refresh');
-  sessionStorage.removeItem('user');
-  this.router.navigate(['/login']);
-  this.loginStatus.emit(false);
-}
+
+  public get isLoggedIn(): Boolean {
+    return !!sessionStorage.getItem('user');
+  }
+  public get getToken(): any {
+    return sessionStorage.getItem('token');
+  }
+  public logout(): void {
+    this.redirectUrl = document.location.pathname;
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('refresh');
+    sessionStorage.removeItem('user');
+    this.router.navigate(['/login']);
+    this.loginStatus.emit(false);
+  }
 
 
 }

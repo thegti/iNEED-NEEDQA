@@ -1,59 +1,53 @@
-<h1 matDialogTitle><img src="assets/logos/iNeed-logo.png" width="80px" height="35px">
-    
-  <button (click)="EmailDialogRef.close(false)" class="popup-close">X</button>
-   
-</h1>
-<mat-horizontal-stepper class="mat-elevation-z4 myclass1" [linear]="true">
-              
-    <mat-step [stepControl]="firstFormGroup">
+<div [hidden]="!HideEmailPopup">
+    <h1 matDialogTitle><img src="assets/logos/iNeed-logo.png" width="80px" height="35px">
+        <button (click)="EmailDialogRef.close(false)" class="popup-close">X</button>
+    </h1>
+    <mat-horizontal-stepper class="mat-elevation-z4 myclass1" [linear]="true">
+        <mat-step [stepControl]="firstFormGroup">
+            <form fxLayout="column" [formGroup]="firstFormGroup" class="padg-lft0">
+                <div>
+                    <mat-label>current email </mat-label>
+                    <mat-form-field appearance="outline" fxFlex="50">
+                        <input matInput type="text" class="form-control" placeholder="email"
+                            value="{{this.authService.getUserEmail()}}" readonly>
+                    </mat-form-field>
+                </div>
+                <div tab-index=1>
+                    <mat-label>new email </mat-label>
+                    <mat-form-field appearance="outline" fxFlex="50">
+                        <input matInput type="text" formControlName="txtEmail" maxlength="30" class="form-control"
+                            placeholder="email" maxlength="50" autocomplete="off"
+                            [ngClass]="{ 'is-invalid': validation.txtEmail.touched && validation.txtEmail.errors }">
 
-        <form fxLayout="column" [formGroup]="firstFormGroup">
+                        <mat-error *ngIf="validation.txtEmail.errors && validation.txtEmail.touched"
+                            class="invalid-feedback">
+                            <mat-error *ngIf="validation.txtEmail.errors.required">email is required</mat-error>
+                            <mat-error *ngIf="validation.txtEmail.errors.email&& validation.txtEmail.errors">enter valid
+                                email address</mat-error>
+                        </mat-error>
 
+                    </mat-form-field>
+                </div>
+            </form>
+        </mat-step>
+    </mat-horizontal-stepper>
 
-    <div >   
-        <mat-label >current email </mat-label>  
-        <mat-form-field appearance="outline" fxFlex="50" >
-        <input matInput type="text"    class="form-control" placeholder="email"  value="{{this.authService.getUserEmail()}}" readonly > 
-
-   </mat-form-field>
-     
-</div> 
-
-<!-- <div >   
-    <mat-label >current1 email </mat-label>  
-    <mat-form-field appearance="outline" fxFlex="50" >
-    <input matInput type="text"    class="form-control" formControlName="txtcross1" placeholder="email1"  [ngClass]="{ 'is-invalid': validation.txtcross1.touched && validation.txtcross1.errors }"  > 
-    <mat-error *ngIf="validation.txtcross1.errors && validation.txtcross1.touched" class="invalid-feedback">
-        <mat-error *ngIf="validation.txtcross1.errors.required">email is required</mat-error>
-       <mat-error *ngIf="validation.txtcross1.errors.email&& validation.txtcross1.errors"  >enter valid email address</mat-error> 
-       </mat-error> 
-</mat-form-field>
- 
-</div>  -->
-
-<div tab-index=1 >   
-    <mat-label >new email </mat-label>  
-    <mat-form-field appearance="outline" fxFlex="50" >
-        <input matInput type="text" formControlName="txtEmail" maxlength="30"  class="form-control" placeholder="email" maxlength="50" autocomplete="off" [ngClass]="{ 'is-invalid': validation.txtEmail.touched && validation.txtEmail.errors }" >
-
-     <mat-error *ngIf="validation.txtEmail.errors && validation.txtEmail.touched" class="invalid-feedback">
-         <mat-error *ngIf="validation.txtEmail.errors.required">email is required</mat-error>
-        <mat-error *ngIf="validation.txtEmail.errors.email&& validation.txtEmail.errors"  >enter valid email address</mat-error> 
-        </mat-error> 
-
-</mat-form-field>
-</div> 
-
- </form>
- </mat-step>
- </mat-horizontal-stepper>
-<div mat-dialog-content *ngIf="!isError" class="forSuccess">{{MessageEmail}}</div>
-<div mat-dialog-content *ngIf="isError" class="forError">{{MessageEmail}}</div>
-<div class="btn-container-submit-delete">
-<div mat-dialog-actions class="pt-24 " fxLayout="row">
-    <!-- <button  class="mat-accent mr-16 forOk for" (click)="EmailDialogRef.close(true)">ok</button> -->
-    <button mat-raised-button type="button" [disabled]="firstFormGroup.invalid"  (click)="EmailNewChangeButton()" class="min-max110">
-      change
-     </button>
+    <div mat-dialog-actions class=" changebtn" fxLayout="row">
+        <button mat-raised-button type="button" [disabled]="firstFormGroup.invalid" (click)="EmailNewChangeButton()"
+            class="min-max110">
+            change
+        </button>
+    </div>
 </div>
+<div [hidden]="!HideEmailSuccessPopup" class="emailsuccess">
+    <h1 matDialogTitle><img src="assets/logos/iNeed-logo.png" width="80px" height="35px">
+
+        <button (click)="EmailSuccessDialogRefClose() " class="popup-close">X</button>
+    </h1>
+    <p> {{this.MessageEmail}}</p>
+    <div mat-dialog-actions class="ok-btn" fxLayout="row">
+        <button mat-raised-button type="button" class="mat-accent mr-16 forOk for"
+            (click)=" EmailSuccessDialogRefClose()">ok</button>
+    </div>
+
 </div>

@@ -31,7 +31,7 @@ export class ActivateSupplierComponent implements OnInit {
      
      this.vendorService.ActivateVendor(reqbody).subscribe((data: Array<object>) => {
      
-       this.lblMessage="your account is not activatted please try latter!";
+       this.lblMessage="your account is not activated please try later!";
       if (data['Data'] === -8){
         this.lblMessage="your account is already activated!";
       }

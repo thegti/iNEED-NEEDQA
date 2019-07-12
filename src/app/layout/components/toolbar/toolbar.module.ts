@@ -31,7 +31,6 @@ export class ToolbarModule
 {
     constructor( private authService: AuthService,) { }
     logout(): void {
-        console.log('Hello');
         this.authService.logout();
     }
 }
