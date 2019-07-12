@@ -1,7 +1,15 @@
 .vendor-content {
     width: 50%;  height: 270px; margin:0px auto;
 
-    form    {   width:50%; height:250px; margin:0px auto; text-align: center; transform: translate(0px, 30px);}
+    @media screen and (min-width:200px) and (max-width:399px)   {   width: 90%;  }
+    @media screen and (min-width:400px) and (max-width:600px)   {   width:100%;}
+
+    form    {   width:50%; height:250px; margin:0px auto; text-align: center; 
+        transform: translate(0px, 30px);
+
+    @media screen and (min-width:200px) and (max-width:399px)   {   width: 90%;  }
+    @media screen and (min-width:400px) and (max-width:600px)   {   width:100%; }
+    }
  
 }
 .vendor-payment-outer
