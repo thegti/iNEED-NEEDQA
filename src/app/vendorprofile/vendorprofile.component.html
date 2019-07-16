@@ -254,7 +254,7 @@
                                     </div>
 
                                 </mat-tab>
-                                <mat-tab label="arabic"> arabic </mat-tab>
+                                <!-- <mat-tab label="arabic"> arabic </mat-tab> -->
                             </mat-tab-group>
 
                         </div>
@@ -263,7 +263,7 @@
                         <!-- Item 4 -->
                         <div class="demo-content" [hidden]="selectedItem != 'item4'">
                             <div class="sales-div">
-                                <mat-label>email to which sales to be shared</mat-label>
+                                <mat-label>email to which sales leads to be shared</mat-label>
                                 <mat-form-field appearance="outline" fxFlex="50">
                                     <input type="text" matInput formControlName="txtEmail" maxlength="50"
                                         [value]="vendorEmail" placeholder="email">
@@ -280,7 +280,7 @@
 
 
                             <div tab-index=2 class="sales-div">
-                                <mat-label>mobile number to which sales to be shared</mat-label>
+                                <mat-label>mobile number to which sales leads to be shared</mat-label>
                                 <mat-form-field appearance="outline" fxFlex="50" class="phon-input">
 
                                     <input matInput type="text" formControlName="txtSalesMobile"
@@ -301,7 +301,7 @@
 
 
                             <div tab-index=3 class="sales-div">
-                                <mat-label>whatsapp number to which sales to be shared</mat-label>
+                                <mat-label>whatsapp number to which sales leads to be shared</mat-label>
                                 <mat-form-field appearance="outline" fxFlex="50" class="phon-input">
                                     <input matInput type="text" formControlName="txtWhatsappMobile"
                                         [value]="vendorWhatsappMobile" placeholder="mobile number" autocomplete="off"
@@ -316,7 +316,7 @@
                             </div>
 
                             <div tab-index=4 class="sales-div">
-                                <mat-label>i want leads for </mat-label>
+                                <mat-label>i want sales leads for </mat-label>
                                 <mat-radio-group>
                                     <mat-radio-button value="1" name="PersonalUse" [checked]="IsPersonalUse"
                                         (change)="SelectUseTypes($event)">personal use</mat-radio-button>
@@ -330,7 +330,7 @@
                             </div>
 
                             <div tab-index=5 class="sales-div">
-                                <mat-label>i want leads for </mat-label>
+                                <mat-label>i want sales leads for </mat-label>
                                 <mat-radio-group>
                                     <mat-radio-button value="1" name="ProductType" [checked]="IsProductType"
                                         (change)="SelectProductTypes($event)"> product</mat-radio-button>
@@ -342,7 +342,7 @@
 
                             </div>
                             <div tab-index=6 class="sales-div sales-span">
-                                <mat-label>i want leads with </mat-label>
+                                <mat-label>i want sales leads with </mat-label>
                                 <mat-radio-group>
                                     <mat-radio-button value="1" name="ValueType" [checked]="IsValueType"
                                         (change)="SelectValueTypes($event)"> any value</mat-radio-button>
