@@ -886,6 +886,7 @@ fuse-sidebar.left-positioned {
                         }
                     }
                     .mat-tab-label-container {
+                        display: none;
                         .mat-tab-label  {   
                             height:35px;   padding: 0 24px;  cursor: pointer;
                             box-sizing: border-box;  opacity:1;  min-width: 240px;
