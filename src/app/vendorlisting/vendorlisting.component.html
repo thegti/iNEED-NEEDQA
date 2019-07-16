@@ -12,7 +12,7 @@
         <mat-step [stepControl]="stprMain">
           <form fxLayout="column" [formGroup]="stprMain">
 
-            <div fxLayout="row" fxFlex="1 0 auto" fxLayoutAlign="center center" class="search-canceled-button">
+            <div fxLayout="row" fxFlex="1 0 auto" fxLayoutAlign="center center" class="search-canceled-button search-mob">
               <mat-form-field appearance="outline" fxFlex="100">
                 <mat-select formControlName="ddlVendorName" #singleSelect placeholder="select vendor">
                   <ngx-mat-select-search [formControl]="VendorNameFilterCtrl" [placeholderLabel]="'Search Vendor...'"
@@ -36,8 +36,8 @@
               </mat-form-field>
             </div>
 
-            <div fxLayout="row" fxLayoutAlign="center center " class="search-cancel-button">
-              <button class="mr-8" mat-raised-button (click)="closeFun()" type="button" color="primary">
+            <div fxLayout="row" fxLayoutAlign="center center " class="search-cancel-button searchgroup">
+              <button mat-raised-button (click)="closeFun()" type="button" color="primary">
                 cancel
               </button>
 
