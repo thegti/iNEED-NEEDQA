@@ -19,7 +19,9 @@ import { DialogComponent } from '../dialog/dialog.component';
 import { ConstGroup } from '../utility/LocationConstants';
 import { SerachGroup } from '../utility/SearchConstants';
 import { SavaEnquiryModel } from '../business-object/EnquiryObject';
-import { NextdialogComponent } from '../nextdialog/nextdialog.component';
+import { NextdialogComponent } from '../popup/nextdialog/nextdialog.component';
+import {SelectProducrServicedialogComponent} from '../popup/select-producr-servicedialog/select-producr-servicedialog.component';
+import {SelectPersonalBusinessdialogComponent} from '../popup/select-personal-businessdialog/select-personal-businessdialog.component';
 import { SharedData } from '../services/common/SharedData.service';
 import { environment } from 'environments/environment';
 
@@ -86,6 +88,12 @@ export class EnquiryComponent implements OnInit, OnDestroy {
         'VKW_KWORD': '--Select--',
 
     }
+    SelectProductServiceDialogRef: MatDialogRef<SelectProducrServicedialogComponent>;
+    ProductServiceDialogRef: MatDialogRef<SelectProducrServicedialogComponent>;
+
+    SelectPersonalBusinessDialogRef: MatDialogRef<SelectPersonalBusinessdialogComponent>;
+    PersonalBusinessDialogRef: MatDialogRef<SelectPersonalBusinessdialogComponent>;
+
     public locationFilterCtrl: FormControl = new FormControl();
     public searchFilterCtrl: FormControl = new FormControl();
     public filteredLocation: ReplaySubject<Array<any>> = new ReplaySubject<Array<any>>(1);
@@ -115,8 +123,9 @@ export class EnquiryComponent implements OnInit, OnDestroy {
             .subscribe(() => {
                 this.filterSerach();
             });
+            this.filenames = true;
         this.GetUom();
-        this.filenames = true;
+        // this.GetCurrency();
         this.ConfigSettings();
 
         // Object.keys(this._formBuilder.controls).forEach(field => {
@@ -133,6 +142,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
             txtName: ['', [Validators.required, Validators.minLength(3)]],
             txtEmail: ['', [Validators.required, Validators.email, Validators.maxLength(50)]],
             txtMobile: ['', [Validators.required, Validators.pattern(this.mobnumPattern)]],
+            
 
         });
 
@@ -140,6 +150,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
             txtSearch: [''],
             txtQuantity: ['', Validators.required],
             ddlUnit: ['', Validators.required],
+            // ddlCurrency: ['', Validators.required],
             txtApproximate: ['', Validators.required],
             txtdDescription: [''],
             photo: ['']
@@ -148,15 +159,16 @@ export class EnquiryComponent implements OnInit, OnDestroy {
             this.firstFormGroup.controls.txtEmail.reset();
         }
     }
-    ResetForm() {
-        this.selectedEnquiry = 1;
-        this.selectedlocationService = 1;
-        selectedlocationService: 1;
-        this.selectedLocation = 1;
-        this.selectedKeyword = 1;
-        this.selectedUseType = 1;
+    // ResetForm() {
+    //     this.selectedEnquiry = 1;
+    //     this.selectedlocationService = 1;
+    //     selectedlocationService: 1;
+    //     this.selectedLocation = 1;
+       
+    //     this.selectedKeyword = 1;
+    //     this.selectedUseType = 1;
 
-    }
+    // }
     public VerifyOTP() {
         // alert("Success");
     }
@@ -166,6 +178,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
     }
     selectSearch(e) {
         this.selectedKeyword = e.value;
+        
 
     }
     selectUseTypes(e) {
@@ -181,8 +194,18 @@ export class EnquiryComponent implements OnInit, OnDestroy {
 
     }
     buttonPrevious() {
-        this.isFirst = true;
-        this.next = false;
+        if(this.IsValidOtp==true)
+        {
+            this.isFirst = true;
+            this.next = false;
+            
+        }
+        else{
+            this.isFirst = false;
+            this.next = true;
+        }
+        
+     
         this.secondFormGroup.value.txtSearch = this.selectedText;
 
 
@@ -202,9 +225,15 @@ export class EnquiryComponent implements OnInit, OnDestroy {
     buttonNext() {
         this.isFirst = false;
         this.next = true;
+      
     }
 
     EnableNextButton() {
+     
+        if(this.selectedKeyword)
+        {
+
+        
         if (!this.IsValidOtp) {
 
 
@@ -216,7 +245,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
 
             this.apiService.GenerateOtp(reqbody).subscribe((data: Array<object>) => {
                 this.sharedData.SetOTP(data['Data']['OTP']);
-
+console.log(data['Data']['OTP']);
                 this.OtpMsg = 'an otp has been sent to your ';
                 if (data['Data']['BY_MAIL'] == true && data['Data']['BY_SMS'] == true) {
                     this.OtpMsg = this.OtpMsg + 'mobile and email';
@@ -241,6 +270,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
                         this.isFirst = true;
                         this.IsValidOtp = true;
                         this.secondFormGroup.value.txtSearch = this.selectedText;
+                      
                     }
                 }
             });
@@ -249,6 +279,14 @@ export class EnquiryComponent implements OnInit, OnDestroy {
             this.next = false;
             this.isFirst = true;
             this.secondFormGroup.value.txtSearch = this.selectedText;
+
+        }
+    }
+        else {
+            this.SelectProductServiceDialogRef = this._matDialog.open(SelectProducrServicedialogComponent, {
+                disableClose: true
+            }); 
+            this.SelectProductServiceDialogRef.componentInstance.Message = 'please select product or service';
 
         }
     }
@@ -274,6 +312,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
             'VNQ_LOCATION_MODE': this.selectedLocation > 0 ? this.selectedLocation : 1,
             'VNQ_DESC': this.secondFormGroup.value.txtdDescription,
             'VNQ_UOM': this.secondFormGroup.value.ddlUnit,
+            // 'VNQ_UOM': this.secondFormGroup.value.ddlCurrency,
             'VNQ_QTY': this.secondFormGroup.value.txtQuantity,
             'VNQ_VALUE': this.secondFormGroup.value.txtApproximate,
             'VNQ_TYPE': this.selectedKeyword > 0 ? this.selectedKeyword : 1,
@@ -290,6 +329,9 @@ export class EnquiryComponent implements OnInit, OnDestroy {
             'VNQ_MOD_BY': 1
 
         };
+if(this.selectedUseType)
+{
+
 
         this.enquiryService.SaveEnquiry(this.enquiryRequest).subscribe((data: Array<object>) => {
             if (data['Data'] > 0) {
@@ -309,6 +351,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
                     this.firstFormGroup.reset();
                     this.secondFormGroup.reset();
                     this.filenames = false;
+                  
 
                 });
             } else {
@@ -327,6 +370,14 @@ export class EnquiryComponent implements OnInit, OnDestroy {
                 }
             }
         });
+    }
+    else{
+        this.SelectPersonalBusinessDialogRef = this._matDialog.open(SelectPersonalBusinessdialogComponent, {
+            disableClose: true
+        }); 
+        this.SelectPersonalBusinessDialogRef.componentInstance.Message = 'please select personal use or business use';
+
+    }
     }
 
     detectFiles(event) {
@@ -406,6 +457,8 @@ export class EnquiryComponent implements OnInit, OnDestroy {
         else
             if (this.selectedKeyword == 2) {
                 groups = SerachGroup.Services;
+                this.secondFormGroup.get('txtQuantity').setValue('1');
+               
             }
         var reqbody = {
             'VKW_KWORD_TYPE': groups,
@@ -428,6 +481,17 @@ export class EnquiryComponent implements OnInit, OnDestroy {
             this.secondFormGroup.controls.ddlUnit.setValue(environment.DEFAULT_UOM);
         });
     }
+
+    // GetCurrency() {
+    //     const reqbody = {
+    //         'UOM_PK': 1,
+    //         'UOM_NAME': "kg"
+    //     };
+    //     this.apiService.GetUom(reqbody).subscribe((data: Array<object>) => {
+    //         this.unitOfMeasure = data['Data'];
+    //         this.secondFormGroup.controls.ddlCurrency.setValue(environment.DEFAULT_UOM);
+    //     });
+    // }
     ConfigSettings() {
         
         this.DEFAULT_UOM = environment.DEFAULT_UOM;
@@ -451,6 +515,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
             txtSearch: [''],
             txtQuantity: ['', Validators.required],
             ddlUnit: ['', Validators.required],
+            // ddlCurrency: ['', Validators.required],
             txtApproximate: [''],
             txtdDescription: ['']
         });

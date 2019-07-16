@@ -15,7 +15,7 @@ import {VendorSalesLeadModel} from '../business-object/VendorObject';
 import { SerachGroup } from 'app/utility/SalesLoadUse';
 import {SalesProductGroup} from 'app/utility/SalesProducts';
 import {SalesValueGroup} from 'app/utility/SalesValue';
-import {VendorsavedialogComponent} from '../vendorsavedialog/vendorsavedialog.component';
+import {VendorsavedialogComponent} from '../popup/vendorsavedialog/vendorsavedialog.component';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { ErrorStateMatcher } from '@angular/material';
 import {customValidationService} from './customValidationService'

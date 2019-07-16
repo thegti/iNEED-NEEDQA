@@ -1,6 +1,6 @@
 import { Component, OnInit ,Input,EventEmitter} from '@angular/core';
 import { MatDialogRef } from '@angular/material';
-import {SharedData} from '../services/common/SharedData.service'
+import {SharedData} from '../../services/common/SharedData.service'
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl, FormGroupName} from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 

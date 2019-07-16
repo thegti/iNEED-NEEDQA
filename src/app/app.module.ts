@@ -34,14 +34,15 @@ import { EnquiryComponent } from './enquiry/enquiry.component';
 import { TestComponent } from './test/test.component';
 import { ActivateSupplierComponent } from './Supplier/activate-supplier/activate-supplier.component';
 import { VendorprofileComponent } from './vendorprofile/vendorprofile.component';
-import { NextdialogComponent } from './nextdialog/nextdialog.component';
-import { VendorsavedialogComponent } from './vendorsavedialog/vendorsavedialog.component';
+import { NextdialogComponent } from './popup/nextdialog/nextdialog.component';
+import { VendorsavedialogComponent } from './popup/vendorsavedialog/vendorsavedialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { VendorkeyworddeletedialogComponent } from './vendorkeyworddeletedialog/vendorkeyworddeletedialog.component';
+import { VendorkeyworddeletedialogComponent } from './popup/vendorkeyworddeletedialog/vendorkeyworddeletedialog.component';
 import { VendorlistingComponent } from './vendorlisting/vendorlisting.component';
 import { PaymentComponent } from './payment/payment.component';
-import { VendorEmailChangedialogComponent } from './vendor-email-changedialog/vendor-email-changedialog.component';
-
+import { VendorEmailChangedialogComponent } from './popup/vendor-email-changedialog/vendor-email-changedialog.component';
+import {SelectProducrServicedialogComponent} from './popup/select-producr-servicedialog/select-producr-servicedialog.component';
+import {SelectPersonalBusinessdialogComponent} from './popup/select-personal-businessdialog/select-personal-businessdialog.component';
 
 // R and D works
 import { SearchautoComponent } from './RandD/searchauto/searchauto.component';
@@ -73,6 +74,8 @@ import { NgxPayPalModule } from 'ngx-paypal';
         VendorkeyworddeletedialogComponent,
         PaymentComponent,
         VendorEmailChangedialogComponent,
+        SelectProducrServicedialogComponent,
+        SelectPersonalBusinessdialogComponent,
 
 
         //R and D works
@@ -87,6 +90,8 @@ import { NgxPayPalModule } from 'ngx-paypal';
         VendorsavedialogComponent,
         VendorkeyworddeletedialogComponent,
         VendorEmailChangedialogComponent,
+        SelectProducrServicedialogComponent,
+        SelectPersonalBusinessdialogComponent,
 
 
     ],

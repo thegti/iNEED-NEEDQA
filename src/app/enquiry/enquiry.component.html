@@ -9,11 +9,12 @@
           <form [formGroup]="firstFormGroup">
 
             <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="h29 mob-div" tab-index=1>
-              <mat-label  class="blnk-lbl"> </mat-label>
+              <mat-label class="blnk-lbl"> </mat-label>
               <mat-radio-group>
                 <mat-radio-button value="1" (change)="selectSearch($event)"> product</mat-radio-button>
                 <mat-radio-button value="2" (change)="selectSearch($event)">service</mat-radio-button>
               </mat-radio-group>
+
             </div>
             <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="h43 mob-div" tab-index=2>
               <mat-label>search</mat-label>
@@ -43,9 +44,9 @@
             </div>
 
             <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="h35 mob-div" tab-index=3>
-              <mat-label  class="sub-lbl">from</mat-label>
+              <mat-label class="sub-lbl">from</mat-label>
               <mat-radio-group>
-                <mat-radio-button value="1" (change)="selectLocation($event)">qatar</mat-radio-button>
+                <mat-radio-button value="1" checked (change)="selectLocation($event)">qatar</mat-radio-button>
                 <mat-radio-button value="2" (change)="selectLocation($event)">outside qatar</mat-radio-button>
               </mat-radio-group>
 
@@ -186,7 +187,6 @@
               </mat-form-field>
 
               <mat-form-field appearance="outline" fxFlex="50" class="min-max28" tab-index=12>
-
                 <mat-select formControlName="ddlUnit" placeholder="unit">
                   <mat-option *ngFor="let type of unitOfMeasure" [value]="type['UOM_PK']">
                     {{type['UOM_NAME']  }}
@@ -199,16 +199,28 @@
               </mat-form-field>
             </div>
 
-            <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" tab-index=13 class="h45 mob-div">
+            <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="mob-div budget">
               <mat-label>approximate value/budget</mat-label>
-              <mat-form-field appearance="outline" fxFlex="50">
+              <!-- <mat-form-field appearance="outline" fxFlex="50" tab-index=13 class="min-max20 currency" tab-index=12>
+                <mat-select formControlName="ddlCurrency" placeholder="currency">
+                  <mat-option *ngFor="let type of unitOfMeasure" [value]="type['UOM_PK']">
+                    {{type['UOM_NAME']  }}
+                  </mat-option>
+                </mat-select>
+                <mat-error
+                  *ngIf="secondFormGroup.controls.ddlCurrency.errors?.required && secondFormGroup.controls.ddlCurrency.touched">
+                  select currency
+                </mat-error>
+              </mat-form-field> -->
+
+              <mat-form-field appearance="outline" fxFlex="50" tab-index=14 class="min-max28 approx">
                 <input matInput type="type" min="0" formControlName="txtApproximate" class="quantitynumber"
                   maxlength="8" placeholder="approximate value" (keypress)="numericOnly($event)">
               </mat-form-field>
             </div>
 
 
-            <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" tab-index=-14 class="h95 mob-div">
+            <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" tab-index=-15 class="h95 mob-div">
               <mat-label>description</mat-label>
               <mat-form-field class="enquiry-textarea" appearance="outline" fxFlex="50">
                 <textarea matInput type="text" formControlName="txtdDescription" placeholder="brief description"
@@ -226,10 +238,11 @@
             </div>
 
             <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="h32 mob-div">
-                <div class="btn-container-center">
-              <button *ngIf="!enableClose" mat-raised-button 
-                [disabled]="firstFormGroup.invalid || secondFormGroup.invalid" (click)="enquirySubmit()"
-                class="activate-btn">submit</button>
+              <mat-label></mat-label>
+              <div class="btn-container">
+                <button *ngIf="!enableClose" mat-raised-button
+                  [disabled]="firstFormGroup.invalid || secondFormGroup.invalid" (click)="enquirySubmit()"
+                  class="activate-btn">submit</button>
               </div>
             </div>
           </form>

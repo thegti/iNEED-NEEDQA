@@ -15,15 +15,15 @@ import {VendorSalesLeadModel} from '../business-object/VendorObject';
 import { SerachGroup } from 'app/utility/SalesLoadUse';
 import {SalesProductGroup} from 'app/utility/SalesProducts';
 import {SalesValueGroup} from 'app/utility/SalesValue';
-import {VendorsavedialogComponent} from '../vendorsavedialog/vendorsavedialog.component';
+import {VendorsavedialogComponent} from '../popup/vendorsavedialog/vendorsavedialog.component';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import {DialogComponent} from '../dialog/dialog.component';
-import {VendorkeyworddeletedialogComponent} from '../vendorkeyworddeletedialog/vendorkeyworddeletedialog.component'
+import {VendorkeyworddeletedialogComponent} from '../popup/vendorkeyworddeletedialog/vendorkeyworddeletedialog.component'
 import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
 import { from } from 'rxjs';
 import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 import { Router,ActivatedRoute } from '@angular/router';
-import {VendorEmailChangedialogComponent} from '../vendor-email-changedialog/vendor-email-changedialog.component';
+import {VendorEmailChangedialogComponent} from '../popup/vendor-email-changedialog/vendor-email-changedialog.component';
 
 
 @Component({

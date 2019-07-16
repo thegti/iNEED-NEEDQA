@@ -139,6 +139,30 @@ input::-webkit-input-placeholder {
         width:40%;}    
 }
 
+.budget     {   height:45px;
+
+    .approx     {  
+        .mat-form-field-wrapper {   width:185px;
+            @media screen and (min-width:200px) and (max-width:399px)   {  
+                width:100%; }        
+        }
+     }
+
+    .currency   {   
+                .mat-form-field-wrapper     {   width:83%;
+
+                    @media screen and (min-width:200px) and (max-width:399px)   {  
+                        width:100%; }
+
+                    .mat-form-field-flex    {       padding: 0 .5em 0 .5em;}
+                }
+        }
+
+        @media screen and (min-width:200px) and (max-width:399px)   {  
+            height:102px; }
+   
+}
+
     /*div     {   display: flex; align-items: baseline;} */
 
 /*---- Radio Btn-----*/
@@ -1416,11 +1440,11 @@ fuse-sidebar.left-positioned {
 }
 .watsap-icn:hover   {   transform: scale(0.9);}
 
-.personal   {   height:20px;
+.personal   {   height:30px;
 
-    /*@media screen and (min-width:200px) and (max-width:499px){
-        height:40px;
-    }*/
+    @media screen and (min-width:200px) and (max-width:499px){
+        height:20px;
+    }
 }
 
 .qty    {   height:43px;
@@ -1467,12 +1491,17 @@ fuse-sidebar.left-positioned {
 .w100per    {   width:100%!important;}
 
 /* Min & Max */ 
-.min-max20      {   min-width:20%!important; max-width:20%!important;}
+.min-max20      {   min-width:20%!important; max-width:20%!important;
+
+    @media screen and (min-width:200px) and (max-width:499px){
+        min-width:95%!important; max-width:95%;
+    }
+}
 .min-max25      {   min-width:25%!important; max-width:25%!important;}
 .min-max28      {   min-width:28%; max-width:28%!important;
 
     @media screen and (min-width:200px) and (max-width:499px){
-        min-width:94%; max-width:94%;
+        min-width:95%!important; max-width:95%;
     }
 }
 
@@ -1508,7 +1537,12 @@ fuse-sidebar.left-positioned {
     }
 }
 .h70        {   height:70px;} 
-.h95        {   height:95px;} 
+.h95        {   height:95px;
+
+    @media screen and (min-width:200px) and (max-width:499px){
+        height:100px;
+    }
+} 
 
 /* Padding */ 
 .padg-lft0          {    padding-left:0px!important;    }

@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AuthService } from '../authentication/auth.service';
+import { AuthService } from '../../authentication/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import {SharedData} from '../services/common/SharedData.service';
+import {SharedData} from '../../services/common/SharedData.service';
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl, FormGroupName} from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material';
-import {User} from '../authentication/user.model';
+import {User} from '../../authentication/user.model';
 
-import { VendorService } from '../services/vendor/vendor.service';
+import { VendorService } from '../../services/vendor/vendor.service';
 
 @Component({
   selector: 'app-vendor-email-changedialog',
