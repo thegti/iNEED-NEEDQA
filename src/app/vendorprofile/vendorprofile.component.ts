@@ -98,7 +98,6 @@ export class VendorprofileComponent implements OnInit {
   public ValueTxtValue:boolean=false;
   public  configvalue: String;
   IsAdmin : boolean =false;
-
   KeywordDeleteDialogRef: MatDialogRef<VendorkeyworddeletedialogComponent>;
   KeywordDialogRef: MatDialogRef<VendorkeyworddeletedialogComponent>;
 
@@ -140,6 +139,7 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
   sidebarMenu(item)
   {
     this.selectedItem=item;
+    
     switch(item)
     {
       case 'item3':

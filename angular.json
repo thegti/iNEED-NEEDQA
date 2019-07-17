@@ -29,7 +29,11 @@
                         "styles": [
                             "src/styles.scss"
                         ],
-                        "scripts": [],
+                        "scripts": [
+                           
+                            "src/app/js/sidebarclose.js"
+                        ],
+                     
                         "showCircularDependencies": false
                     },
                     "configurations": {
