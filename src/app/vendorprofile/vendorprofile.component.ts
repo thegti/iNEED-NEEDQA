@@ -24,6 +24,7 @@ import { from } from 'rxjs';
 import { FuseSidebarService } from '@fuse/components/sidebar/sidebar.service';
 import { Router,ActivatedRoute } from '@angular/router';
 import {VendorEmailChangedialogComponent} from '../popup/vendor-email-changedialog/vendor-email-changedialog.component';
+import { $ } from 'protractor';
 
 
 @Component({
@@ -106,6 +107,7 @@ export class VendorprofileComponent implements OnInit {
   // IsHideTxtValue:boolean=false;
 VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
   VendorDialogRef: MatDialogRef<VendorsavedialogComponent>;
+ 
   constructor(private _formBuilder: FormBuilder,private vendorService: VendorService,  private _fuseSidebarService: FuseSidebarService,
     private authService: AuthService,private apiService: ApiService,public _matDialog: MatDialog,
     private router: Router, ) {
@@ -135,11 +137,11 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
    
     
   }
- 
+
+  
   sidebarMenu(item)
   {
     this.selectedItem=item;
-    
     switch(item)
     {
       case 'item3':
@@ -159,9 +161,25 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
          
           break;
     }
+
+   this.GetSidebarOpen();
+    
   }
-
-
+GetSidebarOpen()
+{
+  var element = document.querySelector(".sidebar");
+     element.classList.remove('open');
+      // let SidebarOverlay = document.querySelector('.fuse-sidebar-overlay');
+      // SidebarOverlay.classList.add('fuse-sidebar-overlay-invisible');
+      // SidebarOverlay.classList.remove('div.fuse-sidebar-overlay');
+     
+      
+}
+toggleSidebar(name): void
+{
+    this._fuseSidebarService.getSidebar(name).toggleOpen();
+  
+}
   UploadKeywordButton()
   {
     // this.uploadkeyword=false;
@@ -586,15 +604,7 @@ cancelButton()
 {
 
 }
-  /**
-     * Toggle sidebar
-     *
-     * @param name
-     */
-    toggleSidebar(name): void
-    {
-        this._fuseSidebarService.getSidebar(name).toggleOpen();
-    }
+ 
 downloadCsvButton()
 {}
 detectFiles(value)
