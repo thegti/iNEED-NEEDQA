@@ -136,7 +136,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
 
     ResetFormControls(IsNew: boolean) {
         this.firstFormGroup = this._formBuilder.group({
-            // captcha: ['', Validators.required],
+            rdbProductType: [''],
             ddlsearch: ['', Validators.required],
             ddllocation: ['', Validators.required],
             txtName: ['', [Validators.required, Validators.minLength(3)]],
@@ -148,6 +148,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
 
         this.secondFormGroup = this._formBuilder.group({
             txtSearch: [''],
+            rdbUseType: [''],
             txtQuantity: ['', Validators.required],
             ddlUnit: ['', Validators.required],
             // ddlCurrency: ['', Validators.required],
@@ -159,6 +160,10 @@ export class EnquiryComponent implements OnInit, OnDestroy {
             this.firstFormGroup.controls.txtEmail.reset();
         }
     }
+    // get rdbProductType() {
+    //     return this.firstFormGroup.get('rdbProductType');
+    //   }   
+  
     // ResetForm() {
     //     this.selectedEnquiry = 1;
     //     this.selectedlocationService = 1;
@@ -170,7 +175,6 @@ export class EnquiryComponent implements OnInit, OnDestroy {
 
     // }
     public VerifyOTP() {
-        // alert("Success");
     }
     selectLocation(e) {
         this.selectedLocation = e.value;
@@ -350,6 +354,7 @@ if(this.selectedUseType)
                     this.firstFormGroup.reset();
                     this.secondFormGroup.reset();
                     this.filenames = false;
+                  
                   
 
                 });
@@ -543,11 +548,15 @@ if(this.selectedUseType)
         return result;
     }
 
-    EnabletestButton() {
-        this.router.navigate(['/ActivateSupplier/tTtaiW84fv3SfxQjnkg9TQ==']);
+    // EnabletestButton() {
+    //     this.router.navigate(['/ActivateSupplier/tTtaiW84fv3SfxQjnkg9TQ==']);
 
-    }
+    // }
 
+test()
+{
+    this.router.navigate(['/ActivateSupplier/zXflu5lubCk%3d']);
 
+}
 
 }

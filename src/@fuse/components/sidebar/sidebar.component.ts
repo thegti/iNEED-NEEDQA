@@ -648,6 +648,13 @@ export class FuseSidebarComponent implements OnInit, OnDestroy
      */
     toggleOpen(): void
     {
+        let SidebarOverlay = document.querySelector('.fuse-sidebar-overlay-invisible');
+        if(SidebarOverlay!=null){
+            this.opened=false;
+            var element = document.querySelector(".sidebar");
+            element.classList.add('open');
+        }
+
         if ( this.opened )
         {
             this.close();

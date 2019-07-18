@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild,ElementRef } from '@angular/core';
+import { Component, OnInit,ViewChild,ElementRef, Renderer2 } from '@angular/core';
 import {MatAccordion} from '@angular/material/expansion';
 import { v4 as uuid } from 'uuid';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
@@ -110,7 +110,7 @@ VendorSaveDialogRef: MatDialogRef<VendorsavedialogComponent>;
  
   constructor(private _formBuilder: FormBuilder,private vendorService: VendorService,  private _fuseSidebarService: FuseSidebarService,
     private authService: AuthService,private apiService: ApiService,public _matDialog: MatDialog,
-    private router: Router, ) {
+    private router: Router,private _elementRef: ElementRef,private _renderer: Renderer2 ) {
     
    }
 
@@ -169,9 +169,11 @@ GetSidebarOpen()
 {
   var element = document.querySelector(".sidebar");
      element.classList.remove('open');
-      // let SidebarOverlay = document.querySelector('.fuse-sidebar-overlay');
-      // SidebarOverlay.classList.add('fuse-sidebar-overlay-invisible');
-      // SidebarOverlay.classList.remove('div.fuse-sidebar-overlay');
+     
+    let SidebarOverlay = document.querySelector('.fuse-sidebar-overlay');
+    SidebarOverlay.classList.remove('fuse-sidebar-overlay');
+    SidebarOverlay.classList.add('fuse-sidebar-overlay-invisible');
+ 
      
       
 }

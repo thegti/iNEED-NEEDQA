@@ -7,14 +7,17 @@
       <mat-horizontal-stepper>
         <mat-step [stepControl]="firstFormGroup">
           <form [formGroup]="firstFormGroup">
+              <button type="button" (click)="test()">test</button>
 
             <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="h29 mob-div" tab-index=1>
               <mat-label class="blnk-lbl"> </mat-label>
-              <mat-radio-group>
+              <mat-radio-group formControlName="rdbProductType">
                 <mat-radio-button value="1" (change)="selectSearch($event)"> product</mat-radio-button>
                 <mat-radio-button value="2" (change)="selectSearch($event)">service</mat-radio-button>
               </mat-radio-group>
-
+              <!-- <div *ngIf="notificationType.hasError('required') " class="error">
+                Notification Type is required.
+              </div>  -->
             </div>
             <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="h43 mob-div" tab-index=2>
               <mat-label>search</mat-label>
@@ -160,13 +163,11 @@
 
             <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" tab-index=9 class="personal mob-div">
               <mat-label class="blnk-lbl"> </mat-label>
-              <mat-radio-group>
+              <mat-radio-group formControlName="rdbUseType">
                 <mat-radio-button value="1" (change)="selectUseTypes($event)">personal use</mat-radio-button>
                 <mat-radio-button value="2" (change)="selectUseTypes($event)">business use</mat-radio-button>
               </mat-radio-group>
             </div>
-
-
 
             <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" tab-index=10 class="h43 mob-div">
               <mat-label>search</mat-label>
