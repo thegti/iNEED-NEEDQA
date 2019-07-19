@@ -40,7 +40,7 @@ export class ActivateSupplierComponent implements OnInit {
         this.lblMessage="thank you for verifying your email. your account is now activated!.";
       }
       else if (data['Data'] === 2){
-        this.lblMessage="your account is now re-activated!.";
+        this.lblMessage="your account is now re-activated!";
       }
      });
 

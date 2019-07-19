@@ -548,11 +548,6 @@ if(this.selectedUseType)
         return result;
     }
 
-    // EnabletestButton() {
-    //     this.router.navigate(['/ActivateSupplier/tTtaiW84fv3SfxQjnkg9TQ==']);
-
-    // }
-
 test()
 {
     this.router.navigate(['/ActivateSupplier/zXflu5lubCk%3d']);
