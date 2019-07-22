@@ -8,6 +8,7 @@ import { KeywordModel } from '../../business-object/CommonDataObject';
 import { UomModel } from '../../business-object/CommonDataObject';
 import { CountryModel } from '../../business-object/CommonDataObject';
 import { OtpModel } from '../../business-object/CommonDataObject';
+import {CurrencyModel} from '../../business-object/CommonDataObject';
 
 @Injectable({
    providedIn: 'root'
@@ -43,5 +44,13 @@ export class ApiService {
    ConfigGet(req): any {
       return this.httpClient.post(`${this.baseUrl}api/Common/ConfigGet`, req, this.header);
    }
+   GetCurrency(req): any {
+      return this.httpClient.post<CurrencyModel>(`${this.baseUrl}api/Common/GetCurrency`, req, this.header);
+   }
+
+   registerUserImage(req): any {
+      return this.httpClient.post(`${this.baseUrl}api/Common/user/PostAttachments`, req, this.header);
+}
+
 
 }

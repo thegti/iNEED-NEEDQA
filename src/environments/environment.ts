@@ -12,7 +12,9 @@ export const environment = {
     //buildpath    ng build --aot --base-href /
     DefaultCountry : 5,
     DefaultCountryCode : "+974",
-    DEFAULT_UOM : 13
+    DEFAULT_UOM : 13,
+    DEFAULT_CURRENCY : 115,
+
 };
 
 /*

@@ -257,7 +257,8 @@ enquirySubmit(): void {
      'VNQ_BIZUNIT':1,
      'VNQ_CRTD_BY':1,
      'VNQ_CRTD_DT':this.moddate,
-     'VNQ_MOD_BY':1
+     'VNQ_MOD_BY':1,
+     'VNQ_DOC_ATTACH':''
 
   };
   console.log(this.enquiryRequest );

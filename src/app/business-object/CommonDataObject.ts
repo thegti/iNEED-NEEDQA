@@ -31,6 +31,14 @@ export interface OtpModel {
     MOBILE_NO: String;
     OTP: String;
 }
+export interface CurrencyModel {
+   
+     CUR_PK : number,
+     CUR_CODE : String,
+     CUR_NAME : String,
+     CUR_DESC : String
+}
+
 
 
 

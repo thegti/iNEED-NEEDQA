@@ -7,7 +7,7 @@
       <mat-horizontal-stepper>
         <mat-step [stepControl]="firstFormGroup">
           <form [formGroup]="firstFormGroup">
-              <!-- <button type="button" (click)="test()">test</button> -->
+            <!-- <button type="button" (click)="test()">test</button> -->
 
             <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="h29 mob-div" tab-index=1>
               <mat-label class="blnk-lbl"> </mat-label>
@@ -202,17 +202,17 @@
 
             <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="mob-div budget">
               <mat-label>approximate value/budget</mat-label>
-              <!-- <mat-form-field appearance="outline" fxFlex="50" tab-index=13 class="min-max20 currency" tab-index=12>
+              <mat-form-field appearance="outline" fxFlex="50" tab-index=13 class="min-max20 currency" tab-index=12>
                 <mat-select formControlName="ddlCurrency" placeholder="currency">
-                  <mat-option *ngFor="let type of unitOfMeasure" [value]="type['UOM_PK']">
-                    {{type['UOM_NAME']  }}
+                  <mat-option *ngFor="let type of currency" [value]="type['CUR_PK']">
+                    {{type['CUR_DESC']  }}
                   </mat-option>
                 </mat-select>
                 <mat-error
                   *ngIf="secondFormGroup.controls.ddlCurrency.errors?.required && secondFormGroup.controls.ddlCurrency.touched">
                   select currency
                 </mat-error>
-              </mat-form-field> -->
+              </mat-form-field>
 
               <mat-form-field appearance="outline" fxFlex="50" tab-index=14 class="min-max28 approx">
                 <input matInput type="type" min="0" formControlName="txtApproximate" class="quantitynumber"
@@ -237,7 +237,7 @@
               <div class="brows-lbl" [hidden]="!filenames"> {{ fileName }} </div>
 
             </div>
-
+           
             <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="h32 mob-div">
               <mat-label></mat-label>
               <div class="btn-container">

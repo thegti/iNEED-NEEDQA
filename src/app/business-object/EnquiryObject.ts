@@ -22,6 +22,7 @@ export interface SavaEnquiryModel {
     VNQ_CRTD_DT: Date;
     VNQ_MOD_BY: number;
     VNQ_MOD_DT: Date;
+    VNQ_DOC_ATTACH : String;
 
 }
 
