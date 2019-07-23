@@ -833,7 +833,7 @@ fuse-sidebar.left-positioned {
 
 /*--------- right side ------*/ 
 .vendor-cont-outer  {   width:100%; display:flex; align-items: center; }
-.vendor-content     {   width:90%; height:270px; border-radius:5px; -webkit-border-radius:5px; 
+.vendor-content     {   width:90%; height:280px; border-radius:5px; -webkit-border-radius:5px; 
                         padding:10px 20px 10px 20px; box-sizing:border-box; -webkit-box-sizing:border-box;
                         overflow-y: auto;
 //vendor profile
@@ -1152,7 +1152,9 @@ fuse-sidebar.left-positioned {
                               display:block!important;
                             }
                 }                            
-                .fixd-div   {    width:100%; display: flex;  align-items: center;  justify-content: flex-end;}
+                .fixd-div   {    width:100%; display: flex;  align-items: center;  
+                    justify-content: flex-end; position: absolute;  z-index: 3; right: 10px;
+                    bottom:3px;}
         }
 
 /*---------- Reports -----------*/ 
@@ -1255,7 +1257,7 @@ fuse-sidebar.left-positioned {
 
 /*---------- Vendor Listing ----------*/ 
 .vendr-name     {   /*background: #e6f6ff; */   border-bottom: 2px solid #bfdcec;
-    padding: 5px;font-family: 'coheadlinew01-regularregular', sans-serif;   
+    margin:0px 0px 5px 0px;font-family: 'coheadlinew01-regularregular', sans-serif;   
     font-size: 18px; color: #00CED1;}
 
 .vendr-list-menu    {  /*background: #e6f6ff;*/   
