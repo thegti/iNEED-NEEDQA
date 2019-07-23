@@ -60,10 +60,13 @@ export class VendorprofileComponent implements OnInit {
   public selectedKeywordItem='selectedkeyword1';
   IsHideUploadDiv:Boolean=true;
   selectedfile: File;
+  fileChange: Boolean = false;
   imgname: any = '';
   imgChange: Boolean = false;
   formdt: FormData = new FormData();
+  fileName: string;
   filenames:Boolean=true;  
+  selectedFiles: FileList;
   url = '../../assets/loginasset/images/display-img.jpg';
   // @ViewChild(MatAccordion) accordion: MatAccordion;
   panelOpenState = false;
@@ -184,7 +187,7 @@ toggleSidebar(name): void
 }
   UploadKeywordButton()
   {
-    // this.uploadkeyword=false;
+
   }
   onSelectionchange(event): void{
    
@@ -204,6 +207,33 @@ toggleSidebar(name): void
       };
      }
    }
+   detectFiles(event) {
+    this.selectedFiles = event.target.files;
+    this.fileName = this.selectedFiles[0].name;
+}
+
+csvUploadSave()
+{
+  var reqObj={"VNQ_PK":this.user.VND_PK};
+  if (this.fileChange) {
+    this.apiService.UploadCSV(this.formdt)
+        .subscribe(res => {
+          
+            if (res['Message'] == 1) {
+              
+                this.apiService.UploadCSV(reqObj).subscribe((data: Array<object>) => {
+                   
+                   
+                });
+            }
+
+        });
+}
+else {
+  
+}
+}
+
    AddKeywordButton()
    {
     this.IsHideUploadDiv=true;
@@ -609,8 +639,7 @@ cancelButton()
  
 downloadCsvButton()
 {}
-detectFiles(value)
-{}
+
 uploadCsvButton()
 {}
 GenerateButton()
@@ -639,7 +668,7 @@ vendorlistingClick()
 }
 PlanRenewalButton()
 {
-  this.router.navigate(['/payment/']);
+  this.router.navigate(['/pricing/']);
 }
 EmailChangeButton()
 {
@@ -649,6 +678,8 @@ EmailChangeButton()
 // this.EmailChangeDialogRef.componentInstance.MessageEmail = 'email';
 
 }
+
+
 
 
 }
