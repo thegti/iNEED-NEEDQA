@@ -49,10 +49,13 @@ export class ApiService {
    }
 
    registerUserImage(req): any {
+     
       return this.httpClient.post(`${this.baseUrl}api/Common/user/PostAttachments`, req, this.header);
+ 
 }
 
-UploadCSV(req): any {
-   return this.httpClient.post(`${this.baseUrl}api/Common/user/user/UploadCSV`, req, this.header);
+UploadCSV(req,VendorPK): any {
+  
+   return this.httpClient.post(`${this.baseUrl}api/Common/user/UploadCSV/${VendorPK}`, req, this.header);
 }
 }

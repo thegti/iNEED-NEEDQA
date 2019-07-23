@@ -9,6 +9,7 @@ import { MatDialogRef } from '@angular/material';
 export class VendorkeyworddeletedialogComponent implements OnInit {
 
   public Message: string;
+  public CsvMessage :string;
   public isError: Boolean = false;
 
   constructor(

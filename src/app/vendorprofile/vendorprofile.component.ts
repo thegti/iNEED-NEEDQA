@@ -54,11 +54,13 @@ export class VendorprofileComponent implements OnInit {
   public valueSalesUse:any;
   public productSalesUse:any;
   public keywordErrorMsg:String;
+  public csvUploadMsg :String;
  // vendorkeywords: Array<VendorKeywordModel> = [];
   public selectedItem='item1';
   private IsEditRow:boolean=false;
   public selectedKeywordItem='selectedkeyword1';
   IsHideUploadDiv:Boolean=true;
+  IsHideCsvUploadDiv:Boolean=false;
   selectedfile: File;
   fileChange: Boolean = false;
   imgname: any = '';
@@ -191,7 +193,7 @@ toggleSidebar(name): void
   }
   onSelectionchange(event): void{
    
-    this.imgChange = true;
+     this.fileChange = true;
      this.selectedfile = event.target.files[0];
      this.imgname = uuid() + '_' + this.selectedfile.name;
      this.formdt.append('image', this.selectedfile , this.imgname);
@@ -205,7 +207,9 @@ toggleSidebar(name): void
         this.url = even.target['result'];
        
       };
+      this.IsHideCsvUploadDiv=true;
      }
+
    }
    detectFiles(event) {
     this.selectedFiles = event.target.files;
@@ -215,17 +219,30 @@ toggleSidebar(name): void
 csvUploadSave()
 {
   var reqObj={"VNQ_PK":this.user.VND_PK};
+ 
   if (this.fileChange) {
-    this.apiService.UploadCSV(this.formdt)
+ 
+    this.apiService.UploadCSV(this.formdt,this.user.VND_PK)
         .subscribe(res => {
-          
-            if (res['Message'] == 1) {
-              
-                this.apiService.UploadCSV(reqObj).subscribe((data: Array<object>) => {
-                   
-                   
-                });
-            }
+         
+          if (res['Data'] > 0) {
+          console.log('res',res['Data'])
+            this.KeywordDeleteDialogRef = this._matDialog.open(VendorkeyworddeletedialogComponent, {
+              disableClose: false
+          });
+      
+          this.KeywordDeleteDialogRef.componentInstance.CsvMessage  = 'csv uploaded successfully';
+            this.IsHideCsvUploadDiv=false;
+           
+            this.KeywordDeleteDialogRef.afterClosed().subscribe(result => {
+              if (result) {
+
+              }
+              this.GetKeywords();
+             
+              this.filenames = false;
+          });
+          }
 
         });
 }

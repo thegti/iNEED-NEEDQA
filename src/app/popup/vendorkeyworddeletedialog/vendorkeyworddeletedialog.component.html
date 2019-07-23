@@ -3,6 +3,10 @@
 </h1>
 <div mat-dialog-content *ngIf="!isError" class="forSuccess">{{Message}}</div>
 <div mat-dialog-content *ngIf="isError" class="forError">{{Message}}</div>
+
+<div mat-dialog-content *ngIf="!isError" class="forSuccess">{{CsvMessage}}</div>
+<div mat-dialog-content *ngIf="isError" class="forError">{{CsvMessage}}</div>
+
 <div class="btn-container-submit-delete">
   <div mat-dialog-actions class="pt-24 " fxLayout="row">
     <button class="mat-accent mr-16 forOk for" (click)="KeywordDialogRef.close(true)">ok</button>

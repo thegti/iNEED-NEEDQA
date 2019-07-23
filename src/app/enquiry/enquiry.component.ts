@@ -331,7 +331,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
             'VNQ_DOC_ATTACH': this.filename,
 
         };
-        
+        console.log(this.enquiryRequest);
         if (!this.selectedUseType) {
             this.SelectPersonalBusinessDialogRef = this._matDialog.open(SelectPersonalBusinessdialogComponent, {
                 disableClose: true
@@ -340,9 +340,10 @@ export class EnquiryComponent implements OnInit, OnDestroy {
         }
         else {
             if (this.fileChange) {
+                console.log(this.fileChange,'test')
                 this.apiService.registerUserImage(this.formdt)
                     .subscribe(res => {
-                      
+                      console.log('res',res);
                         if (res['Message'] == 1) {
                           
                             this.enquiryService.SaveEnquiry(this.enquiryRequest).subscribe((data: Array<object>) => {

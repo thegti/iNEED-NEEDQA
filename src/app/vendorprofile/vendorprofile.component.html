@@ -152,23 +152,24 @@
                                     <div>
                                         <div class="upload-outer">
                                             <div class="upload">
-                                                <!-- <button mat-raised-button type="button" (click)="UploadKeywordButton()">
-                                                    upload csv
-                                                </button>
-                                                <div fxLayout="row" fxFlex="1 0 auto" class="formakingdynamic attach-div mob-div"> -->
+                                              
                                                   
                                                     <input type="file" #profilepic formControlName="csvUpload" (change)="onSelectionchange($event)"
                                                       (change)="detectFiles($event)" style="display:none">
                                                     <button type="button"  mat-raised-button class="browse-btn" (click)="profilepic.click()">  upload csv</button>
                                                     <div class="brows-lbl" [hidden]="!filenames"> {{ fileName }} </div>
                                       
-                                                  <!-- </div> -->
+                                              
+                                                    <div class="csvupload" [hidden]="!IsHideCsvUploadDiv" style="display: inline-block">
+                                                        <button  mat-raised-button
+                                                          (click)="csvUploadSave()"
+                                                          class="activate-btn">save</button>
+                                                       
+                                                      </div>
+
                                             </div>
-                                            <div class="btn-container">
-                                                <button *ngIf="!enableClose" mat-raised-button
-                                                  (click)="csvUploadSave()"
-                                                  class="activate-btn">save</button>
-                                              </div>
+                                            
+                                             
 
                                             <div class="add-new-btn">
                                                 <div [hidden]="IsHideUploadDiv">
