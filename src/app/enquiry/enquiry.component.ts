@@ -331,6 +331,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
             'VNQ_DOC_ATTACH': this.filename,
 
         };
+        
         if (!this.selectedUseType) {
             this.SelectPersonalBusinessDialogRef = this._matDialog.open(SelectPersonalBusinessdialogComponent, {
                 disableClose: true
