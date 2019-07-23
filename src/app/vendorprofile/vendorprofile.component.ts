@@ -187,10 +187,7 @@ toggleSidebar(name): void
     this._fuseSidebarService.getSidebar(name).toggleOpen();
   
 }
-  UploadKeywordButton()
-  {
-
-  }
+  
   onSelectionchange(event): void{
    
      this.fileChange = true;
@@ -208,6 +205,7 @@ toggleSidebar(name): void
        
       };
       this.IsHideCsvUploadDiv=true;
+      this.filenames = true;
      }
 
    }
@@ -288,6 +286,7 @@ else {
     }
     this.vendorService.VendorKeywordGet(this.tempObject).subscribe((data: Array<object>) => {
       this.keywordList = data['Data'];
+      console.log(this.keywordList);
       this.dataSource = new MatTableDataSource(this.keywordList);
      
    });
