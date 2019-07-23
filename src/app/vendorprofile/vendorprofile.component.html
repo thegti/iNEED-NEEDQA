@@ -154,9 +154,9 @@
                                             <div class="upload">
                                               
                                                   
-                                                    <input type="file" #profilepic formControlName="csvUpload" (change)="onSelectionchange($event)"
-                                                      (change)="detectFiles($event)" style="display:none">
-                                                    <button type="button"  mat-raised-button class="uplodcsv" (click)="profilepic.click()">  upload csv</button>
+                                                    <input type="file" #csvupload formControlName="csvUpload" (change)="onSelectionchange($event)"
+                                                      style="display:none">
+                                                    <button type="button"  mat-raised-button class="uplodcsv" (click)="csvupload.click()">  upload csv</button>
                                                     
                                                     <div class="brows-lbl" [hidden]="!filenames" style="justify-content: flex-start;"> {{ fileName }} </div>                                      
                                               

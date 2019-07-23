@@ -340,7 +340,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
         }
         else {
             if (this.fileChange) {
-                console.log(this.fileChange,'test')
+               
                 this.apiService.registerUserImage(this.formdt)
                     .subscribe(res => {
                       console.log('res',res);
