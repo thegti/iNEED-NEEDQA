@@ -1460,7 +1460,7 @@ fuse-sidebar.left-positioned {
 
 .needqa     {   font-family: 'coheadlinew01-boldregular'; color: #0074bc;}
 .otp-err    {   width: 32% !important; height: 30px;  margin-top: 8px;}
-.watsap-icn {   position: absolute; right:12%; transition: all .2s ease-in-out;
+.watsap-icn {   position: absolute; right:9%; transition: all .2s ease-in-out;
     
     
     @media screen and (min-width:200px) and (max-width:499px){
@@ -1486,7 +1486,7 @@ fuse-sidebar.left-positioned {
     }
 
     .gti   {    width:20px; height:20px; margin:0px 0px 0px 5px; vertical-align: 5px; 
-        background: url(assets/home/gti-logo.png) no-repeat; background-position: 0px 0px; 
+        background: url(assets/home/gti-logo.png) no-repeat; background-position: 0px -20px; 
         background-size:100%;
 
         @media screen and (min-width:200px) and (max-width:399px){
@@ -1497,7 +1497,7 @@ fuse-sidebar.left-positioned {
             background-size:90%; background-position: 0px -18px;
         }
 
-        &:hover     {  background-position: 0px -20px; }
+        /*&:hover     {  background-position: 0px -20px; }*/
     
         }
  }
