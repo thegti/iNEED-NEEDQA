@@ -12,7 +12,8 @@
 
         <div class="logoutvendor" fxFlex="0 1 auto" fxLayout="row" fxLayoutAlign="start center">
 
-            <a routerLink="/vendorprofile" [hidden]="!this.authService.isLoggedIn" mat-menu-item
+            <div class="vendorlogin-mob">
+                <a routerLink="/vendorprofile" [hidden]="!this.authService.isLoggedIn" mat-menu-item
                 class="btn-list w22 btn-margn">
                 <mat-icon>person_outline</mat-icon>vendor profile
             </a>
@@ -22,6 +23,7 @@
                 <mat-icon>exit_to_app</mat-icon>logout
             </a>
             <div class="toolbar-separator"></div>
+            </div>
 
 
             <button mat-button fxHide fxShow.gt-xs class="language-button" [matMenuTriggerFor]="languageMenu">

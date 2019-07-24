@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
     selector   : 'footer',
@@ -10,7 +11,8 @@ export class FooterComponent
     /**
      * Constructor
      */
-    constructor()
+    constructor(  private router: Router)
     {
     }
+  
 }
