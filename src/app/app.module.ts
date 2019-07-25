@@ -43,12 +43,18 @@ import { PaymentComponent } from './payment/payment.component';
 import { VendorEmailChangedialogComponent } from './popup/vendor-email-changedialog/vendor-email-changedialog.component';
 import {SelectProducrServicedialogComponent} from './popup/select-producr-servicedialog/select-producr-servicedialog.component';
 import {SelectPersonalBusinessdialogComponent} from './popup/select-personal-businessdialog/select-personal-businessdialog.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {LoaderComponent} from './components/shared/loader/loader.component';
+import { LoaderService } from './services/loader.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import {LoaderInterceptor} from './loader.interceptor';
 
 // R and D works
 import { SearchautoComponent } from './RandD/searchauto/searchauto.component';
 import { ValidatorsComponent } from './RandD/validators/validators.component'
 import { EventEmitterService } from './event-emitter.service';
 import { NgxPayPalModule } from 'ngx-paypal';
+import { from } from 'rxjs';
 
 @NgModule({
     declarations: [
@@ -81,7 +87,9 @@ import { NgxPayPalModule } from 'ngx-paypal';
         //R and D works
 
         SearchautoComponent,
-        ValidatorsComponent
+        ValidatorsComponent,
+        LoaderComponent,
+        
 
     ],
     entryComponents: [
@@ -119,8 +127,14 @@ import { NgxPayPalModule } from 'ngx-paypal';
         FormsModule,
         ReactiveFormsModule,
         NgxPayPalModule,
+        MatProgressSpinnerModule,
+       
     ],
-    providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, EventEmitterService],
+    providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy },
+                 EventEmitterService,
+                 LoaderService,
+                 { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
+                ],
     bootstrap: [
         AppComponent
     ],
