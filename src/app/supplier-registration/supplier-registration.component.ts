@@ -21,6 +21,7 @@ import { SavaVendorModel } from '../business-object/VendorObject';
 import { environment } from 'environments/environment';
 
 
+
 @Component({
     selector: 'app-supplier-registration',
     templateUrl: './supplier-registration.component.html',
@@ -85,6 +86,8 @@ export class SupplierRegistrationComponent implements OnInit, OnDestroy {
 
         //  }
         //  })
+ 
+  
     }
     button() { }
     private filterSerach(): void {

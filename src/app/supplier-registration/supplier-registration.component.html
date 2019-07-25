@@ -1,10 +1,10 @@
 <app-loader></app-loader>
 <div class="page-layout simple fullwidth" fxLayout="column">
-  <!-- fusePerfectScrollbar -->
+
   <div class="content-main padg-top-lft40 mb-24" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-md="row"
     fxLayout.gt-sm="row" fxLayout.gt-xs="row">
     <h1>supplier registration</h1>
-    <mat-spinner></mat-spinner>
+    <!-- <mat-spinner></mat-spinner> -->
     <div class="content-lft">
       <mat-horizontal-stepper>
         <mat-step [stepControl]="firstFormGroup">
@@ -74,7 +74,7 @@
                 </div>
                 <input matInput type="text" placeholder="mobile*" name="mobnumber" formControlName="txtMobile"
                   autocomplete="off" required (keypress)="numericOnly($event)" maxlength="10">
-                <!-- <mat-error>enter mobile no.</mat-error> -->
+               
                 <mat-error *ngIf="txtMobile.errors " [ngClass]="'error'">
                   <mat-error *ngIf="txtMobile.errors.required">
                     enter mobile number
@@ -98,7 +98,7 @@
               <mat-form-field appearance="outline" fxFlex="50">
                 <input matInput type="text" placeholder="email id*" name="email" formControlName="txtEmail"
                   maxlength="30" autocomplete="off" required>
-                <!-- <mat-error>enter valid email id</mat-error> -->
+               
                 <mat-error *ngIf=" f.txtEmail.errors && f.txtEmail.touched" class="invalid-feedback">
                   <mat-error *ngIf="f.txtEmail.errors.required">Email is required</mat-error>
                   <mat-error *ngIf="f.txtEmail.errors.email&& f.txtEmail.errors">Enter valid email address</mat-error>
