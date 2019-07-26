@@ -26,6 +26,7 @@ import { SharedData } from '../services/common/SharedData.service';
 import { environment } from 'environments/environment';
 
 
+
 @Component({
     selector: 'app-enquiry',
     templateUrl: './enquiry.component.html',

@@ -48,6 +48,7 @@ import {LoaderComponent} from './components/shared/loader/loader.component';
 import { LoaderService } from './services/loader.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import {LoaderInterceptor} from './loader.interceptor';
+import{DownloadsComponent} from './downloads/downloads.component'
 
 // R and D works
 import { SearchautoComponent } from './RandD/searchauto/searchauto.component';
@@ -82,6 +83,7 @@ import { from } from 'rxjs';
         VendorEmailChangedialogComponent,
         SelectProducrServicedialogComponent,
         SelectPersonalBusinessdialogComponent,
+        DownloadsComponent,
 
 
         //R and D works
