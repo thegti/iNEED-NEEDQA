@@ -8,10 +8,10 @@
         <div class="p-16" [hidden]="downloadLink">
           <div class="h1">Ready when you are</div>
           <div class="h4 secondary-text">Files deleted in {{this.daysLeft}} days</div>
-          <div class="p-16 pt-0 line-height-1.75">
+          <div class="filename">
             {{this.fileName}}
           </div>
-          <div class="p-8 pt-0" fxLayout="row" fxLayoutAlign="start center">
+          <div  fxLayout="row" fxLayoutAlign="start center">
             <button type="button" mat-raised-button (click)="clickDownloadButton" color="accent">Download</button>
           </div>
         </div>
