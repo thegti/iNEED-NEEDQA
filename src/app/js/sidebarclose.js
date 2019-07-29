@@ -6,47 +6,22 @@
             
 // 		});
 // 	}, false);
-$("body").jParticle({
-    
-   // number of particles
-particlesNumber: 100,
 
-// Distance where link is full opacity
-linkDist: 50,
-
-// Distance where particles start linking.
-createLinkDist: 150,
-
-// disable links between particles
-disableLinks: false,
-
-// disable mouse interaction
-disableMouse: false,
-
-// background color
-background: 'black',
-
-// Particles and links color.
-color: 'white',
-
-// container's width/height
-width: null,
-height: null,
-
-// Links width in pixels
-linksWidth: 1,
-
-particle: {
-
-  // Particles color.
-  color: "white",
-
-  // min / max size
-  minSize: 2,
-  maxSize: 4,
-
-  // animation speed
-  speed: 60
-}
-    
+$(function(){
+    $(".page-layout1 ").jParticle({
+        background: "#039be5",
+        color: "#fff"
     });
+});
+
+
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-36251023-1']);
+_gaq.push(['_setDomainName', 'jqueryscript.net']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
