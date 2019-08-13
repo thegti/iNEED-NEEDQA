@@ -1735,4 +1735,7 @@ fuse-sidebar    {
 
 /* ---------------Media Query------------- */
 
-
+.vendorlisting #wdr-tab-connect,.vendorlisting #wdr-tab-open,.vendorlisting #wdr-tab-save,.vendorlisting .wdr-toolbar-group-right
+{
+    display: none !important;
+}

@@ -18,6 +18,7 @@ import {VendorlistingComponent} from './vendorlisting/vendorlisting.component';
 import {PaymentComponent} from './payment/payment.component';
 import {AuthGuard} from './authentication/auth.guard';
 import {DownloadsComponent} from './downloads/downloads.component';
+import{ReportComponent} from './reportModule/report/report.component';
 
 // R and D works
 import {SearchautoComponent} from './RandD/searchauto/searchauto.component';
@@ -114,7 +115,10 @@ const appRoutes: Routes = [
            path: 'downloads/:key',
            component: DownloadsComponent
        },
-
+       {
+        path: 'report',
+        component: ReportComponent
+    },
     // R and D works
 
     {
