@@ -12,6 +12,7 @@
             "@fuse": [
                 "@fuse/"
             ]
+           
         },
         "target": "es5",
         "typeRoots": [

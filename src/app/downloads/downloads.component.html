@@ -1,22 +1,23 @@
 
-<div class="page-layout simple fullwidth " fxLayout="column">
+<div class="page-layout simple fullwidth bgstring" fxLayout="column">
   <div class="banner-content" fxLayout="column" fxLayout.gt-md="row" fxLayout.gt-sm="row" fxLayout.gt-xs="row">
     <div class="card-preview ">
 
       <div class="fuse-card">
-        <img src="assets/images/download/down.svg">
+        <img src="assets/images/download/down.svg" class="fuse-icn">
         <div class="p-16" [hidden]="downloadLink">
-          <div class="h1">Ready when you are</div>
-          <div class="h4 secondary-text">Files deleted in {{this.daysLeft}} days</div>
+          <div class="heading">ready when you are</div>
+          <div class="h4 secondary-text">files deleted in {{this.daysLeft}} days</div>
           <div class="filename">
-            {{this.fileName}}
+            <!-- {{this.fileName}} -->
           </div>
-          <div  fxLayout="row" fxLayoutAlign="start center">
-            <button type="button" mat-raised-button (click)="clickDownloadButton" color="accent">Download</button>
+          <div  fxLayout="row" fxLayoutAlign="center center" >
+            <button type="button" mat-raised-button (click)="download()" color="accent">download</button>
           </div>
         </div>
         <div class="p-16" [hidden]="downloadLinkexpired">
-          <div class="h1">Link is expired</div>
+          <div class="h1">transfer deleted</div>
+          <p>sorry, this transfer has been deleted and is not available any more</p>
         </div>
 
       </div>

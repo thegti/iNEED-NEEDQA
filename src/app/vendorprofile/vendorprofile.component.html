@@ -253,8 +253,11 @@
 
                                         <div class="upload-sectn">
 
-                                            <input type="file" #profilepic formControlName="photo"
+                                            <!-- <input type="file" #profilepic formControlName="photo"
                                                 (change)="onSelectionchange($event)" (change)="detectFiles($event)"
+                                                style="display:none"> -->
+                                                <input type="file" #profilepic formControlName="photo"
+                                                (change)="onSelectionchange($event)" 
                                                 style="display:none">
                                             <button type="button" class="browse-btn-uplod" (click)="profilepic.click()">
                                                 choose file</button>

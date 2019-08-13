@@ -25,5 +25,8 @@ export interface SavaEnquiryModel {
     VNQ_DOC_ATTACH : String;
 
 }
-
+export interface EnquiryDaysLeftModel {
+    VNQ_PDF_ID : String;
+    NO_OF_DAYS : number;
+}
 

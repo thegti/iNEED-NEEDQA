@@ -111,7 +111,7 @@ const appRoutes: Routes = [
         component: PaymentComponent
        },
        {
-           path :'downloads',
+           path: 'downloads/:key',
            component: DownloadsComponent
        },
 

@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { ReplaySubject } from 'rxjs';
+
 import { map, catchError } from 'rxjs/operators'
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
@@ -344,7 +345,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
                
                 this.apiService.registerUserImage(this.formdt)
                     .subscribe(res => {
-                      console.log('res',res);
+                    //   console.log('res',res);
                         if (res['Message'] == 1) {
                           
                             this.enquiryService.SaveEnquiry(this.enquiryRequest).subscribe((data: Array<object>) => {
@@ -535,7 +536,8 @@ export class EnquiryComponent implements OnInit, OnDestroy {
             ddlUnit: ['', Validators.required],
             ddlCurrency: ['', Validators.required],
             txtApproximate: [''],
-            txtdDescription: ['']
+            txtdDescription: [''],
+          
         });
     }
 
@@ -563,7 +565,8 @@ export class EnquiryComponent implements OnInit, OnDestroy {
     }
 
     test() {
-        this.router.navigate(['/ActivateSupplier/zXflu5lubCk%3d']);
+        // this.router.navigate(['/ActivateSupplier/zXflu5lubCk%3d']);
+        this.router.navigate(['/downloads/04fea22a-57c2-4183-8063-6b11954f388f-8dabc7f1-30aa-47a2-9170-5c2099a3d6b2']);
 
     }
 

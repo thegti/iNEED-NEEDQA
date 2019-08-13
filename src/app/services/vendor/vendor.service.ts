@@ -73,4 +73,6 @@ export class VendorService {
   ChangeVendorEmail(req): any {
     return this.httpClient.post<ChangeVendorEmailModel>(`${this.baseUrl}api/Vendor/ChangeVendorEmail`, req, this.header);
   }
+
+
 }
