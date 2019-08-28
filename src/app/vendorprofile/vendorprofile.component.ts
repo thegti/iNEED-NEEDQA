@@ -27,6 +27,7 @@ import { VendorEmailChangedialogComponent } from '../popup/vendor-email-changedi
 import { $ } from 'protractor';
 
 
+
 @Component({
   selector: 'app-vendorprofile',
   templateUrl: './vendorprofile.component.html',
@@ -115,7 +116,7 @@ export class VendorprofileComponent implements OnInit {
 
   constructor(private _formBuilder: FormBuilder, private vendorService: VendorService, private _fuseSidebarService: FuseSidebarService,
     private authService: AuthService, private apiService: ApiService, public _matDialog: MatDialog,
-    private router: Router, private _elementRef: ElementRef, private _renderer: Renderer2) {
+    private router: Router, private _elementRef: ElementRef, private _renderer: Renderer2,) {
 
   }
 
@@ -146,6 +147,7 @@ export class VendorprofileComponent implements OnInit {
 
 
   sidebarMenu(item) {
+   
     this.selectedItem = item;
     switch (item) {
       case 'item3':
@@ -177,12 +179,11 @@ export class VendorprofileComponent implements OnInit {
     let SidebarOverlay = document.querySelector('.fuse-sidebar-overlay');
     SidebarOverlay.classList.remove('fuse-sidebar-overlay');
     SidebarOverlay.classList.add('fuse-sidebar-overlay-invisible');
-
-
-
+  
+  
   }
   toggleSidebar(name): void {
-    this._fuseSidebarService.getSidebar(name).toggleOpen();
+    this._fuseSidebarService.getSidebar(name).toggleOpenVendorprofile();
 
   }
 
@@ -617,6 +618,7 @@ export class VendorprofileComponent implements OnInit {
 
     this.valueSalesUse = e.value
     var groups = 1;
+   
     if (this.valueSalesUse == 1) {
       groups = SalesValueGroup.value;
       this.ValueTxtValue = false;
@@ -626,7 +628,7 @@ export class VendorprofileComponent implements OnInit {
       if (this.valueSalesUse == 2) {
         groups = SalesValueGroup.greaterValue;
         this.ValueTxtValue = true;
-
+       
 
       }
 

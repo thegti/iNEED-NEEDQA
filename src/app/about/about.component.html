@@ -1,12 +1,40 @@
-<form [formGroup]="demoForm">
-        <div formArrayName="demoArray" 
-           *ngFor="let arrayItem of arrayItems; let i=index">
-              
-           <input [id]="arrayItem.id" type="checkbox"
-              [formControl]="demoArray[i]">
-           <label [for]="arrayItem.id" class="array-item-title">
-              {{arrayItem.title}}</label>
-        
-        </div>
-     </form>
-    
+<div class="page-layout simple fullwidth bgstring" fxLayout="column">
+
+   <div class="banner-content " fxLayout="column" fxLayoutAlign="flex-start" fxLayout.gt-md="row" fxLayout.gt-sm="row"
+      fxLayout.gt-xs="row">
+      <div class="about">
+         <p>Incorporated in qatar, need.qa is an online business to business market place that connects buyers and
+            sellers. this portal focuses on providing a platform to small and medium enterprises (smes), large
+            enterprises and individuals to increase their sales leads and grow their supplier network. </p>
+         <h3>need.qa for buyers (customers) </h3>
+         <ul>
+            <li>convenience of sending a requirement to “n” number of suppliers in one click. a requirement posted by a
+               customer in need.qa is shared with its registered vendors. </li>
+            <li>access to local and international suppliers in one platform </li>
+            <li>no brokerage or commissions to be paid </li>
+            <li>no registrations; it’s absolutely free to reach your supplier network. </li>
+         </ul>
+         <h3>need.qa for sellers (suppliers) </h3>
+         <ul>
+            <li>enhanced business coverage for your products and services </li>
+            <li> increased number of sales leads and connect with more customers</li>
+            <li> no brokerage or commissions to be paid </li>
+            <li>minimal monthly or annual subscription fees </li>
+            <li> just upload your ‘search key words’ to need.qa and start getting the sales leads.</li>
+         </ul>
+         <h3>grow your sales & supplier network with key words! </h3>
+         <p>let the key words, bring in business for you. </p>
+         <p>it’s simple! key words are those words which customers often search for or look for your products or
+            services. upload your business key words to need.qa; and just start getting business / sales leads. </p>
+         <p> how it works!
+            <p> step 1: customer selects auto populated key word and enters their requirement in need.qa</p>
+            <p>step 2: need.qa will share it with its registered vendors to provide the quotation for the customer :
+               customer gets responses with in 2 working days from the supplier</p>
+            <p>step 3: customer gets responses with in 2-3 working days from the supplier</p>
+            <p>step 4 : customer evaluates the responses and closes the deal</p>
+            <p>free trial period – 7 days. </p>
+            <h3>subscription chart </h3>
+            <h3> <a routerLink="/pricing" mat-button>pricing</a> </h3>
+      </div>
+   </div>
+</div>

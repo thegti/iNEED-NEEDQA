@@ -81,15 +81,15 @@ export const navigation: FuseNavigation[] = [
         url      : 'terms',
       
     },
-    {
-        id       : 'privacy',
-        title    : 'privacy policy',
-        translate: '',
-        type     : 'item',
-        icon     : '',
-        url      : 'privacy',
+    // {
+    //     id       : 'privacy',
+    //     title    : 'privacy policy',
+    //     translate: '',
+    //     type     : 'item',
+    //     icon     : '',
+    //     url      : 'privacy',
       
-    },
+    // },
     {
         id       : 'contact',
         title    : 'contact us',

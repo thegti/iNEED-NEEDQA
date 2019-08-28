@@ -11,7 +11,7 @@ import { locale as arabic } from 'app/navigation/i18n/ar';
 import { v4 as uuid } from 'uuid';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatRadioChange } from '@angular/material';
-import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { ApiService } from '../services/common/common.service';
 import { EnquiryService } from '../services/enquiry/enquiry.service';
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl, FormGroupName } from '@angular/forms';
@@ -25,7 +25,6 @@ import { SelectProducrServicedialogComponent } from '../popup/select-producr-ser
 import { SelectPersonalBusinessdialogComponent } from '../popup/select-personal-businessdialog/select-personal-businessdialog.component';
 import { SharedData } from '../services/common/SharedData.service';
 import { environment } from 'environments/environment';
-import { Observable } from "rxjs";
 
 
 
@@ -111,6 +110,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
         private sharedData: SharedData, private router: Router) { }
     ngOnInit(): void {
 
+
         this.ResetFormControls(true);
         this.isFirst = false;
         this.next = true;
@@ -134,7 +134,6 @@ export class EnquiryComponent implements OnInit, OnDestroy {
         //     const control = this.firstFormGroup.get(field);
         //     control.markAsTouched({ onlySelf: true });
         //     });
-       
     }
 
     ResetFormControls(IsNew: boolean) {
@@ -250,7 +249,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
 
                 this.apiService.GenerateOtp(reqbody).subscribe((data: Array<object>) => {
                     this.sharedData.SetOTP(data['Data']['OTP']);
-                    // console.log(data['Data']['OTP']);
+                //   console.log(data['Data']['OTP']);
                     this.OtpMsg = 'an otp has been sent to your ';
                     if (data['Data']['BY_MAIL'] == true && data['Data']['BY_SMS'] == true) {
                         this.OtpMsg = this.OtpMsg + 'mobile and email';
@@ -334,7 +333,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
             'VNQ_DOC_ATTACH': this.filename,
 
         };
-       
+    //   console.log(this.enquiryRequest);
         if (!this.selectedUseType) {
             this.SelectPersonalBusinessDialogRef = this._matDialog.open(SelectPersonalBusinessdialogComponent, {
                 disableClose: true
@@ -571,5 +570,6 @@ export class EnquiryComponent implements OnInit, OnDestroy {
 
     // }
 
-  
+    
+
 }

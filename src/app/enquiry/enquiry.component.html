@@ -28,7 +28,7 @@
                   (selectionChange)="onKeyWordSelect()"
                   [ngClass]="{ 'is-invalid': ddlsearchvalid.ddlsearch.touched && ddlsearchvalid.ddlsearch.errors }">
                   <ngx-mat-select-search [formControl]="searchFilterCtrl" [placeholderLabel]="'search keyword...'"
-                    [noEntriesFoundLabel]="'no matching member found'"></ngx-mat-select-search>
+                    [noEntriesFoundLabel]="'no matching keyword found'"></ngx-mat-select-search>
                   <mat-option *ngFor="let member of filteredSearch | async" [value]="member['VKW_PK']">
                     {{member['VKW_KWORD']  }}
                   </mat-option>
@@ -120,14 +120,14 @@
                 <mat-select formControlName="ddllocation" #singleSelect placeholder="location"
                   [ngClass]="{ 'is-invalid': ddllocationvalid.ddllocation.touched && ddllocationvalid.ddllocation.errors }">
                   <ngx-mat-select-search [formControl]="locationFilterCtrl" [placeholderLabel]="'search location...'"
-                    [noEntriesFoundLabel]="'no matching member found'"></ngx-mat-select-search>
+                    [noEntriesFoundLabel]="'no matching location found'"></ngx-mat-select-search>
                   <mat-option *ngFor="let member of filteredLocation | async" [value]="member['CON_PK']">
                     {{member['CON_NAME']  }}
                   </mat-option>
                 </mat-select>
                 <mat-error *ngIf="ddllocationvalid.ddllocation.errors && ddllocationvalid.ddllocation.touched"
                   class="invalid-feedback">
-                  <mat-error *ngIf="ddllocationvalid.ddllocation.errors.required">select keyword</mat-error>
+                  <mat-error *ngIf="ddllocationvalid.ddllocation.errors.required">select location</mat-error>
 
                 </mat-error>
               </mat-form-field>

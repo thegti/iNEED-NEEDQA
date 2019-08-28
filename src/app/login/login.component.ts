@@ -49,14 +49,15 @@ export class LoginComponent implements OnInit {
       'USR_NAME': this.loginform.value.txtUsername,
       'USR_PWD' : this.loginform.value.txtPassword
    };
-
+   
     this.authService.VendorLoginVendor(reqbody).subscribe(res => {
-     
+   
         if(res['Data'] == -1)
         {
           this.LoginErrorMsg="invalid username or password";
         }
         else{
+          console.log('test',res['Data']);
           this.authService.manageSession(res['Data']);
           this.authService.loginStatus.emit(true);
           this.router.navigate(['/vendorprofile' ] );

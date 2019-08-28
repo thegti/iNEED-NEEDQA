@@ -149,6 +149,7 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
         };
 
         this._fuseNavigationService.addNavigationItem(customFunctionNavItem, 'end');
+        
     }
 
     /**
@@ -337,5 +338,6 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
     toggleSidebarOpen(key): void
     {
         this._fuseSidebarService.getSidebar(key).toggleOpen();
+        
     }
 }

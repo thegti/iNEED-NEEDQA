@@ -73,15 +73,15 @@
                   <label> {{CountryCode}}</label>
                 </div>
                 <input matInput type="text" placeholder="mobile*" name="mobnumber" formControlName="txtMobile"
-                  autocomplete="off" required (keypress)="numericOnly($event)" maxlength="10">
+                  autocomplete="off" required (keypress)="numericOnly($event)" maxlength="12">
                
                 <mat-error *ngIf="txtMobile.errors " [ngClass]="'error'">
                   <mat-error *ngIf="txtMobile.errors.required">
                     enter mobile number
                   </mat-error>
-                  <mat-error *ngIf="txtMobile.errors.pattern">
+                  <!-- <mat-error *ngIf="txtMobile.errors.pattern">
                     enter valid mobile number
-                  </mat-error>
+                  </mat-error> -->
                 </mat-error>
               </mat-form-field>
 

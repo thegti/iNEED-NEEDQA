@@ -54,7 +54,8 @@ const appRoutes: Routes = [
     {
         path: 'pricing', 
       
-        component: PricingComponent
+        component: PricingComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'terms', 

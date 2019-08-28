@@ -42,7 +42,7 @@ export class SupplierRegistrationComponent implements OnInit, OnDestroy {
     DialogRef: MatDialogRef<DialogComponent>;
     moddate: any;
     default: string;
-    mobnumPattern = "^((\\+91-?)|0)?[0-9]{10}$";
+    // mobnumPattern = "^((\\+91-?)|0)?[0-9]{10}$";
     countries: Array<Object> = [{
         'CNT_NAME': 'Search',
         'CNT_PK': 0
@@ -67,7 +67,7 @@ export class SupplierRegistrationComponent implements OnInit, OnDestroy {
         });
         this.secondFormGroup = this._formBuilder.group({
             ddlCountry: ['', Validators.required],
-            txtMobile: ['', [Validators.pattern(this.mobnumPattern), Validators.minLength(10), Validators.maxLength(12)]],
+            txtMobile: ['', [Validators.pattern('^(?=.*[0-9])[- +()0-9]+$'), Validators.minLength(6), Validators.maxLength(12)]],
             //   txtMobile: ['',Validators.required,[Validators.pattern('^(?=.*[0-9])[- +()0-9]+$'),Validators.minLength(10),Validators.maxLength(12)]],
             txtEmail: ['', [Validators.email, Validators.maxLength(50)]],
             txtPassword: ['', [Validators.minLength(6), Validators.maxLength(20)]],
@@ -249,7 +249,7 @@ export class SupplierRegistrationComponent implements OnInit, OnDestroy {
         });
         this.secondFormGroup = this._formBuilder.group({
             ddlCountry: ['', Validators.required],
-            txtMobile: ['', [Validators.pattern('^(?=.*[0-9])[- +()0-9]+$'), Validators.minLength(10), Validators.maxLength(12)]],
+            txtMobile: ['', [Validators.pattern('^(?=.*[0-9])[- +()0-9]+$'), Validators.minLength(6), Validators.maxLength(12)]],
             txtEmail: ['', Validators.email],
             txtPassword: ['', Validators.minLength(6)],
             txtQIDText: ['']
