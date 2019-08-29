@@ -283,7 +283,7 @@
                             <div class="sales-div">
                                 <mat-label>email to which sales leads to be shared</mat-label>
                                 <mat-form-field appearance="outline" fxFlex="50">
-                                    <input type="text" matInput formControlName="txtEmail" maxlength="50"
+                                    <input type="text" matInput formControlName="txtEmail" maxlength="50" readonly [readOnly]="readonly" 
                                         [value]="vendorEmail" placeholder="email">
                                     <mat-error *ngIf=" formControls.txtEmail.errors && formControls.txtEmail.touched"
                                         class="invalid-feedback">
@@ -302,26 +302,29 @@
                                 <mat-form-field appearance="outline" fxFlex="50" class="phon-input">
 
                                     <input matInput type="text" formControlName="txtSalesMobile"
-                                        [value]="vendorSalesMobile" placeholder="mobile number" autocomplete="off"
-                                        (keypress)="numericOnly($event)" maxlength="10" required>
+                                        [value]="vendorSalesMobile" placeholder="mobile number" autocomplete="off" readonly [readOnly]="readonlyMobile" 
+                                        (keypress)="numericOnly($event)" maxlength="10" >
 
                                     <mat-error
                                         *ngIf="formControls.txtSalesMobile.errors && formControls.txtSalesMobile.touched"
                                         class="invalid-feedback">
-                                        <mat-error *ngIf="formControls.txtSalesMobile.errors.required">enter mobile
-                                            number </mat-error>
+                                        <!-- <mat-error *ngIf="formControls.txtSalesMobile.errors.required">enter mobile
+                                            number </mat-error> -->
                                         <mat-error *ngIf="formControls.txtSalesMobile.errors.pattern ">enter valid
                                             mobile number </mat-error>
                                     </mat-error>
+                                    
                                 </mat-form-field>
-
+                                <mat-checkbox (click)="SelectMobileTypes()"></mat-checkbox> 
+                                    
+                                   
                             </div>
 
 
                             <div tab-index=3 class="sales-div">
                                 <mat-label>whatsapp number to which sales leads to be shared</mat-label>
                                 <mat-form-field appearance="outline" fxFlex="50" class="phon-input">
-                                    <input matInput type="text" formControlName="txtWhatsappMobile"
+                                    <input matInput type="text" formControlName="txtWhatsappMobile" readonly [readOnly]="readonlyWhatsapp" 
                                         [value]="vendorWhatsappMobile" placeholder="mobile number" autocomplete="off"
                                         (keypress)="numericOnly($event)" maxlength="10">
                                     <mat-error
@@ -330,7 +333,10 @@
                                         <mat-error *ngIf="formControls.txtWhatsappMobile.errors.pattern ">enter valid
                                             mobile number </mat-error>
                                     </mat-error>
+                                   
                                 </mat-form-field>
+                                <mat-checkbox (click)="SelectWhatsappMobileTypes()"></mat-checkbox> 
+                              
                             </div>
 
                             <div tab-index=4 class="sales-div">
@@ -376,7 +382,7 @@
                             </div>
                             <div class="fixd-div">
                                 <button type="button" mat-raised-button
-                                    [disabled]="firstFormGroup.controls['txtEmail' && 'txtSalesMobile' ].invalid"
+                                    [disabled]="firstFormGroup.controls['txtEmail'  ].invalid"
                                     (click)="SaveSalesLeadButton()">
                                     save
                                 </button>

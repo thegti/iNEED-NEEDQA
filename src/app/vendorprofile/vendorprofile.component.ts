@@ -105,6 +105,8 @@ export class VendorprofileComponent implements OnInit {
   public ValueTxtValue: boolean = false;
   public configvalue: String;
   IsAdmin: boolean = false;
+  readonlyMobile = true;
+  readonlyWhatsapp =true;
   KeywordDeleteDialogRef: MatDialogRef<VendorkeyworddeletedialogComponent>;
   KeywordDialogRef: MatDialogRef<VendorkeyworddeletedialogComponent>;
 
@@ -123,8 +125,8 @@ export class VendorprofileComponent implements OnInit {
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
       txtKeyword: [''],
-      txtEmail: ['jj', [Validators.required, Validators.email]],
-      txtSalesMobile: ['', [Validators.required, Validators.pattern(this.mobnumPattern)]],
+      txtEmail: ['', [Validators.required, Validators.email]],
+      txtSalesMobile: ['', [ Validators.pattern(this.mobnumPattern)]],
       txtWhatsappMobile: ['', [Validators.pattern(this.mobnumPattern)]],
       txtValue: [''],
       csvUpload :['']
@@ -141,8 +143,7 @@ export class VendorprofileComponent implements OnInit {
     this.SetLeadsTypeFor(1);
     this.SetValueTypeFor(1);
     this.ConfigGet();
-
-
+  
   }
 
 
@@ -459,7 +460,7 @@ export class VendorprofileComponent implements OnInit {
     var reqObj = { "VST_VENDOR": this.user.VND_PK };
     this.firstFormGroup = this._formBuilder.group({
       txtEmail: ['', [Validators.required, Validators.email, Validators.maxLength(50)]],
-      txtSalesMobile: ['', [Validators.required, Validators.pattern(this.mobnumPattern)]],
+      txtSalesMobile: ['', [ Validators.pattern(this.mobnumPattern)]],
       txtWhatsappMobile: ['', [Validators.pattern(this.mobnumPattern)]],
       txtKeyword: [''],
       txtValue: [this.configvalue]
@@ -480,7 +481,7 @@ export class VendorprofileComponent implements OnInit {
 
         this.firstFormGroup = this._formBuilder.group({
           txtEmail: [this.salesLeadList[0].VST_EMAIL, [Validators.required, Validators.email, Validators.maxLength(50)]],
-          txtSalesMobile: [this.salesLeadList[0].VST_MOBILE, [Validators.required, Validators.pattern(this.mobnumPattern)]],
+          txtSalesMobile: [this.salesLeadList[0].VST_MOBILE, [ Validators.pattern(this.mobnumPattern)]],
           txtWhatsappMobile: [this.salesLeadList[0].VST_WHATSAPP, [Validators.pattern(this.mobnumPattern)]],
           txtKeyword: [''],
           txtValue: [this.salesLeadList[0].VST_MIN_VALUE]
@@ -578,6 +579,18 @@ export class VendorprofileComponent implements OnInit {
     let result = patt.test(event.key);
     return result;
   }
+
+  SelectMobileTypes() {
+
+    this.readonlyMobile = !this.readonlyMobile;
+ }
+ SelectWhatsappMobileTypes()
+ {
+  this.readonlyWhatsapp = !this.readonlyWhatsapp;
+ }
+ 
+
+
   SelectUseTypes(e) {
     var groups = 1;
     this.selectedSalesUse = e.value;
