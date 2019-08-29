@@ -97,7 +97,7 @@
               <mat-label>phone</mat-label>
               <mat-form-field appearance="outline" fxFlex="50" class="phon-input">
                 <div class="static-lbl">
-                  <label>+974</label>
+                  <label>{{ this.CountryCode}}</label>
                 </div>
                 <input matInput type="text" formControlName="txtMobile" placeholder="number" autocomplete="off"
                   (keypress)="numericOnly($event)" maxlength="8"

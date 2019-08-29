@@ -283,7 +283,7 @@
                             <div class="sales-div">
                                 <mat-label>email to which sales leads to be shared</mat-label>
                                 <mat-form-field appearance="outline" fxFlex="50">
-                                    <input type="text" matInput formControlName="txtEmail" maxlength="50" readonly [readOnly]="readonly" 
+                                    <input type="text" matInput formControlName="txtEmail" maxlength="50"  
                                         [value]="vendorEmail" placeholder="email">
                                     <mat-error *ngIf=" formControls.txtEmail.errors && formControls.txtEmail.touched"
                                         class="invalid-feedback">
@@ -315,7 +315,7 @@
                                     </mat-error>
                                     
                                 </mat-form-field>
-                                <mat-checkbox (click)="SelectMobileTypes()"></mat-checkbox> 
+                                <mat-checkbox (click)="SelectMobileTypes()">select</mat-checkbox> 
                                     
                                    
                             </div>
@@ -335,7 +335,7 @@
                                     </mat-error>
                                    
                                 </mat-form-field>
-                                <mat-checkbox (click)="SelectWhatsappMobileTypes()"></mat-checkbox> 
+                                <mat-checkbox (click)="SelectWhatsappMobileTypes()">select</mat-checkbox> 
                               
                             </div>
 
