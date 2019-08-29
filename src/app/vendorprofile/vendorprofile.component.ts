@@ -143,7 +143,7 @@ export class VendorprofileComponent implements OnInit {
     this.SetLeadsTypeFor(1);
     this.SetValueTypeFor(1);
     this.ConfigGet();
-  
+   
   }
 
 

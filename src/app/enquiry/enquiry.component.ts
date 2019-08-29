@@ -247,7 +247,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
                     'EMAIL': this.firstFormGroup.value.txtEmail,
                     'MOBILE_NO':this.CountryCode + this.firstFormGroup.value.txtMobile
                 };
-            // console.log('test',reqbody);
+            console.log('test',reqbody);
                 this.apiService.GenerateOtp(reqbody).subscribe((data: Array<object>) => {
                     this.sharedData.SetOTP(data['Data']['OTP']);
                   console.log(data['Data']['OTP']);
