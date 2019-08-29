@@ -35,6 +35,7 @@ import { environment } from 'environments/environment';
 })
 export class EnquiryComponent implements OnInit, OnDestroy {
     public OtpMsg: string;
+    public CountryCode : string;
     public selectedText: string;
     enableClose: Boolean = false;
     public selectedLocation: any;
@@ -110,7 +111,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
         private sharedData: SharedData, private router: Router) { }
     ngOnInit(): void {
 
-
+        this.ConfigSettings();
         this.ResetFormControls(true);
         this.isFirst = false;
         this.next = true;
@@ -244,9 +245,9 @@ export class EnquiryComponent implements OnInit, OnDestroy {
                 var reqbody = {
                     'NAME': this.firstFormGroup.value.txtName,
                     'EMAIL': this.firstFormGroup.value.txtEmail,
-                    'MOBILE_NO': this.firstFormGroup.value.txtMobile
+                    'MOBILE_NO':this.CountryCode + this.firstFormGroup.value.txtMobile
                 };
-
+            // console.log('test',reqbody);
                 this.apiService.GenerateOtp(reqbody).subscribe((data: Array<object>) => {
                     this.sharedData.SetOTP(data['Data']['OTP']);
                   console.log(data['Data']['OTP']);
@@ -303,6 +304,10 @@ export class EnquiryComponent implements OnInit, OnDestroy {
         // console.log(selectedData);
 
     }
+    ConfigSettings() {
+        this.CountryCode = environment.DefaultCountryCode;
+       
+    }
 
     enquirySubmit(): void {
         this.enableClose = false;
@@ -310,7 +315,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
         this.enquiryRequest = {
             'VNQ_PERSON_NAME': this.firstFormGroup.value.txtName,
             'VNQ_EMAIL': this.firstFormGroup.value.txtEmail,
-            'VNQ_MOBILE': this.firstFormGroup.value.txtMobile,
+            'VNQ_MOBILE': this.CountryCode + this.firstFormGroup.value.txtMobile,
             'VNQ_KWORD': this.selectedText,
             'VNQ_LOCATION': this.firstFormGroup.value.ddllocation,
             'VNQ_LOCATION_MODE': this.selectedLocation > 0 ? this.selectedLocation : 1,
@@ -333,7 +338,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
             'VNQ_DOC_ATTACH': this.filename,
 
         };
-    //   console.log(this.enquiryRequest);
+      console.log(this.enquiryRequest);
         if (!this.selectedUseType) {
             this.SelectPersonalBusinessDialogRef = this._matDialog.open(SelectPersonalBusinessdialogComponent, {
                 disableClose: true

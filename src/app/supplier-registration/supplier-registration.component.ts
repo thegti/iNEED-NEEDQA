@@ -156,7 +156,7 @@ export class SupplierRegistrationComponent implements OnInit, OnDestroy {
             'VND_TIN': this.secondFormGroup.value.txtQIDText,
             'VND_CITY': this.firstFormGroup.value.txtCity,
             'VND_COUNTRY': this.secondFormGroup.value.ddlCountry, // selectedCntArray[0], 
-            'VND_MOBILE': this.secondFormGroup.value.txtMobile,
+            'VND_MOBILE': this.CountryCode + this.secondFormGroup.value.txtMobile,
             'VND_EMAIL': this.secondFormGroup.value.txtEmail,
             'VUT_PASSWORD': this.secondFormGroup.value.txtPassword,
 
