@@ -540,7 +540,14 @@ textarea            {   width:50%; border:none; padding:0px 5px;
 
 
 /* Slide */
-.howitworks     { background:#fff !important; background-repeat: no-repeat;}
+.howitworks     { background:#fff !important; background-repeat: no-repeat;
+
+    @include media-breakpoint ('sm') {  width: 300px!important;  min-width: 0px!important;
+        max-width: 280px!important;}
+
+    @include media-breakpoint ('md') {  width: 300px!important;  min-width: 0px!important;
+        max-width: 280px!important;}
+}
 
 
 /* Footer */
@@ -550,9 +557,17 @@ textarea            {   width:50%; border:none; padding:0px 5px;
                 @include media-breakpoint ('xs'){
                     margin:0px!important;
                 } 
+
+                @include media-breakpoint ('sm'){
+                    padding:5px 0px 0px 6%!important;
+                } 
+
                 @media screen and (min-width:200px) and (max-width:499px){
                     padding:0px!important;
                 }
+
+                @media screen and (min-width:400px) and (max-width:600px)    {   
+                    padding:3px 0px 0px 6%!important;}
 
             }
 .foot-div ul li { list-style: none; display: inline-block}
@@ -562,8 +577,8 @@ textarea            {   width:50%; border:none; padding:0px 5px;
     @media screen and (min-width:200px) and (max-width:399px){
         display:none;
     }
-                    @include media-breakpoint ('xs'){
-                        font-size: 35px;
+    @media screen and (min-width:400px) and (max-width:600px)    {
+                        font-size: 25px;
                     } 
 }
 .foot-div span  { margin:0px 10px -3px 0px; height: 30px;
@@ -571,9 +586,9 @@ textarea            {   width:50%; border:none; padding:0px 5px;
     @media screen and (min-width:200px) and (max-width:399px){
         height:30px;
     }
-                  @include media-breakpoint ('xs'){ 
-                      height:39px; margin:0px;
-                  }
+    @media screen and (min-width:400px) and (max-width:600px)    { 
+         height:32px; margin:0px;
+    }
 }
 .foot-div a     {  margin:0px 5px 0px 0px; font-family: 'coheadlinew08-lightregular'; 
                     height: 30px; padding:0px 8px!important;
@@ -868,12 +883,17 @@ fuse-sidebar.left-positioned {
            span.mid-lbl         {   display: inline-block; margin:0px;
 
             @media screen and (min-width:200px) and (max-width:399px)   {   display: none;  }
+            @media screen and (min-width:400px) and (max-width:600px)   {   display: none; }
         }
 
-           mat-label.rgt-lbl    {   width:70%; display:inline-block; margin:0px;
+           mat-label.rgt-lbl    {   width:50%; display:inline-block; margin:0px;
             padding:0px 0px 0px 2%;  box-sizing:border-box; -webkit-box-sizing:border-box;
 
-            @media screen and (min-width:200px) and (max-width:399px)   {   padding:0px; font-weight: bold;  }
+            @media screen and (min-width:200px) and (max-width:399px)   {   
+                width:100%;padding:0px; font-weight: bold; margin-bottom: 7px; }
+
+                @media screen and (min-width:400px) and (max-width:600px)    {
+                    width:100%;padding:0px; font-weight: bold; margin-bottom: 7px;   }                
         }
 
             mat-tab-group   {   
@@ -1468,7 +1488,9 @@ fuse-sidebar.left-positioned {
         img {   width:30px;}
     }
 
-    @include media-breakpoint('sm') {   right:17%;}
+    @media screen and (min-width:400px) and (max-width:600px)    {   right:0%;}
+
+    @include media-breakpoint('sm') {   right:11%;}
 }
 .watsap-icn:hover   {   transform: scale(0.9);}
 
@@ -1481,7 +1503,7 @@ fuse-sidebar.left-positioned {
     }
 
     @media screen and (min-width:400px) and (max-width:600px)    {   
-        place-content: center flex-start; margin:0px 0px 0px 0px;
+        place-content: center; margin:0px 0px 0px 0px;
     }
 
     .gti   {    width:20px; height:20px; margin:0px 0px 0px 5px; vertical-align: 5px; 
