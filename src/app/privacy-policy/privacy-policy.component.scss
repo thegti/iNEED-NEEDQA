@@ -1,21 +1,32 @@
 .privacy   { width:95%;   margin:1% 0px 0px 0px; background:none; 
-    color: #fff;letter-spacing: 1px; padding-left:5%!important; 
+    color: #fff;letter-spacing: 1px; padding-left:5%!important; margin-bottom:2%;
 
-    h2 {
-       
-        font-size: 16px;
-        font-family: 'coheadlinew08-lightregular', sans-serif;
-        display: inline;
-        font-weight: bold;
-    }
+    h1  {    font-size: 34px;   font-family: 'coheadlinew08-lightregular', sans-serif;
+        margin:10px 0px 0px 0px;    }
+
+    h2  {    font-size: 16px;  font-weight:bold;   margin:15px 0px 2px 0px;    }
     
-    h3{
-  font-weight: bold;
-   font-size: 20px;
+    h3  {   font-weight: bold; font-size: 12px; margin-bottom: 5px;    }
+    a   {   color: #fff; background: rgba(255,255,255,0.2); padding: 0px 5px 3px 5px; 
+    
+    &:hover  {   background:none;}
+        }
+    
+    ul  {
 
+        li  {   margin-bottom: 10px;}
+    }        
+    
+
+    p   {   margin:0px 0px 5px 0px;}
+
+
+    @media screen and (min-width:200px) and (max-width:399px){
+        padding-left:10%!important;
     }
-    a
+
+    @media screen and (min-width:400px) and (max-width:600px)
     {
-        color: #fff;
+        padding-left:8%!important;
     }
-    }
+}

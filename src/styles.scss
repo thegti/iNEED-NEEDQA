@@ -352,10 +352,10 @@ mat-icon        {   font-size:19px; color:#3a3a3a;}
 
 .toggle-btn     {   width: 43%;   text-align: right;
     @include media-breakpoint ('sm')    {
-        width:70%;
+        width:100%; text-align:center;
     }
     @include media-breakpoint ('xs')    {
-        width:70%;
+        width:100%; text-align:center;
     }
     mat-icon    {   color:#fff; font-size:15px; cursor: pointer;}
     img         {   width:16px; height:16px; cursor: pointer;}
@@ -427,7 +427,7 @@ textarea            {   width:50%; border:none; padding:0px 5px;
 .btn-container  {   width:52%; float:right;
 
     @media screen and (min-width:200px) and (max-width:399px){
-        width:60%;
+        text-align: center;    margin: 0px auto;    width: 10%;
     }
 
     @media screen and (min-width:400px) and (max-width:600px)    {   width:60%;}
@@ -540,8 +540,7 @@ textarea            {   width:50%; border:none; padding:0px 5px;
 
 
 /* Slide */
-.howitworks     { background:#fff !important;
-background-repeat: no-repeat;}
+.howitworks     { background:#fff !important; background-repeat: no-repeat;}
 
 
 /* Footer */
@@ -576,15 +575,15 @@ background-repeat: no-repeat;}
                       height:39px; margin:0px;
                   }
 }
-.foot-div a     {  margin:0px 10px 0px 0px; font-family: 'coheadlinew08-lightregular'; 
-                    height: 30px;
+.foot-div a     {  margin:0px 5px 0px 0px; font-family: 'coheadlinew08-lightregular'; 
+                    height: 30px; padding:0px 8px!important;
 
                     @media screen and (min-width:200px) and (max-width:399px){
-                        margin: 0px; padding: 0px 10px; height:20px;
+                        margin: 0px; padding: 0px 2px!important; height:20px;
                     }
 
                     @include media-breakpoint ('xs'){
-                        line-height:37px; height:40px;
+                        line-height:37px; height:30px;
                     }
                 }
 
@@ -1464,7 +1463,7 @@ fuse-sidebar.left-positioned {
     
     
     @media screen and (min-width:200px) and (max-width:499px){
-        bottom: 7px; position: absolute;  right: 0;
+        bottom: 0px; position: absolute;  right: 0;
 
         img {   width:30px;}
     }
@@ -1478,7 +1477,7 @@ fuse-sidebar.left-positioned {
      margin:0px 10px 0px 0px; font-size:11px;
 
      @media screen and (min-width:200px) and (max-width:399px){
-        place-content: center flex-start; margin:0px 0px 0px 19px;
+        place-content: center flex-start; margin:0px 0px 0px 5px;
     }
 
     @media screen and (min-width:400px) and (max-width:600px)    {   
@@ -1715,8 +1714,7 @@ fuse-sidebar    {
         min-width: 0 !important;
         max-width: 30vw !important;
         width: 30vw !important;  
-        // background:#0074bc!important;      
-        background:red !important;  
+        background:#0074bc!important; 
 }
 }
 

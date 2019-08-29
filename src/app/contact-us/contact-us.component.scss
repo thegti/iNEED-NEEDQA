@@ -1,12 +1,18 @@
 .contactus   {   width:50%; margin:2% 0px 0px 0px; background:none; 
     text-align: center; color: #fff;letter-spacing: 1px;
     
-    h1 {
-       
-        font-size: 34px;
-        font-family: 'coheadlinew08-lightregular', sans-serif;
+    h1  {   font-size: 34px;  font-family: 'coheadlinew08-lightregular', sans-serif;
+        margin:10px 0px 0px 0px;     }
+
+    @media screen and (min-width:200px) and (max-width:399px){
+        width:80%;
     }
+
+    @media screen and (min-width:400px) and (max-width:600px)
+    {
+        width:80%;
     }
+}
     .contact-link
     {
         color: #fff !important;
