@@ -3,6 +3,9 @@
     mat-horizontal-stepper {   background:none; text-align: center;  
     }
     
+    @media screen and (min-width:200px) and (max-width:399px){   
+        width:100%;
+      }
 }
 form{
     padding: 30px 35px;  font-family: 'coheadlinew08-lightregular'!important; 
@@ -10,6 +13,10 @@ form{
 
     h1{
         margin: 0; color:#fff;  font-size: 30px;
+
+        @media screen and (min-width:200px) and (max-width:399px){   
+            font-size: 25px;
+          }
     }
     h3  {
     margin: 0; color:#fff; font-size: 20px;}
@@ -21,6 +28,10 @@ form{
         font-family: 'coheadlinew08-lightregular'!important;
         border-radius:3px!important; -webkit-border-radius:3px!important; 
     }    
+
+    @media screen and (min-width:200px) and (max-width:399px){   
+        padding: 30px 5px;  font-size: 28px;
+      }
 }
 
 

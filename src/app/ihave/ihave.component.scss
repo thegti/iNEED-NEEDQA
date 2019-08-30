@@ -2,7 +2,12 @@
     color: #fff;letter-spacing: 1px; padding-left:5%!important; 
 
     h1  {    font-size: 34px;   font-family: 'coheadlinew08-lightregular', sans-serif; 
-        margin:10px 0px 0px 0px;   }
+        margin:10px 0px 0px 0px;   
+
+        @media screen and (min-width:200px) and (max-width:399px){
+            font-size: 26px;
+        }
+    }
         h2  {     font-size: 16px;   font-weight:bold;    margin:15px 0px 2px 0px;    }
     
         h3  {   font-weight: bold; font-size: 12px; margin-bottom: 5px;    }

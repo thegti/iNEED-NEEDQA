@@ -2,7 +2,12 @@
     text-align: center; color: #fff;letter-spacing: 1px;
     
     h1  {   font-size: 34px;  font-family: 'coheadlinew08-lightregular', sans-serif;
-        margin:10px 0px 0px 0px;     }
+        margin:10px 0px 0px 0px;     
+
+        @media screen and (min-width:200px) and (max-width:399px){
+            font-size: 26px;
+        }
+    }
 
     @media screen and (min-width:200px) and (max-width:399px){
         width:80%;

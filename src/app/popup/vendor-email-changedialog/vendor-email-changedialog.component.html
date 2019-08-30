@@ -5,14 +5,14 @@
     <mat-horizontal-stepper class="mat-elevation-z4 myclass1" [linear]="true">
         <mat-step [stepControl]="firstFormGroup">
             <form fxLayout="column" [formGroup]="firstFormGroup" class="padg-lft0">
-                <div>
+                <div class="changeemail">
                     <mat-label>current email </mat-label>
                     <mat-form-field appearance="outline" fxFlex="50">
                         <input matInput type="text" class="form-control" placeholder="email"
                             value="{{this.authService.getUserEmail()}}" readonly>
                     </mat-form-field>
                 </div>
-                <div tab-index=1>
+                <div class="changeemail" tab-index=1>
                     <mat-label>new email </mat-label>
                     <mat-form-field appearance="outline" fxFlex="50">
                         <input matInput type="text" formControlName="txtEmail" maxlength="30" class="form-control"

@@ -23,3 +23,10 @@ text-align: center;
 .emailsuccess .ok-btn{
     place-content: center;
 }
+
+.changeemail    { 
+    @media screen and (min-width:200px) and (max-width:399px){   
+        flex-direction:column!important;
+      }
+
+}
