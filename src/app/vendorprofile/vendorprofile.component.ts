@@ -107,6 +107,7 @@ export class VendorprofileComponent implements OnInit {
   IsAdmin: boolean = false;
   readonlyMobile = true;
   readonlyWhatsapp =true;
+ 
   KeywordDeleteDialogRef: MatDialogRef<VendorkeyworddeletedialogComponent>;
   KeywordDialogRef: MatDialogRef<VendorkeyworddeletedialogComponent>;
 
@@ -581,6 +582,7 @@ export class VendorprofileComponent implements OnInit {
   }
 
   SelectMobileTypes() {
+
 
     this.readonlyMobile = !this.readonlyMobile;
  }
