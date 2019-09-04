@@ -60,6 +60,8 @@ export interface VendorSalesLeadModel {
     VST_MOD_BY: number;
     VST_MOD_DT: Date;
     VST_VALUE_TYPE: number;
+    VST_ISWATSAPP_ENABLE : number;
+    VST_ISSMS_ENABLE : number ;
 
 }
 export interface VendorNameModel {

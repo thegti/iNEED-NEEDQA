@@ -1,0 +1,49 @@
+
+mat-label
+{
+    color : #000;
+}
+.date
+{
+    margin-top: -15px !important;
+}
+.report-section
+{
+    .searchAdd
+    {
+        float: right;
+
+        display:inline;
+    }
+    h2
+    {
+        display:inline;
+        font-weight: bold;
+    }
+   .heading
+    {
+      display:inline;
+     
+    }
+    .content
+    {
+        text-align : center;
+    }
+    .forbut
+    {
+        border : 0;
+        background-color: #0074bc;
+        width: 35px;
+        height: 27px;
+    }
+    .forbut .mat-icon {
+        display: unset;
+        color: #fff;
+        font-size: 1.3em;
+        font-weight: bold !important;
+    }
+    .myclass1
+    {
+        margin-top: 30px;
+    }
+}

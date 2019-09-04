@@ -38,7 +38,14 @@ export interface CurrencyModel {
      CUR_NAME : String,
      CUR_DESC : String
 }
-
+export interface ReportModel {
+    RPT_TYPE: number ;
+    RPT_PK : number ;
+    RPT_NAME : String ;
+    VND_PK : number ; 
+    FROM_DATE : String ; 
+    TO_DATE : String ; 
+}
 
 
 

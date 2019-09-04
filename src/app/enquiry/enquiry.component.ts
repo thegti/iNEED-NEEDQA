@@ -27,7 +27,6 @@ import { SharedData } from '../services/common/SharedData.service';
 import { environment } from 'environments/environment';
 
 
-
 @Component({
     selector: 'app-enquiry',
     templateUrl: './enquiry.component.html',
@@ -35,7 +34,7 @@ import { environment } from 'environments/environment';
 })
 export class EnquiryComponent implements OnInit, OnDestroy {
     public OtpMsg: string;
-    public CountryCode : string;
+    public CountryCode: string;
     public selectedText: string;
     enableClose: Boolean = false;
     public selectedLocation: any;
@@ -108,7 +107,16 @@ export class EnquiryComponent implements OnInit, OnDestroy {
     constructor(private apiService: ApiService, private enquiryService: EnquiryService,
         private authService: AuthService, public _matDialog: MatDialog,
         private _formBuilder: FormBuilder, private act_route: ActivatedRoute,
-        private sharedData: SharedData, private router: Router) { }
+        private sharedData: SharedData, private router: Router) {
+
+
+            // this.filteredSearch = this.firstFormGroup.value.ddlsearch.valueChanges
+            // .pipe(
+            //   startWith(''),
+            //   map(state => state ? this.filteredSearch(state) : this.keyword.slice())
+            // );
+
+         }
     ngOnInit(): void {
 
         this.ConfigSettings();
@@ -245,12 +253,12 @@ export class EnquiryComponent implements OnInit, OnDestroy {
                 var reqbody = {
                     'NAME': this.firstFormGroup.value.txtName,
                     'EMAIL': this.firstFormGroup.value.txtEmail,
-                    'MOBILE_NO':this.CountryCode + this.firstFormGroup.value.txtMobile
+                    'MOBILE_NO': this.CountryCode + this.firstFormGroup.value.txtMobile
                 };
-            console.log('test',reqbody);
+                // console.log('test',reqbody);
                 this.apiService.GenerateOtp(reqbody).subscribe((data: Array<object>) => {
                     this.sharedData.SetOTP(data['Data']['OTP']);
-                  console.log(data['Data']['OTP']);
+                      console.log(data['Data']['OTP']);
                     this.OtpMsg = 'an otp has been sent to your ';
                     if (data['Data']['BY_MAIL'] == true && data['Data']['BY_SMS'] == true) {
                         this.OtpMsg = this.OtpMsg + 'mobile and email';
@@ -306,7 +314,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
     }
     ConfigSettings() {
         this.CountryCode = environment.DefaultCountryCode;
-       
+
     }
 
     enquirySubmit(): void {
@@ -338,7 +346,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
             'VNQ_DOC_ATTACH': this.filename,
 
         };
-      console.log(this.enquiryRequest);
+        //   console.log(this.enquiryRequest);
         if (!this.selectedUseType) {
             this.SelectPersonalBusinessDialogRef = this._matDialog.open(SelectPersonalBusinessdialogComponent, {
                 disableClose: true
@@ -347,15 +355,15 @@ export class EnquiryComponent implements OnInit, OnDestroy {
         }
         else {
             if (this.fileChange) {
-               
+
                 this.apiService.registerUserImage(this.formdt)
                     .subscribe(res => {
-                    //   console.log('res',res);
+                        //   console.log('res',res);
                         if (res['Message'] == 1) {
-                          
+
                             this.enquiryService.SaveEnquiry(this.enquiryRequest).subscribe((data: Array<object>) => {
                                 this.afterSave(data['Data']);
-                               
+
                             });
                         }
 
@@ -542,7 +550,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
             ddlCurrency: ['', Validators.required],
             txtApproximate: [''],
             txtdDescription: [''],
-          
+
         });
     }
 
@@ -570,11 +578,11 @@ export class EnquiryComponent implements OnInit, OnDestroy {
     }
 
     // test() {
-      
+
     //     this.router.navigate(['/downloads/04fea22a-57c2-4183-8063-6b11954f388f-8dabc7f1-30aa-47a2-9170-5c2099a3d6b2']);
 
     // }
 
-    
+
 
 }

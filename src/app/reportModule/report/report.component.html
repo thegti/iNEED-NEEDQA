@@ -1,14 +1,90 @@
 <div class="vendorlisting">
+    <div class="report-section">
+        <div class="content">
+            <div class="heading">
+                <h2>reports</h2>
+            </div>
+            <div class="searchAdd">
+                <button (click)="enbleSearch()" class="forbut ">
+                    <mat-icon>search</mat-icon>
+                </button>
+            </div>
+        </div>
+        <div class="horizontal-stepper-wrapper  myclass1" *ngIf="enableSearch">
+            <mat-horizontal-stepper class="myclass1" [linear]="true">
+                <mat-step [stepControl]="stprMain">
+                    <form fxLayout="column" [formGroup]="stprMain">
 
-<wbr-pivot #pivot1 [toolbar]="true"  
 
-          [width]="'100%'"
-          [height]="500" 
-          [customizeCell]="onCustomizeCell"
-          (ready)="onPivotReady($event)"
-          (reportcomplete)="onReportComplete()">
-   
-</wbr-pivot>
+                        <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto " class="h45 mob-div" tab-index=4>
+                            <mat-label>reports generated</mat-label>
+                            <!-- <mat-form-field appearance="outline" fxFlex="50">
+
+                                <select matNativeControl required>
+                                    <option value="volvo">1000</option>
+                                    <option value="saab">2000</option>
+                                    <option value="mercedes">2500</option>
+                                    <option value="audi">4000</option>
+                                </select>
+
+
+                            </mat-form-field> -->
+                            <mat-form-field appearance="outline" fxFlex="50" class="min-max28" tab-index=12>
+                                <mat-select formControlName="ddlReport" placeholder="report">
+                                  <mat-option *ngFor="let type of reportList" [value]="type['RPT_PK']">
+                                    {{type['RPT_NAME']  }}
+                                  </mat-option>
+                                </mat-select>
+                                <!-- <mat-error
+                                  *ngIf="secondFormGroup.controls.ddlUnit.errors?.required && secondFormGroup.controls.ddlUnit.touched">
+                                  select uom
+                                </mat-error> -->
+                              </mat-form-field>
+                        </div>
+                        <div>
+                            <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto " class="h45 mob-div"
+                                tab-index=4>
+                                <mat-label>from date</mat-label>
+                                <mat-form-field appearance="outline" fxFlex="50">
+
+                                    <input matInput type="date" placeholder="MM/DD/YYYY" class="date"
+                                        formControlName="txtFromDob" (dateChange)="onChange($event)" required>
+
+                                    <mat-error>
+                                        Invalid date
+                                    </mat-error>
+
+                                </mat-form-field>
+
+
+                                <mat-label>To date</mat-label>
+                                <mat-form-field appearance="outline" fxFlex="50">
+
+                                    <input matInput type="date" placeholder="MM/DD/YYYY" class="date"
+                                        formControlName="txtToDob" (dateChange)="onDateChange($event)" required>
+
+                                    <mat-error>
+                                        Invalid date
+                                    </mat-error>
+
+                                </mat-form-field>
+                            </div>
+                            <button type="button" mat-raised-button (click)="filterReports()" class="min-max110">
+                                generate
+                            </button>
+                        </div>
+
+
+                    </form>
+                </mat-step>
+            </mat-horizontal-stepper>
+        </div>
+    </div>
+    <wbr-pivot #pivot1 [toolbar]="true" [width]="'100%'" [height]="500" [customizeCell]="onCustomizeCell"
+        (ready)="onPivotReady($event)" (reportcomplete)="onReportComplete()">
+
+    </wbr-pivot>
+
 
 
 </div>

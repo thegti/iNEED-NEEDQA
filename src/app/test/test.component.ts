@@ -19,26 +19,33 @@ import {SalesValueGroup} from 'app/utility/SalesValue';
 import {VendorsavedialogComponent} from '../popup/vendorsavedialog/vendorsavedialog.component';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { ErrorStateMatcher } from '@angular/material';
-import {customValidationService} from './customValidationService'
+import {customValidationService} from './customValidationService';
+
+import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
 // import '../js/sidebarclose.js';
 
-export const errorMessages: { [key: string]: string } = {
-  fullName: 'Full name must be between 1 and 128 characters',
-  email: 'Email must be a valid email address (username@domain)',
-  confirmEmail: 'Email addresses must match',
-  password: 'Password must be between 7 and 15 characters, and contain at least one number and special character',
-  confirmPassword: 'Passwords must match'
-};
-export class CSVRecord {
+// export const errorMessages: { [key: string]: string } = {
+//   fullName: 'Full name must be between 1 and 128 characters',
+//   email: 'Email must be a valid email address (username@domain)',
+//   confirmEmail: 'Email addresses must match',
+//   password: 'Password must be between 7 and 15 characters, and contain at least one number and special character',
+//   confirmPassword: 'Passwords must match'
+// };
+// export class CSVRecord {
 
-  public firstName: any;
-  public lastName: any;
-  public email: any;
-  public phoneNumber: any;
-  public title: any;
-  public occupation: any;
+//   public firstName: any;
+//   public lastName: any;
+//   public email: any;
+//   public phoneNumber: any;
+//   public title: any;
+//   public occupation: any;
+// }
+export interface State {
+  flag: string;
+  name: string;
+  population: string;
 }
-
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
@@ -46,10 +53,10 @@ export class CSVRecord {
 })
 
   export class TestComponent   {
-    constructor(){}
-    ngOnInit() {
-      // this.GetSidebarOpen();
-    }
+    // constructor(){}
+    // ngOnInit() {
+    //   // this.GetSidebarOpen();
+    // }
     // GetSidebarOpen() {
     //   var element = document.querySelector(".page-layout1");
     //   document.body.style.background = "039be5";
@@ -69,5 +76,48 @@ export class CSVRecord {
   
   
     // }
-   
+    stateCtrl = new FormControl();
+  filteredStates: Observable<State[]>;
+
+  states: State[] = [
+    {
+      name: 'Arkansas',
+      population: '2.978M',
+      // https://commons.wikimedia.org/wiki/File:Flag_of_Arkansas.svg
+      flag: 'https://upload.wikimedia.org/wikipedia/commons/9/9d/Flag_of_Arkansas.svg'
+    },
+    {
+      name: 'California',
+      population: '39.14M',
+      // https://commons.wikimedia.org/wiki/File:Flag_of_California.svg
+      flag: 'https://upload.wikimedia.org/wikipedia/commons/0/01/Flag_of_California.svg'
+    },
+    {
+      name: 'Florida',
+      population: '20.27M',
+      // https://commons.wikimedia.org/wiki/File:Flag_of_Florida.svg
+      flag: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Flag_of_Florida.svg'
+    },
+    {
+      name: 'Texas',
+      population: '27.47M',
+      // https://commons.wikimedia.org/wiki/File:Flag_of_Texas.svg
+      flag: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Flag_of_Texas.svg'
+    }
+  ];
+
+  constructor() {
+    this.filteredStates = this.stateCtrl.valueChanges
+      .pipe(
+        startWith(''),
+        map(state => state ? this._filterStates(state) : this.states.slice())
+      );
   }
+
+  private _filterStates(value: string): State[] {
+    const filterValue = value.toLowerCase();
+
+    return this.states.filter(state => state.name.toLowerCase().indexOf(filterValue) === 0);
+  }
+}
+  

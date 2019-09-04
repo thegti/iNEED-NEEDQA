@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { MatAccordion } from '@angular/material/expansion';
 import { v4 as uuid } from 'uuid';
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatSort, MatTableDataSource, MatCheckbox } from '@angular/material';
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl, FormGroupName } from '@angular/forms';
 import { VendorKeywordModel } from '../business-object/VendorObject';
 import { VendorGetModel } from '../business-object/VendorObject';
@@ -52,6 +52,9 @@ export class VendorprofileComponent implements OnInit {
   private IsEditSalesLead: boolean = false;
   firstFormGroup: FormGroup;
   public selectedSalesUse: any;
+  public selectedMobileUse: any;
+
+  public selectedWhatsappMobileUse: any;
   public valueSalesUse: any;
   public productSalesUse: any;
   public keywordErrorMsg: String;
@@ -93,7 +96,10 @@ export class VendorprofileComponent implements OnInit {
   moddate: any;
   mobnumPattern = "^((\\+91-?)|0)?[0-9]{10}$";
   //  mobnumPattern = "/([5-9][0-9])|([1-9]\d{3}\d*)/"; 
+  IsPersonalMobileUse: boolean = true;
   IsPersonalUse: boolean = true;
+  IsMobileUse : boolean=false;
+  IsWhatsappeUse : boolean =false;
   IsBusinessUse: boolean;
   IsBoth: boolean;
   IsProductType: boolean = true;
@@ -129,6 +135,7 @@ export class VendorprofileComponent implements OnInit {
       txtEmail: ['', [Validators.required, Validators.email]],
       txtSalesMobile: ['', [ Validators.pattern(this.mobnumPattern)]],
       txtWhatsappMobile: ['', [Validators.pattern(this.mobnumPattern)]],
+      //  ChkMobile : [this.IsMobileUse],
       txtValue: [''],
       csvUpload :['']
     });
@@ -191,18 +198,18 @@ export class VendorprofileComponent implements OnInit {
 
   onSelectionchange(event): void {
     this.fileChange = true;
-    console.log('this.fileChange', this.fileChange);
+    // console.log('this.fileChange', this.fileChange);
     this.selectedfile = event.target.files[0];
     this.csvupload = uuid() + '_' + this.selectedfile.name;
      this.fileName = this.selectedfile.name;
     this.formdt.append('csvfile', this.selectedfile, this.csvupload);
 
-    console.log('this.selectedfile', this.selectedfile);
-    console.log('this.csvupload', this.csvupload);
+    // console.log('this.selectedfile', this.selectedfile);
+    // console.log('this.csvupload', this.csvupload);
 
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
-      console.log(reader);
+      // console.log(reader);
       reader.readAsDataURL(event.target.files[0]); // read file as data url
 
       reader.onload = (even) => { // called once readAsDataURL is completed
@@ -230,7 +237,7 @@ export class VendorprofileComponent implements OnInit {
         .subscribe(res => {
 
           if (res['Data'] > 0) {
-            console.log('res', res['Data'])
+            // console.log('res', res['Data'])
             this.KeywordDeleteDialogRef = this._matDialog.open(VendorkeyworddeletedialogComponent, {
               disableClose: false
             });
@@ -300,7 +307,7 @@ export class VendorprofileComponent implements OnInit {
       }
     this.vendorService.VendorKeywordGet(this.tempObject).subscribe((data: Array<object>) => {
       this.keywordList = data['Data'];
-      console.log(this.keywordList);
+      // console.log(this.keywordList);
       this.dataSource = new MatTableDataSource(this.keywordList);
 
     });
@@ -471,10 +478,34 @@ export class VendorprofileComponent implements OnInit {
       if (data['Data'] != null) {
         this.IsEditSalesLead = true;
         this.salesLeadList = data['Data'];
+       
         this.SetLeadsFor(this.salesLeadList[0].VST_ENQUIRY_USE);
         this.SetLeadsTypeFor(this.salesLeadList[0].VST_ENQUIRY_TYPE);
         this.SetValueTypeFor(this.salesLeadList[0].VST_VALUE_TYPE);
-        // console.log(this.salesLeadList[0].VST_EMAIL);
+        // this.SetMobilesFor(this.salesLeadList[0].VST_ISSMS_ENABLE);
+        if(this.salesLeadList[0].VST_ISSMS_ENABLE==1)
+        {
+          this.IsMobileUse= true;
+          this.readonlyMobile=false;
+        }
+        else
+        {
+          this.IsMobileUse= false;
+          this.readonlyMobile=true;
+        }
+        if(this.salesLeadList[0].VST_ISWATSAPP_ENABLE==1)
+        {
+          this.IsWhatsappeUse= true;
+          this.readonlyWhatsapp=false;
+        }
+        else
+        {
+          this.IsWhatsappeUse= false;
+          this.readonlyWhatsapp=true;
+        }
+        
+        // this.SetValueTypeFor(this.salesLeadList[0].VST_ISWATSAPP_ENABLE);
+        
         // this.vendorEmail=this.salesLeadList[0].VST_EMAIL;
         // this.vendorSalesMobile=this.salesLeadList[0].VST_MOBILE;
         // this.vendorWhatsappMobile=this.salesLeadList[0].VST_WHATSAPP;
@@ -493,6 +524,12 @@ export class VendorprofileComponent implements OnInit {
         alert("Internal Server Error!");
       });
   }
+
+  // SetMobilesFor(type: number) {
+  //   this.IsPersonalMobileUse = type == 1 ? true : false;
+  //   this.selectedMobileUse = type;
+   
+  // }
 
   SetLeadsFor(type: number) {
     this.IsPersonalUse = type == 1 ? true : false;
@@ -513,7 +550,43 @@ export class VendorprofileComponent implements OnInit {
     this.valueSalesUse = type;
   }
 
+  SelectMobileTypes(value) {
+ 
+    this.IsMobileUse=!value;
+   
+    this.selectedMobileUse = this.IsMobileUse;
+    if(this.selectedMobileUse == true)
+    {
+      this.selectedMobileUse = 1;
+      this.readonlyMobile = !this.readonlyMobile;
+    }
+    else if(this.selectedMobileUse == false) {
+      this.selectedMobileUse = 0;
+      this.readonlyMobile = this.readonlyMobile;
+     
+    }
+ }
+
+ SelectWhatsappMobileTypes(e)
+ {
+  
+  this.IsWhatsappeUse=!e;
+ 
+ this.selectedWhatsappMobileUse = this.IsWhatsappeUse;
+ if(this.selectedWhatsappMobileUse == true)
+ {
+  this.selectedWhatsappMobileUse = 1; 
+  this.readonlyWhatsapp = !this.readonlyWhatsapp;
+ }
+ else if(this.selectedWhatsappMobileUse == false) {
+  this.selectedWhatsappMobileUse = 0;
+  this.readonlyWhatsapp = this.readonlyWhatsapp;
+}
+
+  
+ }
   SaveSalesLeadButton() {
+  
     this.moddate = new Date().toISOString();
     var PK = this.salesLeadList == null ? 0 : this.salesLeadList[0].VST_PK;
     var strVale = this.firstFormGroup.value.txtValue;
@@ -536,7 +609,10 @@ export class VendorprofileComponent implements OnInit {
         "VST_MOD_BY": this.user.USR_PK,
         "VST_VALUE_TYPE": this.valueSalesUse > 0 ? this.valueSalesUse : 1,
         "VST_MOD_DT": this.moddate,
+        "VST_ISSMS_ENABLE" : this.selectedMobileUse ,
+        "VST_ISWATSAPP_ENABLE" :this.selectedWhatsappMobileUse,
       }
+      console.log('save', this.salesLeadSaveTempObject);
 
     this.vendorService.VendorSalesLeadSave(this.salesLeadSaveTempObject).subscribe((data: Array<object>) => {
       if (data["Data"] > 0) {
@@ -581,15 +657,16 @@ export class VendorprofileComponent implements OnInit {
     return result;
   }
 
-  SelectMobileTypes() {
 
-
-    this.readonlyMobile = !this.readonlyMobile;
- }
- SelectWhatsappMobileTypes()
- {
-  this.readonlyWhatsapp = !this.readonlyWhatsapp;
- }
+//  SelectWhatsappMobileTypes(e)
+//  {
+//   this.selectedWhatsappMobileUse =1;
+//   console.log('test1',this.selectedWhatsappMobileUse );
+//   if (this.selectedWhatsappMobileUse == 1)
+//   {
+//     this.readonlyMobile = !this.readonlyMobile;
+//   }
+//  }
  
 
 
@@ -603,6 +680,7 @@ export class VendorprofileComponent implements OnInit {
       if (this.selectedSalesUse == 2) {
         groups = SerachGroup.Business;
       }
+    
     if (this.selectedSalesUse == 3) {
       groups = SerachGroup.Both;
     }
@@ -686,7 +764,10 @@ export class VendorprofileComponent implements OnInit {
     // this.EmailChangeDialogRef.componentInstance.MessageEmail = 'email';
 
   }
-
+  ReportSidebarMenu()
+  {
+    this.router.navigate(['/report/']);
+  }
 
 
 

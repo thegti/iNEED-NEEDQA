@@ -9,6 +9,7 @@ import { UomModel } from '../../business-object/CommonDataObject';
 import { CountryModel } from '../../business-object/CommonDataObject';
 import { OtpModel } from '../../business-object/CommonDataObject';
 import {CurrencyModel} from '../../business-object/CommonDataObject';
+import {ReportModel} from '../../business-object/CommonDataObject';
 
 @Injectable({
    providedIn: 'root'
@@ -58,4 +59,12 @@ UploadCSV(req,VendorPK): any {
   
    return this.httpClient.post(`${this.baseUrl}api/Common/user/UploadCSV/${VendorPK}`, req, this.header);
 }
+
+GetReports(req): any {
+   return this.httpClient.post<ReportModel>(`${this.baseUrl}api/Common/GetReports`, req, this.header);
+}
+GetVendorKeywords(req): any {
+   return this.httpClient.post<ReportModel>(`${this.baseUrl}api/Common/GetVendorKeywords`, req, this.header);
+}
+
 }

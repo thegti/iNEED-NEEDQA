@@ -23,7 +23,7 @@
             </div>
             <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="h43 mob-div" tab-index=2>
               <mat-label>search</mat-label>
-              <mat-form-field appearance="outline">
+              <!-- <mat-form-field appearance="outline">
                 <mat-select formControlName="ddlsearch" #singleSelect placeholder="search"
                   (selectionChange)="onKeyWordSelect()"
                   [ngClass]="{ 'is-invalid': ddlsearchvalid.ddlsearch.touched && ddlsearchvalid.ddlsearch.errors }">
@@ -34,18 +34,27 @@
                   </mat-option>
 
                 </mat-select>
-                <!-- <mat-error *ngIf="firstFormGroup.controls.ddlsearch.errors?.required && firstFormGroup.controls.ddlsearch.touched" >
-                    Select Keyword
-                  </mat-error> -->
-
-
                 <mat-error *ngIf="ddlsearchvalid.ddlsearch.errors && ddlsearchvalid.ddlsearch.touched"
                   class="invalid-feedback">
                   <mat-error *ngIf="ddlsearchvalid.ddlsearch.errors.required">select keyword</mat-error>
 
                 </mat-error>
 
-              </mat-form-field>
+              </mat-form-field> -->
+
+              <mat-form-field appearance="outline">
+                  <input matInput placeholder="keyword" formControlName="ddlsearch" aria-label="keyword" [matAutocomplete]="auto" [formControl]="searchFilterCtrl">
+                  <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let member of filteredSearch | async" [value]="member['VKW_PK']">
+                   
+                      <span>{{member['VKW_KWORD']  }}</span> 
+                    
+                    </mat-option>
+                  </mat-autocomplete>
+                </mat-form-field>
+
+
+
             </div>
 
             <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="h35 mob-div" tab-index=3>

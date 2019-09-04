@@ -1,6 +1,22 @@
-<div class="page-layout1   " fxLayout="column">
+<!-- <div class="page-layout1   " fxLayout="column">
     <div class="banner-content1" fxLayout="column" fxLayoutAlign="center center" 
       fxLayout.gt-xs="row">
       <script src="src/app/js/sidebarclose.js"></script>
 </div>
-</div>
+</div> -->
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="State" aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
+        <img class="example-option-img" aria-hidden [src]="state.flag" height="25">
+        <span>{{state.name}}</span> |
+        <small>Population: {{state.population}}</small>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <br>
+
+
+</form>
