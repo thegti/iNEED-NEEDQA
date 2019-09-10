@@ -25,6 +25,7 @@ import {SavaEnquiryModel} from '../business-object/EnquiryObject';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
+
 export class HomeComponent implements OnInit ,OnDestroy {
 
   public selectedText: string;

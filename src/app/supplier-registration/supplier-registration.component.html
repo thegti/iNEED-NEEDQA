@@ -116,14 +116,19 @@
                 </mat-error>
               </mat-form-field>
             </div>
+          
 
 
           </form>
         </mat-step>
       </mat-horizontal-stepper>
     </div>
+    <div  class="accept-merchant">
+        <mat-checkbox   [formControl]="secondFormGroup.controls['isTosRead']" ><a routerLink="/terms" target="_blank">i accept terms and conditions</a></mat-checkbox> 
+      </div>
     <div class="btn-container-center">
-      <button *ngIf="!enableClose" mat-raised-button [disabled]="firstFormGroup.invalid ||secondFormGroup.invalid "
+      
+        <button *ngIf="!enableClose" mat-raised-button [disabled]="firstFormGroup.invalid ||secondFormGroup.invalid "
         (click)="vendorSubmitbutton()" style="min-width:75px!important;">register</button>
 
     </div>

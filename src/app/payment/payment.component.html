@@ -1,12 +1,19 @@
 <div fxLayout="row" fxLayoutAlign="center center" class="vendor-payment-outer">
   
  
-          <mat-horizontal-stepper class="vendor-content"  fusePerfectScrollbar>
+          <mat-horizontal-stepper class="vendor-content payment-outer"  fusePerfectScrollbar>
                   <mat-step [stepControl]="firstFormGroup">
                     <form [formGroup]="firstFormGroup"  >
-                     <p class="temsconditions">needqa terms and conditions</p>
-                        <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+                      <h1>payment</h1>
+                      
+                        <div  class="accept-merchant" [hidden]="acceptPaypal"   >
+                            <mat-checkbox  (click)="acceptCheckbox()" [formControl]="firstFormGroup.controls['isTosRead']" ></mat-checkbox> 
+                            <div class="acceptlink"><a routerLink="/terms" target="_blank">i accept terms and conditions</a></div>
+                          </div>
+                         <div [hidden]="!acceptPaypal"  >
+                        <ngx-paypal [config]="payPalConfig" ></ngx-paypal>
                         <!-- <div>{{this.onAprooveMsg}}</div> -->
+                      </div>
 
                       </form>
                      

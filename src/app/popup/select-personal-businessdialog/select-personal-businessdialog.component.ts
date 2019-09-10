@@ -9,6 +9,7 @@ import { MatDialogRef } from '@angular/material';
 export class SelectPersonalBusinessdialogComponent implements OnInit {
 
   public Message: string;
+  
   public isError: Boolean = false;
 
   constructor(

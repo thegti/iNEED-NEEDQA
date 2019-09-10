@@ -212,8 +212,9 @@ export class VendorprofileComponent implements OnInit {
       // console.log(reader);
       reader.readAsDataURL(event.target.files[0]); // read file as data url
 
+    
       reader.onload = (even) => { // called once readAsDataURL is completed
-        this.url = even.target['result'];
+        // this.url = even.target['result'];
 
 
       };
@@ -565,6 +566,7 @@ export class VendorprofileComponent implements OnInit {
       this.readonlyMobile = this.readonlyMobile;
      
     }
+    
  }
 
  SelectWhatsappMobileTypes(e)
@@ -612,7 +614,7 @@ export class VendorprofileComponent implements OnInit {
         "VST_ISSMS_ENABLE" : this.selectedMobileUse ,
         "VST_ISWATSAPP_ENABLE" :this.selectedWhatsappMobileUse,
       }
-      console.log('save', this.salesLeadSaveTempObject);
+      // console.log('save', this.salesLeadSaveTempObject);
 
     this.vendorService.VendorSalesLeadSave(this.salesLeadSaveTempObject).subscribe((data: Array<object>) => {
       if (data["Data"] > 0) {

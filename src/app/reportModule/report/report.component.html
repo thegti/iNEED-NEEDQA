@@ -17,7 +17,7 @@
 
 
                         <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto " class="h45 mob-div" tab-index=4>
-                            <mat-label>reports generated</mat-label>
+                            <mat-label class="repors-generate">reports generated</mat-label>
                             <!-- <mat-form-field appearance="outline" fxFlex="50">
 
                                 <select matNativeControl required>
@@ -29,7 +29,7 @@
 
 
                             </mat-form-field> -->
-                            <mat-form-field appearance="outline" fxFlex="50" class="min-max28" tab-index=12>
+                            <mat-form-field appearance="outline" fxFlex="50" class="min-max21" tab-index=12>
                                 <mat-select formControlName="ddlReport" placeholder="report">
                                   <mat-option *ngFor="let type of reportList" [value]="type['RPT_PK']">
                                     {{type['RPT_NAME']  }}

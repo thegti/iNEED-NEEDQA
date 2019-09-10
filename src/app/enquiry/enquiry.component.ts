@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { ReplaySubject } from 'rxjs';
 
-import { map, catchError } from 'rxjs/operators'
+import { map, catchError, startWith } from 'rxjs/operators'
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { FuseConfirmDialogComponent } from '@fuse/components/confirm-dialog/confirm-dialog.component';
 import { locale as english } from 'app/navigation/i18n/en';
@@ -25,6 +25,9 @@ import { SelectProducrServicedialogComponent } from '../popup/select-producr-ser
 import { SelectPersonalBusinessdialogComponent } from '../popup/select-personal-businessdialog/select-personal-businessdialog.component';
 import { SharedData } from '../services/common/SharedData.service';
 import { environment } from 'environments/environment';
+import { Observable } from 'rxjs';
+import { KeywordModel } from '../business-object/CommonDataObject';
+import { SelectKeywordComponent } from '../popup/select-keyword/select-keyword.component';
 
 
 @Component({
@@ -32,10 +35,11 @@ import { environment } from 'environments/environment';
     templateUrl: './enquiry.component.html',
     styleUrls: ['./enquiry.component.scss']
 })
+
 export class EnquiryComponent implements OnInit, OnDestroy {
     public OtpMsg: string;
     public CountryCode: string;
-    public selectedText: string;
+    public selectedText: String;
     enableClose: Boolean = false;
     public selectedLocation: any;
     selectedEnquiry: any;
@@ -69,6 +73,9 @@ export class EnquiryComponent implements OnInit, OnDestroy {
     selectedOption: string;
     filenames: Boolean = true;
     IsValidOtp: boolean = false;
+    venkeywords: KeywordModel[];
+    selectKeywordValue: number;
+    selectKeywordSearch: String;
     location: Array<Object> = [{
         'CON_NAME': 'Search',
         'CON_PK': 0
@@ -78,28 +85,36 @@ export class EnquiryComponent implements OnInit, OnDestroy {
         'CON_NAME': '--Select--',
         'CON_PK': 0
     };
-    keyword: Array<Object> = [{
-        'VKW_KWORD': 'Search',
+    // keyword: Array<Object> = [{
+    //     'VKW_KWORD': 'Search',
 
-    }];
+    // }];
     uom: Array<Object> = [{
         'UOM_NAME': 'Search',
 
     }];
-    keywordDataNull = {
-        'VKW_KWORD': '--Select--',
+    // keywordDataNull = {
+    //     'VKW_KWORD': '--Select--',
 
-    }
+    // }
+
+
+
     SelectProductServiceDialogRef: MatDialogRef<SelectProducrServicedialogComponent>;
     ProductServiceDialogRef: MatDialogRef<SelectProducrServicedialogComponent>;
+    keywordialogRef: MatDialogRef<SelectKeywordComponent>;
+    SelectkeywordialogRef: MatDialogRef<SelectKeywordComponent>;
 
     SelectPersonalBusinessDialogRef: MatDialogRef<SelectPersonalBusinessdialogComponent>;
     PersonalBusinessDialogRef: MatDialogRef<SelectPersonalBusinessdialogComponent>;
 
     public locationFilterCtrl: FormControl = new FormControl();
-    public searchFilterCtrl: FormControl = new FormControl();
+    public searchFilterCtrl = new FormControl();
+    // public searchFilterCtrl: FormControl = new FormControl();
     public filteredLocation: ReplaySubject<Array<any>> = new ReplaySubject<Array<any>>(1);
-    public filteredSearch: ReplaySubject<Array<any>> = new ReplaySubject<Array<any>>(1);
+    //  public filteredSearch: ReplaySubject<Array<any>> = new ReplaySubject<Array<any>>(1);
+    filteredSearch: Observable<KeywordModel[]>;
+
     mobnumPattern = "^((\\+91-?)|0)?[0-9]{8}$";
 
 
@@ -108,15 +123,14 @@ export class EnquiryComponent implements OnInit, OnDestroy {
         private authService: AuthService, public _matDialog: MatDialog,
         private _formBuilder: FormBuilder, private act_route: ActivatedRoute,
         private sharedData: SharedData, private router: Router) {
+        this.searchFilterCtrl.valueChanges
+            .subscribe(() => {
+                this.filterSerach();
+            });
 
 
-            // this.filteredSearch = this.firstFormGroup.value.ddlsearch.valueChanges
-            // .pipe(
-            //   startWith(''),
-            //   map(state => state ? this.filteredSearch(state) : this.keyword.slice())
-            // );
 
-         }
+    }
     ngOnInit(): void {
 
         this.ConfigSettings();
@@ -130,25 +144,22 @@ export class EnquiryComponent implements OnInit, OnDestroy {
             .subscribe(() => {
                 this.filterLocation();
             });
-        this.searchFilterCtrl.valueChanges
-            .subscribe(() => {
-                this.filterSerach();
-            });
+        // this.searchFilterCtrl.valueChanges
+        //     .subscribe(() => {
+        //         this.filterSerach();
+        //     });
         this.filenames = true;
         this.GetUom();
         this.GetCurrency();
-        // this.ConfigSettings();
 
-        // Object.keys(this._formBuilder.controls).forEach(field => {
-        //     const control = this.firstFormGroup.get(field);
-        //     control.markAsTouched({ onlySelf: true });
-        //     });
+
     }
+
 
     ResetFormControls(IsNew: boolean) {
         this.firstFormGroup = this._formBuilder.group({
             rdbProductType: [''],
-            ddlsearch: ['', Validators.required],
+            ddlsearch: [''],
             ddllocation: ['', Validators.required],
             txtName: ['', [Validators.required, Validators.minLength(3)]],
             txtEmail: ['', [Validators.required, Validators.email, Validators.maxLength(50)]],
@@ -165,15 +176,14 @@ export class EnquiryComponent implements OnInit, OnDestroy {
             ddlCurrency: ['', Validators.required],
             txtApproximate: ['', Validators.required],
             txtdDescription: [''],
-            photo: ['']
+            photo: [''],
+            isTosRead: [false, Validators.pattern('true')]
         });
         if (!IsNew) {
             this.firstFormGroup.controls.txtEmail.reset();
         }
     }
-    // get rdbProductType() {
-    //     return this.firstFormGroup.get('rdbProductType');
-    //   }   
+
 
     // ResetForm() {
     //     this.selectedEnquiry = 1;
@@ -200,15 +210,16 @@ export class EnquiryComponent implements OnInit, OnDestroy {
     selectUseTypes(e) {
         this.selectedUseType = e.value;
     }
-    onKeyWordSelect() {
-        for (let i in this.keyword) {
-            if (this.keyword[i]["VKW_PK"] == this.firstFormGroup.value.ddlsearch) {
-                this.selectedText = this.keyword[i]["VKW_KWORD"];
-            }
+    // onKeyWordSelect() {
+    //     for (let i in this.keyword) {
+    //         if (this.keyword[i]["VKW_PK"] == this.firstFormGroup.value.ddlsearch) {
+    //             this.selectedText = this.keyword[i]["VKW_KWORD"];
+    //         }
 
-        }
+    //     }
 
-    }
+    // }
+
     buttonPrevious() {
         if (this.IsValidOtp == true) {
             this.isFirst = true;
@@ -221,7 +232,8 @@ export class EnquiryComponent implements OnInit, OnDestroy {
         }
 
 
-        this.secondFormGroup.value.txtSearch = this.selectedText;
+        // this.secondFormGroup.value.txtSearch = this.selectedText;
+        this.secondFormGroup.value.txtSearch = this.selectKeywordSearch;
 
 
         //     var optCode=5555;
@@ -258,7 +270,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
                 // console.log('test',reqbody);
                 this.apiService.GenerateOtp(reqbody).subscribe((data: Array<object>) => {
                     this.sharedData.SetOTP(data['Data']['OTP']);
-                      console.log(data['Data']['OTP']);
+                    // console.log(data['Data']['OTP']);
                     this.OtpMsg = 'an otp has been sent to your ';
                     if (data['Data']['BY_MAIL'] == true && data['Data']['BY_SMS'] == true) {
                         this.OtpMsg = this.OtpMsg + 'mobile and email';
@@ -282,8 +294,8 @@ export class EnquiryComponent implements OnInit, OnDestroy {
                             this.next = false;
                             this.isFirst = true;
                             this.IsValidOtp = true;
-                            this.secondFormGroup.value.txtSearch = this.selectedText;
-
+                            // this.secondFormGroup.value.txtSearch = this.selectedText;
+                            this.secondFormGroup.value.txtSearch = this.selectKeywordSearch;
                         }
                     }
                 });
@@ -291,27 +303,34 @@ export class EnquiryComponent implements OnInit, OnDestroy {
             else {
                 this.next = false;
                 this.isFirst = true;
-                this.secondFormGroup.value.txtSearch = this.selectedText;
-
+                // this.secondFormGroup.value.txtSearch = this.selectedText;
+                this.secondFormGroup.value.txtSearch = this.selectKeywordSearch;
             }
+
+
+        }
+        else if(this.selectKeywordSearch == null) {
+      
+            this.SelectkeywordialogRef = this._matDialog.open(SelectKeywordComponent, {
+                disableClose: true
+            });
+
+            this.SelectkeywordialogRef.componentInstance.KeywordMessage = 'please select keyword';
         }
         else {
+
+
             this.SelectProductServiceDialogRef = this._matDialog.open(SelectProducrServicedialogComponent, {
                 disableClose: true
             });
             this.SelectProductServiceDialogRef.componentInstance.Message = 'please select product or service';
 
+
         }
-    }
-    selected(event) {
-        // let target = event.source.selected._element.nativeElement;
-        // let selectedData = {
-        //   value: event.value,
-        //   text: target.innerText.trim()
-        // };
-        // console.log(selectedData);
+
 
     }
+
     ConfigSettings() {
         this.CountryCode = environment.DefaultCountryCode;
 
@@ -324,7 +343,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
             'VNQ_PERSON_NAME': this.firstFormGroup.value.txtName,
             'VNQ_EMAIL': this.firstFormGroup.value.txtEmail,
             'VNQ_MOBILE': this.CountryCode + this.firstFormGroup.value.txtMobile,
-            'VNQ_KWORD': this.selectedText,
+            'VNQ_KWORD': this.selectKeywordSearch,
             'VNQ_LOCATION': this.firstFormGroup.value.ddllocation,
             'VNQ_LOCATION_MODE': this.selectedLocation > 0 ? this.selectedLocation : 1,
             'VNQ_DESC': this.secondFormGroup.value.txtdDescription,
@@ -471,17 +490,11 @@ export class EnquiryComponent implements OnInit, OnDestroy {
         });
     }
     getKeyword(): any {
-        this.filteredSearch.next(this.keyword.slice());
+        // this.filteredSearch.next(this.keyword.slice());
     }
+
     private filterSerach(): void {
         let search = this.searchFilterCtrl.value;
-        if (!search) {
-            this.filteredSearch.next(this.keyword.slice());
-            return;
-        }
-        else {
-            search = search.toLowerCase();
-        }
         var groups = 1;
         if (this.selectedKeyword == 1) {
             groups = SerachGroup.Product;
@@ -489,8 +502,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
         else
             if (this.selectedKeyword == 2) {
                 groups = SerachGroup.Services;
-                this.secondFormGroup.get('txtQuantity').setValue('1');
-
+                //   this.secondFormGroup.get('txtQuantity').setValue('1');
             }
         var reqbody = {
             'VKW_KWORD_TYPE': groups,
@@ -498,11 +510,11 @@ export class EnquiryComponent implements OnInit, OnDestroy {
         };
 
         this.apiService.KeyWordGetAuto(reqbody).subscribe((data: Array<object>) => {
-            this.keyword = data['Data'];
-            this.keyword.splice(0, 0, this.keywordDataNull);
-            this.filteredSearch.next(this.keyword);
+            this.venkeywords = data['Data'];
         });
+        this.selectKeywordSearch = this.searchFilterCtrl.value
     }
+
     GetUom() {
         const reqbody = {
             'UOM_PK': 1,
@@ -536,7 +548,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
         this.firstFormGroup = this._formBuilder.group({
             ddlLocation: [null],
 
-            ddlsearch: ['', Validators.required],
+            ddlsearch: [''],
             ddllocation: ['', Validators.required],
             txtName: ['', [Validators.required, Validators.minLength(3)]],
             txtEmail: [''],
@@ -579,10 +591,11 @@ export class EnquiryComponent implements OnInit, OnDestroy {
 
     // test() {
 
-    //     this.router.navigate(['/downloads/04fea22a-57c2-4183-8063-6b11954f388f-8dabc7f1-30aa-47a2-9170-5c2099a3d6b2']);
+    // //     this.router.navigate(['/downloads/04fea22a-57c2-4183-8063-6b11954f388f-8dabc7f1-30aa-47a2-9170-5c2099a3d6b2']);
 
     // }
 
 
-
 }
+
+

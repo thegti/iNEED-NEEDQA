@@ -1805,3 +1805,22 @@ fuse-sidebar    {
 {
     display: none !important;
 }
+.accept     {
+    .mat-checkbox-frame     {        border:1px solid #fff!important;   }
+
+.mat-checkbox-label     {    font-size: 14px; font-family: 'dinlight', sans-serif; color: #fff;
+                a{        color: #fff;    }
+            }
+
+}
+
+.accept-merchant    {
+    width:100%; height:35px; display: flex; place-content: center;
+
+    .mat-checkbox-frame     {        border:1px solid #fff!important;  }
+
+    .acceptlink a    {    font-size: 14px; font-family: 'dinlight', sans-serif; color: #fff; padding-left:10px;
+                
+            }
+  
+}

@@ -14,6 +14,7 @@ export interface LocationModel {
 export interface KeywordModel {
     VKW_KWORD_TYPE: number;
     VKW_KWORD: String;
+    VKW_PK : number;
 }
 export interface UomModel {
     UOM_PK: number;

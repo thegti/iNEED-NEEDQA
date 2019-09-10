@@ -1,0 +1,20 @@
+
+ <h1 matDialogTitle><img src="assets/logos/iNeed-logo.png" width="80px" height="35px">
+  <button (click)=" keywordialogRef.close(false)" class="popup-close">X</button>
+   
+</h1>
+
+  
+
+  <div mat-dialog-content *ngIf="!isError" class="forSuccess">
+      <span>{{KeywordMessage}}</span>
+  </div>
+<div mat-dialog-content *ngIf="isError" class="forError">
+      <span>{{KeywordMessage}}</span>
+  </div>
+ 
+  <div class="btn-container-submit-delete">
+    <div mat-dialog-actions class="pt-24 " fxLayout="row">
+      <button class="mat-accent mr-16 forOk for" (click)=" keywordialogRef.close(true)">ok</button>
+    </div>
+  </div>

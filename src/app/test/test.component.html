@@ -1,22 +1,51 @@
-<!-- <div class="page-layout1   " fxLayout="column">
-    <div class="banner-content1" fxLayout="column" fxLayoutAlign="center center" 
-      fxLayout.gt-xs="row">
-      <script src="src/app/js/sidebarclose.js"></script>
-</div>
-</div> -->
-<form class="example-form">
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="State" aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl">
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
-        <img class="example-option-img" aria-hidden [src]="state.flag" height="25">
-        <span>{{state.name}}</span> |
-        <small>Population: {{state.population}}</small>
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
+<div class="page-layout simple fullwidth bgstring" fxLayout="column">
+  <div class="banner-content" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-md="row" fxLayout.gt-sm="row"
+    fxLayout.gt-xs="row">
 
-  <br>
+    <div class="banner-lft">
+
+      <mat-horizontal-stepper>
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+
+            <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="h29 mob-div" tab-index=1>
+              <mat-label class="blnk-lbl"> </mat-label>
+              <mat-radio-group>
+                <mat-radio-button value="1" (change)="selectSearch($event)"> product</mat-radio-button>
+                <mat-radio-button value="2" (change)="selectSearch($event)">service</mat-radio-button>
+              </mat-radio-group>
+
+            </div>
 
 
-</form>
+
+            <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="h43 mob-div" tab-index=2>
+              <mat-label>search</mat-label>
+              <mat-form-field appearance="outline">
+                <input matInput placeholder="keyword" formControlName="ddlsearch" aria-label="keyword"
+                  [matAutocomplete]="auto" [formControl]="searchFilterCtrl">
+                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="SelectKeyword($event.option.value)">
+                  <mat-option *ngFor="let member of venkeywords" [value]="member.VKW_PK">
+                    <span>{{member.VKW_KWORD}}</span>
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+            </div>
+            <div class="btn-container txt-h">
+              <button mat-raised-button [disabled]="firstFormGroup.invalid " [ngClass]="{
+      'prev': isFirst,
+      'next': !isFirst
+    }" color="accent">
+                next
+              </button>
+            </div>
+
+          </form>
+        </mat-step>
+      </mat-horizontal-stepper>
+    </div>
+
+
+
+
+  </div>

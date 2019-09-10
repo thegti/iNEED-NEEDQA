@@ -23,8 +23,8 @@
             </div>
             <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="h43 mob-div" tab-index=2>
               <mat-label>search</mat-label>
-              <!-- <mat-form-field appearance="outline">
-                <mat-select formControlName="ddlsearch" #singleSelect placeholder="search"
+              <mat-form-field appearance="outline">
+                <!-- <mat-select formControlName="ddlsearch" #singleSelect placeholder="search"
                   (selectionChange)="onKeyWordSelect()"
                   [ngClass]="{ 'is-invalid': ddlsearchvalid.ddlsearch.touched && ddlsearchvalid.ddlsearch.errors }">
                   <ngx-mat-select-search [formControl]="searchFilterCtrl" [placeholderLabel]="'search keyword...'"
@@ -33,17 +33,25 @@
                     {{member['VKW_KWORD']  }}
                   </mat-option>
 
-                </mat-select>
-                <mat-error *ngIf="ddlsearchvalid.ddlsearch.errors && ddlsearchvalid.ddlsearch.touched"
+                </mat-select> -->
+             
+                <input matInput placeholder="keyword" formControlName="ddlsearch"  aria-label="keyword" class="autokeyword"
+                [matAutocomplete]="auto" [formControl]="searchFilterCtrl" >
+              <mat-autocomplete #auto="matAutocomplete" >
+                <mat-option *ngFor="let member of venkeywords" [value]="member.VKW_KWORD">
+                  <span>{{member.VKW_KWORD}}</span>
+                </mat-option>
+              </mat-autocomplete>
+                <!-- <mat-error *ngIf="ddlsearchvalid.ddlsearch.errors && ddlsearchvalid.ddlsearch.touched"
                   class="invalid-feedback">
                   <mat-error *ngIf="ddlsearchvalid.ddlsearch.errors.required">select keyword</mat-error>
 
-                </mat-error>
+                </mat-error> -->
 
-              </mat-form-field> -->
+              </mat-form-field>
 
-              <mat-form-field appearance="outline">
-                  <input matInput placeholder="keyword" formControlName="ddlsearch" aria-label="keyword" [matAutocomplete]="auto" [formControl]="searchFilterCtrl">
+              <!-- <mat-form-field appearance="outline">
+                  <input matInput placeholder="keyword" formControlName="ddlsearch" (selectionChange)="onKeyWordSelect()" aria-label="keyword" [matAutocomplete]="auto" [formControl]="searchFilterCtrl">
                   <mat-autocomplete #auto="matAutocomplete">
                     <mat-option *ngFor="let member of filteredSearch | async" [value]="member['VKW_PK']">
                    
@@ -51,7 +59,7 @@
                     
                     </mat-option>
                   </mat-autocomplete>
-                </mat-form-field>
+                </mat-form-field> -->
 
 
 
@@ -141,7 +149,6 @@
                 </mat-error>
               </mat-form-field>
             </div>
-
             <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="h32 mob-div" tab-index=8>
               <mat-label></mat-label>
               <!-- <mat-form-field appearance="outline" fxFlex="50" class="min-max20">
@@ -183,7 +190,7 @@
             <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" tab-index=10 class="h43 mob-div">
               <mat-label>search</mat-label>
               <mat-form-field appearance="outline" fxFlex="50">
-                <input matInput type="text" formControlName="txtSearch" placeholder="keyword" [value]=this.selectedText
+                <input matInput type="text" formControlName="txtSearch" placeholder="keyword" [value]=this.selectKeywordSearch
                   readonly>
               </mat-form-field>
             </div>
@@ -247,6 +254,12 @@
               <button type="button" class="browse-btn" (click)="profilepic.click()"> browse</button>
               <div class="brows-lbl" [hidden]="!filenames"> {{ fileName }} </div>
 
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="mob-div accept" tab-index=5>
+              <mat-label></mat-label>
+              
+              <mat-checkbox   [formControl]="secondFormGroup.controls['isTosRead']" ><a routerLink="/terms" target="_blank">i accept terms and conditions</a></mat-checkbox>   
+            
             </div>
            
             <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto" class="h32 mob-div">

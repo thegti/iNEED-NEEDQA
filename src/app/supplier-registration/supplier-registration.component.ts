@@ -71,7 +71,8 @@ export class SupplierRegistrationComponent implements OnInit, OnDestroy {
             //   txtMobile: ['',Validators.required,[Validators.pattern('^(?=.*[0-9])[- +()0-9]+$'),Validators.minLength(10),Validators.maxLength(12)]],
             txtEmail: ['', [Validators.email, Validators.maxLength(50)]],
             txtPassword: ['', [Validators.minLength(6), Validators.maxLength(20)]],
-            txtQIDText: ['']
+            txtQIDText: [''],
+            isTosRead: [false, Validators.pattern('true')]
         });
 
         this.countryFilterCtrl.valueChanges

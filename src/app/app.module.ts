@@ -51,7 +51,7 @@ import {LoaderInterceptor} from './loader.interceptor';
 import{DownloadsComponent} from './downloads/downloads.component';
 import{ReportComponent} from './reportModule/report/report.component';
 import {WebDataRocksPivot} from './reportModule/WebDataRocks/webdatarocks.angular4';
-
+import {SelectKeywordComponent} from './popup/select-keyword/select-keyword.component';
 
 // R and D works
 import { SearchautoComponent } from './RandD/searchauto/searchauto.component';
@@ -89,6 +89,7 @@ import { from } from 'rxjs';
         DownloadsComponent,
         ReportComponent,
         WebDataRocksPivot,
+        SelectKeywordComponent,
 
 
         //R and D works
@@ -107,6 +108,7 @@ import { from } from 'rxjs';
         VendorEmailChangedialogComponent,
         SelectProducrServicedialogComponent,
         SelectPersonalBusinessdialogComponent,
+        SelectKeywordComponent
 
 
     ],

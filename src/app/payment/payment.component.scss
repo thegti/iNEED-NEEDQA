@@ -1,5 +1,5 @@
 .vendor-content {
-    width: 50%;  height: 270px; margin:0px auto;
+    width: 50%;  height: 280px; margin:0px auto;
 
     @media screen and (min-width:200px) and (max-width:399px)   {   width: 90%;  }
     @media screen and (min-width:400px) and (max-width:600px)   {   width:100%;}
@@ -12,10 +12,14 @@
     }
  
 }
-.vendor-payment-outer
-{
-    width: 100%;
+.vendor-payment-outer   {    width: 100%;  
+
+    h1  {   font-size:34px; margin-top:0px;}
 }
+
+.payment-outer  {   height:340px; background:transparent!important; 
+    -webkit-transform: translate(0px, 10px);    transform: translate(0px, 10px);}
+
 p.temsconditions
 {
     color: #000;

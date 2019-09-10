@@ -20,11 +20,14 @@ export class PaymentComponent implements OnInit {
   currentPlan: IPlan;
   public onAprooveMsg:String;
   firstFormGroup: FormGroup;
+ 
+  acceptPaypal : boolean = false;
   constructor(private _formBuilder: FormBuilder,
     private planService: PlanService, private router: Router) { }
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
+      isTosRead: [false, Validators.pattern('true')]
     });
     this.currentPlan= this.planService.getPlan();
     this.initConfig();
@@ -93,6 +96,11 @@ export class PaymentComponent implements OnInit {
   
     },
   };
+  }
+  acceptCheckbox()
+  {
+    this.acceptPaypal = true;
+   
   }
 
 }
