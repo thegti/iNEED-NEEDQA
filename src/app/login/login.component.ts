@@ -4,6 +4,8 @@ import { CommonFields } from '../services/common/Interfaces';
 import {SharedData} from '../services/common/SharedData.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../authentication/auth.service';
+import { userInfo } from 'os';
+import { User } from '../authentication/user.model';
 
 
 @Component({
@@ -13,6 +15,7 @@ import { AuthService } from '../authentication/auth.service';
 })
 export class LoginComponent implements OnInit {
 
+   private user: User;
    email: string;
     loginform: FormGroup;
     public LoginErrorMsg:String;
@@ -57,9 +60,10 @@ export class LoginComponent implements OnInit {
           this.LoginErrorMsg="invalid username or password";
         }
         else{
-          console.log('test',res['Data']);
           this.authService.manageSession(res['Data']);
           this.authService.loginStatus.emit(true);
+          this.user=res['Data'][0];
+          this.sharedData.SetLoginVendor(this.user.VND_PK);
           this.router.navigate(['/vendorprofile' ] );
         }
     },

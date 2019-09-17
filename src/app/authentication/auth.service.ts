@@ -21,7 +21,7 @@ export class AuthService {
   private user: User;
   loginStatus: EventEmitter<boolean> = new EventEmitter<boolean>();
   authChange = new Subject<boolean>();
-
+  LoginVendor : number;
   baseUrl = environment.baseUrl;
   constructor(
     private GlobalUrls: GlobalUrl,
@@ -51,7 +51,6 @@ export class AuthService {
   getUser(): User {
     return this.user;
   }
-
   public ChangeVendorID(vendorID: number) {
 
     return new Promise((resolve, reject) => {
@@ -97,6 +96,20 @@ export class AuthService {
       return null;
     }
   }
+  public defaultVendorPk()
+  {
+    if (sessionStorage.getItem('user')) {
+      this.user = <User>JSON.parse(sessionStorage.getItem('user'));
+      // this.LoginVendor=this.user[0].VND_PK;
+      return this.user[0].VND_PK;
+     
+
+    } else {
+      return null;
+    }
+  }
+  
+ 
 
   public get isLoggedIn(): Boolean {
     return !!sessionStorage.getItem('user');

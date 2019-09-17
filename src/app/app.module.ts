@@ -52,6 +52,7 @@ import{DownloadsComponent} from './downloads/downloads.component';
 import{ReportComponent} from './reportModule/report/report.component';
 import {WebDataRocksPivot} from './reportModule/WebDataRocks/webdatarocks.angular4';
 import {SelectKeywordComponent} from './popup/select-keyword/select-keyword.component';
+import {ProfiledefaultComponent} from './profiledefault/profiledefault.component';
 
 // R and D works
 import { SearchautoComponent } from './RandD/searchauto/searchauto.component';
@@ -90,6 +91,7 @@ import { from } from 'rxjs';
         ReportComponent,
         WebDataRocksPivot,
         SelectKeywordComponent,
+        ProfiledefaultComponent,
 
 
         //R and D works

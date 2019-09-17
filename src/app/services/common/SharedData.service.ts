@@ -7,11 +7,17 @@ import { Observable, Subject } from 'rxjs';
 export class SharedData {
     private _email: string = '';
     private _OTP: string;
+    private _LoginVendor: number;
     private _OTPMsg = new Subject<string>();
 
     private _IsValidOTP: boolean;
 
-
+    public SetLoginVendor(val: number) {
+        this._LoginVendor = val;
+    }
+    public GetLoginVendor() {
+        return this._LoginVendor;
+    }
     public SetVendorEmail(val: string) {
         this._email = val;
     }

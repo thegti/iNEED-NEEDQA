@@ -11,6 +11,7 @@ import { navigation } from 'app/navigation/navigation';
 import {AuthService} from '../../../authentication/auth.service';
 import {SharedData} from '../../../services/common/SharedData.service';
 import {User} from '../../../authentication/user.model';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
     selector     : 'toolbar',
@@ -43,7 +44,7 @@ export class ToolbarComponent implements OnInit, OnDestroy
      * @param {TranslateService} _translateService
      */
     constructor(
-        private _fuseConfigService: FuseConfigService,
+        private _fuseConfigService: FuseConfigService, private router: Router,
         private _fuseSidebarService: FuseSidebarService,
         private _translateService: TranslateService, public authService: AuthService,private sharedData: SharedData,
     )
@@ -192,5 +193,5 @@ export class ToolbarComponent implements OnInit, OnDestroy
     // {
 
     // }
-  
+ 
 }

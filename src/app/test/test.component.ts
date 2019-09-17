@@ -7,6 +7,7 @@ import { Observable,ReplaySubject } from 'rxjs';
 import { KeywordModel } from '../business-object/CommonDataObject';
 import { map, startWith } from 'rxjs/operators';
 import { Subject } from 'rxjs/subject';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 
@@ -31,13 +32,14 @@ export class TestComponent {
   public searchFilterCtrl = new FormControl();
 
   // public searchFilterCtrl: FormControl = new FormControl();
-  constructor(private _formBuilder: FormBuilder, private apiService: ApiService, ) {
+  constructor(private _formBuilder: FormBuilder, private apiService: ApiService,private router: Router, ) {
     this.searchFilterCtrl.valueChanges
     .subscribe(() => {
         this.filterSerach();
     });
   }
   ngOnInit(): void {
+   
     this.firstFormGroup = this._formBuilder.group({
 
       ddlsearch: ['', Validators.required],

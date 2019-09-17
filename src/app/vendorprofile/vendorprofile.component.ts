@@ -130,6 +130,7 @@ export class VendorprofileComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.firstFormGroup = this._formBuilder.group({
       txtKeyword: [''],
       txtEmail: ['', [Validators.required, Validators.email]],
@@ -142,6 +143,7 @@ export class VendorprofileComponent implements OnInit {
 
     this.filenames = true;
     this.user = this.authService.getUserDetail();
+    
     this.IsAdmin = this.user.ROL_PK == 1 ? true : false;
     this.GetVendor();
     // setTimeout(()=>{ // this will make the execution after the above boolean has changed
@@ -171,16 +173,20 @@ export class VendorprofileComponent implements OnInit {
           csvUpload :['']
         });
         this.keywordErrorMsg = '';
+       
         break;
       case 'item4':
         this.GetSalesLeadSetup();
 
         break;
+    
+         
     }
 
     this.GetSidebarOpen();
 
   }
+
   GetSidebarOpen() {
     var element = document.querySelector(".sidebar");
     element.classList.remove('open');
