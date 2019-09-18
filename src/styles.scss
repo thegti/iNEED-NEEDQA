@@ -572,7 +572,7 @@ textarea            {   width:50%; border:none; padding:0px 5px;
             }
 .foot-div ul li { list-style: none; display: inline-block}
 .foot-div li    { margin:0px 10px 0px 0px;}
-.highlite       {  font-family: 'coheadlinew08-lightregular'; font-size: 40px;
+.highlite       {  font-family: 'coheadlinew08-lightregular'; font-size: 37px;
 
     @media screen and (min-width:200px) and (max-width:399px){
         display:none;
@@ -594,12 +594,13 @@ textarea            {   width:50%; border:none; padding:0px 5px;
                     height: 30px; padding:0px 8px!important;
 
                     @media screen and (min-width:200px) and (max-width:399px){
-                        margin: 0px; padding: 0px 2px!important; height:20px;
+                        margin: 0px; padding: 0px 2px!important; height:20px; line-height:20px;
                     }
 
-                    @include media-breakpoint ('xs'){
+                    @media screen and (min-width:400px) and (max-width:600px){
                         line-height:37px; height:30px;
                     }
+
                 }
 
 .foot-links     {   flex-direction: row;    box-sizing: border-box; display: flex;
