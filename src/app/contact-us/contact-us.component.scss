@@ -25,13 +25,32 @@
         padding: 0 5px;
     }
     
-    .emailText
-    {
-        width: 12%; display: inline-block;
+    .emailText      {        width: 12%; display: inline-block;  
+
+        @media screen and (min-width: 960px) and (max-width: 1279px)  {
+            width:100%;
+        }
+
+        @media screen and (min-width: 600px) and (max-width: 959px)  {
+            width:100%;
+        }
+
+        @media screen and (max-width: 599px)  {
+            width:100%;
+        }
     }
-    .emailLink
-    {
-        width: 25% ;
-        display: inline-block;
+    .emailLink      {        width: 25% ;  display: inline-block; 
+
+        @media screen and (min-width: 960px) and (max-width: 1279px)  {
+            width:100%; margin: 2px 0px 0px;
+        }
+
+        @media screen and (min-width: 600px) and (max-width: 959px)  {
+            width:100%; margin: 2px 0px 0px;
+        }
+
+        @media screen and (max-width: 599px)  {
+            width:100%; margin: 2px 0px 0px;
+        }
     }
  
