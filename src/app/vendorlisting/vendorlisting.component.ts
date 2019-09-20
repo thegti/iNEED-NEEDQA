@@ -147,6 +147,7 @@ export class VendorlistingComponent implements OnInit {
 
     this.apiService.KeyWordGetAuto(reqbody).subscribe((data: Array<object>) => {
       this.keyword = data['Data'];
+      // console.log(this.keyword );
       this.keywordVendor = this.keyword;
       this.keyword.splice(0, 0, this.keywordDataNull);
       this.filteredVendorKeyword.next(this.keyword);
@@ -160,6 +161,7 @@ export class VendorlistingComponent implements OnInit {
   public GetVendorList(reqObj): void {
     this.vendorService.GetVendorList(reqObj).subscribe((data: Array<object>) => {
       this.vendorlist = data['Data'];
+    
       this.totalPages = this.vendorlist[0].TOTAL_ROW_COUNT / this.GlobalUrls.pageSize;
       if (this.totalPages > 1)
         this.showPagination = true;

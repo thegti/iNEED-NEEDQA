@@ -10,7 +10,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { IhaveComponent } from './ihave/ihave.component';
 import { SupplierRegistrationComponent } from './supplier-registration/supplier-registration.component';
 import { LoginComponent } from './login/login.component';
-import { TestComponent } from './test/test.component';
+
 import { EnquiryComponent } from './enquiry/enquiry.component';
 import {ActivateSupplierComponent} from './Supplier/activate-supplier/activate-supplier.component';
 import {VendorprofileComponent} from './vendorprofile/vendorprofile.component';
@@ -24,6 +24,8 @@ import {ProfiledefaultComponent} from './profiledefault/profiledefault.component
 // R and D works
 import {SearchautoComponent} from './RandD/searchauto/searchauto.component';
 import {ValidatorsComponent} from './RandD/validators/validators.component';
+import { TestComponent } from './RandD/test/test.component';
+import {DatereportComponent} from './RandD/datereport/datereport.component';
 
 
 
@@ -96,11 +98,7 @@ const appRoutes: Routes = [
         canActivate: [AuthGuard]
     },
    
-    {
-        path: 'test', 
-      
-        component: TestComponent
-    },
+   
     {
         path: 'profile', 
       
@@ -139,7 +137,17 @@ const appRoutes: Routes = [
         
         component: ValidatorsComponent
    
-    }
+    },
+    {
+        path: 'test', 
+      
+        component: TestComponent
+    },
+    {
+        path: 'date', 
+      
+        component: DatereportComponent
+    },
    
 ];
 

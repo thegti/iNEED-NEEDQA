@@ -31,7 +31,7 @@ import { AppMaterialModule } from './app-material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { EnquiryComponent } from './enquiry/enquiry.component';
-import { TestComponent } from './test/test.component';
+
 import { ActivateSupplierComponent } from './Supplier/activate-supplier/activate-supplier.component';
 import { VendorprofileComponent } from './vendorprofile/vendorprofile.component';
 import { NextdialogComponent } from './popup/nextdialog/nextdialog.component';
@@ -53,13 +53,19 @@ import{ReportComponent} from './reportModule/report/report.component';
 import {WebDataRocksPivot} from './reportModule/WebDataRocks/webdatarocks.angular4';
 import {SelectKeywordComponent} from './popup/select-keyword/select-keyword.component';
 import {ProfiledefaultComponent} from './profiledefault/profiledefault.component';
+import { EventEmitterService } from './event-emitter.service';
+import { NgxPayPalModule } from 'ngx-paypal';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MAT_DATE_LOCALE } from '@angular/material';
 
 // R and D works
 import { SearchautoComponent } from './RandD/searchauto/searchauto.component';
-import { ValidatorsComponent } from './RandD/validators/validators.component'
-import { EventEmitterService } from './event-emitter.service';
-import { NgxPayPalModule } from 'ngx-paypal';
+import { ValidatorsComponent } from './RandD/validators/validators.component';
+import { TestComponent } from './RandD/test/test.component';
+import {DatereportComponent} from './RandD/datereport/datereport.component';
 import { from } from 'rxjs';
+
+
 
 @NgModule({
     declarations: [
@@ -76,7 +82,7 @@ import { from } from 'rxjs';
         SupplierRegistrationComponent,
         DialogComponent,
         EnquiryComponent,
-        TestComponent,
+       
         ActivateSupplierComponent,
         VendorprofileComponent,
         NextdialogComponent,
@@ -92,12 +98,15 @@ import { from } from 'rxjs';
         WebDataRocksPivot,
         SelectKeywordComponent,
         ProfiledefaultComponent,
+        
 
 
         //R and D works
 
         SearchautoComponent,
         ValidatorsComponent,
+        TestComponent,
+        DatereportComponent,
         LoaderComponent,
         
 
@@ -139,12 +148,15 @@ import { from } from 'rxjs';
         ReactiveFormsModule,
         NgxPayPalModule,
         MatProgressSpinnerModule,
+        MatDatepickerModule
+    
        
     ],
     providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy },
                  EventEmitterService,
                  LoaderService,
-                 { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
+                 { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
+                 {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}//for convert time format to dd/mm/yy from mm/dd/yy format
                 ],
     bootstrap: [
         AppComponent

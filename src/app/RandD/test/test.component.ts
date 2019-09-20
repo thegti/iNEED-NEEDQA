@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { ApiService } from '../services/common/common.service';
+import { ApiService } from '../../services/common/common.service';
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl, FormGroupName, FormGroupDirective, NgForm, ValidatorFn } from '@angular/forms';
-import { SerachGroup } from '../utility/SearchConstants';
+import { SerachGroup } from '../../utility/SearchConstants';
 import { environment } from 'environments/environment';
 import { Observable,ReplaySubject } from 'rxjs';
-import { KeywordModel } from '../business-object/CommonDataObject';
+import { KeywordModel } from '../../business-object/CommonDataObject';
 import { map, startWith } from 'rxjs/operators';
 import { Subject } from 'rxjs/subject';
 import { Router, ActivatedRoute } from '@angular/router';

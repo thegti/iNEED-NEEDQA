@@ -1,90 +1,110 @@
 <div class="vendorlisting">
     <div class="report-section">
-        <div class="content">
-            <div class="heading">
-                <h2>reports</h2>
-            </div>
-            <div class="searchAdd">
-                <button (click)="enbleSearch()" class="forbut ">
-                    <mat-icon>search</mat-icon>
-                </button>
-            </div>
+      <div class="content">
+        <div class="heading">
+          <h2>reports</h2>
         </div>
-        <div class="horizontal-stepper-wrapper  myclass1" *ngIf="enableSearch">
-            <mat-horizontal-stepper class="myclass1" [linear]="true">
-                <mat-step [stepControl]="stprMain">
-                    <form fxLayout="column" [formGroup]="stprMain">
-
-
-                        <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto " class="h45 mob-div" tab-index=4>
-                            <mat-label class="repors-generate">reports generated</mat-label>
-                            <!-- <mat-form-field appearance="outline" fxFlex="50">
-
+        <div class="searchAdd">
+          <button (click)="enbleSearch()" class="forbut ">
+            <mat-icon>search</mat-icon>
+          </button>
+        </div>
+      </div>
+      <div class="horizontal-stepper-wrapper  myclass1" *ngIf="enableSearch">
+        <mat-horizontal-stepper class="myclass1" [linear]="true">
+          <mat-step [stepControl]="stprMain">
+            <form fxLayout="column" [formGroup]="stprMain">
+  
+  
+              <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto " class="h45 mob-div" tab-index=4>
+                <mat-label class="repors-generate">reports generated</mat-label>
+                <!-- <mat-form-field appearance="outline" fxFlex="50">
+  
                                 <select matNativeControl required>
                                     <option value="volvo">1000</option>
                                     <option value="saab">2000</option>
                                     <option value="mercedes">2500</option>
                                     <option value="audi">4000</option>
                                 </select>
-
-
+  
+  
                             </mat-form-field> -->
-                            <mat-form-field appearance="outline" fxFlex="50" class="min-max21" tab-index=12>
-                                <mat-select formControlName="ddlReport" placeholder="report">
-                                  <mat-option *ngFor="let type of reportList" [value]="type['RPT_PK']">
-                                    {{type['RPT_NAME']  }}
+                <mat-form-field appearance="outline"  fxFlex="50" class="min-max21 vendorreportname" tab-index=1>
+                  <mat-select formControlName="ddlReport" placeholder="report" (selectionChange)="onReportSelect()">
+                    <mat-option *ngFor="let type of reportList" [value]="type['RPT_PK']">
+                      {{type['RPT_NAME']  }}
+                    </mat-option>
+                  </mat-select>
+                 
+                                <mat-error  *ngIf=" formControls.ddlReport.errors && formControls.ddlReport.touched"
+                                        class="invalid-feedback">
+                                        <mat-error *ngIf="formControls.ddlReport.errors.required">report name is required
+                                        </mat-error>
+                                       
+                                    </mat-error>
+                </mat-form-field>
+              </div>
+             
+                <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto " class="h45 mob-div"  [hidden]="!reportFromDate">
+                  <mat-label>from date</mat-label>
+  
+                  <mat-form-field appearance="outline" fxFlex="50" tab-index=2>
+                      <input [matDatepicker]="picker1" class="todate" matInput placeholder="Date" autocomplete="off"
+                      name="txtFromDob" formControlName="txtFromDob">
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                  </mat-form-field>
+  
+                  <mat-label>To date</mat-label>
+                  <mat-form-field appearance="outline" fxFlex="50" tab-index=3 >
+                    <input [matDatepicker]="picker" class="todate" matInput placeholder="Date" autocomplete="off"
+                      name="txtToDob" formControlName="txtToDob">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+  
+                  </mat-form-field>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto " class="h45 mob-div" tab-index=3 [hidden]="!ReportVendorName" >
+                    <mat-label class="vendorname">vendor</mat-label>
+                  <mat-form-field appearance="outline" fxFlex="50" class="min-max21" tab-index=12>
+                        <mat-select formControlName="ddlVendorName" #singleSelect placeholder="select vendor">
+                          <ngx-mat-select-search [formControl]="VendorNameFilterCtrl" [placeholderLabel]="'Search Vendor...'"
+                            [noEntriesFoundLabel]="'No matching Vendor found'"></ngx-mat-select-search>
+                          <mat-option *ngFor="let vendorname of filteredVendorName | async" [value]="vendorname['VND_PK']">
+                            <!-- {{vendorname['VND_NAME_TEXT']}} -->
+                            {{vendorname['VND_NAME']}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+
+                    <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto " class="h45 mob-div" tab-index=4 [hidden]="!ReportPlanName" >
+                        <mat-label class="vendorname">plan</mat-label>
+                      <mat-form-field appearance="outline" fxFlex="50" class="min-max21" tab-index=12>
+                            <mat-select formControlName="ddlVendorPlan" #singleSelect placeholder="select plan">
+                                <mat-option *ngFor="let type of planList" [value]="type['PLN_PK']">
+                                    {{type['PLAN_NAME']  }}
                                   </mat-option>
-                                </mat-select>
-                                <!-- <mat-error
-                                  *ngIf="secondFormGroup.controls.ddlUnit.errors?.required && secondFormGroup.controls.ddlUnit.touched">
-                                  select uom
-                                </mat-error> -->
-                              </mat-form-field>
-                        </div>
-                        <div>
-                            <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto " class="h45 mob-div"
-                                tab-index=4>
-                                <mat-label>from date</mat-label>
-                                <mat-form-field appearance="outline" fxFlex="50">
-
-                                    <input matInput type="date" placeholder="MM/DD/YYYY" class="date"
-                                        formControlName="txtFromDob" (dateChange)="onChange($event)" required>
-
-                                    <mat-error>
-                                        Invalid date
-                                    </mat-error>
-
-                                </mat-form-field>
-
-
-                                <mat-label>To date</mat-label>
-                                <mat-form-field appearance="outline" fxFlex="50">
-
-                                    <input matInput type="date" placeholder="MM/DD/YYYY" class="date"
-                                        formControlName="txtToDob" (dateChange)="onDateChange($event)" required>
-
-                                    <mat-error>
-                                        Invalid date
-                                    </mat-error>
-
-                                </mat-form-field>
-                            </div>
-                            <button type="button" mat-raised-button (click)="filterReports()" class="min-max110">
-                                generate
-                            </button>
+                            </mat-select>
+                          </mat-form-field>
                         </div>
 
-
-                    </form>
-                </mat-step>
-            </mat-horizontal-stepper>
-        </div>
+                    <div>
+                <button type="button" mat-raised-button [disabled]="stprMain.controls['ddlReport'].invalid" (click)="filterReports()" class="min-max110">
+                  generate
+                </button>
+              </div>
+  
+            </form>
+          </mat-step>
+        </mat-horizontal-stepper>
+      </div>
     </div>
     <wbr-pivot #pivot1 [toolbar]="true" [width]="'100%'" [height]="500" [customizeCell]="onCustomizeCell"
-        (ready)="onPivotReady($event)" (reportcomplete)="onReportComplete()">
-
+      (ready)="onPivotReady($event)" (reportcomplete)="onReportComplete()">
+  
     </wbr-pivot>
-
-
-
-</div>
+  
+  
+  
+  </div>

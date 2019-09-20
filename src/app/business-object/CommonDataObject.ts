@@ -47,6 +47,12 @@ export interface ReportModel {
     FROM_DATE : String ; 
     TO_DATE : String ; 
 }
+export interface PlanModel {
+   
+    PLN_PK : number ;
+    PLAN_NAME : String ;
+   
+}
 
 
 
