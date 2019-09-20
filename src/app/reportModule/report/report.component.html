@@ -5,8 +5,8 @@
           <h2>reports</h2>
         </div>
         <div class="searchAdd">
-          <button (click)="enbleSearch()" class="forbut ">
-            <mat-icon>search</mat-icon>
+          <button (click)="enbleSearch()" class="forbut search">
+              <mat-icon>search</mat-icon>
           </button>
         </div>
       </div>
@@ -46,7 +46,7 @@
               </div>
              
                 <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto " class="h45 mob-div"  [hidden]="!reportFromDate">
-                  <mat-label>from date</mat-label>
+                  <mat-label class="fromdate">from date</mat-label>
   
                   <mat-form-field appearance="outline" fxFlex="50" tab-index=2>
                       <input [matDatepicker]="picker1" class="todate" matInput placeholder="Date" autocomplete="off"
@@ -55,7 +55,7 @@
                     <mat-datepicker #picker1></mat-datepicker>
                   </mat-form-field>
   
-                  <mat-label>To date</mat-label>
+                  <mat-label class="fromtodate">To date</mat-label>
                   <mat-form-field appearance="outline" fxFlex="50" tab-index=3 >
                     <input [matDatepicker]="picker" class="todate" matInput placeholder="Date" autocomplete="off"
                       name="txtToDob" formControlName="txtToDob">

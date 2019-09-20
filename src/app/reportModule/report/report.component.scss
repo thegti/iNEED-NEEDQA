@@ -19,7 +19,10 @@ mat-label
     h2
     {
         display:inline;
-        font-weight: bold;
+       color:#0074bc;
+        font-size: 34px;
+    font-family: 'coheadlinew08-lightregular', sans-serif;
+
     }
    .heading
     {
@@ -30,19 +33,19 @@ mat-label
     {
         text-align : center;
     }
-    .forbut
-    {
-        border : 0;
-        background-color: #0074bc;
-        width: 35px;
-        height: 27px;
-    }
-    .forbut .mat-icon {
-        display: unset;
-        color: #fff;
-        font-size: 1.3em;
-        font-weight: bold !important;
-    }
+    // .forbut
+    // {
+    //     border : 0;
+    //     background-color: #0074bc;
+    //     width: 35px;
+    //     height: 27px;
+    // }
+    // .forbut .mat-icon {
+    //     display: unset;
+    //     color: #fff;
+    //     font-size: 1.3em;
+    //     font-weight: bold !important;
+    // }
     .myclass1
     {
         margin-top: 30px;
@@ -56,7 +59,7 @@ mat-label
 }
 .repors-generate
 {
-    width: 23% !important;
+    width: 21% ;
 }
 .currentdate{
     color: #000;
@@ -78,5 +81,5 @@ mat-label
 .vendorname
 
 {
-    width: 15%;
+    width: 21%;
 }
