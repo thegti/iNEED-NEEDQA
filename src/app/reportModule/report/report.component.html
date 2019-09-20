@@ -17,7 +17,7 @@
   
   
               <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto " class="h45 mob-div" tab-index=4>
-                <mat-label class="repors-generate">reports generated</mat-label>
+                <mat-label>reports generated</mat-label>
                 <!-- <mat-form-field appearance="outline" fxFlex="50">
   
                                 <select matNativeControl required>
@@ -29,7 +29,7 @@
   
   
                             </mat-form-field> -->
-                <mat-form-field appearance="outline"  fxFlex="50" class="min-max21 vendorreportname" tab-index=1>
+                <mat-form-field appearance="outline"  fxFlex="50" class="min-max60 vendorreportname" tab-index=1>
                   <mat-select formControlName="ddlReport" placeholder="report" (selectionChange)="onReportSelect()">
                     <mat-option *ngFor="let type of reportList" [value]="type['RPT_PK']">
                       {{type['RPT_NAME']  }}
@@ -46,17 +46,17 @@
               </div>
              
                 <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto " class="h45 mob-div"  [hidden]="!reportFromDate">
-                  <mat-label class="fromdate">from date</mat-label>
+                  <mat-label >from date</mat-label>
   
-                  <mat-form-field appearance="outline" fxFlex="50" tab-index=2>
+                  <mat-form-field appearance="outline" fxFlex="50" tab-index=2 class="date-sectn">
                       <input [matDatepicker]="picker1" class="todate" matInput placeholder="Date" autocomplete="off"
                       name="txtFromDob" formControlName="txtFromDob">
                     <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                     <mat-datepicker #picker1></mat-datepicker>
                   </mat-form-field>
   
-                  <mat-label class="fromtodate">To date</mat-label>
-                  <mat-form-field appearance="outline" fxFlex="50" tab-index=3 >
+                  <mat-label class="todate-lbl">To date</mat-label>
+                  <mat-form-field appearance="outline" fxFlex="50" tab-index=3 class="date-sectn">
                     <input [matDatepicker]="picker" class="todate" matInput placeholder="Date" autocomplete="off"
                       name="txtToDob" formControlName="txtToDob">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -66,7 +66,7 @@
                 </div>
                 <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto " class="h45 mob-div" tab-index=3 [hidden]="!ReportVendorName" >
                     <mat-label class="vendorname">vendor</mat-label>
-                  <mat-form-field appearance="outline" fxFlex="50" class="min-max21" tab-index=12>
+                  <mat-form-field appearance="outline" fxFlex="50" class="min-max60" tab-index=12>
                         <mat-select formControlName="ddlVendorName" #singleSelect placeholder="select vendor">
                           <ngx-mat-select-search [formControl]="VendorNameFilterCtrl" [placeholderLabel]="'Search Vendor...'"
                             [noEntriesFoundLabel]="'No matching Vendor found'"></ngx-mat-select-search>
@@ -80,7 +80,7 @@
 
                     <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto " class="h45 mob-div" tab-index=4 [hidden]="!ReportPlanName" >
                         <mat-label class="vendorname">plan</mat-label>
-                      <mat-form-field appearance="outline" fxFlex="50" class="min-max21" tab-index=12>
+                      <mat-form-field appearance="outline" fxFlex="50" class="min-max60" tab-index=12>
                             <mat-select formControlName="ddlVendorPlan" #singleSelect placeholder="select plan">
                                 <mat-option *ngFor="let type of planList" [value]="type['PLN_PK']">
                                     {{type['PLAN_NAME']  }}
@@ -89,7 +89,7 @@
                           </mat-form-field>
                         </div>
 
-                    <div>
+                    <div fxLayout="row" fxFlex="1 0 auto" class="w77-4per" style="place-content: flex-end;">
                 <button type="button" mat-raised-button [disabled]="stprMain.controls['ddlReport'].invalid" (click)="filterReports()" class="min-max110">
                   generate
                 </button>

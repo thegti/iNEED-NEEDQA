@@ -1613,6 +1613,7 @@ fuse-sidebar.left-positioned {
 .w38per     {   width:38%!important;}
 .w49per     {   width:49%;}
 .w50per     {   width:50%;}
+.w77-4per   {   width:77.4%;}
 .w78per     {   width:78%;}
 .w85per     {   width:85%;}
 .w87per     {   width:87%;}
@@ -1632,6 +1633,8 @@ fuse-sidebar.left-positioned {
         min-width:95%!important; max-width:95%;
     }
 }
+
+.min-max60      {   min-width:60%!important; max-width:60%!important;}
 
 [disabled].min-max110     {   min-width: 110px!important;  max-width: 110px!important;}
 .min-max110     {   min-width: 110px!important;  max-width: 110px!important;}
@@ -1836,3 +1839,5 @@ fuse-sidebar    {
         .mat-icon   {   display: unset; color: #0074bc; font-size: 1.3em; font-weight: bold!important;}
     }
 }
+
+#wdr-toolbar-wrapper #wdr-toolbar li a svg  {   width:25px; height:25px;}

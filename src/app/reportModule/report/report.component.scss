@@ -10,29 +10,14 @@ mat-label
 .report-section
 {
     
-    .searchAdd
-    {
-        float: right;
+    .searchAdd      {    float: right;  display:inline;    }
 
-        display:inline;
-    }
-    h2
-    {
-        display:inline;
-       color:#0074bc;
-        font-size: 34px;
-    font-family: 'coheadlinew08-lightregular', sans-serif;
+    h2          {        display:inline;  color:#0074bc;   font-size: 34px;
+         font-family: 'coheadlinew08-lightregular', sans-serif;    }
 
-    }
-   .heading
-    {
-      display:inline;
-     
-    }
-    .content
-    {
-        text-align : center;
-    }
+   .heading         {   display:inline;}
+    
+   .content         {   text-align : center;    }
     // .forbut
     // {
     //     border : 0;
@@ -46,10 +31,14 @@ mat-label
     //     font-size: 1.3em;
     //     font-weight: bold !important;
     // }
-    .myclass1
-    {
-        margin-top: 30px;
-        padding-bottom: 15px;
+    .myclass1       {        margin-top: 10px;        padding-bottom: 15px;
+    
+        mat-label   {   min-width: 25%;   max-width: 25%; }
+
+        .date-sectn {   min-width: 20%!important;   max-width: 20%!important; }
+
+        .todate-lbl {   min-width: 15%;   max-width: 15%;}
+    
     }
    
 }
@@ -78,8 +67,6 @@ mat-label
 //     border:1px solid #000;
 //     width:50%;
 // }
-.vendorname
+.vendorname     {    width: 21%;}
 
-{
-    width: 21%;
-}
+
