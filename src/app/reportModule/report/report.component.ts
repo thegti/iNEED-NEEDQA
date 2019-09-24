@@ -485,9 +485,9 @@ export class ReportComponent {
        
         ],
         measures: [{
-          uniqueName: "LEADS_COUNT",
-          //aggregation: "sum",
-          grandTotalCaption: "Total Leads Count"
+          // uniqueName: "LEADS_COUNT",
+          // //aggregation: "sum",
+          // grandTotalCaption: "Total Leads Count"
         }],
       }
     });
@@ -588,9 +588,9 @@ export class ReportComponent {
           // }
         ],
         measures: [{
-          uniqueName: "LEADS_COUNT",
-          //aggregation: "sum",
-          grandTotalCaption: "Total Leads Count"
+          // uniqueName: "LEADS_COUNT",
+          // //aggregation: "sum",
+          // grandTotalCaption: "Total Leads Count"
         }],
       }
     });
@@ -632,19 +632,21 @@ export class ReportComponent {
           },
          {
           uniqueName:"PLAN_DATE" 
+         },
+         {
+          uniqueName:"PLAN_START_DATE" 
+         },
+         {
+          uniqueName:"PLAN_END_DATE" 
          }
           
           // {
           //   uniqueName: "Measures"
           // }
         ],
-        measures: [{
-         
-          uniqueName: "PLAN_NAME"
-         
-          },
+        measures: [
           {
-            uniqueName:"PLAN_DATE" 
+            // uniqueName:"PLAN_DATE" 
            }
           
         ],
