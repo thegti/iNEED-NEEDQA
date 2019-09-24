@@ -145,6 +145,7 @@ export class VendorprofileComponent implements OnInit {
     this.user = this.authService.getUserDetail();
     
     this.IsAdmin = this.user.ROL_PK == 1 ? true : false;
+    console.log(this.user.ROL_PK );
     this.GetVendor();
     // setTimeout(()=>{ // this will make the execution after the above boolean has changed
     //  

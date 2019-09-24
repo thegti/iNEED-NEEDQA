@@ -5,15 +5,15 @@
           <h2>reports</h2>
         </div>
         <div class="searchAdd">
-          <button (click)="enbleSearch()" class="forbut search">
+          <button (click)="EnbleSearch()" class="forbut search">
               <mat-icon>search</mat-icon>
           </button>
         </div>
       </div>
-      <div class="horizontal-stepper-wrapper  myclass1" *ngIf="enableSearch">
+      <div class="horizontal-stepper-wrapper  myclass1"  [hidden]="!toggleReport">
         <mat-horizontal-stepper class="myclass1" [linear]="true">
           <mat-step [stepControl]="stprMain">
-            <form fxLayout="column" [formGroup]="stprMain">
+            <form fxLayout="column" [formGroup]="stprMain" >
   
   
               <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto " class="h45 mob-div" tab-index=4>
@@ -50,15 +50,16 @@
   
                   <mat-form-field appearance="outline" fxFlex="50" tab-index=2 class="date-sectn">
                       <input [matDatepicker]="picker1" class="todate" matInput placeholder="Date" autocomplete="off"
-                      name="txtFromDob" formControlName="txtFromDob">
+                      name="txtFromDate" formControlName="txtFromDate">
                     <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                     <mat-datepicker #picker1></mat-datepicker>
+                    <!-- <input matInput type="date"   formControlName="txtFromDate"  (dateChange)="onChange($event)" required> -->
                   </mat-form-field>
   
                   <mat-label class="todate-lbl">To date</mat-label>
                   <mat-form-field appearance="outline" fxFlex="50" tab-index=3 class="date-sectn">
                     <input [matDatepicker]="picker" class="todate" matInput placeholder="Date" autocomplete="off"
-                      name="txtToDob" formControlName="txtToDob">
+                      name="txtToDate" formControlName="txtToDate">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
   

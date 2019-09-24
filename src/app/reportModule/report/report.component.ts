@@ -8,6 +8,7 @@ import { AuthService } from '../../authentication/auth.service';
 import { VendorService } from '../../services/vendor/vendor.service';
 import { ReportModel } from '../../business-object/CommonDataObject';
 import { ReplaySubject } from 'rxjs';
+import { GlobalUrl } from '../../utility/GlobalUrl';
 
 
 
@@ -18,8 +19,7 @@ import { ReplaySubject } from 'rxjs';
 })
 export class ReportComponent {
 
-  enableSearch: Boolean = false;
-  makesearch: Boolean = false;
+  // enableSearch: Boolean = false;
   stprMain: FormGroup;
   isdate: Boolean = false;
   isdatechange: Boolean = false;
@@ -34,6 +34,8 @@ export class ReportComponent {
   reportFromDate: boolean = false;
   ReportVendorName: boolean = false;
   ReportPlanName: boolean = false;
+  toggleReport: boolean = false;
+  dateFormat: string;
   // date: Date;
 
   public VendorNameFilterCtrl: FormControl = new FormControl();
@@ -53,7 +55,7 @@ export class ReportComponent {
 
   title = 'ReportDemo';
   onPivotReady(pivot: WebDataRocks.Pivot): void {
-    console.log("[ready] WebDataRocksPivot", this.child);
+    // console.log("[ready] WebDataRocksPivot", this.child);
   }
   reportData: string;
 
@@ -70,7 +72,7 @@ export class ReportComponent {
   }
 
   constructor(
-    private _formBuilder: FormBuilder, private apiService: ApiService, public authService: AuthService, private reportService: ReportService, private vendorService: VendorService,
+    private _formBuilder: FormBuilder, private apiService: ApiService, public authService: AuthService, private reportService: ReportService, private vendorService: VendorService, private GlobalUrls: GlobalUrl,
   ) {
   }
 
@@ -94,31 +96,38 @@ export class ReportComponent {
       ddlReport: ['', Validators.required,],
       ddlVendorName: [null],
       ddlVendorKeyword: [null],
-      txtFromDob: new FormControl(new Date(new Date().getFullYear(),
-      new Date().getMonth() - 1, 
-      new Date().getDate())), // 1 moth before the current date
-      txtToDob: new FormControl(new Date()), // Current Date
+      txtFromDate: new FormControl(new Date(new Date().getFullYear(),
+        new Date().getMonth(), 1, // 1 moth starting the current date
+        new Date().getDate())),
+      txtToDate: new FormControl(new Date()), // Current Date
       ddlVendorPlan: [null],
     });
   }
 
-  enbleSearch(): any {
-    this.enableSearch = true;
-    this.makesearch = false;
+  EnbleSearch(): any {
+    // this.enableSearch = true;
+    // this.reportFromDate = false;
+    // this.ReportVendorName = false;
+    // this.ReportPlanName = false;
+    // this.formControlsValidation();
+    this.toggleReport = !this.toggleReport;
   }
- 
+
   get formControls() { return this.stprMain.controls; }
 
   GetReports() {
     if (this.user.ROL_PK == 1) {
-      var reqObj = { 'RPT_TYPE': 1 };
+    
+      var reqObj = { 'RPT_TYPE': 2 };
+    
     }
     else {
-      var reqObj = { 'RPT_TYPE': 2 };
+      var reqObj = { 'RPT_TYPE': 1 };
+     
     }
     this.apiService.GetReports(reqObj).subscribe((data: Array<object>) => {
       this.reportList = data['Data'];
-      // console.log(this.reportList);
+
 
     });
 
@@ -129,7 +138,7 @@ export class ReportComponent {
 
     this.apiService.GetPlan(reqObj).subscribe((data: Array<object>) => {
       this.planList = data['Data'];
-      console.log(this.planList);
+
 
     });
 
@@ -161,6 +170,7 @@ export class ReportComponent {
       case 4:
         // key word list-adminwise
         this.AdminKeywordReport();
+        
 
         break;
       case 5:
@@ -184,12 +194,14 @@ export class ReportComponent {
 
 
     }
-    this.enableSearch = false;
-    this.reportFromDate = false;
-    this.ReportVendorName = false;
-    this.ReportPlanName = false;
-    this.formControlsValidation();
+    // this.enableSearch = true;
+    this.onReportSelect();
+    // this.reportFromDate = false;
+    // this.ReportVendorName = false;
+    // this.ReportPlanName = false;
+    this.toggleReport = false;
   }
+
   onReportSelect() {
     this.selectedReport = this.stprMain.value.ddlReport;
 
@@ -275,7 +287,7 @@ export class ReportComponent {
     };
     this.vendorService.VendorNameGetAuto(reqbody).subscribe((data: Array<object>) => {
       this.vendorname = data['Data'];
-      // console.log('t',this.vendorname);
+
       this.vendorname.splice(0, 0, this.vendorNameDataNull);
       this.filteredVendorName.next(this.vendorname);
     });
@@ -284,9 +296,9 @@ export class ReportComponent {
   VendorKeywordReport() {
     var reqObj = {
       // "VND_PK": this.user.VND_PK,
-      // "VND_PK": 1,
-      'FROM_DATE': this.stprMain.value.txtFromDob,
-      'TO_DATE': this.stprMain.value.txtToDob,
+
+      'FROM_DATE': this.GlobalUrls.ConvertDate(this.stprMain.value.txtFromDate),
+      'TO_DATE': this.GlobalUrls.ConvertDate(this.stprMain.value.txtToDate),
     };
 
     this.reportService.GetVendorKeywords(reqObj).subscribe((data: Array<object>) => {
@@ -325,15 +337,18 @@ export class ReportComponent {
 
   }
 
-  TotalReferalsMerchantReport() {
-    var reqObj = {
 
-      'FROM_DATE': this.stprMain.value.txtFromDob,
-      'TO_DATE': this.stprMain.value.txtToDob,
+  TotalReferalsMerchantReport() {
+
+    var reqObj = {
+      'FROM_DATE': this.GlobalUrls.ConvertDate(this.stprMain.value.txtFromDate),
+      'TO_DATE': this.GlobalUrls.ConvertDate(this.stprMain.value.txtToDate),
     };
-    //console.log(reqObj);
+
     this.reportService.GetTotalReferals(reqObj).subscribe((data: Array<object>) => {
+      console.log(reqObj);
       this.referalMerchantList = data['Data'];
+      console.log(this.referalMerchantList);
       this.BindReportReferalsMerchant(this.referalMerchantList);
     });
   }
@@ -367,12 +382,11 @@ export class ReportComponent {
   }
   TotalReferalsAdminReport() {
     var reqObj = {
-      'FROM_DATE': this.stprMain.value.txtFromDob,
-      'TO_DATE': this.stprMain.value.txtToDob,
-
+      'FROM_DATE': this.GlobalUrls.ConvertDate(this.stprMain.value.txtFromDate),
+      'TO_DATE': this.GlobalUrls.ConvertDate(this.stprMain.value.txtToDate),
 
     };
-    //console.log(reqObj);
+
     this.reportService.GetTotalReferalsAdmin(reqObj).subscribe((data: Array<object>) => {
       this.referalAdminList = data['Data'];
       this.BindReportReferalsAdmin(this.referalAdminList);
@@ -407,13 +421,11 @@ export class ReportComponent {
 
   }
   VendorDirectoryReport() {
-    var reqObj = {
-      "VND_PK": 1,
-
-    };
-    //console.log(reqObj);
+    var reqObj = { 'VND_PK': 1 };
+    
     this.reportService.GetVendorDirectory(reqObj).subscribe((data: Array<object>) => {
       this.referalAdminList = data['Data'];
+      console.log('dat',this.referalAdminList);
       this.BindReportVendorDirectory(this.referalAdminList);
     });
   }
@@ -445,13 +457,15 @@ export class ReportComponent {
     });
 
   }
+
+
   AdminKeywordReport() {
     var reqObj = {
       "VND_PK": 1,
-      'FROM_DATE': this.stprMain.value.txtFromDob,
-      'TO_DATE': this.stprMain.value.txtToDob,
+      'FROM_DATE': this.GlobalUrls.ConvertDate(this.stprMain.value.txtFromDate),
+      'TO_DATE': this.GlobalUrls.ConvertDate(this.stprMain.value.txtToDate),
     };
-    //console.log(reqObj);
+
     this.reportService.GetKeywordListAdmin(reqObj).subscribe((data: Array<object>) => {
       this.keywordList = data['Data'];
       this.BindReportAdminKeyword(this.keywordList);
@@ -491,7 +505,7 @@ export class ReportComponent {
       "PLN_PK": 9,
       "VND_PK": 1
     };
-    //console.log(reqObj);
+
     this.reportService.GetPlanwiseCompany(reqObj).subscribe((data: Array<object>) => {
       this.keywordList = data['Data'];
       this.BindReportPlanwiseCompany(this.keywordList);

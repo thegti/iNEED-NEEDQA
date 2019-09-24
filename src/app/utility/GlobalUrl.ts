@@ -12,5 +12,14 @@ export class GlobalUrl {
   public pageSize = 20;
   public MemberImgFolder = 'Upload/Attachments/';
 
+  ConvertDate(srDate) {
+    var dd = new Date(srDate).getDate();
+    var mm = new Date(srDate).getMonth() + 1;
+    var yy = new Date(srDate).getFullYear();
+    return (mm + '-' + dd + '-' + yy);
+
+  }
+
 
 }
+
