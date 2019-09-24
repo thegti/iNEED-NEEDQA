@@ -299,8 +299,7 @@ export class ReportComponent {
 
   VendorKeywordReport() {
     var reqObj = {
-      // "VND_PK": this.user.VND_PK,
-
+      "VND_PK": this.user.VND_PK,
       'FROM_DATE': this.GlobalUrls.ConvertDate(this.stprMain.value.txtFromDate),
       'TO_DATE': this.GlobalUrls.ConvertDate(this.stprMain.value.txtToDate),
     };
@@ -316,7 +315,7 @@ export class ReportComponent {
   BindReportVendorKeywords(rptdata) {
     this.child.webDataRocks.off("reportcomplete");
     this.child.webDataRocks.setReport({
-      options: { grid: { showFilter: false, showHierarchyCaptions: true } },
+      options: { grid: { showFilter: true, showHierarchyCaptions: true } },
       dataSource: {
         data: rptdata
       },
@@ -324,17 +323,11 @@ export class ReportComponent {
         rows: [
           {
             uniqueName: "KEYWORD",
-         
+            caption: "Keywords."
           }
         ],
-        columns: [
+        measures: [
           {
-            uniqueName: "KEYWORD"
-          },
-      
-
-        ],
-        measures: [{
           uniqueName: "LEADS_COUNT",
           //aggregation: "sum",
           grandTotalCaption: "Leads Count"
@@ -348,6 +341,7 @@ export class ReportComponent {
   TotalReferalsMerchantReport() {
 
     var reqObj = {
+      "VND_PK": this.user.VND_PK,
       'FROM_DATE': this.GlobalUrls.ConvertDate(this.stprMain.value.txtFromDate),
       'TO_DATE': this.GlobalUrls.ConvertDate(this.stprMain.value.txtToDate),
     };
@@ -355,7 +349,7 @@ export class ReportComponent {
     this.reportService.GetTotalReferals(reqObj).subscribe((data: Array<object>) => {
       // console.log(reqObj);
       this.referalMerchantList = data['Data'];
-     
+
       this.BindReportReferalsMerchant(this.referalMerchantList);
     });
   }
@@ -369,33 +363,41 @@ export class ReportComponent {
       slice: {
         rows: [
           {
-            uniqueName: "VENDOR_NAME ",
-            caption: "vendor."
-          }
+            uniqueName: "KEYWORD",
+            caption: "Keywords."
+          },
+        
         ],
         columns: [
-          {
-            uniqueName: "KEYWORD"
-          },
-          {
-            uniqueName: "NO_OF_DOWNLOADS "
-          },
-          {
-            uniqueName: "NO_OF_REFERALS  "
-          },
+          
+          // {
+          //   uniqueName: "NO_OF_DOWNLOADS"
+          // },
+          // {
+          //   uniqueName: "NO_OF_REFERALS"
+          // },
 
         ],
         measures: [{
-          uniqueName: "LEADS_COUNT",
+          uniqueName: "NO_OF_DOWNLOADS",
+          grandTotalCaption: "downloads"
           //aggregation: "sum",
-          grandTotalCaption: "Leads Count"
-        }],
+         
+        },
+        {
+          uniqueName: "NO_OF_REFERALS",
+          grandTotalCaption: "referals"
+        }
+      ],
+      
       }
     });
 
   }
   TotalReferalsAdminReport() {
+    this.selectedVendorPk = this.stprMain.value.ddlVendorName;
     var reqObj = {
+      "VND_PK": this.selectedVendorPk,
       'FROM_DATE': this.GlobalUrls.ConvertDate(this.stprMain.value.txtFromDate),
       'TO_DATE': this.GlobalUrls.ConvertDate(this.stprMain.value.txtToDate),
 
@@ -417,27 +419,30 @@ export class ReportComponent {
       slice: {
         rows: [
           {
-            uniqueName: "VENDOR_NAME ",
+            uniqueName: "VENDOR_NAME",
             caption: "vendor."
           }
         ],
         columns: [
           {
-            uniqueName: "KEYWORD "
+            uniqueName: "KEYWORD"
           },
           {
-            uniqueName: "NO_OF_DOWNLOADS "
+            uniqueName: "NO_OF_DOWNLOADS"
           },
           {
-            uniqueName: "NO_OF_REFERALS "
+            uniqueName: "NO_OF_REFERALS"
           },
 
         ],
-        measures: [{
-          uniqueName: "LEADS_COUNT",
-          //aggregation: "sum",
-          grandTotalCaption: "Leads Count"
-        }],
+        measures: [
+        {
+          uniqueName: "NO_OF_DOWNLOADS"
+        },
+        {
+          uniqueName: "NO_OF_REFERALS"
+        },
+      ],
       }
     });
 
@@ -500,7 +505,7 @@ export class ReportComponent {
  
     this.reportService.GetKeywordListAdmin(reqObj).subscribe((data: Array<object>) => {
       this.keywordList = data['Data'];
-   
+  
       this.BindReportAdminKeyword(this.keywordList);
     });
   }
@@ -564,6 +569,7 @@ export class ReportComponent {
             caption: "Vendors"
           },
           
+          
        
         ],
         columns: [
@@ -600,6 +606,7 @@ export class ReportComponent {
 
     this.reportService.GetSubscription(reqObj).subscribe((data: Array<object>) => {
       this.keywordList = data['Data'];
+      console.log("teet",this.keywordList);
       this.BindReportSubscription(this.keywordList);
     });
   }
@@ -623,25 +630,24 @@ export class ReportComponent {
           {
             uniqueName: "PLAN_NAME"
           },
-          {
-            uniqueName: "PLAN_DATE"
-          },
-          {
-            uniqueName: "PLAN_START_DATE"
-          },
-          {
-            uniqueName: "PLAN_END_DATE"
-          },
+         {
+          uniqueName:"PLAN_DATE" 
+         }
           
           // {
           //   uniqueName: "Measures"
           // }
         ],
         measures: [{
-          uniqueName: "LEADS_COUNT",
-          //aggregation: "sum",
-          grandTotalCaption: "Total Leads Count"
-        }],
+         
+          uniqueName: "PLAN_NAME"
+         
+          },
+          {
+            uniqueName:"PLAN_DATE" 
+           }
+          
+        ],
       }
     });
   }
