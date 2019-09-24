@@ -323,20 +323,15 @@ export class ReportComponent {
       slice: {
         rows: [
           {
-            uniqueName: "VENDOR_NAME: ",
-            caption: "vendor."
+            uniqueName: "KEYWORD",
+         
           }
         ],
         columns: [
           {
-            uniqueName: "KEYWORD: "
+            uniqueName: "KEYWORD"
           },
-          {
-            uniqueName: "NO_OF_DOWNLOADS:  "
-          },
-          {
-            uniqueName: "NO_OF_REFERALS:  "
-          },
+      
 
         ],
         measures: [{
@@ -374,19 +369,19 @@ export class ReportComponent {
       slice: {
         rows: [
           {
-            uniqueName: "VENDOR_NAME: ",
+            uniqueName: "VENDOR_NAME ",
             caption: "vendor."
           }
         ],
         columns: [
           {
-            uniqueName: "KEYWORD: "
+            uniqueName: "KEYWORD"
           },
           {
-            uniqueName: "NO_OF_DOWNLOADS:  "
+            uniqueName: "NO_OF_DOWNLOADS "
           },
           {
-            uniqueName: "NO_OF_REFERALS:  "
+            uniqueName: "NO_OF_REFERALS  "
           },
 
         ],
@@ -422,19 +417,19 @@ export class ReportComponent {
       slice: {
         rows: [
           {
-            uniqueName: "VENDOR_NAME: ",
+            uniqueName: "VENDOR_NAME ",
             caption: "vendor."
           }
         ],
         columns: [
           {
-            uniqueName: "KEYWORD: "
+            uniqueName: "KEYWORD "
           },
           {
-            uniqueName: "NO_OF_DOWNLOADS:  "
+            uniqueName: "NO_OF_DOWNLOADS "
           },
           {
-            uniqueName: "NO_OF_REFERALS:  "
+            uniqueName: "NO_OF_REFERALS "
           },
 
         ],
@@ -467,20 +462,20 @@ export class ReportComponent {
       slice: {
         rows: [
           {
-            uniqueName: "VND_NAME: ",
+            uniqueName: "VND_NAME",
             caption: "Vendors"
           }
         
         ],
         columns: [
           {
-            uniqueName: "VND_ADDRESS1: "
+            uniqueName: "VND_ADDRESS1"
           },
           {
-            uniqueName: "VND_EMAIL: "
+            uniqueName: "VND_EMAIL"
           },
           {
-            uniqueName: "VND_MOBILE: "
+            uniqueName: "VND_MOBILE"
           },
        
         ],
@@ -565,7 +560,7 @@ export class ReportComponent {
       slice: {
         rows: [
           {
-            uniqueName: "VENDOR_NAME: ",
+            uniqueName: "VENDOR_NAME",
             caption: "Vendors"
           },
           
@@ -573,13 +568,13 @@ export class ReportComponent {
         ],
         columns: [
           {
-            uniqueName: "PLAN_NAME: "
+            uniqueName: "PLAN_NAME"
           },
           {
-            uniqueName: "PLAN_START_DATE:  "
+            uniqueName: "PLAN_START_DATE"
           },
           {
-            uniqueName: "PLAN_END_DATE:  "
+            uniqueName: "PLAN_END_DATE"
           },
           
           // {
@@ -626,16 +621,16 @@ export class ReportComponent {
         ],
         columns: [
           {
-            uniqueName: "PLAN_NAME: "
+            uniqueName: "PLAN_NAME"
           },
           {
-            uniqueName: "PLAN_DATE:  "
+            uniqueName: "PLAN_DATE"
           },
           {
-            uniqueName: "PLAN_START_DATE:  "
+            uniqueName: "PLAN_START_DATE"
           },
           {
-            uniqueName: "PLAN_END_DATE:  "
+            uniqueName: "PLAN_END_DATE"
           },
           
           // {
