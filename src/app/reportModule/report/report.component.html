@@ -68,7 +68,7 @@
                 <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto " class="h45 mob-div" tab-index=3 [hidden]="!ReportVendorName" >
                     <mat-label class="vendorname">vendor</mat-label>
                   <mat-form-field appearance="outline" fxFlex="50" class="min-max60" tab-index=12>
-                        <mat-select formControlName="ddlVendorName" #singleSelect placeholder="select vendor">
+                        <mat-select formControlName="ddlVendorName" #singleSelect placeholder="--all--">
                           <ngx-mat-select-search [formControl]="VendorNameFilterCtrl" [placeholderLabel]="'Search Vendor...'"
                             [noEntriesFoundLabel]="'No matching Vendor found'"></ngx-mat-select-search>
                           <mat-option *ngFor="let vendorname of filteredVendorName | async" [value]="vendorname['VND_PK']">

@@ -33,3 +33,12 @@ export interface PlanwiseCompanyRPT {
     PLAN_END_DATE: Date;
 
 }
+export interface SubscriptionRPT {
+    ROW_NUMBER: number;
+    VENDOR_NAME: String;
+    PLAN_NAME: String;
+    PLAN_DATE: String;
+    PLAN_START_DATE: String;
+    PLAN_END_DATE: String;
+
+}

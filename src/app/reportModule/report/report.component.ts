@@ -9,6 +9,7 @@ import { VendorService } from '../../services/vendor/vendor.service';
 import { ReportModel } from '../../business-object/CommonDataObject';
 import { ReplaySubject } from 'rxjs';
 import { GlobalUrl } from '../../utility/GlobalUrl';
+// import {VendorDirectoryRPT} from '../../business-object/ReportObject';
 
 
 
@@ -36,6 +37,8 @@ export class ReportComponent {
   ReportPlanName: boolean = false;
   toggleReport: boolean = false;
   dateFormat: string;
+  selectedVendorPk: any;
+  // directoryAdminList:VendorDirectoryRPT[]=[]
   // date: Date;
 
   public VendorNameFilterCtrl: FormControl = new FormControl();
@@ -117,13 +120,13 @@ export class ReportComponent {
 
   GetReports() {
     if (this.user.ROL_PK == 1) {
-    
+
       var reqObj = { 'RPT_TYPE': 2 };
-    
+
     }
     else {
       var reqObj = { 'RPT_TYPE': 1 };
-     
+
     }
     this.apiService.GetReports(reqObj).subscribe((data: Array<object>) => {
       this.reportList = data['Data'];
@@ -170,7 +173,7 @@ export class ReportComponent {
       case 4:
         // key word list-adminwise
         this.AdminKeywordReport();
-        
+
 
         break;
       case 5:
@@ -184,6 +187,8 @@ export class ReportComponent {
         break;
       case 7:
         // list of merchants ( with subscription near  expiry -7 days)
+        this.GetSubscription();
+        
 
         break;
       case 8:
@@ -287,7 +292,6 @@ export class ReportComponent {
     };
     this.vendorService.VendorNameGetAuto(reqbody).subscribe((data: Array<object>) => {
       this.vendorname = data['Data'];
-
       this.vendorname.splice(0, 0, this.vendorNameDataNull);
       this.filteredVendorName.next(this.vendorname);
     });
@@ -303,6 +307,7 @@ export class ReportComponent {
 
     this.reportService.GetVendorKeywords(reqObj).subscribe((data: Array<object>) => {
       this.keywordList = data['Data'];
+     
       this.BindReportVendorKeywords(this.keywordList);
     });
   }
@@ -318,14 +323,21 @@ export class ReportComponent {
       slice: {
         rows: [
           {
-            uniqueName: "KEYWORD",
-            caption: "Keywords."
+            uniqueName: "VENDOR_NAME: ",
+            caption: "vendor."
           }
         ],
         columns: [
           {
-            uniqueName: "Measures"
-          }
+            uniqueName: "KEYWORD: "
+          },
+          {
+            uniqueName: "NO_OF_DOWNLOADS:  "
+          },
+          {
+            uniqueName: "NO_OF_REFERALS:  "
+          },
+
         ],
         measures: [{
           uniqueName: "LEADS_COUNT",
@@ -346,9 +358,9 @@ export class ReportComponent {
     };
 
     this.reportService.GetTotalReferals(reqObj).subscribe((data: Array<object>) => {
-      console.log(reqObj);
+      // console.log(reqObj);
       this.referalMerchantList = data['Data'];
-      console.log(this.referalMerchantList);
+     
       this.BindReportReferalsMerchant(this.referalMerchantList);
     });
   }
@@ -362,14 +374,21 @@ export class ReportComponent {
       slice: {
         rows: [
           {
-            uniqueName: "KEYWORD",
-            caption: "Keywords."
+            uniqueName: "VENDOR_NAME: ",
+            caption: "vendor."
           }
         ],
         columns: [
           {
-            uniqueName: "Measures"
-          }
+            uniqueName: "KEYWORD: "
+          },
+          {
+            uniqueName: "NO_OF_DOWNLOADS:  "
+          },
+          {
+            uniqueName: "NO_OF_REFERALS:  "
+          },
+
         ],
         measures: [{
           uniqueName: "LEADS_COUNT",
@@ -389,6 +408,7 @@ export class ReportComponent {
 
     this.reportService.GetTotalReferalsAdmin(reqObj).subscribe((data: Array<object>) => {
       this.referalAdminList = data['Data'];
+     
       this.BindReportReferalsAdmin(this.referalAdminList);
     });
   }
@@ -402,14 +422,21 @@ export class ReportComponent {
       slice: {
         rows: [
           {
-            uniqueName: "KEYWORD",
-            caption: "Keywords."
+            uniqueName: "VENDOR_NAME: ",
+            caption: "vendor."
           }
         ],
         columns: [
           {
-            uniqueName: "Measures"
-          }
+            uniqueName: "KEYWORD: "
+          },
+          {
+            uniqueName: "NO_OF_DOWNLOADS:  "
+          },
+          {
+            uniqueName: "NO_OF_REFERALS:  "
+          },
+
         ],
         measures: [{
           uniqueName: "LEADS_COUNT",
@@ -421,37 +448,46 @@ export class ReportComponent {
 
   }
   VendorDirectoryReport() {
-    var reqObj = { 'VND_PK': 1 };
-    
+    this.selectedVendorPk = this.stprMain.value.ddlVendorName;
+    var reqObj = { 'VND_PK': this.selectedVendorPk };
+   
     this.reportService.GetVendorDirectory(reqObj).subscribe((data: Array<object>) => {
-      this.referalAdminList = data['Data'];
-      console.log('dat',this.referalAdminList);
-      this.BindReportVendorDirectory(this.referalAdminList);
+      this.referalMerchantList = data['Data'];
+    
+      this.BindReportVendorDirectory(this.referalMerchantList);
     });
   }
   BindReportVendorDirectory(rptdata) {
     this.child.webDataRocks.off("reportcomplete");
     this.child.webDataRocks.setReport({
-      options: { grid: { showFilter: false, showHierarchyCaptions: true } },
+      options: { grid: { showFilter: true, showHierarchyCaptions: true } },
       dataSource: {
         data: rptdata
       },
       slice: {
         rows: [
           {
-            uniqueName: "KEYWORD",
-            caption: "Keywords."
+            uniqueName: "VND_NAME: ",
+            caption: "Vendors"
           }
+        
         ],
         columns: [
           {
-            uniqueName: "Measures"
-          }
+            uniqueName: "VND_ADDRESS1: "
+          },
+          {
+            uniqueName: "VND_EMAIL: "
+          },
+          {
+            uniqueName: "VND_MOBILE: "
+          },
+       
         ],
         measures: [{
           uniqueName: "LEADS_COUNT",
           //aggregation: "sum",
-          grandTotalCaption: "Leads Count"
+          grandTotalCaption: "Total Leads Count"
         }],
       }
     });
@@ -460,40 +496,48 @@ export class ReportComponent {
 
 
   AdminKeywordReport() {
+    this.selectedVendorPk = this.stprMain.value.ddlVendorName;
     var reqObj = {
-      "VND_PK": 1,
+      "VND_PK": this.selectedVendorPk,
       'FROM_DATE': this.GlobalUrls.ConvertDate(this.stprMain.value.txtFromDate),
       'TO_DATE': this.GlobalUrls.ConvertDate(this.stprMain.value.txtToDate),
     };
-
+ 
     this.reportService.GetKeywordListAdmin(reqObj).subscribe((data: Array<object>) => {
       this.keywordList = data['Data'];
+   
       this.BindReportAdminKeyword(this.keywordList);
     });
   }
   BindReportAdminKeyword(rptdata) {
     this.child.webDataRocks.off("reportcomplete");
     this.child.webDataRocks.setReport({
-      options: { grid: { showFilter: false, showHierarchyCaptions: true } },
+      options: { grid: { showFilter: true, showHierarchyCaptions: true } },
       dataSource: {
         data: rptdata
       },
       slice: {
         rows: [
           {
-            uniqueName: "KEYWORD",
-            caption: "Keywords."
-          }
+            uniqueName: "VENDOR_NAME",
+            caption: "Vendors"
+          },
+          
+       
         ],
         columns: [
           {
-            uniqueName: "Measures"
-          }
+            uniqueName: "KEYWORD"
+          },
+          
+          // {
+          //   uniqueName: "Measures"
+          // }
         ],
         measures: [{
           uniqueName: "LEADS_COUNT",
           //aggregation: "sum",
-          grandTotalCaption: "Leads Count"
+          grandTotalCaption: "Total Leads Count"
         }],
       }
     });
@@ -502,8 +546,8 @@ export class ReportComponent {
 
   PlanwiseCompanyReport() {
     var reqObj = {
-      "PLN_PK": 9,
-      "VND_PK": 1
+      "PLN_PK": this.stprMain.value.ddlVendorPlan,
+      "VND_PK": this.stprMain.value.ddlVendorName
     };
 
     this.reportService.GetPlanwiseCompany(reqObj).subscribe((data: Array<object>) => {
@@ -514,30 +558,97 @@ export class ReportComponent {
   BindReportPlanwiseCompany(rptdata) {
     this.child.webDataRocks.off("reportcomplete");
     this.child.webDataRocks.setReport({
-      options: { grid: { showFilter: false, showHierarchyCaptions: true } },
+      options: { grid: { showFilter: true, showHierarchyCaptions: true } },
       dataSource: {
         data: rptdata
       },
       slice: {
         rows: [
           {
-            uniqueName: "KEYWORD",
-            caption: "Keywords."
-          }
+            uniqueName: "VENDOR_NAME: ",
+            caption: "Vendors"
+          },
+          
+       
         ],
         columns: [
           {
-            uniqueName: "Measures"
-          }
+            uniqueName: "PLAN_NAME: "
+          },
+          {
+            uniqueName: "PLAN_START_DATE:  "
+          },
+          {
+            uniqueName: "PLAN_END_DATE:  "
+          },
+          
+          // {
+          //   uniqueName: "Measures"
+          // }
         ],
         measures: [{
           uniqueName: "LEADS_COUNT",
           //aggregation: "sum",
-          grandTotalCaption: "Leads Count"
+          grandTotalCaption: "Total Leads Count"
         }],
       }
     });
 
+  }
+
+
+  GetSubscription() {
+    this.selectedVendorPk = this.stprMain.value.ddlVendorName;
+    var reqObj = {
+      "VND_PK": this.selectedVendorPk,
+    };
+
+    this.reportService.GetSubscription(reqObj).subscribe((data: Array<object>) => {
+      this.keywordList = data['Data'];
+      this.BindReportSubscription(this.keywordList);
+    });
+  }
+  BindReportSubscription(rptdata) {
+    this.child.webDataRocks.off("reportcomplete");
+    this.child.webDataRocks.setReport({
+      options: { grid: { showFilter: true, showHierarchyCaptions: true } },
+      dataSource: {
+        data: rptdata
+      },
+      slice: {
+        rows: [
+          {
+            uniqueName: "VENDOR_NAME",
+            caption: "Vendors"
+          },
+          
+       
+        ],
+        columns: [
+          {
+            uniqueName: "PLAN_NAME: "
+          },
+          {
+            uniqueName: "PLAN_DATE:  "
+          },
+          {
+            uniqueName: "PLAN_START_DATE:  "
+          },
+          {
+            uniqueName: "PLAN_END_DATE:  "
+          },
+          
+          // {
+          //   uniqueName: "Measures"
+          // }
+        ],
+        measures: [{
+          uniqueName: "LEADS_COUNT",
+          //aggregation: "sum",
+          grandTotalCaption: "Total Leads Count"
+        }],
+      }
+    });
   }
 
 }

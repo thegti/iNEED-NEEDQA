@@ -9,6 +9,7 @@ import { TotalReferalsAdminRPT } from '../../business-object/ReportObject';
 import { VendorDirectoryRPT } from '../../business-object/ReportObject';
 import { ListOfKeywordsRPT } from '../../business-object/ReportObject';
 import {PlanwiseCompanyRPT} from '../../business-object/ReportObject';
+import {SubscriptionRPT} from '../../business-object/ReportObject';
 
 @Injectable({
     providedIn: 'root'
@@ -39,5 +40,8 @@ export class ReportService {
     }
     GetPlanwiseCompany(req): any {
         return this.httpClient.post<PlanwiseCompanyRPT>(`${this.baseUrl}api/Reports/GetPlanwiseCompany`, req, this.header);
+    }
+    GetSubscription(req): any {
+        return this.httpClient.post<SubscriptionRPT>(`${this.baseUrl}api/Reports/GetSubscription`, req, this.header);
     }
 }
