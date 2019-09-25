@@ -608,10 +608,12 @@ export class ReportComponent {
     var reqObj = {
       "VND_PK": this.selectedVendorPk,
     };
-
     this.reportService.GetSubscription(reqObj).subscribe((data: Array<object>) => {
       this.keywordList = data['Data'];
+<<<<<<< HEAD
       // console.log("teet",this.keywordList);
+=======
+>>>>>>> c488985a41f885b89b1191dd480163ec1ce054a9
       this.BindReportSubscription(this.keywordList);
     });
   }
