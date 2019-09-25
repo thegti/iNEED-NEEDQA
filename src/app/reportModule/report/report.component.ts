@@ -38,6 +38,7 @@ export class ReportComponent {
   toggleReport: boolean = false;
   dateFormat: string;
   selectedVendorPk: any;
+ 
   // directoryAdminList:VendorDirectoryRPT[]=[]
   // date: Date;
 
@@ -95,13 +96,13 @@ export class ReportComponent {
 
   }
   formControlsValidation() {
+    var date = new Date(); 
     this.stprMain = this._formBuilder.group({
       ddlReport: ['', Validators.required,],
       ddlVendorName: [null],
       ddlVendorKeyword: [null],
-      txtFromDate: new FormControl(new Date(new Date().getFullYear(),
-        new Date().getMonth(), 1, // 1 moth starting the current date
-        new Date().getDate())),
+      
+      txtFromDate: new FormControl( new Date(date.getFullYear(), date.getMonth(), 1)),
       txtToDate: new FormControl(new Date()), // Current Date
       ddlVendorPlan: [null],
     });
@@ -459,7 +460,7 @@ export class ReportComponent {
   //  console.log(reqObj);
     this.reportService.GetVendorDirectory(reqObj).subscribe((data: Array<object>) => {
       this.referalMerchantList = data['Data'];
-    console.log('m',this.referalMerchantList);
+    // console.log('m',this.referalMerchantList);
       this.BindReportVendorDirectory(this.referalMerchantList);
     });
   }
@@ -472,7 +473,7 @@ export class ReportComponent {
                          showGrandTotals: "off",
                          showFilter: true,
                          showHierarchyCaptions: true
-                        },datePattern:"dd/MM/yyy"
+                        }
                 },
         
       dataSource: {
@@ -520,10 +521,10 @@ export class ReportComponent {
       'FROM_DATE': this.GlobalUrls.ConvertDate(this.stprMain.value.txtFromDate),
       'TO_DATE': this.GlobalUrls.ConvertDate(this.stprMain.value.txtToDate),
     };
- 
+    // console.log('ad',reqObj);
     this.reportService.GetKeywordListAdmin(reqObj).subscribe((data: Array<object>) => {
       this.keywordList = data['Data'];
-  
+      // console.log('ad1',this.keywordList);
       this.BindReportAdminKeyword(this.keywordList);
     });
   }
@@ -586,7 +587,7 @@ export class ReportComponent {
                          showGrandTotals: "off",
                          showFilter: true,
                          showHierarchyCaptions: true 
-                        },datePattern:"dd/MM/yyy" 
+                        }
                 },
         
       dataSource: {
@@ -604,11 +605,11 @@ export class ReportComponent {
           },
        
          {
-          uniqueName:"PLAN_START_DATE" ,
+          uniqueName:"PLAN_START_DA" ,
           caption: "Plan Start Date"
          },
          {
-          uniqueName:"PLAN_END_DATE" ,
+          uniqueName:"PLAN_END_DA" ,
           caption: "Plan End Date"
          }
         ],
@@ -626,7 +627,7 @@ export class ReportComponent {
     };
     this.reportService.GetSubscription(reqObj).subscribe((data: Array<object>) => {
       this.keywordList = data['Data'];
-      // console.log("teet",this.keywordList);
+    //  console.log("teet",this.keywordList);
       this.BindReportSubscription(this.keywordList);
     });
   }
@@ -638,7 +639,8 @@ export class ReportComponent {
                          showGrandTotals: "off",
                          showFilter: true,
                          showHierarchyCaptions: true 
-                        },datePattern:"dd/MM/yyy" 
+                        }
+                        ,datePattern:"yyyy-MM-dd" 
                 },
         
       dataSource: {
@@ -648,7 +650,7 @@ export class ReportComponent {
         rows: [
           {
             uniqueName: "VENDOR_NAME",
-            caption: "Vendor Name"
+            caption: "Vendor Name#"
           },
           {
             uniqueName: "PLAN_NAME",
@@ -666,7 +668,7 @@ export class ReportComponent {
           uniqueName:"PLAN_END_DATE" ,
           caption: "Plan End Date"
          }
-        ],
+        ]
         
       }
     });

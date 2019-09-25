@@ -29,8 +29,8 @@ export interface ListOfKeywordsRPT {
 export interface PlanwiseCompanyRPT {
     VENDOR_NAME: String;
     PLAN_NAME: String;
-    PLAN_START_DATE: Date;
-    PLAN_END_DATE: Date;
+    PLAN_START_DATE: String;
+    PLAN_END_DATE: String;
 
 }
 export interface SubscriptionRPT {

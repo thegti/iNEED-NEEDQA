@@ -156,7 +156,7 @@ import { from } from 'rxjs';
                  EventEmitterService,
                  LoaderService,
                  { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
-                 {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}//for convert time format to dd/mm/yy from mm/dd/yy format
+                //  {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}//for convert time format to dd/mm/yy from mm/dd/yy format
                 ],
     bootstrap: [
         AppComponent
