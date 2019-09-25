@@ -439,10 +439,10 @@ export class ReportComponent {
         ],
         measures: [
         {
-          uniqueName: "NO_OF_DOWNLOADS" ,caption:"# of downloads",grandTotalCaption:"# of downloads"
+          uniqueName: "NO_OF_DOWNLOADS" ,caption:"no of downloads",grandTotalCaption:"no of downloads"
         },
         {
-          uniqueName: "NO_OF_REFERALS", caption:"# of referals",grandTotalCaption:"# of referals"
+          uniqueName: "NO_OF_REFERALS", caption:"no of referals",grandTotalCaption:"no of referals"
         },
       ],
 
@@ -459,7 +459,7 @@ export class ReportComponent {
   //  console.log(reqObj);
     this.reportService.GetVendorDirectory(reqObj).subscribe((data: Array<object>) => {
       this.referalMerchantList = data['Data'];
-    // console.log('m',this.referalMerchantList);
+    console.log('m',this.referalMerchantList);
       this.BindReportVendorDirectory(this.referalMerchantList);
     });
   }
@@ -471,27 +471,39 @@ export class ReportComponent {
                          showHeaders:false,
                          showGrandTotals: "off",
                          showFilter: true,
-                         showHierarchyCaptions: true 
-                        },datePattern:"dd/MM/yyy" 
+                         showHierarchyCaptions: true
+                        },datePattern:"dd/MM/yyy"
                 },
         
       dataSource: {
         data: rptdata
       },
+      // conditions: [{
+      //   formula: "#value == 'dddd'",
+      //   format: {
+      //       backgroundColor: "#C5E1A5",
+      //       color: "#000000",
+      //       fontFamily: "Arial",
+      //       fontSize: "12px"
+      //   }
+      // }],
       slice: {
         rows: [
           {
             uniqueName: "VND_NAME",
+            caption: "Name",
           },
           {
-            uniqueName: "VND_ADDRESS1"
+            uniqueName: "VND_ADDRESS1",
+            caption: "Address"
           },
-       
          {
-          uniqueName:"VND_EMAIL" 
+          uniqueName:"VND_EMAIL" ,
+          caption: "Email"
          },
          {
-          uniqueName:"VND_MOBILE" 
+          uniqueName:"VND_MOBILE",
+          caption: "Mobile"
          }
         ],
         
@@ -526,7 +538,7 @@ export class ReportComponent {
         rows: [
           {
             uniqueName: "VENDOR_NAME",
-            caption: "Vendors"
+            caption: "Vendor Name"
           },
           {
             uniqueName: "KEYWORD",
@@ -584,16 +596,20 @@ export class ReportComponent {
         rows: [
           {
             uniqueName: "VENDOR_NAME",
+            caption: "Vendor Name"
           },
           {
-            uniqueName: "PLAN_NAME"
+            uniqueName: "PLAN_NAME",
+            caption: "Plan Name"
           },
        
          {
-          uniqueName:"PLAN_START_DATE" 
+          uniqueName:"PLAN_START_DATE" ,
+          caption: "Plan Start Date"
          },
          {
-          uniqueName:"PLAN_END_DATE" 
+          uniqueName:"PLAN_END_DATE" ,
+          caption: "Plan End Date"
          }
         ],
         
@@ -610,10 +626,7 @@ export class ReportComponent {
     };
     this.reportService.GetSubscription(reqObj).subscribe((data: Array<object>) => {
       this.keywordList = data['Data'];
-<<<<<<< HEAD
       // console.log("teet",this.keywordList);
-=======
->>>>>>> c488985a41f885b89b1191dd480163ec1ce054a9
       this.BindReportSubscription(this.keywordList);
     });
   }
@@ -635,18 +648,23 @@ export class ReportComponent {
         rows: [
           {
             uniqueName: "VENDOR_NAME",
+            caption: "Vendor Name"
           },
           {
-            uniqueName: "PLAN_NAME"
+            uniqueName: "PLAN_NAME",
+            caption: "Plan Name"
           },
          {
-          uniqueName:"PLAN_DATE" 
+          uniqueName:"PLAN_DATE" ,
+          caption: "Plan Date"
          },
          {
-          uniqueName:"PLAN_START_DATE" 
+          uniqueName:"PLAN_START_DATE" ,
+          caption: "Plan Start Date"
          },
          {
-          uniqueName:"PLAN_END_DATE" 
+          uniqueName:"PLAN_END_DATE" ,
+          caption: "Plan End Date"
          }
         ],
         
