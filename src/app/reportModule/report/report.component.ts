@@ -356,7 +356,7 @@ export class ReportComponent {
   BindReportReferalsMerchant(rptdata) {
     this.child.webDataRocks.off("reportcomplete");
     this.child.webDataRocks.setReport({
-      options: { grid: { showFilter: false, showHierarchyCaptions: true } },
+      options: { grid: { showFilter: true, showHierarchyCaptions: true } },
       dataSource: {
         data: rptdata
       },
@@ -412,7 +412,7 @@ export class ReportComponent {
   BindReportReferalsAdmin(rptdata) {
     this.child.webDataRocks.off("reportcomplete");
     this.child.webDataRocks.setReport({
-      options: { grid: { showFilter: false, showHierarchyCaptions: true } },
+      options: { grid: { showFilter: true, showHierarchyCaptions: true } },
       dataSource: {
         data: rptdata
       },
@@ -421,18 +421,20 @@ export class ReportComponent {
           {
             uniqueName: "VENDOR_NAME",
             caption: "vendor."
-          }
+          },
+          {
+            uniqueName: "KEYWORD",
+            caption: "Keywords."
+          },
         ],
         columns: [
+          
           {
-            uniqueName: "KEYWORD"
+            uniqueName: "Measures"
           },
-          {
-            uniqueName: "NO_OF_DOWNLOADS"
-          },
-          {
-            uniqueName: "NO_OF_REFERALS"
-          },
+          // {
+          //   uniqueName: "NO_OF_REFERALS"
+          // },
 
         ],
         measures: [
@@ -443,17 +445,21 @@ export class ReportComponent {
           uniqueName: "NO_OF_REFERALS"
         },
       ],
+
+    
+
       }
     });
 
   }
+
   VendorDirectoryReport() {
     this.selectedVendorPk = this.stprMain.value.ddlVendorName;
     var reqObj = { 'VND_PK': this.selectedVendorPk };
-   
+   console.log(reqObj);
     this.reportService.GetVendorDirectory(reqObj).subscribe((data: Array<object>) => {
       this.referalMerchantList = data['Data'];
-    
+    console.log('m',this.referalMerchantList);
       this.BindReportVendorDirectory(this.referalMerchantList);
     });
   }
@@ -522,12 +528,15 @@ export class ReportComponent {
             uniqueName: "VENDOR_NAME",
             caption: "Vendors"
           },
-          
+          {
+            uniqueName: "KEYWORD",
+           
+          },
        
         ],
         columns: [
           {
-            uniqueName: "KEYWORD"
+            uniqueName: "Measures"
           },
           
           // {
@@ -549,10 +558,12 @@ export class ReportComponent {
       "PLN_PK": this.stprMain.value.ddlVendorPlan,
       "VND_PK": this.stprMain.value.ddlVendorName
     };
-
+    console.log(reqObj);
     this.reportService.GetPlanwiseCompany(reqObj).subscribe((data: Array<object>) => {
       this.keywordList = data['Data'];
+      console.log('p', this.keywordList);
       this.BindReportPlanwiseCompany(this.keywordList);
+  
     });
   }
   BindReportPlanwiseCompany(rptdata) {
@@ -569,29 +580,30 @@ export class ReportComponent {
             caption: "Vendors"
           },
           
-          
        
         ],
         columns: [
           {
             uniqueName: "PLAN_NAME"
           },
-          {
-            uniqueName: "PLAN_START_DATE"
-          },
-          {
-            uniqueName: "PLAN_END_DATE"
-          },
+        
+         {
+          uniqueName:"PLAN_START_DATE" 
+         },
+         {
+          uniqueName:"PLAN_END_DATE" 
+         }
           
           // {
           //   uniqueName: "Measures"
           // }
         ],
-        measures: [{
-          // uniqueName: "LEADS_COUNT",
-          // //aggregation: "sum",
-          // grandTotalCaption: "Total Leads Count"
-        }],
+        measures: [
+          {
+            // uniqueName:"PLAN_DATE" 
+           }
+          
+        ],
       }
     });
 
@@ -646,6 +658,7 @@ export class ReportComponent {
         ],
         measures: [
           {
+            
             // uniqueName:"PLAN_DATE" 
            }
           
