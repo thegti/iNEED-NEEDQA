@@ -615,17 +615,22 @@ export class ReportComponent {
     var reqObj = {
       "VND_PK": this.selectedVendorPk,
     };
-
     this.reportService.GetSubscription(reqObj).subscribe((data: Array<object>) => {
       this.keywordList = data['Data'];
-      console.log("teet",this.keywordList);
       this.BindReportSubscription(this.keywordList);
     });
   }
   BindReportSubscription(rptdata) {
     this.child.webDataRocks.off("reportcomplete");
     this.child.webDataRocks.setReport({
-      options: { grid: { showFilter: true, showHierarchyCaptions: true } },
+      options: { grid: { type: "flat",
+                         showHeaders:false,
+                         showGrandTotals: "off",
+                         showFilter: true,
+                         showHierarchyCaptions: true 
+                        },datePattern:"dd/MM/yyy" 
+                },
+        
       dataSource: {
         data: rptdata
       },
@@ -633,12 +638,7 @@ export class ReportComponent {
         rows: [
           {
             uniqueName: "VENDOR_NAME",
-            caption: "Vendors"
           },
-          
-       
-        ],
-        columns: [
           {
             uniqueName: "PLAN_NAME"
           },
@@ -651,18 +651,8 @@ export class ReportComponent {
          {
           uniqueName:"PLAN_END_DATE" 
          }
-          
-          // {
-          //   uniqueName: "Measures"
-          // }
         ],
-        measures: [
-          {
-            
-            // uniqueName:"PLAN_DATE" 
-           }
-          
-        ],
+        
       }
     });
   }
