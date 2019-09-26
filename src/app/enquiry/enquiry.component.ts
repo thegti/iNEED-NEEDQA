@@ -97,7 +97,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
     //     'VKW_KWORD': '--Select--',
 
     // }
-
+    enquiryCount: Array<Object>;
 
 
     SelectProductServiceDialogRef: MatDialogRef<SelectProducrServicedialogComponent>;
@@ -122,7 +122,8 @@ export class EnquiryComponent implements OnInit, OnDestroy {
     constructor(private apiService: ApiService, private enquiryService: EnquiryService,
         private authService: AuthService, public _matDialog: MatDialog,
         private _formBuilder: FormBuilder, private act_route: ActivatedRoute,
-        private sharedData: SharedData, private router: Router) {
+        private sharedData: SharedData, private router: Router,
+       ) {
         this.searchFilterCtrl.valueChanges
             .subscribe(() => {
                 this.filterSerach();

@@ -3,7 +3,7 @@
 <div class="page-layout simple fullwidth bgstring" fxLayout="column">
   <div class="banner-content" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-md="row" fxLayout.gt-sm="row"
     fxLayout.gt-xs="row">
-
+    
     <div [hidden]="!next" class="banner-lft">
       <h1>i need</h1>
       <mat-horizontal-stepper>
@@ -76,6 +76,7 @@
 
             <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto " class="h45 mob-div" tab-index=4>
               <mat-label>name</mat-label>
+               <!-- <mat-label><span class="referal-count">{{this.enquiryCount[0].REFERAL_COUNT}}</span></mat-label>  -->
               <mat-form-field appearance="outline" fxFlex="50">
 
                 <input matInput type="text" formControlName="txtName" placeholder="name" maxlength="30"

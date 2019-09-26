@@ -10,6 +10,7 @@ import { VendorDirectoryRPT } from '../../business-object/ReportObject';
 import { ListOfKeywordsRPT } from '../../business-object/ReportObject';
 import {PlanwiseCompanyRPT} from '../../business-object/ReportObject';
 import {SubscriptionRPT} from '../../business-object/ReportObject';
+import {EnquiryCout} from '../../business-object/ReportObject';
 
 @Injectable({
     providedIn: 'root'
@@ -44,4 +45,7 @@ export class ReportService {
     GetSubscription(req): any {
         return this.httpClient.post<SubscriptionRPT>(`${this.baseUrl}api/Reports/GetSubscription`, req, this.header);
     }
+    GetEnquiryCout(req): any {
+        return this.httpClient.post<EnquiryCout>(`${this.baseUrl}api/Reports/GetEnquiryCout`, req, this.header);
+      }
 }

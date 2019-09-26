@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ReportService } from '../../../services/report/report.service';
+import { GlobalUrl } from '../../../utility/GlobalUrl';
 
 @Component({
     selector   : 'footer',
@@ -8,11 +10,23 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class FooterComponent
 {
+    enquiryCount:any;
     /**
      * Constructor
      */
-    constructor(  private router: Router)
+    constructor(private router: Router,private reportService: ReportService,private GlobalUrls: GlobalUrl)
     {
     }
-  
+    ngOnInit() {
+        this.GetEnquiryCout();
+    }
+    GetEnquiryCout(){
+        var reqObj = {};
+
+        this.reportService.GetEnquiryCout(reqObj).subscribe((data: Array<object>) => {
+          this.enquiryCount = data['Data'];
+    
+    //    console.log(this.enquiryCount );
+        });
+}
 }
