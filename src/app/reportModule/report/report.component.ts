@@ -198,12 +198,22 @@ export class ReportComponent {
         // list of merchants ( with subscription near  expiry -7 days)
         this.GetSubscription();
 
-
-
         break;
       case 8:
         // merchants directory
         this.VendorDirectoryReport();
+
+        break;
+
+      case 9:
+        // enquiry list
+        this.GetEnquiryList();
+
+        break;
+
+      case 10:
+        // list of keywords-unregistered
+        this.GetKeywordUnregistered();
 
         break;
 
@@ -278,7 +288,20 @@ export class ReportComponent {
         this.reportFromDate = false;
         this.ReportPlanName = false;
         this.reset();
-
+        break;
+      case 9:
+        // enquiry list
+        this.ReportVendorName = false;
+        this.reportFromDate = true;
+        this.ReportPlanName = false;
+        this.reset();
+        break;
+      case 10:
+        // list of keywords-unregistered
+        this.ReportVendorName = false;
+        this.reportFromDate = false;
+        this.ReportPlanName = false;
+        this.reset();
         break;
     }
   }
@@ -585,7 +608,7 @@ export class ReportComponent {
     // console.log(reqObj);
     this.reportService.GetPlanwiseCompany(reqObj).subscribe((data: Array<object>) => {
       this.keywordList = data['Data'];
-      // console.log('p', this.keywordList);
+      console.log('p', this.keywordList);
       this.BindReportPlanwiseCompany(this.keywordList);
 
     });
@@ -616,7 +639,10 @@ export class ReportComponent {
             uniqueName: "PLAN_NAME",
             caption: "Plan Name"
           },
-
+          {
+            uniqueName: "PLAN_DA",
+            caption: "Plan Date "
+          },
           {
             uniqueName: "PLAN_START_DA",
             caption: "Plan Start Date "
@@ -666,7 +692,130 @@ export class ReportComponent {
         rows: [
           {
             uniqueName: "VENDOR_NAME",
-            caption: "Vendor Name#"
+            caption: "Vendor Name"
+          },
+          {
+            uniqueName: "PLAN_NAME",
+            caption: "Plan Name"
+          },
+          {
+            uniqueName: "PLAN_DATE",
+            caption: "Plan Date"
+          },
+          {
+            uniqueName: "PLAN_START_DATE",
+            caption: "Plan Start Date"
+          },
+          {
+            uniqueName: "PLAN_END_DATE",
+            caption: "Plan End Date"
+          }
+        ]
+
+      }
+    });
+  }
+
+
+  GetEnquiryList() {
+
+    var reqObj = {
+      'FROM_DATE': this.GlobalUrls.ConvertDate(this.stprMain.value.txtFromDate),
+      'TO_DATE': this.GlobalUrls.ConvertDate(this.stprMain.value.txtToDate),
+    };
+    console.log(reqObj);
+    this.reportService.GetEnquirList(reqObj).subscribe((data: Array<object>) => {
+      this.keywordList = data['Data'];
+       console.log("data",this.keywordList);
+      this.BindReportEnquiryList(this.keywordList);
+    });
+  }
+  BindReportEnquiryList(rptdata) {
+
+    this.child.webDataRocks.off("reportcomplete");
+    this.child.webDataRocks.setReport({
+      options: {
+        grid: {
+          type: "flat",
+          showHeaders: false,
+          showGrandTotals: "off",
+          showFilter: true,
+          showHierarchyCaptions: true
+        }
+        // ,datePattern:"yyyy-MM-dd" 
+      },
+
+      dataSource: {
+        data: rptdata
+      },
+      slice: {
+        rows: [
+          {
+            uniqueName: "ENQUIRY_NO",
+            caption: "Enqury No"
+          },
+          {
+            uniqueName: "ENQUIRY_DATE",
+            caption: "Enqury Date"
+          },
+          {
+            uniqueName: "KEYWORD",
+            caption: "Keyword"
+          },
+          {
+            uniqueName: "ENQUIRER",
+            caption: "Enquirer"
+          },
+          {
+            uniqueName: "EMAIL",
+            caption: "Email"
+          },
+          {
+            uniqueName: "MOBILE",
+            caption: "Mobile"
+          },
+          {
+            uniqueName: "ENQ_VALUE",
+            caption: "Enquiry Value"
+          }
+        ]
+
+      }
+    });
+  }
+
+  GetKeywordUnregistered() {
+
+    var reqObj = {};
+
+    // this.reportService.GetSubscription(reqObj).subscribe((data: Array<object>) => {
+    //   this.keywordList = data['Data'];
+    //   this.BindReportKeywordUnregistered(this.keywordList);
+    // });
+  }
+  BindReportKeywordUnregistered(rptdata) {
+
+    this.child.webDataRocks.off("reportcomplete");
+    this.child.webDataRocks.setReport({
+      options: {
+        grid: {
+          type: "flat",
+          showHeaders: false,
+          showGrandTotals: "off",
+          showFilter: true,
+          showHierarchyCaptions: true
+        }
+        // ,datePattern:"yyyy-MM-dd" 
+      },
+
+      dataSource: {
+        data: rptdata
+      },
+      slice: {
+        rows: [
+          {
+            uniqueName: "VENDOR_NAME",
+            caption: "Vendor Name"
           },
           {
             uniqueName: "PLAN_NAME",
