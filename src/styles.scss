@@ -55,7 +55,7 @@ input::-webkit-input-placeholder {
 }
 
 .mat-form-field-appearance-outline .mat-form-field-prefix, 
-        .mat-form-field-appearance-outline .mat-form-field-suffix   { position: absolute; right:0;}
+.mat-form-field-appearance-outline .mat-form-field-suffix   { position: absolute; right:0;}
 
 
 /* Header */
@@ -1799,7 +1799,7 @@ fuse-sidebar    {
 .mat-toolbar-row, .mat-toolbar-single-row    {   
 
     @media screen and (min-width:200px) and (max-width:399px){   
-        flex-direction:column!important; height: 60px!important;
+        flex-direction:column!important; height: 75px!important;
       }
 
       @media screen and (min-width:400px) and (max-width:600px)    {   
