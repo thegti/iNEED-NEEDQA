@@ -11,6 +11,7 @@ import { GlobalUrl } from '../../../utility/GlobalUrl';
 export class FooterComponent
 {
     enquiryCount:any;
+    loginButton:boolean=true;
     /**
      * Constructor
      */
@@ -29,4 +30,5 @@ export class FooterComponent
     //    console.log(this.enquiryCount );
         });
 }
+
 }
