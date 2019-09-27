@@ -16,7 +16,7 @@
             <form fxLayout="column" [formGroup]="stprMain" >
   
   
-              <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto " class="h45 mob-div" tab-index=4>
+              <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto " class="h45 report-mob-div" tab-index=4>
                 <mat-label>reports generated</mat-label>
                 <!-- <mat-form-field appearance="outline" fxFlex="50">
   
@@ -45,7 +45,7 @@
                 </mat-form-field>
               </div>
              
-                <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto " class="h45 mob-div"  [hidden]="!reportFromDate">
+                <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto " class="h45 report-mob-div"  [hidden]="!reportFromDate">
                   <mat-label >from date</mat-label>
   
                   <mat-form-field appearance="outline" fxFlex="50" tab-index=2 class="date-sectn">
@@ -65,7 +65,7 @@
   
                   </mat-form-field>
                 </div>
-                <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto " class="h45 mob-div" tab-index=3 [hidden]="!ReportVendorName" >
+                <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto " class="h45 report-mob-div" tab-index=3 [hidden]="!ReportVendorName" >
                     <mat-label class="vendorname">vendor</mat-label>
                   <mat-form-field appearance="outline" fxFlex="50" class="min-max60" tab-index=12>
                         <mat-select formControlName="ddlVendorName" #singleSelect placeholder="--all--">
@@ -79,7 +79,7 @@
                       </mat-form-field>
                     </div>
 
-                    <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto " class="h45 mob-div" tab-index=4 [hidden]="!ReportPlanName" >
+                    <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto " class="h45 report-mob-div" tab-index=4 [hidden]="!ReportPlanName" >
                         <mat-label class="vendorname">plan</mat-label>
                       <mat-form-field appearance="outline" fxFlex="50" class="min-max60" tab-index=12>
                             <mat-select formControlName="ddlVendorPlan" #singleSelect placeholder="select plan">

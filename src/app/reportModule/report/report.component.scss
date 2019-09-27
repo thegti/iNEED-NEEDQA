@@ -69,6 +69,15 @@ mat-label
 // }
 .vendorname     {    width: 21%;}
 
-// mat-form-field-suffix   {  background:red; }
+.report-mob-div    {  
+
+    @media screen and (min-width:200px) and (max-width:399px){   
+        flex-direction:column!important; height: 75px!important;
+      }
+
+      @media screen and (min-width:400px) and (max-width:600px)    {   
+        flex-direction:column!important; height: 70px!important;
+      }
+ }
 
 
