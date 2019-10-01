@@ -271,7 +271,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
                 // console.log('test',reqbody);
                 this.apiService.GenerateOtp(reqbody).subscribe((data: Array<object>) => {
                     this.sharedData.SetOTP(data['Data']['OTP']);
-                    // console.log(data['Data']['OTP']);
+                    console.log(data['Data']['OTP']);
                     this.OtpMsg = 'an otp has been sent to your ';
                     if (data['Data']['BY_MAIL'] == true && data['Data']['BY_SMS'] == true) {
                         this.OtpMsg = this.OtpMsg + 'mobile and email';
