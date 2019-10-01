@@ -33,11 +33,35 @@ mat-label
     // }
     .myclass1       {        margin-top: 10px;        padding-bottom: 15px;
     
-        mat-label   {   min-width: 25%;   max-width: 25%; }
+        mat-label   {   min-width: 25%;   max-width: 25%;
+        
+            @media screen and (min-width:200px) and (max-width:399px){   
+                min-width: 95%;   max-width: 95%;
+              }
+        }
 
-        .date-sectn {   min-width: 20%!important;   max-width: 20%!important; }
+        .date-sectn {   min-width: 20%!important;   max-width: 20%!important; 
 
-        .todate-lbl {   min-width: 15%;   max-width: 15%;}
+            @media screen and (min-width:200px) and (max-width:399px){   
+                min-width: 90%!important;   max-width: 90%!important;
+              }
+        
+              @media screen and (min-width:400px) and (max-width:600px)    {   
+                min-width: 90%!important;   max-width: 90%!important;
+              }
+        }
+
+        .todate-lbl {   min-width: 15%;   max-width: 15%;
+
+            @media screen and (min-width:200px) and (max-width:399px){   
+                min-width: 95%;   max-width: 95%;
+              }
+        
+              @media screen and (min-width:400px) and (max-width:600px)    {   
+                min-width: 95%;   max-width: 95%;
+              }
+        }
+        
     
     }
    
@@ -76,7 +100,12 @@ mat-label
       }
 
       @media screen and (min-width:400px) and (max-width:600px)    {   
-        flex-direction:column!important; height: 70px!important;
+        flex-direction:column!important; height: 75px!important;
+      }
+
+      .min-max60 {
+        min-width: 90% !important;
+        max-width: 90% !important;
       }
  }
 

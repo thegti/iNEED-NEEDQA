@@ -55,14 +55,14 @@
                     <mat-datepicker #picker1></mat-datepicker>
                     <!-- <input matInput type="date"   formControlName="txtFromDate"  (dateChange)="onChange($event)" required> -->
                   </mat-form-field>
-  
+ 
                   <mat-label class="todate-lbl">To date</mat-label>
                   <mat-form-field appearance="outline" fxFlex="50" tab-index=3 class="date-sectn">
                     <input [matDatepicker]="picker" class="todate" matInput placeholder="Date" autocomplete="off"
                       name="txtToDate" formControlName="txtToDate">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
-  
+
                   </mat-form-field>
                 </div>
                 <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto " class="h45 report-mob-div" tab-index=3 [hidden]="!ReportVendorName" >
