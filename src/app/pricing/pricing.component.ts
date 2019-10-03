@@ -5,6 +5,7 @@ import { PlanGetModel } from 'app/business-object/VendorObject';
 import { PlanService } from 'app/authentication/payment.service';
 import { IPlan } from '../authentication/payment.model';
 import { Router } from '@angular/router';
+import { AuthService } from '../authentication/auth.service';
 
 @Component({
   selector: 'app-pricing',
@@ -18,7 +19,8 @@ export class PricingComponent implements OnInit {
   secondFormGroup: FormGroup;
   public plans: PlanGetModel[];
   constructor(private _formBuilder: FormBuilder, private vendorService: VendorService
-    , private planService: PlanService, private router: Router) { }
+    , private planService: PlanService, private router: Router,
+    public authService: AuthService, ) { }
   ngOnInit() {
     // this.firstFormGroup = this._formBuilder.group({
     // });
@@ -26,19 +28,21 @@ export class PricingComponent implements OnInit {
   }
   PayementButton(index: number) {
 
-   
+
     this.curPlan = {
       "PLAN_NAME": this.plans[index].PLN_NAME,
       "PLAN_ID": this.plans[index].PLN_PK,
       "PLAN_VALUE": this.plans[index].DISPLAY_RATE
     };
-    this.planService.setPlan(this.curPlan).then(() => {
-      this.router.navigate(['/payment/']);
-    });
-
+    if (this.authService.isLoggedIn) {
+      this.planService.setPlan(this.curPlan).then(() => {
+        this.router.navigate(['/payment/']);
+      });
+    }
+    else {
+      this.router.navigate(['/login/']);
+    }
   }
-
-
 
   PlanGet() {
     var reqbody = {

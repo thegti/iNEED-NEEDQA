@@ -38,7 +38,7 @@ export class ReportComponent {
   toggleReport: boolean = false;
   dateFormat: string;
   selectedVendorPk: any;
- 
+
   // directoryAdminList:VendorDirectoryRPT[]=[]
   // date: Date;
 
@@ -96,13 +96,13 @@ export class ReportComponent {
 
   }
   formControlsValidation() {
-    var date = new Date(); 
+    var date = new Date();
     this.stprMain = this._formBuilder.group({
       ddlReport: ['', Validators.required,],
       ddlVendorName: [null],
       ddlVendorKeyword: [null],
-      
-      txtFromDate: new FormControl( new Date(date.getFullYear(), date.getMonth(), 1)),
+
+      txtFromDate: new FormControl(new Date(date.getFullYear(), date.getMonth(), 1)),
       txtToDate: new FormControl(new Date()), // Current Date
       ddlVendorPlan: [null],
     });
@@ -115,7 +115,9 @@ export class ReportComponent {
     // this.ReportPlanName = false;
     // this.formControlsValidation();
     this.toggleReport = !this.toggleReport;
+
   }
+
 
   get formControls() { return this.stprMain.controls; }
 
@@ -147,7 +149,13 @@ export class ReportComponent {
     });
 
   }
-
+  reset() { // after selecting each reports clear the fields
+    var date = new Date();
+    this.stprMain.controls.txtToDate.reset(new Date());
+    this.stprMain.controls.txtFromDate.reset(new Date(date.getFullYear(), date.getMonth(), 1));
+    this.stprMain.controls.ddlVendorName.reset();
+    this.stprMain.controls.ddlVendorPlan.reset();
+  }
 
   filterReports(): void {
 
@@ -189,7 +197,6 @@ export class ReportComponent {
       case 7:
         // list of merchants ( with subscription near  expiry -7 days)
         this.GetSubscription();
-        
 
         break;
       case 8:
@@ -198,10 +205,21 @@ export class ReportComponent {
 
         break;
 
+      case 9:
+        // enquiry list
+        this.GetEnquiryList();
+
+        break;
+
+      case 10:
+        // list of keywords-unregistered
+        this.GetKeywordUnregistered();
+
+        break;
 
     }
     // this.enableSearch = true;
-    this.onReportSelect();
+    //this.onReportSelect();
     // this.reportFromDate = false;
     // this.ReportVendorName = false;
     // this.ReportPlanName = false;
@@ -210,14 +228,14 @@ export class ReportComponent {
 
   onReportSelect() {
     this.selectedReport = this.stprMain.value.ddlReport;
-
+    // console.log(this.selectedReport);
     switch (this.selectedReport) {
       case 1:
 
         this.reportFromDate = true;
         this.ReportVendorName = false;
         this.ReportPlanName = false;
-
+        this.reset();
         //key word list-merchantwise
 
         break;
@@ -226,27 +244,28 @@ export class ReportComponent {
         this.reportFromDate = true;
         this.ReportVendorName = false;
         this.ReportPlanName = false;
-
+        this.reset();
         break;
       case 3:
         // total number of referrals-adminwise
         this.ReportVendorName = true;
         this.reportFromDate = false;
         this.ReportPlanName = false;
-
+        this.reset();
         break;
       case 4:
         // key word list-adminwise
         this.reportFromDate = true;
         this.ReportVendorName = true;
         this.ReportPlanName = false;
-
+        this.reset();
         break;
       case 5:
         // list of merchants-planwise
         this.reportFromDate = false;
         this.ReportVendorName = true;
         this.ReportPlanName = true;
+        this.reset();
 
         break;
       case 6:
@@ -254,22 +273,35 @@ export class ReportComponent {
         this.reportFromDate = false;
         this.ReportVendorName = false;
         this.ReportPlanName = false;
-
+        this.reset();
         break;
       case 7:
         // list of merchants ( with subscription near  expiry -7 days)
         this.ReportVendorName = true;
         this.reportFromDate = false;
         this.ReportPlanName = false;
-
+        this.reset();
         break;
       case 8:
         // merchants directory
         this.ReportVendorName = true;
         this.reportFromDate = false;
         this.ReportPlanName = false;
-
-
+        this.reset();
+        break;
+      case 9:
+        // enquiry list
+        this.ReportVendorName = false;
+        this.reportFromDate = true;
+        this.ReportPlanName = false;
+        this.reset();
+        break;
+      case 10:
+        // list of keywords-unregistered
+        this.ReportVendorName = false;
+        this.reportFromDate = false;
+        this.ReportPlanName = false;
+        this.reset();
         break;
     }
   }
@@ -307,7 +339,7 @@ export class ReportComponent {
 
     this.reportService.GetVendorKeywords(reqObj).subscribe((data: Array<object>) => {
       this.keywordList = data['Data'];
-     
+
       this.BindReportVendorKeywords(this.keywordList);
     });
   }
@@ -329,10 +361,10 @@ export class ReportComponent {
         ],
         measures: [
           {
-          uniqueName: "LEADS_COUNT",
-          //aggregation: "sum",
-          grandTotalCaption: "Leads Count"
-        }],
+            uniqueName: "LEADS_COUNT",
+            //aggregation: "sum",
+            grandTotalCaption: "Leads Count"
+          }],
       }
     });
 
@@ -367,10 +399,10 @@ export class ReportComponent {
             uniqueName: "KEYWORD",
             caption: "Keywords."
           },
-        
+
         ],
         columns: [
-          
+
           // {
           //   uniqueName: "NO_OF_DOWNLOADS"
           // },
@@ -383,14 +415,14 @@ export class ReportComponent {
           uniqueName: "NO_OF_DOWNLOADS",
           grandTotalCaption: "downloads"
           //aggregation: "sum",
-         
+
         },
         {
           uniqueName: "NO_OF_REFERALS",
           grandTotalCaption: "referals"
         }
-      ],
-      
+        ],
+
       }
     });
 
@@ -406,7 +438,7 @@ export class ReportComponent {
 
     this.reportService.GetTotalReferalsAdmin(reqObj).subscribe((data: Array<object>) => {
       this.referalAdminList = data['Data'];
-     
+
       this.BindReportReferalsAdmin(this.referalAdminList);
     });
   }
@@ -429,7 +461,7 @@ export class ReportComponent {
           },
         ],
         columns: [
-          
+
           {
             uniqueName: "Measures"
           },
@@ -439,15 +471,15 @@ export class ReportComponent {
 
         ],
         measures: [
-        {
-          uniqueName: "NO_OF_DOWNLOADS" ,caption:"no of downloads",grandTotalCaption:"no of downloads"
-        },
-        {
-          uniqueName: "NO_OF_REFERALS", caption:"no of referals",grandTotalCaption:"no of referals"
-        },
-      ],
+          {
+            uniqueName: "NO_OF_DOWNLOADS", caption: "no of downloads", grandTotalCaption: "no of downloads"
+          },
+          {
+            uniqueName: "NO_OF_REFERALS", caption: "no of referals", grandTotalCaption: "no of referals"
+          },
+        ],
 
-    
+
 
       }
     });
@@ -457,10 +489,10 @@ export class ReportComponent {
   VendorDirectoryReport() {
     this.selectedVendorPk = this.stprMain.value.ddlVendorName;
     var reqObj = { 'VND_PK': this.selectedVendorPk };
-  //  console.log(reqObj);
+    //  console.log(reqObj);
     this.reportService.GetVendorDirectory(reqObj).subscribe((data: Array<object>) => {
       this.referalMerchantList = data['Data'];
-    // console.log('m',this.referalMerchantList);
+      // console.log('m',this.referalMerchantList);
       this.BindReportVendorDirectory(this.referalMerchantList);
     });
   }
@@ -468,14 +500,16 @@ export class ReportComponent {
 
     this.child.webDataRocks.off("reportcomplete");
     this.child.webDataRocks.setReport({
-      options: { grid: { type: "flat",
-                         showHeaders:false,
-                         showGrandTotals: "off",
-                         showFilter: true,
-                         showHierarchyCaptions: true
-                        }
-                },
-        
+      options: {
+        grid: {
+          type: "flat",
+          showHeaders: false,
+          showGrandTotals: "off",
+          showFilter: true,
+          showHierarchyCaptions: true
+        }
+      },
+
       dataSource: {
         data: rptdata
       },
@@ -498,16 +532,16 @@ export class ReportComponent {
             uniqueName: "VND_ADDRESS1",
             caption: "Address"
           },
-         {
-          uniqueName:"VND_EMAIL" ,
-          caption: "Email"
-         },
-         {
-          uniqueName:"VND_MOBILE",
-          caption: "Mobile"
-         }
+          {
+            uniqueName: "VND_EMAIL",
+            caption: "Email"
+          },
+          {
+            uniqueName: "VND_MOBILE",
+            caption: "Mobile"
+          }
         ],
-        
+
       }
     });
 
@@ -543,15 +577,15 @@ export class ReportComponent {
           },
           {
             uniqueName: "KEYWORD",
-           
+
           },
-       
+
         ],
         columns: [
           {
             uniqueName: "Measures"
           },
-          
+
           // {
           //   uniqueName: "Measures"
           // }
@@ -574,22 +608,24 @@ export class ReportComponent {
     // console.log(reqObj);
     this.reportService.GetPlanwiseCompany(reqObj).subscribe((data: Array<object>) => {
       this.keywordList = data['Data'];
-      // console.log('p', this.keywordList);
+      console.log('p', this.keywordList);
       this.BindReportPlanwiseCompany(this.keywordList);
-  
+
     });
   }
   BindReportPlanwiseCompany(rptdata) {
     this.child.webDataRocks.off("reportcomplete");
     this.child.webDataRocks.setReport({
-      options: { grid: { type: "flat",
-                         showHeaders:false,
-                         showGrandTotals: "off",
-                         showFilter: true,
-                         showHierarchyCaptions: true 
-                        }
-                },
-        
+      options: {
+        grid: {
+          type: "flat",
+          showHeaders: false,
+          showGrandTotals: "off",
+          showFilter: true,
+          showHierarchyCaptions: true
+        }
+      },
+
       dataSource: {
         data: rptdata
       },
@@ -603,17 +639,20 @@ export class ReportComponent {
             uniqueName: "PLAN_NAME",
             caption: "Plan Name"
           },
-       
-         {
-          uniqueName:"PLAN_START_DA" ,
-          caption: "Plan Start Date"
-         },
-         {
-          uniqueName:"PLAN_END_DA" ,
-          caption: "Plan End Date"
-         }
+          {
+            uniqueName: "PLAN_DA",
+            caption: "Plan Date "
+          },
+          {
+            uniqueName: "PLAN_START_DA",
+            caption: "Plan Start Date "
+          },
+          {
+            uniqueName: "PLAN_END_DA",
+            caption: "Plan End Date "
+          }
         ],
-        
+
       }
     });
 
@@ -627,22 +666,25 @@ export class ReportComponent {
     };
     this.reportService.GetSubscription(reqObj).subscribe((data: Array<object>) => {
       this.keywordList = data['Data'];
-    //  console.log("teet",this.keywordList);
+      //  console.log("teet",this.keywordList);
       this.BindReportSubscription(this.keywordList);
     });
   }
   BindReportSubscription(rptdata) {
+
     this.child.webDataRocks.off("reportcomplete");
     this.child.webDataRocks.setReport({
-      options: { grid: { type: "flat",
-                         showHeaders:false,
-                         showGrandTotals: "off",
-                         showFilter: true,
-                         showHierarchyCaptions: true 
-                        }
-                        ,datePattern:"yyyy-MM-dd" 
-                },
-        
+      options: {
+        grid: {
+          type: "flat",
+          showHeaders: false,
+          showGrandTotals: "off",
+          showFilter: true,
+          showHierarchyCaptions: true
+        }
+        // ,datePattern:"yyyy-MM-dd" 
+      },
+
       dataSource: {
         data: rptdata
       },
@@ -650,26 +692,149 @@ export class ReportComponent {
         rows: [
           {
             uniqueName: "VENDOR_NAME",
-            caption: "Vendor Name#"
+            caption: "Vendor Name"
           },
           {
             uniqueName: "PLAN_NAME",
             caption: "Plan Name"
           },
-         {
-          uniqueName:"PLAN_DATE" ,
-          caption: "Plan Date"
-         },
-         {
-          uniqueName:"PLAN_START_DATE" ,
-          caption: "Plan Start Date"
-         },
-         {
-          uniqueName:"PLAN_END_DATE" ,
-          caption: "Plan End Date"
-         }
+          {
+            uniqueName: "PLAN_DATE",
+            caption: "Plan Date"
+          },
+          {
+            uniqueName: "PLAN_START_DATE",
+            caption: "Plan Start Date"
+          },
+          {
+            uniqueName: "PLAN_END_DATE",
+            caption: "Plan End Date"
+          }
         ]
-        
+
+      }
+    });
+  }
+
+
+  GetEnquiryList() {
+
+    var reqObj = {
+      'FROM_DATE': this.GlobalUrls.ConvertDate(this.stprMain.value.txtFromDate),
+      'TO_DATE': this.GlobalUrls.ConvertDate(this.stprMain.value.txtToDate),
+    };
+    console.log(reqObj);
+    this.reportService.GetEnquirList(reqObj).subscribe((data: Array<object>) => {
+      this.keywordList = data['Data'];
+       console.log("data",this.keywordList);
+      this.BindReportEnquiryList(this.keywordList);
+    });
+  }
+  BindReportEnquiryList(rptdata) {
+
+    this.child.webDataRocks.off("reportcomplete");
+    this.child.webDataRocks.setReport({
+      options: {
+        grid: {
+          type: "flat",
+          showHeaders: false,
+          showGrandTotals: "off",
+          showFilter: true,
+          showHierarchyCaptions: true
+        }
+        // ,datePattern:"yyyy-MM-dd" 
+      },
+
+      dataSource: {
+        data: rptdata
+      },
+      slice: {
+        rows: [
+          {
+            uniqueName: "ENQUIRY_NO",
+            caption: "Enqury No"
+          },
+          {
+            uniqueName: "ENQUIRY_DATE",
+            caption: "Enqury Date"
+          },
+          {
+            uniqueName: "KEYWORD",
+            caption: "Keyword"
+          },
+          {
+            uniqueName: "ENQUIRER",
+            caption: "Enquirer"
+          },
+          {
+            uniqueName: "EMAIL",
+            caption: "Email"
+          },
+          {
+            uniqueName: "MOBILE",
+            caption: "Mobile"
+          },
+          {
+            uniqueName: "ENQ_VALUE",
+            caption: "Enquiry Value"
+          }
+        ]
+
+      }
+    });
+  }
+
+  GetKeywordUnregistered() {
+
+    var reqObj = {};
+
+    // this.reportService.GetSubscription(reqObj).subscribe((data: Array<object>) => {
+    //   this.keywordList = data['Data'];
+    //   this.BindReportKeywordUnregistered(this.keywordList);
+    // });
+  }
+  BindReportKeywordUnregistered(rptdata) {
+
+    this.child.webDataRocks.off("reportcomplete");
+    this.child.webDataRocks.setReport({
+      options: {
+        grid: {
+          type: "flat",
+          showHeaders: false,
+          showGrandTotals: "off",
+          showFilter: true,
+          showHierarchyCaptions: true
+        }
+        // ,datePattern:"yyyy-MM-dd" 
+      },
+
+      dataSource: {
+        data: rptdata
+      },
+      slice: {
+        rows: [
+          {
+            uniqueName: "VENDOR_NAME",
+            caption: "Vendor Name"
+          },
+          {
+            uniqueName: "PLAN_NAME",
+            caption: "Plan Name"
+          },
+          {
+            uniqueName: "PLAN_DATE",
+            caption: "Plan Date"
+          },
+          {
+            uniqueName: "PLAN_START_DATE",
+            caption: "Plan Start Date"
+          },
+          {
+            uniqueName: "PLAN_END_DATE",
+            caption: "Plan End Date"
+          }
+        ]
+
       }
     });
   }

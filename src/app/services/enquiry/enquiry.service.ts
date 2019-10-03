@@ -36,4 +36,5 @@ export class EnquiryService {
   GetPdfDaysLeft(req): any {
     return this.httpClient.post<EnquiryDaysLeftModel>(`${this.baseUrl}api/Enquiry/GetPdfDaysLeft`, req, this.header);
   }
+
 }

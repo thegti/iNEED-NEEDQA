@@ -10,7 +10,7 @@ mat-label
 .report-section
 {
     
-    .searchAdd      {    float: right;  display:inline;    }
+    .searchAdd      {    /*float: right;*/  display:inline;    }
 
     h2          {        display:inline;  color:#0074bc;   font-size: 34px;
          font-family: 'coheadlinew08-lightregular', sans-serif;    }
@@ -33,11 +33,35 @@ mat-label
     // }
     .myclass1       {        margin-top: 10px;        padding-bottom: 15px;
     
-        mat-label   {   min-width: 25%;   max-width: 25%; }
+        mat-label   {   min-width: 25%;   max-width: 25%;
+        
+            @media screen and (min-width:200px) and (max-width:399px){   
+                min-width: 95%;   max-width: 95%;
+              }
+        }
 
-        .date-sectn {   min-width: 20%!important;   max-width: 20%!important; }
+        .date-sectn {   min-width: 20%!important;   max-width: 20%!important; 
 
-        .todate-lbl {   min-width: 15%;   max-width: 15%;}
+            @media screen and (min-width:200px) and (max-width:399px){   
+                min-width: 90%!important;   max-width: 90%!important;
+              }
+        
+              @media screen and (min-width:400px) and (max-width:600px)    {   
+                min-width: 90%!important;   max-width: 90%!important;
+              }
+        }
+
+        .todate-lbl {   min-width: 15%;   max-width: 15%;
+
+            @media screen and (min-width:200px) and (max-width:399px){   
+                min-width: 95%;   max-width: 95%;
+              }
+        
+              @media screen and (min-width:400px) and (max-width:600px)    {   
+                min-width: 95%;   max-width: 95%;
+              }
+        }
+        
     
     }
    
@@ -58,7 +82,7 @@ mat-label
 }
 
 .todate{
-    padding: 0 !important;
+    /*padding: 0 !important;*/  position: relative;    bottom: 11px;
     // color: #fff !important;
     
 }
@@ -68,5 +92,21 @@ mat-label
 //     width:50%;
 // }
 .vendorname     {    width: 21%;}
+
+.report-mob-div    {  
+
+    @media screen and (min-width:200px) and (max-width:399px){   
+        flex-direction:column!important; height: 75px!important;
+      }
+
+      @media screen and (min-width:400px) and (max-width:600px)    {   
+        flex-direction:column!important; height: 75px!important;
+      }
+
+      .min-max60 {
+        min-width: 90% !important;
+        max-width: 90% !important;
+      }
+ }
 
 

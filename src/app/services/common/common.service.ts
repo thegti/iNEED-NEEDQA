@@ -67,4 +67,5 @@ GetReports(req): any {
 GetPlan(req): any {
    return this.httpClient.post<PlanModel>(`${this.baseUrl}api/Common/GetPlan`, req, this.header);
 }
+
 }

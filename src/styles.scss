@@ -54,6 +54,9 @@ input::-webkit-input-placeholder {
     }
 }
 
+.mat-form-field-appearance-outline .mat-form-field-prefix, 
+.mat-form-field-appearance-outline .mat-form-field-suffix   { position: absolute; right:0;}
+
 
 /* Header */
 .head-container {   width:100%; padding:35px 10px 15px; box-sizing: border-box;
@@ -553,7 +556,7 @@ textarea            {   width:50%; border:none; padding:0px 5px;
 /* Footer */
 .foot-div       { font-family: 'coheadlinew08-lightregular', sans-serif;   
     color: #0074bc!important; font-size:14px;
-    padding:11px 0px 0px 6%!important; height:62px!important;
+    padding:0px 0px 0px 6%!important; height:62px!important;
                 @include media-breakpoint ('xs'){
                     margin:0px!important;
                 } 
@@ -1248,6 +1251,10 @@ fuse-sidebar.left-positioned {
         mat-label   {   margin:0px; line-height: 15px;}
         .mat-form-field-appearance-outline .mat-form-field-flex {   padding: 0 .75em 0 0.5em;}
 
+        
+
+        
+
         .mat-form-field-wrapper {   
             .mat-form-field-flex    {  
                 .mat-form-field-infix    {  line-height:15px;  
@@ -1255,6 +1262,7 @@ fuse-sidebar.left-positioned {
                     @media screen and (min-width:200px) and (max-width:399px)
                     {       width:100%;  }
                 }
+               
              }
         }
         
@@ -1539,8 +1547,8 @@ fuse-sidebar.left-positioned {
 }
 .watsap-icn:hover   {   transform: scale(0.9);}
 
-.gti-logo   {  flex-direction: row;   box-sizing: border-box;  display: flex; max-height: 100%;
-     place-content: center flex-end;  align-items: center;  width: 100%;  color:#aaa; 
+.gti-logo   {  width:20%; flex-direction: row;   box-sizing: border-box;  display: flex; max-height: 100%;
+     place-content: center flex-end;  align-items: center;   color:#aaa; 
      margin:0px 10px 0px 0px; font-size:11px;
 
      @media screen and (min-width:200px) and (max-width:399px){
@@ -1791,7 +1799,7 @@ fuse-sidebar    {
 .mat-toolbar-row, .mat-toolbar-single-row    {   
 
     @media screen and (min-width:200px) and (max-width:399px){   
-        flex-direction:column!important; height: 60px!important;
+        flex-direction:column!important; height: 75px!important;
       }
 
       @media screen and (min-width:400px) and (max-width:600px)    {   

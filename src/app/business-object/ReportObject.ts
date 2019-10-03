@@ -42,3 +42,18 @@ export interface SubscriptionRPT {
     PLAN_END_DATE: String;
 
 }
+export interface EnquiryCout {
+    REFERAL_COUNT: number;
+
+}
+export interface EnquiryList {
+    ROW_NUMBER: number,
+    ENQUIRY_NO: String,
+    ENQUIRY_DATE: String,
+    KEYWORD: String,
+    ENQUIRER: String,
+    EMAIL: String,
+    MOBILE: String,
+    ENQ_VALUE: number
+
+}
