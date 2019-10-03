@@ -506,7 +506,8 @@ export class EnquiryComponent implements OnInit, OnDestroy {
             }
         var reqbody = {
             'VKW_KWORD_TYPE': groups,
-            'AUTO_SEARCH': search
+            'AUTO_SEARCH': search,
+            'DISABLE_OVERLAY' : 'true'
         };
 
         this.apiService.KeyWordGetAuto(reqbody).subscribe((data: Array<object>) => {
