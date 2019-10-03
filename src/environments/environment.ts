@@ -5,10 +5,10 @@
 export const environment = {
     production: true,
     hmr: false,
-    baseUrl: 'http://202.88.227.185/NEEDQAAPI/',
+    // baseUrl: 'http://202.88.227.185/NEEDQAAPI/',
     //Live
 
-    // baseUrl: 'http://need.qa/needapi/',
+    baseUrl: 'http://need.qa/needapi/',
     //buildpath    ng build --aot --base-href /
     DefaultCountry: 5,
     DefaultCountryCode: "+974",

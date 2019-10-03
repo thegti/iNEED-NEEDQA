@@ -17,11 +17,12 @@ export class AuthService {
   private result = new Subject<boolean>();
   header = { headers: { Authorization: `Bearer ${this.getToken}` } };
   countryID: any;
+  userEmail: String;
   redirectUrl: string;
   private user: User;
   loginStatus: EventEmitter<boolean> = new EventEmitter<boolean>();
   authChange = new Subject<boolean>();
-  LoginVendor : number;
+  LoginVendor: number;
   baseUrl = environment.baseUrl;
   constructor(
     private GlobalUrls: GlobalUrl,
@@ -88,28 +89,27 @@ export class AuthService {
   }
   public getUserEmail() {
 
+    this.userEmail = '';
     if (sessionStorage.getItem('user')) {
       this.user = <User>JSON.parse(sessionStorage.getItem('user'));
-      return this.user[0].VND_EMAIL;
-
-    } else {
-      return null;
+      if (this.user != null)
+        this.userEmail = this.user[0].VND_EMAIL;
     }
+    return this.userEmail;
   }
-  public defaultVendorPk()
-  {
+  public defaultVendorPk() {
     if (sessionStorage.getItem('user')) {
       this.user = <User>JSON.parse(sessionStorage.getItem('user'));
       // this.LoginVendor=this.user[0].VND_PK;
       return this.user[0].VND_PK;
-     
+
 
     } else {
       return null;
     }
   }
-  
- 
+
+
 
   public get isLoggedIn(): Boolean {
     return !!sessionStorage.getItem('user');

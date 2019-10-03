@@ -480,7 +480,8 @@ export class EnquiryComponent implements OnInit, OnDestroy {
             }
         var reqbody = {
             'CON_GROUP': group,
-            'AUTO_SEARCH': search
+            'AUTO_SEARCH': search,
+            'DISABLE_OVERLAY' : 'true'
         };
 
         this.apiService.ConstGetAuto(reqbody).subscribe((data: Array<object>) => {
@@ -503,11 +504,13 @@ export class EnquiryComponent implements OnInit, OnDestroy {
         else
             if (this.selectedKeyword == 2) {
                 groups = SerachGroup.Services;
-                //   this.secondFormGroup.get('txtQuantity').setValue('1');
+                  this.secondFormGroup.get('txtQuantity').setValue('1');
             }
         var reqbody = {
             'VKW_KWORD_TYPE': groups,
-            'AUTO_SEARCH': search
+            'AUTO_SEARCH': search,
+            'DISABLE_OVERLAY' : 'true'
+
         };
 
         this.apiService.KeyWordGetAuto(reqbody).subscribe((data: Array<object>) => {
