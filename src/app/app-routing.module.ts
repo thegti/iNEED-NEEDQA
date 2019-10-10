@@ -22,10 +22,10 @@ import{ReportComponent} from './reportModule/report/report.component';
 import {ProfiledefaultComponent} from './profiledefault/profiledefault.component';
 
 // R and D works
-import {SearchautoComponent} from './RandD/searchauto/searchauto.component';
-import {ValidatorsComponent} from './RandD/validators/validators.component';
-import { TestComponent } from './RandD/test/test.component';
-import {DatereportComponent} from './RandD/datereport/datereport.component';
+// import {SearchautoComponent} from './RandD/searchauto/searchauto.component';
+// import {ValidatorsComponent} from './RandD/validators/validators.component';
+// import { TestComponent } from './RandD/test/test.component';
+// import {DatereportComponent} from './RandD/datereport/datereport.component';
 
 
 
@@ -126,28 +126,28 @@ const appRoutes: Routes = [
     },
     // R and D works
 
-    {
-        path: 'searchauto', 
+    // {
+    //     path: 'searchauto', 
         
-        component: SearchautoComponent
+    //     component: SearchautoComponent
    
-    },
-    {
-        path: 'validation', 
+    // },
+    // {
+    //     path: 'validation', 
         
-        component: ValidatorsComponent
+    //     component: ValidatorsComponent
    
-    },
-    {
-        path: 'test', 
+    // },
+    // {
+    //     path: 'test', 
       
-        component: TestComponent
-    },
-    {
-        path: 'date', 
+    //     component: TestComponent
+    // },
+    // {
+    //     path: 'date', 
       
-        component: DatereportComponent
-    },
+    //     component: DatereportComponent
+    // },
    
 ];
 

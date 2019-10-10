@@ -163,7 +163,8 @@ export class EnquiryComponent implements OnInit, OnDestroy {
             ddlsearch: [''],
             ddllocation: ['', Validators.required],
             txtName: ['', [Validators.required, Validators.minLength(3)]],
-            txtEmail: ['', [Validators.required, Validators.email, Validators.maxLength(50)]],
+            txtEmail: ['', [Validators.required,Validators.maxLength(100)]],
+            // txtEmail: ['', [Validators.required, Validators.email, Validators.maxLength(50)]],
             txtMobile: ['', [Validators.required, Validators.pattern(this.mobnumPattern)]],
 
 
@@ -271,7 +272,7 @@ export class EnquiryComponent implements OnInit, OnDestroy {
                 // console.log('test',reqbody);
                 this.apiService.GenerateOtp(reqbody).subscribe((data: Array<object>) => {
                     this.sharedData.SetOTP(data['Data']['OTP']);
-                    console.log(data['Data']['OTP']);
+                    // console.log(data['Data']['OTP']);
                     this.OtpMsg = 'an otp has been sent to your ';
                     if (data['Data']['BY_MAIL'] == true && data['Data']['BY_SMS'] == true) {
                         this.OtpMsg = this.OtpMsg + 'mobile and email';
@@ -505,12 +506,12 @@ export class EnquiryComponent implements OnInit, OnDestroy {
             if (this.selectedKeyword == 2) {
                 groups = SerachGroup.Services;
                   this.secondFormGroup.get('txtQuantity').setValue('1');
+                 
             }
         var reqbody = {
             'VKW_KWORD_TYPE': groups,
             'AUTO_SEARCH': search,
             'DISABLE_OVERLAY' : 'true'
-
         };
 
         this.apiService.KeyWordGetAuto(reqbody).subscribe((data: Array<object>) => {
@@ -555,7 +556,8 @@ export class EnquiryComponent implements OnInit, OnDestroy {
             ddlsearch: [''],
             ddllocation: ['', Validators.required],
             txtName: ['', [Validators.required, Validators.minLength(3)]],
-            txtEmail: [''],
+            txtEmail: ['', [Validators.required,Validators.maxLength(100)]],
+            // txtEmail: [''],
             txtMobile: ['', [Validators.pattern('^(?=.*[0-9])[- +()0-9]+$'), Validators.minLength(10), Validators.maxLength(12)]],
             txtOTP: ['', Validators.required]
         });

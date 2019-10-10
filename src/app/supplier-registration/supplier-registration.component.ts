@@ -70,6 +70,7 @@ export class SupplierRegistrationComponent implements OnInit, OnDestroy {
             txtMobile: ['', [Validators.pattern('^(?=.*[0-9])[- +()0-9]+$'), Validators.minLength(6), Validators.maxLength(12)]],
             //   txtMobile: ['',Validators.required,[Validators.pattern('^(?=.*[0-9])[- +()0-9]+$'),Validators.minLength(10),Validators.maxLength(12)]],
             txtEmail: ['', [Validators.email, Validators.maxLength(50)]],
+            // txtEmail: ['', [Validators.required,Validators.maxLength(100)]],
             txtPassword: ['', [Validators.minLength(6), Validators.maxLength(20)]],
             txtQIDText: [''],
             isTosRead: [false, Validators.pattern('true')]
@@ -252,6 +253,7 @@ export class SupplierRegistrationComponent implements OnInit, OnDestroy {
             ddlCountry: ['', Validators.required],
             txtMobile: ['', [Validators.pattern('^(?=.*[0-9])[- +()0-9]+$'), Validators.minLength(6), Validators.maxLength(12)]],
             txtEmail: ['', Validators.email],
+            // txtEmail: ['', [Validators.required,Validators.maxLength(100)]],
             txtPassword: ['', Validators.minLength(6)],
             txtQIDText: ['']
         });

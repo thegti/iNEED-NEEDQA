@@ -2,10 +2,12 @@
   <div class="tableclass table-list">
 
     <button (click)="enbleSearch()" class="forbut search">
-      <mat-icon>search</mat-icon>
+        <i class="material-icons mat-icon">search</i>
+      <!-- <mat-icon>search</mat-icon> -->
     </button>
     <button *ngIf="enableAll" class="back-arrw" (click)="getAllVendors()">
-      <mat-icon>arrow_back_ios</mat-icon>
+        <i class="material-icons mat-icon">arrow_back_ios</i>
+      <!-- <mat-icon>arrow_back_ios</mat-icon> -->
     </button>
     <div class="horizontal-stepper-wrapper  myclass1" *ngIf="enableSearch">
       <mat-horizontal-stepper class="myclass1" [linear]="true">
@@ -84,7 +86,8 @@
         <th mat-header-cell *matHeaderCellDef class="txt-rgt"></th>
         <td mat-cell *matCellDef="let row" class="txt-rgt" style="width:10%">
           <button (click)="forEdit(row)" class="btn-list w22 btn-margn">
-            <mat-icon>edit</mat-icon>
+            <!-- <mat-icon>edit</mat-icon> -->
+            <i class="material-icons mat-icon">edit</i>
           </button>
 
         </td>
@@ -96,10 +99,12 @@
     </table>
     <div class="paginatn-footr" *ngIf="showPagination">
       <button type="button" class="forprev" [disabled]="disableprev" (click)="previousPage()">
-        <mat-icon>keyboard_arrow_left</mat-icon>
+        <!-- <mat-icon>keyboard_arrow_left</mat-icon> -->
+        <i class="material-icons mat-icon">keyboard_arrow_left</i>
       </button>
       <button type="button" class="fornext" [disabled]="disablenext" (click)="nextPage()">
-        <mat-icon>keyboard_arrow_right</mat-icon>
+        <!-- <mat-icon>keyboard_arrow_right</mat-icon> -->
+        <i class="material-icons mat-icon">keyboard_arrow_right</i>
       </button>
     </div>
 

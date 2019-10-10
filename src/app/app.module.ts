@@ -59,10 +59,10 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MAT_DATE_LOCALE } from '@angular/material';
 
 // R and D works
-import { SearchautoComponent } from './RandD/searchauto/searchauto.component';
-import { ValidatorsComponent } from './RandD/validators/validators.component';
-import { TestComponent } from './RandD/test/test.component';
-import {DatereportComponent} from './RandD/datereport/datereport.component';
+// import { SearchautoComponent } from './RandD/searchauto/searchauto.component';
+// import { ValidatorsComponent } from './RandD/validators/validators.component';
+// import { TestComponent } from './RandD/test/test.component';
+// import {DatereportComponent} from './RandD/datereport/datereport.component';
 import { from } from 'rxjs';
 
 
@@ -98,16 +98,16 @@ import { from } from 'rxjs';
         WebDataRocksPivot,
         SelectKeywordComponent,
         ProfiledefaultComponent,
-        
+         LoaderComponent,
 
 
         //R and D works
 
-        SearchautoComponent,
-        ValidatorsComponent,
-        TestComponent,
-        DatereportComponent,
-        LoaderComponent,
+        // SearchautoComponent,
+        // ValidatorsComponent,
+        // TestComponent,
+        // DatereportComponent,
+        
         
 
     ],

@@ -133,7 +133,8 @@ export class VendorprofileComponent implements OnInit {
 
     this.firstFormGroup = this._formBuilder.group({
       txtKeyword: [''],
-      txtEmail: ['', [Validators.required, Validators.email]],
+      txtEmail: ['', [Validators.required, Validators.email, Validators.maxLength(100)]],
+      // txtEmail: ['', [Validators.required, Validators.email]],
       txtSalesMobile: ['', [ Validators.pattern(this.mobnumPattern)]],
       txtWhatsappMobile: ['', [Validators.pattern(this.mobnumPattern)]],
       //  ChkMobile : [this.IsMobileUse],
@@ -475,7 +476,7 @@ export class VendorprofileComponent implements OnInit {
   GetSalesLeadSetup() {
     var reqObj = { "VST_VENDOR": this.user.VND_PK };
     this.firstFormGroup = this._formBuilder.group({
-      txtEmail: ['', [Validators.required, Validators.email, Validators.maxLength(50)]],
+      txtEmail: ['', [Validators.required, Validators.email, Validators.maxLength(100)]],
       txtSalesMobile: ['', [ Validators.pattern(this.mobnumPattern)]],
       txtWhatsappMobile: ['', [Validators.pattern(this.mobnumPattern)]],
       txtKeyword: [''],
@@ -520,7 +521,7 @@ export class VendorprofileComponent implements OnInit {
         // this.vendorMinValue=this.salesLeadList[0].VST_MIN_VALUE;
 
         this.firstFormGroup = this._formBuilder.group({
-          txtEmail: [this.salesLeadList[0].VST_EMAIL, [Validators.required, Validators.email, Validators.maxLength(50)]],
+          txtEmail: [this.salesLeadList[0].VST_EMAIL, [Validators.required, Validators.email, Validators.maxLength(100)]],
           txtSalesMobile: [this.salesLeadList[0].VST_MOBILE, [ Validators.pattern(this.mobnumPattern)]],
           txtWhatsappMobile: [this.salesLeadList[0].VST_WHATSAPP, [Validators.pattern(this.mobnumPattern)]],
           txtKeyword: [''],

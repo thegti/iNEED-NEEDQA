@@ -99,13 +99,13 @@
               <mat-label>email</mat-label>
               <mat-form-field appearance="outline" fxFlex="50">
                 <input matInput type="text" formControlName="txtEmail" maxlength="30" class="form-control"
-                  placeholder="email" maxlength="50" autocomplete="off"
+                  placeholder="email" maxlength="100" autocomplete="off"
                   [ngClass]="{ 'is-invalid': validation.txtEmail.touched && validation.txtEmail.errors }">
 
                 <mat-error *ngIf="validation.txtEmail.errors && validation.txtEmail.touched" class="invalid-feedback">
                   <mat-error *ngIf="validation.txtEmail.errors.required">email is required</mat-error>
-                  <mat-error *ngIf="validation.txtEmail.errors.email&& validation.txtEmail.errors">enter valid email
-                    address</mat-error>
+                  <!-- <mat-error *ngIf="validation.txtEmail.errors.email&& validation.txtEmail.errors">enter valid email
+                    address</mat-error> -->
                 </mat-error>
               </mat-form-field>
 

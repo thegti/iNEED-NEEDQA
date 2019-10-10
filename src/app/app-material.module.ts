@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
-import { MatButtonModule, MatIconModule } from '@angular/material';
+// import { MatButtonModule, MatIconModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material';
 import {MatGridListModule} from '@angular/material/grid-list';
 // import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatToolbarModule,MatDialogModule} from '@angular/material';
@@ -30,7 +31,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
         MatMomentDateModule,
         MatCheckboxModule,
         MatButtonModule,
-        MatIconModule,
+        // MatIconModule,
         MatTooltipModule,
         MatTableModule,
         MatPaginatorModule,
@@ -53,7 +54,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
         MatMomentDateModule,
         MatCheckboxModule,
         MatButtonModule,
-        MatIconModule,
+        // MatIconModule,
         MatTooltipModule,
         MatTableModule,
         MatPaginatorModule,

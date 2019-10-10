@@ -6,7 +6,8 @@
 
             <button mat-icon-button class="navbar-toggle-button" *ngIf="!hiddenNavbar && !rightNavbar"
                 (click)="toggleSidebarOpen('navbar')" fxHide.gt-sm>
-                <mat-icon class="secondary-text">menu</mat-icon>
+                <i class="material-icons ">menu</i>
+                <!-- <mat-icon class="secondary-text">menu</mat-icon> -->
             </button>
         </div>
 
@@ -15,14 +16,16 @@
             <div class="vendorlogin-mob">
                 <a routerLink="/profile" [hidden]="!this.authService.isLoggedIn" mat-menu-item
                 class="btn-list w22 btn-margn">
-                <mat-icon>person_outline</mat-icon> 
+                <!-- <mat-icon>person_outline</mat-icon>  -->
+                <i class="material-icons mat-icon">person_outline</i>
                  merchant profile
                 
             </a>
             <div class="toolbar-separator"></div>
             <a routerLink="#" [hidden]="!this.authService.isLoggedIn" (click)="logout()" mat-menu-item
                 class="btn-list w22 btn-margn">
-                <mat-icon>exit_to_app</mat-icon>logout
+                <i class="material-icons mat-icon">exit_to_app</i>
+                <!-- <mat-icon>exit_to_app</mat-icon>-->logout 
             </a>
             <div class="toolbar-separator"></div>
             </div>

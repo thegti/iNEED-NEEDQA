@@ -1000,7 +1000,7 @@ fuse-sidebar.left-positioned {
 
                     td          {   color:#0074bc;
                         button  {   background:none; box-shadow:none; color:#0074bc; width:25px; height:25px;
-                            mat-icon    {   color:#0074bc;}
+                            .mat-icon    {   color:#0074bc; font-size:18px;}
                             .mat-button-wrapper     {   padding:0px; line-height: 2px;
                                 
                             }
@@ -1315,7 +1315,7 @@ fuse-sidebar.left-positioned {
         font-family: 'coheadlinew08-lightregular', sans-serif; color: #0074bc!important;
         overflow: visible;
         
-        mat-icon    {   margin-right:4px; color: #0074bc!important;}
+        .mat-icon    {   margin-right:4px; color: #0074bc!important;}
 
         @media screen and (min-width:200px) and (max-width:399px){   
             padding:0px; line-height: 13px;   height: 28px;
@@ -1479,7 +1479,7 @@ fuse-sidebar.left-positioned {
 
         td          {   color:#0074bc;
             button  {   background:none; box-shadow:none; color:#0074bc; width:25px; height:25px;
-                mat-icon    {   color:#0074bc;}
+                .mat-icon    {   color:#0074bc; font-size:18px;}
                 .mat-button-wrapper     {   padding:0px; line-height: 2px;
                     
                 }
