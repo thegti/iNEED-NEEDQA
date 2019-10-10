@@ -45,9 +45,9 @@
                                     </mat-error>
                 </mat-form-field>
               </div>
-             
-                <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto " class="h45 report-mob-div"  [hidden]="!reportFromDate">
-                  <mat-label >from date</mat-label>
+             <!-- <div> -->
+                <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto " class=" fromdate-div"  [hidden]="!reportFromDate">
+                  <mat-label class="frmlabel" >from date</mat-label>
   
                   <mat-form-field appearance="outline" fxFlex="50" tab-index=2 class="date-sectn">
                       <input [matDatepicker]="picker1" class="todate" matInput placeholder="Date" autocomplete="off"
@@ -56,9 +56,10 @@
                     <mat-datepicker #picker1></mat-datepicker>
                     <!-- <input matInput type="date"   formControlName="txtFromDate"  (dateChange)="onChange($event)" required> -->
                   </mat-form-field>
- 
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto " class="todate-div"  [hidden]="!reportFromDate">
                   <mat-label class="todate-lbl">To date</mat-label>
-                  <mat-form-field appearance="outline" fxFlex="50" tab-index=3 class="date-sectn">
+                  <mat-form-field appearance="outline" fxFlex="50" tab-index=3 class="todate-input">
                     <input [matDatepicker]="picker" class="todate" matInput placeholder="Date" autocomplete="off"
                       name="txtToDate" formControlName="txtToDate">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -66,6 +67,7 @@
 
                   </mat-form-field>
                 </div>
+              <!-- </div> -->
                 <div fxLayout="row" fxLayoutAlign="start " fxFlex="1 0 auto " class="h45 report-mob-div" tab-index=3 [hidden]="!ReportVendorName" >
                     <mat-label class="vendorname">vendor</mat-label>
                   <mat-form-field appearance="outline" fxFlex="50" class="min-max60" tab-index=12>
@@ -91,8 +93,9 @@
                           </mat-form-field>
                         </div>
 
-                    <div fxLayout="row" fxFlex="1 0 auto" class="w77-4per" style="place-content: flex-end;">
-                <button type="button" mat-raised-button [disabled]="stprMain.controls['ddlReport'].invalid" (click)="filterReports()" class="min-max110">
+                    <div fxLayout="row" fxFlex="1 0 auto" class="w77-4per mobstyle" style="place-content: flex-end;">
+                <button type="button" mat-raised-button [disabled]="stprMain.controls['ddlReport'].invalid" 
+                (click)="filterReports()" class="min-max110">
                   generate
                 </button>
               </div>

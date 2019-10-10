@@ -47,7 +47,13 @@
         }
     }
 
-    .sidebar-img {  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.35);  }
+    .sidebar-img {   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.35); 
+        -webkit-box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.35);
+
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        -webkit-border-top-right-radius: 10px; -webkit-border-bottom-right-radius: 10px;
+    }
 
     .theme-options-sidebar {
         /*width:22vw;
